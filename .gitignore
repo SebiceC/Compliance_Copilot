@@ -1,0 +1,53 @@
+# --- Entornos virtuales ---
+venv/
+.venv/
+env/
+
+# --- Credenciales y secretos ---
+.env
+.env.*
+!.env.example
+.aws/
+.azure/
+credentials
+*.pem
+*.key
+*.pfx
+*.p12
+
+# --- Salidas de escaneos (datos reales: IDs de cuenta, ARNs, IPs) ---
+output/
+prowler-output-*
+
+# --- Reportes generados (pueden contener datos reales) ---
+reports/
+evidence/
+*.xlsx
+*.xlsm
+*.xls
+
+# --- Excepción: datos sintéticos/anonimizados que SÍ van al repo ---
+!data/samples/
+!data/samples/**
+
+# --- Python: cachés y artefactos de build ---
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+build/
+dist/
+*.egg-info/
+
+# --- Configuración local de herramientas ---
+.claude/settings.local.json
+.vscode/
+.idea/
+
+# --- Sistema operativo ---
+Thumbs.db
+desktop.ini
+.DS_Store

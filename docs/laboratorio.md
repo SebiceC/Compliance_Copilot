@@ -131,6 +131,23 @@ recursos de la tabla de arriba más el security group `default` de la VPC.
   Pendiente: un segundo escaneo que confirme los arreglos y sirva de entrada para la Fase 1.
 - Los nombres de archivo y varias columnas incluyen el **ID de cuenta**: confirma la necesidad del anonimizador.
 
+## Segundo escaneo (tras los arreglos)
+
+- **Fecha:** 2026-11-16 · mismo comando, perfil y región que el primero · ~4 min
+- **Totales:** 232 resultados · **114 FAIL** · 113 PASS · 0 muted (antes: 447 · 150 · 292)
+- **Marcos que usará el proyecto:** `ISO27001_2022_AWS` 78 FAIL / 78 PASS · `SOC2_AWS` 47 FAIL / 60 PASS ·
+  `NIST_CSF_2.0_AWS` 67 FAIL / 71 PASS
+- **Los 4 FAIL diseñados se mantienen**, ahora con los tags correctos también en el bucket de logs.
+- **Por qué bajó el total:** desaparecieron 215 resultados (36 FAIL y 179 PASS), todos de los 9 security groups
+  y del bucket huérfano eliminados. No apareció ningún FAIL nuevo y ningún recurso existente perdió resultados.
+  Menos PASS no significa peor postura: cada recurso borrado dejó de aportar sus propios checks.
+
+**Hallazgo fuera del laboratorio.** Existe un usuario IAM creado antes del proyecto, con **`AdministratorAccess`**,
+contraseña de consola **sin MFA** y sin iniciar sesión hace más de 400 días (`iam_user_administrator_access_policy`,
+critical; `iam_user_mfa_enabled_console_access`, high; `iam_user_console_access_unused`, medium). No es una
+debilidad diseñada: es un riesgo real de la cuenta. **Eliminado el 2026-11-16**; el único usuario IAM que queda
+es `lab-user-nomfa`. El acceso administrativo se hace solo por IAM Identity Center (`LabAdmin`), con MFA.
+
 ## Desmontaje
 
 Desde la consola con el rol `LabAdmin`, en `us-east-1`. El orden importa: primero se detiene CloudTrail

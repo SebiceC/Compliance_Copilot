@@ -1,0 +1,14 @@
+# Finales de línea: el repositorio guarda LF y la copia de trabajo también, en Windows y en CI.
+# Evita los avisos "LF will be replaced by CRLF" y los diffs falsos entre Windows y GitHub Actions.
+* text=auto eol=lf
+
+# Scripts de Windows: necesitan CRLF.
+*.ps1 text eol=crlf
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Binarios: Git no debe tocarlos.
+*.png binary
+*.jpg binary
+*.xlsx binary
+*.pdf binary

@@ -97,8 +97,12 @@ Todos los previstos se confirmaron como FAIL en el primer escaneo. Además apare
 | Check | Recurso | Observación |
 |---|---|---|
 | `ec2_securitygroup_not_used` (low) | `lab-sg-ssh-open` | Esperado: el security group no está asociado a ninguna instancia |
-| `ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_22` | 9 security groups `launch-wizard-N` | **No forman parte del laboratorio:** quedaron de pruebas anteriores con instancias EC2 (ya no hay instancias). Pendiente decidir si se eliminan |
-| Varios de S3 | Segundo bucket `aws-cloudtrail-logs-<ACCOUNT_ID>-<sufijo>` | **Bucket huérfano:** no está asociado a `lab-trail`. Pendiente revisar su contenido y eliminarlo |
+| `ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_22` | 9 security groups `launch-wizard-N` | **No forman parte del laboratorio:** quedaron de pruebas anteriores con instancias EC2 (ya no hay instancias). **Eliminados el 2026-11-16** |
+| Varios de S3 | Segundo bucket `aws-cloudtrail-logs-<ACCOUNT_ID>-<sufijo>` | **Bucket huérfano:** no estaba asociado a `lab-trail`. **Eliminado el 2026-11-16** |
+
+**Arreglos tras el primer escaneo (2026-11-16):** se eliminaron los recursos ajenos al laboratorio y se etiquetó
+el bucket de logs de `lab-trail` (ver la última observación de la sección siguiente). La cuenta quedó con los
+recursos de la tabla de arriba más el security group `default` de la VPC.
 
 ## Resultado del primer escaneo
 
@@ -122,8 +126,9 @@ Todos los previstos se confirmaron como FAIL en el primer escaneo. Además apare
   `clave=valor | clave=valor`. Es la entrada del cálculo de impacto.
 - En los security groups, el nombre del recurso es el ID (`sg-…`); el nombre legible solo aparece en el texto
   del estado.
-- **El bucket de logs de `lab-trail` salió sin tags.** Falta aplicarle `data-classification=restricted` y
-  `project=compliance-copilot`; si no, el motor lo tratará como "sin clasificar".
+- **El bucket de logs de `lab-trail` salió sin tags.** Se le aplicaron `data-classification=restricted` y
+  `project=compliance-copilot` el 2026-11-16; sin ellos, el motor lo habría tratado como "sin clasificar".
+  Pendiente: un segundo escaneo que confirme los arreglos y sirva de entrada para la Fase 1.
 - Los nombres de archivo y varias columnas incluyen el **ID de cuenta**: confirma la necesidad del anonimizador.
 
 ## Desmontaje

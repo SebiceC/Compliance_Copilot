@@ -16,12 +16,13 @@ credentials
 *.p12
 
 # --- Salidas de escaneos (datos reales: IDs de cuenta, ARNs, IPs) ---
-output/
+/output/
 prowler-output-*
 
 # --- Reportes generados (pueden contener datos reales) ---
-reports/
-evidence/
+# Con "/" al inicio: solo las carpetas de la raíz, no el paquete src/compliance_copilot/reports/.
+/reports/
+/evidence/
 *.xlsx
 *.xlsm
 *.xls

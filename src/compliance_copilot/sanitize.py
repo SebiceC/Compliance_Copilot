@@ -81,7 +81,12 @@ class Sanitizer:
     def leaks(self, text: str) -> set[str]:
         """Valores reales que siguen apareciendo en ``text``. Debe devolver un conjunto vacío."""
         lowered = text.lower()
-        return {original for original in self.originals if original.lower() in lowered}
+        # Un valor que ya era un seudónimo (al anonimizar un archivo ya anonimizado) no es un dato real.
+        pseudonyms = {p.lower() for mapping in self._maps.values() for p in mapping.values()}
+        return {
+            original for original in self.originals
+            if original.lower() not in pseudonyms and original.lower() in lowered
+        }
 
     # --- internos ---------------------------------------------------------------------------------------
 

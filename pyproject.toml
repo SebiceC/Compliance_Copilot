@@ -9,6 +9,7 @@ requires-python = ">=3.13"
 license = "MIT"
 dependencies = [
     "pydantic>=2",
+    "openpyxl>=3.1",  # entregables .xlsx (matriz de riesgos, SoA, plan de remediación)
 ]
 
 # Dependencias solo para desarrollo (PEP 735): no se instalan para quien usa la herramienta.

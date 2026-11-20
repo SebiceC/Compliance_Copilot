@@ -104,6 +104,14 @@ def test_public_ip_uses_documentation_range() -> None:
     assert data["resources"][0]["data"]["public_ip"].startswith("203.0.113.")
 
 
+def test_sanitizing_twice_is_safe() -> None:
+    """Anonimizar un archivo ya anonimizado no debe confundir los seudónimos con datos reales."""
+    once, _ = sanitize_findings([fake_finding()])
+    twice, sanitizer = sanitize_findings(once)
+    assert twice == once
+    assert sanitizer.leaks(json.dumps(twice)) == set()
+
+
 def test_original_is_not_modified() -> None:
     original = fake_finding()
     sanitize_findings([original])

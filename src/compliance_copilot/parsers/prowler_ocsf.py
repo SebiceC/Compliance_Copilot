@@ -20,7 +20,7 @@ from typing import Any
 
 from pydantic import ValidationError
 
-from compliance_copilot.models import Finding
+from compliance_copilot.models import Finding, ScanMetadata
 
 logger = logging.getLogger(__name__)
 
@@ -44,6 +44,7 @@ class ParseResult:
 
     source: Path
     total: int  # hallazgos que traía el archivo
+    scan: ScanMetadata
     findings: list[Finding] = field(default_factory=list)
     errors: list[ParseError] = field(default_factory=list)
 
@@ -83,7 +84,27 @@ def parse_ocsf_file(path: Path) -> ParseResult:
     if errors:
         logger.warning("%s: %d de %d hallazgos con errores", path.name, len(errors), len(data))
 
-    return ParseResult(source=path, total=len(data), findings=findings, errors=errors)
+    return ParseResult(
+        source=path, total=len(data), scan=_scan_metadata(data, findings), findings=findings, errors=errors,
+    )
+
+
+def _scan_metadata(data: list[Any], findings: list[Finding]) -> ScanMetadata:
+    """Datos del escaneo. Se leen de todos los elementos (incluso los que fallaron) y se deduplican."""
+
+    def distinct(*keys: str) -> tuple[str, ...]:
+        return tuple(sorted({str(v) for raw in data if (v := _dig(raw, *keys))}))
+
+    observed = sorted(f.observed_at for f in findings)
+    return ScanMetadata(
+        scanner="prowler",
+        scanner_versions=distinct("metadata", "product", "version"),
+        scan_ids=distinct("unmapped", "scan_id"),
+        providers=tuple(sorted({f.provider for f in findings})),
+        account_uids=tuple(sorted({f.account_uid for f in findings})),
+        first_observed_at=observed[0] if observed else None,
+        last_observed_at=observed[-1] if observed else None,
+    )
 
 
 def _to_finding(raw: dict[str, Any]) -> Finding:

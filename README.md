@@ -21,9 +21,9 @@ como insumo.** Lo que agrega es lo que Prowler no hace:
 | Capacidad | Estado |
 |---|---|
 | Ingesta de la salida de Prowler (JSON OCSF) con anonimización | listo para AWS (Azure pendiente) |
-| Agrupación por control: ISO 27001:2022, SOC 2, NIST CSF 2.0 y Ley 1581 de 2012 (Colombia) | pendiente |
+| Agrupación por control: ISO 27001:2022, SOC 2, NIST CSF 2.0 y Ley 1581 de 2012 (Colombia) | ISO 27001:2022 listo; SOC 2, NIST CSF 2.0 y Ley 1581 pendientes |
 | Evaluación de riesgo (probabilidad × impacto, matriz 5×5) con [metodología documentada](docs/metodologia-riesgo.md) | listo (metodología v0.2) |
-| Entregables: matriz de riesgos y SoA (.xlsx / .md), paquete de evidencias, plan de remediación | pendiente |
+| Entregables: matriz de riesgos y SoA (.xlsx / .md), paquete de evidencias, plan de remediación ([detalle](docs/entregables.md)) | listo (SoA de ISO 27001:2022) |
 | Redacción de hallazgos en formato de auditoría con Claude, **solo publicados tras aprobación humana** | pendiente |
 | Ejecución como compliance-as-code en GitHub Actions con OIDC (sin llaves de larga duración) | pendiente |
 
@@ -56,8 +56,14 @@ pip install --group dev             # pytest, solo para desarrollo
 # Tests (usan la muestra anonimizada de data/samples/)
 pytest
 
+# Generar los entregables y el paquete de evidencias (ver docs/entregables.md)
+python -m compliance_copilot report output/<escaneo>.ocsf.json -o reports/<carpeta>
+
+# Verificar que el paquete no se modificó
+python -m compliance_copilot verify reports/<carpeta>/manifest.json
+
 # Anonimizar un escaneo de Prowler antes de compartirlo (ver docs/anonimizacion.md)
-python -m compliance_copilot.sanitize output/<escaneo>.ocsf.json data/samples/<muestra>.ocsf.json
+python -m compliance_copilot sanitize output/<escaneo>.ocsf.json data/samples/<muestra>.ocsf.json
 ```
 
 ## Licencia

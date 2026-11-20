@@ -70,6 +70,22 @@ def test_compliance_keeps_only_project_frameworks(lab_sample_path: Path) -> None
     assert "ISO27001-2022" in used
 
 
+def test_scan_metadata(lab_sample_path: Path) -> None:
+    """Los datos del escaneo se leen una vez: van al manifest de evidencias."""
+    scan = parse_ocsf_file(lab_sample_path).scan
+    assert scan.scanner == "prowler"
+    assert scan.scanner_versions == ("5.48.0",)
+    assert len(scan.scan_ids) == 1
+    assert scan.providers == ("aws",)
+    assert scan.account_uids == ("123456789001",)
+    assert scan.first_observed_at is not None and scan.first_observed_at <= scan.last_observed_at
+
+
+def test_scan_metadata_of_empty_file(tmp_path: Path) -> None:
+    scan = parse_ocsf_file(write_json(tmp_path / "empty.ocsf.json", [])).scan
+    assert scan.scan_ids == () and scan.first_observed_at is None
+
+
 def test_categories_are_read(lab_sample_path: Path) -> None:
     """El SSH abierto está marcado como expuesto a internet: la probabilidad lo usa."""
     finding = next(

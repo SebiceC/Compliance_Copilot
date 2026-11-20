@@ -82,3 +82,21 @@ class Finding(BaseModel):
         if value > datetime.now(value.tzinfo):
             raise ValueError("observed_at está en el futuro")
         return value
+
+
+class ScanMetadata(BaseModel):
+    """Datos del escaneo, no de un hallazgo: son iguales para todos y van una sola vez en las evidencias.
+
+    Se guardan como tuplas porque un archivo podría combinar varios escaneos o cuentas; el reporte lo muestra en
+    lugar de suponer que hay uno solo.
+    """
+
+    model_config = ConfigDict(frozen=True, extra="forbid")
+
+    scanner: str  # p. ej. "prowler"
+    scanner_versions: tuple[str, ...]
+    scan_ids: tuple[str, ...]
+    providers: tuple[str, ...]
+    account_uids: tuple[str, ...]
+    first_observed_at: AwareDatetime | None  # None si el archivo no trae hallazgos válidos
+    last_observed_at: AwareDatetime | None

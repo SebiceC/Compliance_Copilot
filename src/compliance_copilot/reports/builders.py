@@ -10,6 +10,7 @@ from enum import StrEnum
 from pathlib import Path
 
 from compliance_copilot.catalogs import Catalog, Control, Theme, load_catalog
+from compliance_copilot.drafting.schema import FindingDraft
 from compliance_copilot.models import Finding, ScanMetadata, Severity, Status
 from compliance_copilot.parsers.prowler_ocsf import ParseError, ParseResult
 from compliance_copilot.risk import RiskAssessment, RiskLevel, Treatment, assess_all
@@ -84,6 +85,32 @@ class RemediationAction:
     due_date: str = ""
 
 
+AUDIT_STATE_LABEL = {
+    "approved": "Aprobada",
+    "approved_with_edits": "Aprobada con ediciones",
+    "pending": "Pendiente de aprobación",
+    "rejected": "Rechazada",
+    "failed": "Falló la generación",
+    "outdated": "Desactualizada (el escaneo cambió)",
+    "not_generated": "Sin redacción",
+}
+
+
+@dataclass(frozen=True)
+class AuditEntry:
+    """Estado de la redacción con IA de una acción. ``text`` solo existe si una persona la aprobó."""
+
+    state: str = "not_generated"
+    text: FindingDraft | None = None
+    model: str = ""
+    reviewer: str = ""
+    reviewed_at: str = ""
+
+    @property
+    def label(self) -> str:
+        return AUDIT_STATE_LABEL.get(self.state, self.state)
+
+
 @dataclass(frozen=True)
 class Report:
     """Todo lo que necesitan los entregables, ya calculado."""
@@ -97,6 +124,7 @@ class Report:
     soa: tuple[SoARow, ...]  # todos los controles del catálogo, en orden
     remediation: tuple[RemediationAction, ...]  # ordenadas por prioridad
     heatmap: dict[tuple[int, int], int] = field(default_factory=dict)  # (probabilidad, impacto) -> cantidad
+    audit: dict[str, AuditEntry] = field(default_factory=dict)  # redacción con IA por check_id (si se pidió)
 
     @property
     def is_complete(self) -> bool:

@@ -10,6 +10,7 @@ license = "MIT"
 dependencies = [
     "pydantic>=2",
     "openpyxl>=3.1",  # entregables .xlsx (matriz de riesgos, SoA, plan de remediación)
+    "anthropic>=2.11",  # redacción de hallazgos con Claude (structured outputs + fallback del servidor)
 ]
 
 # Dependencias solo para desarrollo (PEP 735): no se instalan para quien usa la herramienta.

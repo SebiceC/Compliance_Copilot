@@ -24,7 +24,7 @@ como insumo.** Lo que agrega es lo que Prowler no hace:
 | Agrupación por control: ISO 27001:2022, SOC 2, NIST CSF 2.0 y Ley 1581 de 2012 (Colombia) | ISO 27001:2022 listo; SOC 2, NIST CSF 2.0 y Ley 1581 pendientes |
 | Evaluación de riesgo (probabilidad × impacto, matriz 5×5) con [metodología documentada](docs/metodologia-riesgo.md) | listo (metodología v0.2) |
 | Entregables: matriz de riesgos y SoA (.xlsx / .md), paquete de evidencias, plan de remediación ([detalle](docs/entregables.md)) | listo (SoA de ISO 27001:2022) |
-| Redacción de hallazgos en formato de auditoría con Claude, **solo publicados tras aprobación humana** | pendiente |
+| Redacción de hallazgos en formato de auditoría con Claude, **solo publicados tras aprobación humana** ([detalle](docs/redaccion-ia.md)) | listo |
 | Ejecución como compliance-as-code en GitHub Actions con OIDC (sin llaves de larga duración) | pendiente |
 
 ## Principios
@@ -58,6 +58,12 @@ pytest
 
 # Generar los entregables y el paquete de evidencias (ver docs/entregables.md)
 python -m compliance_copilot report output/<escaneo>.ocsf.json -o reports/<carpeta>
+
+# Redactar hallazgos con Claude y revisarlos (ver docs/redaccion-ia.md); luego: report ... --drafts drafts/<fecha>-sonnet.json
+python -m compliance_copilot draft output/<escaneo>.ocsf.json --levels critical,high --dry-run
+python -m compliance_copilot draft output/<escaneo>.ocsf.json --levels critical,high
+python -m compliance_copilot draft output/<escaneo>.ocsf.json --levels critical --limit 5 --model haiku  # comparar modelos
+python -m compliance_copilot review output/<escaneo>.ocsf.json --reviewer "Nombre Apellido"
 
 # Verificar que el paquete no se modificó
 python -m compliance_copilot verify reports/<carpeta>/manifest.json

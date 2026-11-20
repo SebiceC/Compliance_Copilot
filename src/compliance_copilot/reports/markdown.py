@@ -8,6 +8,7 @@ from compliance_copilot.reports.builders import (
     SEVERITY_LABEL,
     THEME_LABEL,
     TREATMENT_LABEL,
+    AuditEntry,
     Report,
     TechnicalStatus,
 )
@@ -18,6 +19,7 @@ FILES = {
     "risks": "matriz-riesgos.md",
     "soa": "soa-iso27001.md",
     "remediation": "plan-remediacion.md",
+    "audit": "hallazgos-auditoria.md",
 }
 
 
@@ -28,6 +30,7 @@ def write_markdown(report: Report, out_dir: Path) -> list[Path]:
         "risks": render_risks(report),
         "soa": render_soa(report),
         "remediation": render_remediation(report),
+        "audit": render_audit(report),
     }
     paths = []
     for key, text in contents.items():
@@ -166,3 +169,33 @@ def render_remediation(report: Report) -> str:
         _table(["Prioridad", "Nivel", "Riesgo máx.", "Acción sobre", "Severidad", "Recursos", "Lista de recursos",
                 "ISO 27001", "Cómo corregirlo", "Responsable", "Fecha compromiso"], rows),
     ]) + "\n"
+
+
+def render_audit(report: Report) -> str:
+    """Hallazgos en formato de auditoría (5 C). Solo se publica el texto que una persona aprobó."""
+    parts = [
+        _header("Hallazgos de auditoría", report),
+        "Redacción asistida por IA. **Solo se muestra el texto aprobado por una persona**; el resto aparece con "
+        "el texto técnico del escáner y su estado. Los niveles de riesgo y los controles los calcula la "
+        "metodología, no la IA.\n",
+    ]
+    states = Counter(report.audit.get(a.check_id, AuditEntry()).label for a in report.remediation)
+    parts.append(_table(["Estado de la redacción", "Hallazgos"], sorted(states.items())))
+    parts.append("")
+
+    for action in report.remediation:
+        entry = report.audit.get(action.check_id, AuditEntry())
+        text = entry.text
+        title = text.title if text else action.check_title
+        parts.append(f"## {action.priority}. {title}\n")
+        parts.append(f"**Riesgo:** {LEVEL_LABEL[action.max_level]} ({action.max_score}) · **Recursos:** "
+                     f"{', '.join(action.resources)} · **ISO 27001:** {', '.join(action.controls) or 'sin mapeo'}\n")
+        if text:
+            for label, value in [("Condición", text.condition), ("Criterio", text.criteria), ("Causa", text.cause),
+                                 ("Efecto", text.effect), ("Recomendación", text.recommendation)]:
+                parts.append(f"**{label}.** {value}\n")
+            parts.append(f"*Redactado con asistencia de IA ({entry.model}); {entry.label.lower()} por "
+                         f"{entry.reviewer} el {entry.reviewed_at}.*\n")
+        else:
+            parts.append(f"> Redacción: **{entry.label}**. Texto técnico del escáner: {action.check_title}.\n")
+    return "\n".join(parts)

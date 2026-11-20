@@ -11,6 +11,7 @@ from importlib.metadata import PackageNotFoundError, version
 from pathlib import Path
 from typing import Any
 
+from compliance_copilot.drafting.schema import DraftStore
 from compliance_copilot.reports.builders import SOA_FRAMEWORK, Report
 from compliance_copilot.risk import METHODOLOGY_VERSION
 
@@ -26,7 +27,7 @@ def sha256(path: Path) -> str:
     return digest.hexdigest()
 
 
-def write_evidence(report: Report, out_dir: Path, deliverables: list[Path]) -> Path:
+def write_evidence(report: Report, out_dir: Path, deliverables: list[Path], drafts: DraftStore | None = None) -> Path:
     """Escribe las evidencias y el manifest. ``deliverables`` son los archivos ya generados (se incluyen sus hashes)."""
     evidence_dir = out_dir / EVIDENCE_DIR
     controls_dir = evidence_dir / "controles" / SOA_FRAMEWORK
@@ -34,6 +35,11 @@ def write_evidence(report: Report, out_dir: Path, deliverables: list[Path]) -> P
 
     written = [_write_json(evidence_dir / "hallazgos.json",
                            [f.model_dump(mode="json") for f in report.findings])]
+
+    if drafts is not None:
+        # Trazabilidad de la IA: qué datos vio el modelo (hash), qué escribió, quién lo revisó y qué quedó.
+        # Incluye los rechazados y fallidos: también son parte del registro.
+        written.append(_write_json(evidence_dir / "redaccion-ia.json", drafts.model_dump(mode="json")))
 
     findings_by_control: dict[str, list[dict[str, Any]]] = {}
     for f in report.findings:

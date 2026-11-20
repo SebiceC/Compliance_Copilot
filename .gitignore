@@ -23,6 +23,7 @@ prowler-output-*
 # Con "/" al inicio: solo las carpetas de la raíz, no el paquete src/compliance_copilot/reports/.
 /reports/
 /evidence/
+/drafts/
 *.xlsx
 *.xlsm
 *.xls

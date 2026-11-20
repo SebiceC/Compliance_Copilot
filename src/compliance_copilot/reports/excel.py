@@ -12,6 +12,7 @@ from compliance_copilot.reports.builders import (
     SEVERITY_LABEL,
     THEME_LABEL,
     TREATMENT_LABEL,
+    AuditEntry,
     Report,
 )
 from compliance_copilot.risk import METHODOLOGY_VERSION, RiskLevel, level_for
@@ -38,6 +39,7 @@ def write_excel(report: Report, out_dir: Path) -> Path:
     _heatmap(wb.create_sheet("Mapa de calor"), report)
     _soa(wb.create_sheet("SoA ISO 27001"), report)
     _remediation(wb.create_sheet("Plan de remediación"), report)
+    _audit(wb.create_sheet("Hallazgos de auditoría"), report)
     path = out_dir / FILENAME
     wb.save(path)
     return path
@@ -142,4 +144,22 @@ def _remediation(ws: Worksheet, report: Report) -> None:
     _table(ws, ["Prioridad", "Nivel", "Riesgo máx.", "Check", "Acción sobre", "Severidad", "Recursos",
                 "Lista de recursos", "ISO 27001", "Cómo corregirlo", "Responsable", "Fecha compromiso"],
            rows, [9, 9, 9, 30, 40, 10, 9, 40, 16, 60, 18, 15], human_columns=(11, 12))
+    _paint_level(ws, 2, [a.max_level for a in report.remediation])
+
+
+def _audit(ws: Worksheet, report: Report) -> None:
+    """Hallazgos en formato de auditoría. Las columnas de texto solo se llenan con redacciones aprobadas."""
+    rows = []
+    for a in report.remediation:
+        entry = report.audit.get(a.check_id, AuditEntry())
+        t = entry.text
+        rows.append([
+            a.priority, LEVEL_LABEL[a.max_level], a.max_score, a.check_id, entry.label,
+            t.title if t else a.check_title, t.condition if t else "", t.criteria if t else "",
+            t.cause if t else "", t.effect if t else "", t.recommendation if t else "",
+            entry.reviewer, entry.reviewed_at, entry.model,
+        ])
+    _table(ws, ["Prioridad", "Nivel", "Riesgo", "Check", "Estado de la redacción", "Título", "Condición",
+                "Criterio", "Causa", "Efecto", "Recomendación", "Aprobado por", "Fecha de aprobación", "Modelo"],
+           rows, [9, 9, 7, 30, 22, 40, 50, 50, 45, 50, 60, 18, 20, 18])
     _paint_level(ws, 2, [a.max_level for a in report.remediation])

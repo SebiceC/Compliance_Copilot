@@ -20,7 +20,7 @@ como insumo.** Lo que agrega es lo que Prowler no hace:
 
 | Capacidad | Estado |
 |---|---|
-| Ingesta de la salida de Prowler (JSON OCSF) con anonimización | en curso: parser y anonimizador para AWS listos; faltan tests |
+| Ingesta de la salida de Prowler (JSON OCSF) con anonimización | listo para AWS (Azure pendiente) |
 | Agrupación por control: ISO 27001:2022, SOC 2, NIST CSF 2.0 y Ley 1581 de 2012 (Colombia) | pendiente |
 | Evaluación de riesgo (probabilidad × impacto, matriz 5×5) con metodología documentada | pendiente |
 | Entregables: matriz de riesgos y SoA (.xlsx / .md), paquete de evidencias, plan de remediación | pendiente |
@@ -51,6 +51,10 @@ una opinión de cumplimiento.
 python -m venv .venv
 .venv\Scripts\Activate.ps1          # Windows (PowerShell)
 pip install -e .
+pip install --group dev             # pytest, solo para desarrollo
+
+# Tests (usan la muestra anonimizada de data/samples/)
+pytest
 
 # Anonimizar un escaneo de Prowler antes de compartirlo (ver docs/anonimizacion.md)
 python -m compliance_copilot.sanitize output/<escaneo>.ocsf.json data/samples/<muestra>.ocsf.json

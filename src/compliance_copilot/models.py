@@ -69,7 +69,8 @@ class Finding(BaseModel):
     @classmethod
     def _to_lowercase(cls, value: object) -> object:
         """Acepta 'FAIL', 'Fail' o 'fail': cada escáner escribe distinto, el modelo guarda una sola forma."""
-        return value.lower() if isinstance(value, str) else value
+        # strip() aquí: str_strip_whitespace no se aplica a los enums, solo a los campos de tipo str.
+        return value.strip().lower() if isinstance(value, str) else value
 
     @field_validator("observed_at")
     @classmethod

@@ -58,6 +58,9 @@ class Finding(BaseModel):
     resource_type: str
     tags: dict[str, str] = Field(default_factory=dict)
 
+    # Categorías del check según el escáner ("internet-exposed", "logging"...). La probabilidad usa la exposición.
+    categories: list[str] = Field(default_factory=list)
+
     # Marcos normativos: {"ISO27001-2022": ["A.8.15"], "SOC2": ["cc_7_2"], ...}
     compliance: dict[str, list[str]] = Field(default_factory=dict)
 

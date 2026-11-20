@@ -1,8 +1,10 @@
 # Metodología de evaluación de riesgo
 
-- **Versión:** 0.1 (borrador)
-- **Fecha:** 2026-11-11
-- **Estado:** Clasificación e impacto aprobados; probabilidad pendiente (Fase 2)
+- **Versión:** 0.2
+- **Fecha:** 2026-11-19
+- **Estado:** Aprobada (clasificación, impacto, probabilidad, nivel y tratamiento)
+- **Implementación:** `src/compliance_copilot/risk.py`; cada ejemplo de este documento es un test en
+  `tests/test_risk.py`.
 
 Este documento define cómo Compliance Copilot convierte un hallazgo técnico en un riesgo evaluado. El objetivo
 es que el método sea **definido, consistente y repetible**, como exige ISO/IEC 27001 para la evaluación de
@@ -10,6 +12,13 @@ riesgos, y que cualquier persona pueda recalcular un resultado a mano a partir d
 
 **Riesgo = Probabilidad (1-5) × Impacto (1-5)**, sobre una matriz de 5×5 (escalas de 5 niveles, en línea con
 NIST SP 800-30).
+
+**Qué se evalúa.** Solo los hallazgos **FAIL**. Un PASS es evidencia de que el control funciona (va al paquete
+de evidencias); un MANUAL requiere revisión humana y queda pendiente. La evaluación es un objeto aparte
+(`RiskAssessment`) que referencia al hallazgo: el hallazgo es evidencia inmutable; la evaluación es una opinión
+sobre esa evidencia y puede cambiar si cambia esta metodología.
+
+**Justificación obligatoria.** Cada evaluación incluye qué regla produjo cada número, en texto legible.
 
 ---
 
@@ -34,10 +43,28 @@ alteración destruiría la evidencia forense.
 **Quién clasifica.** La clasificación la asigna el **dueño del activo**, no el equipo de seguridad. Seguridad
 define los niveles y verifica que se apliquen. *(Pendiente de validar con el autor.)*
 
-**Recursos sin tag.** Se tratan como `confidential` hasta que su dueño los clasifique. Además, la falta de
-clasificación genera un **hallazgo propio**, mapeado al control de clasificación de la información de
-ISO 27001:2022 (`A.5.12`). Así no se castiga dos veces: el impacto usa un valor prudente y el incumplimiento se
-reporta aparte.
+### 1.1 Recursos sin tag: depende del tipo de recurso
+
+No todos los recursos guardan información ni todos se pueden etiquetar (por ejemplo, las políticas
+administradas por AWS o los controles de cuenta). Aplicar la misma regla a todos generaría cientos de
+hallazgos imposibles de corregir. Por eso cada tipo de recurso pertenece a uno de tres grupos:
+
+| Grupo | Tipos de recurso (`resource_type` de Prowler) | Sin tag |
+|---|---|---|
+| **Datos**: guardan o protegen información | `AwsS3Bucket`, `AwsEc2Instance`, `AwsEc2Volume`, `AwsEc2Snapshot`, `AwsRdsDbInstance`, `AwsRdsDbCluster`, `AwsRdsDbSnapshot`, `AwsDynamoDbTable`, `AwsEfsFileSystem`, `AwsRedshiftCluster`, `AwsBackupBackupVault`, `AwsKmsKey`, `AwsSecretsManagerSecret`, `AwsLogsLogGroup`, `AwsOpenSearchServiceDomain` | Base 3 (`confidential`) **y** hallazgo de clasificación faltante (`A.5.12`) |
+| **Cuenta**: controles que protegen a toda la cuenta | `Other`, `AwsCloudTrailTrail`, `AwsCloudWatchAlarm`, `AwsConfigConfigurationRecorder`, `AwsConfigConfigurationAggregator`, `AwsGuardDutyDetector`, `AwsSecurityHubHub`, `AwsS3AccountPublicAccessBlock`, `AwsIamPasswordPolicy` | Base 3, sin hallazgo `A.5.12`; además aplica el modificador (a) |
+| **Infraestructura**: todo lo demás (security groups, IAM, red…) | Cualquier otro tipo | Base 3, sin hallazgo `A.5.12`: el tag se recomienda, pero su ausencia no es un incumplimiento |
+
+**Un tag presente siempre manda**, en cualquier grupo: `lab-trail` es del grupo Cuenta, pero su tag
+`restricted` fija la base en 4.
+
+**Tag con valor inválido** (por ejemplo `private` o `secreto`): se trata como sin tag (base 3) y genera el
+hallazgo `A.5.12` en cualquier grupo, porque alguien intentó clasificar y lo hizo mal. Las mayúsculas y los
+espacios se ignoran (`Confidential` es válido).
+
+El hallazgo `A.5.12` no es un hallazgo de Prowler: el motor lo marca en la evaluación
+(`requires_classification`) y los entregables lo reportan bajo el control de clasificación de la información de
+ISO 27001:2022. No se castiga dos veces: el impacto usa un valor prudente y el incumplimiento se reporta aparte.
 
 ---
 
@@ -51,7 +78,7 @@ reporta aparte.
 |---|---|
 | `public` | 1 |
 | `internal` | 2 |
-| `confidential` (o sin tag) | 3 |
+| `confidential` (o sin tag, o tag inválido) | 3 |
 | `restricted` | 4 |
 
 ### 2.2 Modificador de alcance (+1)
@@ -60,41 +87,68 @@ Se suma **+1** si el recurso cumple **al menos una** de estas condiciones:
 
 | Condición | Qué se observa | Por qué amplía el daño |
 |---|---|---|
-| **(a) Alcance de toda la cuenta** | El tipo de recurso es un control de cuenta: CloudTrail, política de contraseñas, usuario root, configuración de Organizations | Su falla no expone un dato: debilita a toda la cuenta |
+| **(a) Alcance de toda la cuenta** | El tipo de recurso pertenece al grupo **Cuenta** (sección 1.1) | Su falla no expone un dato: debilita a toda la cuenta |
 | **(b) Producción** | Tag `environment=prod` | Afecta a clientes y operaciones reales |
-| **(c) Privilegios administrativos** | La identidad tiene `AdministratorAccess` o una política con `"Action": "*"` sobre `"Resource": "*"`, directamente o vía grupo | Quien la comprometa alcanza y puede modificar todos los recursos de la cuenta |
+| **(c) Privilegios administrativos** | El **mismo recurso** tiene un FAIL en un check de privilegios administrativos (abajo) | Quien lo comprometa alcanza y puede modificar todos los recursos de la cuenta |
+
+**Cómo se detecta (c).** El hallazgo no guarda las políticas de la identidad; en su lugar se reutiliza lo que
+Prowler ya evalúa. Si un recurso tiene un FAIL en alguno de estos checks, el modificador (c) aplica a **todos**
+los hallazgos de ese recurso:
+
+- `iam_user_administrator_access_policy` (usuario con `AdministratorAccess`)
+- `iam_role_administratoraccess_policy` (rol con `AdministratorAccess`)
+- `iam_group_administrator_access_policy` (grupo con `AdministratorAccess`)
+- `iam_aws_attached_policy_no_administrative_privileges`, `iam_customer_attached_policy_no_administrative_privileges`,
+  `iam_inline_policy_no_administrative_privileges` (la política misma concede `"Action": "*"` sobre `"Resource": "*"`)
 
 **Reglas:**
 
-- **No se acumula.** Cumplir varias condiciones suma +1, no más. Así el contexto ajusta la clasificación sin
-  reemplazarla, y la escala conserva su capacidad de distinguir.
+- **No se acumula.** Cumplir varias condiciones suma +1, no más.
 - **Tope en 5.**
-- **Solo condiciones observables.** Todo lo que usa el modificador está en la salida del escáner (tipo de
-  recurso, tags, políticas). No depende de información de negocio que el escaneo no tiene.
-
-### 2.3 Ejemplos
-
-| Recurso | Clasificación | Base | Condición | Impacto |
-|---|---|---|---|---|
-| Security group con SSH abierto | `public` | 1 | — | **1** |
-| Usuario IAM sin MFA, sin políticas | `internal` | 2 | — | **2** |
-| El mismo usuario con `AdministratorAccess` | `internal` | 2 | (c) | **3** |
-| Bucket S3 de pruebas | `confidential` | 3 | — | **3** |
-| El mismo bucket con `environment=prod` | `confidential` | 3 | (b) | **4** |
-| Trail de CloudTrail | `restricted` | 4 | (a) | **5** |
-| Trail de CloudTrail en producción | `restricted` | 4 | (a) y (b), no se acumula | **5** |
+- **Solo condiciones observables** en la salida del escáner (tipo de recurso, tags, otros hallazgos).
 
 ---
 
 ## 3. Probabilidad
 
-*Pendiente (Fase 2).* Se calculará a partir de la **severidad del check** de Prowler y de factores de
-**exposición** observables (por ejemplo, recurso accesible desde internet, identidad sin MFA, ausencia de
-logging).
+**Probabilidad = Base por severidad + Modificador de exposición (máximo 5)**
+
+### 3.1 Base
+
+La severidad que el escáner asigna al check resume qué tan fácil y frecuente es explotar la debilidad.
+
+| Severidad del check | Base |
+|---|---|
+| `informational` | 1 |
+| `low` | 2 |
+| `medium` | 3 |
+| `high` | 4 |
+| `critical` | 5 |
+
+### 3.2 Modificador de exposición (+1)
+
+Se suma **+1** si el check tiene la categoría **`internet-exposed`** de Prowler: un recurso alcanzable desde
+internet puede ser atacado por cualquiera, no solo por alguien con acceso a la red interna. Tope en 5.
 
 ---
 
-## 4. Nivel de riesgo y tratamiento sugerido
+## 4. Ejemplos (laboratorio)
+
+| Hallazgo | Probabilidad | Impacto | Riesgo | Nivel |
+|---|---|---|---|---|
+| Security group con SSH abierto (`public`) | high 4 + internet 1 = **5** | public **1** | **5** | Medio |
+| Usuario IAM sin MFA (`internal`) | high **4** | internal **2** | **8** | Medio |
+| Bucket S3 sin versionado (`confidential`) | medium **3** | confidential **3** | **9** | Medio |
+| Bucket de logs de CloudTrail sin versionado (`restricted`) | medium **3** | restricted **4** | **12** | Alto |
+| Trail sin validación de logs (`restricted`, grupo Cuenta) | medium **3** | 4 + (a) = **5** | **15** | Alto |
+| Usuario administrador sin MFA (sin tag) | high **4** | 3 + (c) = **4** | **16** | Alto |
+| Usuario con `AdministratorAccess` (sin tag) | critical **5** | 3 + (c) = **4** | **20** | Crítico |
+| Bucket con datos sin tag | medium **3** | **3**, + hallazgo `A.5.12` | **9** | Medio |
+| El mismo bucket con `environment=prod` y `restricted` | medium **3** | 4 + (b) = **5** | **15** | Alto |
+
+---
+
+## 5. Nivel de riesgo y tratamiento sugerido
 
 | Puntuación | Nivel | Tratamiento sugerido |
 |---|---|---|
@@ -110,16 +164,38 @@ persona.
 
 ---
 
-## 5. Límites conocidos
+## 6. Hallazgos sin control mapeado
+
+Algunos checks no corresponden a ningún control de los marcos del proyecto (ISO 27001:2022, SOC 2,
+NIST CSF 2.0). **Se evalúan igual**: el riesgo existe aunque ningún marco lo nombre. En la matriz de riesgos se
+marcan como "sin control mapeado" (`has_control_mapping = false`) y **no** entran en la SoA: esconderlos
+perdería información; incluirlos en la SoA inventaría un control.
+
+---
+
+## 7. Límites conocidos
 
 - **Matriz cualitativa.** No reemplaza un análisis cuantitativo (por ejemplo, FAIR) que exprese el riesgo en
   términos financieros. Multiplicar valores ordinales es una convención, no una medición.
+- **Doble conteo parcial.** La severidad de Prowler, base de la probabilidad, también refleja en parte el
+  impacto potencial del check. Se acepta por ser observable y consistente.
+- **Exposición simplificada.** Solo se observa la categoría `internet-exposed` del check; no se analiza la
+  topología de red (rutas, NACL, balanceadores) para confirmar que el recurso es realmente alcanzable.
 - **No estima volumen ni impacto financiero.** El escaneo no sabe cuántos registros hay en un recurso ni cuánto
   vale la información.
 - **La clasificación depende del etiquetado.** La herramienta no inspecciona el contenido de los recursos; un
   tag incorrecto produce un impacto incorrecto.
-- **Privilegios efectivos simplificados.** La condición (c) solo detecta casos evidentes. No evalúa políticas
-  inline complejas, permission boundaries, SCP de Organizations ni cadenas de roles asumibles.
+- **Privilegios efectivos simplificados.** La condición (c) depende de los checks de Prowler listados. No
+  evalúa permission boundaries, SCP de Organizations ni cadenas de roles asumibles.
+- **Listas de tipos de recurso cerradas.** Un tipo nuevo de Prowler cae en el grupo Infraestructura hasta que
+  se agregue a la lista correspondiente.
+
+## Historial
+
+| Versión | Fecha | Cambio |
+|---|---|---|
+| 0.1 | 2026-11-11 | Clasificación e impacto |
+| 0.2 | 2026-11-19 | Probabilidad (severidad + exposición), recursos sin tag según su grupo, detección de (c) por hallazgos cruzados, hallazgos sin control mapeado, ejemplos verificados con tests |
 
 ## Referencias
 

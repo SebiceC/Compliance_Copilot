@@ -113,6 +113,7 @@ def _to_finding(raw: dict[str, Any]) -> Finding:
         resource_name=resource.get("name", ""),
         resource_type=resource.get("type", ""),
         tags=_parse_labels(resource.get("labels") or []),
+        categories=[str(c) for c in _dig(raw, "unmapped", "categories") or []],
         compliance=_filter_compliance(_dig(raw, "unmapped", "compliance") or {}),
         risk=raw.get("risk_details") or "",
         remediation=_dig(raw, "remediation", "desc") or "",

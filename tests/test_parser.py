@@ -70,6 +70,15 @@ def test_compliance_keeps_only_project_frameworks(lab_sample_path: Path) -> None
     assert "ISO27001-2022" in used
 
 
+def test_categories_are_read(lab_sample_path: Path) -> None:
+    """El SSH abierto está marcado como expuesto a internet: la probabilidad lo usa."""
+    finding = next(
+        f for f in parse_ocsf_file(lab_sample_path).findings
+        if f.check_id == "ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_22"
+    )
+    assert "internet-exposed" in finding.categories
+
+
 def test_lab_trail_maps_to_logging_controls(lab_sample_path: Path) -> None:
     """La validación de logs de CloudTrail corresponde a los controles de registro de ISO 27001:2022."""
     finding = next(

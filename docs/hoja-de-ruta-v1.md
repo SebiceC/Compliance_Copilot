@@ -65,7 +65,7 @@ subcategorías inexistentes.
 | 8.2 | ✅ **Tabla de correspondencia** de los IDs de Prowler a subcategorías 2.0, basada en la correspondencia oficial 1.1 → 2.0 publicada por NIST. Cada ID de 1.1 se traduce o queda "sin correspondencia" (reportado, no descartado) | Yo, tú revisas |
 | 8.3 | ✅ Entregable **Perfil actual NIST CSF 2.0**: por subcategoría, estado técnico; columnas para el perfil objetivo y la prioridad (decisión humana) | Yo |
 | 8.4 | ✅ Evidencia por subcategoría en el paquete | Yo |
-| 8.5 | Documentar la discrepancia de Prowler en el ADR 0007 y evaluar reportarla al proyecto Prowler (issue público) | Tú decides |
+| 8.5 | ✅ Reportada en [prowler-cloud/prowler#13504](https://github.com/prowler-cloud/prowler/issues/13504). Documentar la discrepancia de Prowler en el ADR 0007 y evaluar reportarla al proyecto Prowler (issue público) | Tú decides |
 | 8.6 | Escaneo desde CI y revisión del perfil | Tú |
 
 ## Fase 9. Ley 1581 de 2012

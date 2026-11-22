@@ -10,7 +10,8 @@ on:
 
 permissions:
   contents: read
-  id-token: write  # permite pedir el token OIDC que AWS cambia por credenciales temporales
+  id-token: write      # token OIDC: AWS lo cambia por credenciales; Sigstore, por un certificado de firma
+  attestations: write  # guarda la firma del manifest en el repo (artifact attestations)
 
 concurrency:
   group: scan
@@ -86,6 +87,23 @@ jobs:
             grep '^  ' logs/report.log | sed 's/^  /- /' || true
           } >> "$GITHUB_STEP_SUMMARY"
 
+      # Firma el manifest (y con él, por sus hashes, cada entregable y el escaneo original). Prueba el origen:
+      # este repo, este workflow, este commit. Solo se publica el hash y la identidad del workflow, no el archivo.
+      - name: Firmar el manifest (artifact attestation)
+        if: env.PROWLER_FAILED != '1'
+        id: firma
+        uses: actions/attest@1e69f48acb82d1966a394da916b4c1698aa569d6  # v4.2.2
+        with:
+          subject-path: reports/ci/manifest.json
+
+      - name: Guardar la firma junto al paquete
+        if: env.PROWLER_FAILED != '1'
+        env:
+          BUNDLE: ${{ steps.firma.outputs.bundle-path }}
+        run: |
+          mkdir -p attestation
+          cp "$BUNDLE" attestation/manifest.sigstore.json
+
       - name: Subir al bucket de evidencias
         if: always()  # también si algo falló: los logs del bucket explican qué pasó
         env:
@@ -93,7 +111,7 @@ jobs:
         run: |
           dest="s3://${EVIDENCE_BUCKET}/scans/$(date -u +%Y%m%d-%H%M%S)-run${GITHUB_RUN_ID}"
           # --only-show-errors: las rutas incluyen el ID de la cuenta; no van al log.
-          for dir in output reports logs; do
+          for dir in output reports logs attestation; do
             if [ -d "$dir" ]; then
               aws s3 cp "$dir" "$dest/$dir" --recursive --sse AES256 --only-show-errors
             fi

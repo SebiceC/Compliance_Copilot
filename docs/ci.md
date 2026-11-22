@@ -52,6 +52,7 @@ scans/<fecha UTC>-run<id de la ejecución>/
   output/    salida original de Prowler (OCSF y CSV)
   reports/   entregables, evidencias y manifest.json
   logs/      prowler.log y report.log
+  attestation/manifest.sigstore.json   firma del manifest (para verificar sin conexión)
 ```
 
 Para descargar y verificar un escaneo (con permisos de lectura sobre el bucket, por ejemplo LabAdmin):
@@ -62,6 +63,18 @@ python -m compliance_copilot verify escaneo-ci/reports/ci/manifest.json --source
 ```
 
 `escaneo-ci/` no debe quedar dentro del repo, o debe estar en `.gitignore`: contiene datos de la cuenta.
+
+### Verificar el origen (firma)
+
+`verify` prueba que nada cambió desde que se generó el manifest. La firma prueba **quién** lo generó: este repo,
+el workflow `scan.yml`, en un commit y una ejecución concretos. Requiere la CLI de GitHub (`gh`):
+
+```bash
+gh attestation verify escaneo-ci/reports/ci/manifest.json --repo SebiceC/Compliance_Copilot --signer-workflow SebiceC/Compliance_Copilot/.github/workflows/scan.yml
+```
+
+Si alguien regenera el paquete fuera del workflow, los hashes pueden ser consistentes, pero la firma no
+coincide. Cada ejecución muestra en su resumen el enlace a la firma que creó.
 
 ## Configuración (una sola vez)
 

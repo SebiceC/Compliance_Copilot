@@ -12,7 +12,8 @@ from pathlib import Path
 from typing import Any
 
 from compliance_copilot.drafting.schema import DraftStore
-from compliance_copilot.reports.builders import SOA_FRAMEWORK, Report
+from compliance_copilot.models import Finding
+from compliance_copilot.reports.builders import Report, Statement
 from compliance_copilot.risk import METHODOLOGY_VERSION
 
 EVIDENCE_DIR = "evidencias"
@@ -30,8 +31,7 @@ def sha256(path: Path) -> str:
 def write_evidence(report: Report, out_dir: Path, deliverables: list[Path], drafts: DraftStore | None = None) -> Path:
     """Escribe las evidencias y el manifest. ``deliverables`` son los archivos ya generados (se incluyen sus hashes)."""
     evidence_dir = out_dir / EVIDENCE_DIR
-    controls_dir = evidence_dir / "controles" / SOA_FRAMEWORK
-    controls_dir.mkdir(parents=True, exist_ok=True)
+    evidence_dir.mkdir(parents=True, exist_ok=True)
 
     written = [_write_json(evidence_dir / "hallazgos.json",
                            [f.model_dump(mode="json") for f in report.findings])]
@@ -41,32 +41,8 @@ def write_evidence(report: Report, out_dir: Path, deliverables: list[Path], draf
         # Incluye los rechazados y fallidos: también son parte del registro.
         written.append(_write_json(evidence_dir / "redaccion-ia.json", drafts.model_dump(mode="json")))
 
-    findings_by_control: dict[str, list[dict[str, Any]]] = {}
-    for f in report.findings:
-        for control_id in f.compliance.get(SOA_FRAMEWORK, []):
-            findings_by_control.setdefault(control_id, []).append({
-                "finding_uid": f.finding_uid,
-                "check_id": f.check_id,
-                "status": f.status.value,
-                "severity": f.severity.value,
-                "resource_uid": f.resource_uid,
-                "resource_name": f.resource_name,
-                "region": f.region,
-                "status_detail": f.status_detail,
-                "observed_at": f.observed_at.isoformat(),
-            })
-
-    for row in report.soa:
-        if row.control.id not in findings_by_control:
-            continue  # sin hallazgos: la evidencia de ese control es manual
-        written.append(_write_json(controls_dir / f"{row.control.id}.json", {
-            "framework": SOA_FRAMEWORK,
-            "control": row.control.id,
-            "title": row.control.title,
-            "technical_status": row.status.value,
-            "counts": {"pass": row.pass_count, "fail": row.fail_count, "manual": row.manual_count},
-            "evidence": sorted(findings_by_control[row.control.id], key=lambda e: (e["status"], e["check_id"])),
-        }))
+    for statement in report.statements:
+        written += _statement_evidence(statement, evidence_dir / "controles" / statement.framework)
 
     manifest = {
         "generator": {"name": "compliance-copilot", "version": _own_version()},
@@ -90,6 +66,47 @@ def write_evidence(report: Report, out_dir: Path, deliverables: list[Path], draf
         ],
     }
     return _write_json(out_dir / MANIFEST, manifest)
+
+
+def _evidence_entry(f: Finding) -> dict[str, Any]:
+    return {
+        "finding_uid": f.finding_uid,
+        "check_id": f.check_id,
+        "status": f.status.value,
+        "severity": f.severity.value,
+        "resource_uid": f.resource_uid,
+        "resource_name": f.resource_name,
+        "region": f.region,
+        "status_detail": f.status_detail,
+        "observed_at": f.observed_at.isoformat(),
+    }
+
+
+def _statement_evidence(statement: Statement, directory: Path) -> list[Path]:
+    """Un JSON por requisito con hallazgos, y uno con los IDs sin correspondencia si los hay."""
+    written = []
+    for row in statement.rows:
+        found = statement.evidence.get(row.requirement.id)
+        if not found:
+            continue  # sin hallazgos: la evidencia de ese requisito es manual
+        written.append(_write_json(directory / f"{row.requirement.id}.json", {
+            "framework": statement.framework,
+            "control": row.requirement.id,
+            "title": row.requirement.title,
+            "technical_status": row.status.value,
+            "counts": {"pass": row.pass_count, "fail": row.fail_count, "manual": row.manual_count},
+            "evidence": sorted((_evidence_entry(f) for f in found), key=lambda e: (e["status"], e["check_id"])),
+        }))
+    if statement.unmapped:
+        written.append(_write_json(directory / "_sin-correspondencia.json", {
+            "framework": statement.framework,
+            "note": "IDs que Prowler asigna a este marco sin correspondencia en el catálogo (ADR 0007).",
+            "unmapped": [
+                {"raw_id": u.raw_id, "finding_count": u.finding_count, "check_ids": list(u.check_ids)}
+                for u in statement.unmapped
+            ],
+        }))
+    return written
 
 
 def verify_manifest(manifest_path: Path, source: Path | None = None) -> list[str]:

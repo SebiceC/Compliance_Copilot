@@ -1,0 +1,26 @@
+# Actualizaciones de dependencias por pull request (Fase 6, paso 6.3).
+#
+# Las acciones están fijadas por hash de commit (ADR 0006): sin esto nunca se actualizarían. Dependabot propone
+# el hash nuevo y actualiza el comentario de versión. Cada PR pasa por el check `tests` antes de entrar a main.
+# Prowler (fijado en scan.yml) no lo gestiona Dependabot: tiene su propia política de versión (hoja de ruta, 12.2).
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      acciones:
+        patterns: ["*"]
+    commit-message:
+      prefix: "deps(actions)"
+
+  - package-ecosystem: pip
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      python:
+        patterns: ["*"]
+    commit-message:
+      prefix: "deps(python)"

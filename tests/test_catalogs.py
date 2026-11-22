@@ -262,3 +262,21 @@ def test_crosswalk_document_matches_the_catalog(nist: Catalog) -> None:
         if len(cells) == 5 and cells[0].startswith("`"):
             rows[cells[0].strip("`")] = tuple(t.strip() for t in cells[2].split(","))
     assert rows == dict(nist.aliases)
+
+
+@pytest.mark.parametrize(
+    ("raw", "expected"),
+    [
+        ("rp_1", ("RS.MA-01",)),  # RS.RP-01 retirado, incorporado en RS.MA-01
+        ("cm_4", ("DE.CM-01", "DE.CM-09")),
+        ("sc_1", ("GV.RM-05", "GV.SC-01", "GV.SC-06", "GV.SC-09", "GV.SC-10")),  # texto de ID.SC-01
+        ("po_5", ("GV.SC-05",)),
+    ],
+)
+def test_nist_covers_ids_added_after_prowler_548(nist: Catalog, raw: str, expected: tuple[str, ...]) -> None:
+    """Los 10 IDs que Prowler agregó después de 5.48: una actualización no debe dejarlos sin correspondencia."""
+    assert nist.resolve(raw) == expected
+
+
+def test_nist_crosswalk_covers_all_78_prowler_ids(nist: Catalog) -> None:
+    assert len(nist.aliases) == 78

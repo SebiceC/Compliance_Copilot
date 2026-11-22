@@ -98,7 +98,7 @@ se prioriza la brecha; esas dos columnas las decide la organización.
 **El mapeo "NIST CSF 2.0" de Prowler usa IDs de la versión 1.1.** Se traduce a la 2.0 con la tabla de
 [docs/correspondencia-nist-csf.md](correspondencia-nist-csf.md), basada en el documento oficial de NIST de
 elementos retirados. Un ID de la 1.1 puede corresponder a varias subcategorías de la 2.0: el hallazgo cuenta en
-todas, así que la suma de PASS y FAIL del perfil puede superar la cantidad de hallazgos. Ocho filas de la tabla no
+todas, así que la suma de PASS y FAIL del perfil puede superar la cantidad de hallazgos. Once filas de la tabla no
 tienen equivalencia oficial y se asignaron por significado: están marcadas para revisión.
 
 ## Plan de remediación

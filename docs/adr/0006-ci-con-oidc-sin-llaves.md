@@ -32,10 +32,17 @@ OIDC, con estas restricciones:
 | Dónde quedan los resultados | Bucket S3 privado: sin acceso público, cifrado SSE-S3, solo TLS, borrado a los 30 días |
 | Logs públicos | La salida de Prowler y de `report` va a archivos en el bucket, no al log; ID de cuenta enmascarado; el resumen solo tiene conteos |
 | Cadena de suministro | Acciones fijadas por hash de commit; Prowler con versión fija; token de GitHub con permisos mínimos |
+| Origen de la evidencia | El `manifest.json` se firma con artifact attestations (Sigstore, mismo OIDC, sin llaves): prueba qué repo, workflow y commit lo generaron |
 
 El rol **escribe**, pero solo en su propio bucket de evidencias, nunca en los recursos que mide; y solo puede
 crear objetos, no leerlos, listarlos ni borrarlos. El principio "la herramienta que mide no puede modificar lo
 que mide" se mantiene.
+
+**Integridad y origen.** `verify` comprueba la integridad (los hashes del manifest), pero no quién generó el
+manifest: alguien con acceso al bucket podría regenerar el paquete completo con hashes consistentes. La firma
+cubre el origen. Como el manifest contiene el hash de cada entregable y del escaneo original, firmarlo cubre
+todo el paquete. En un repo público la firma va al registro público de transparencia de Sigstore: se publican
+el nombre `manifest.json`, su hash y la identidad del workflow (repo, commit, ejecución); el contenido no.
 
 ## Consecuencias
 

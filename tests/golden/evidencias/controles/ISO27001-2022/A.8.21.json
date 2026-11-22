@@ -1,0 +1,244 @@
+{
+  "framework": "ISO27001-2022",
+  "control": "A.8.21",
+  "title": "Seguridad de los servicios de red",
+  "technical_status": "Con brechas",
+  "counts": {
+    "pass": 19,
+    "fail": 2,
+    "manual": 0
+  },
+  "evidence": [
+    {
+      "finding_uid": "prowler-aws-ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_22-123456789001-us-east-1-sg-053b7f11882dc35d0",
+      "check_id": "ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_22",
+      "status": "fail",
+      "severity": "high",
+      "resource_uid": "arn:aws:ec2:us-east-1:123456789001:security-group/sg-053b7f11882dc35d0",
+      "resource_name": "sg-053b7f11882dc35d0",
+      "region": "us-east-1",
+      "status_detail": "Security group lab-sg-ssh-open (sg-053b7f11882dc35d0) has SSH port 22 open to the Internet.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-ec2_securitygroup_not_used-123456789001-us-east-1-sg-053b7f11882dc35d0",
+      "check_id": "ec2_securitygroup_not_used",
+      "status": "fail",
+      "severity": "low",
+      "resource_uid": "arn:aws:ec2:us-east-1:123456789001:security-group/sg-053b7f11882dc35d0",
+      "resource_name": "sg-053b7f11882dc35d0",
+      "region": "us-east-1",
+      "status_detail": "Security group lab-sg-ssh-open (sg-053b7f11882dc35d0) it is not being used.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-ec2_securitygroup_allow_ingress_from_internet_to_all_ports-123456789001-us-east-1-sg-053b7f11882dc35d0",
+      "check_id": "ec2_securitygroup_allow_ingress_from_internet_to_all_ports",
+      "status": "pass",
+      "severity": "high",
+      "resource_uid": "arn:aws:ec2:us-east-1:123456789001:security-group/sg-053b7f11882dc35d0",
+      "resource_name": "sg-053b7f11882dc35d0",
+      "region": "us-east-1",
+      "status_detail": "Security group lab-sg-ssh-open (sg-053b7f11882dc35d0) does not have all ports open to the Internet.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-ec2_securitygroup_allow_ingress_from_internet_to_any_port-123456789001-us-east-1-sg-053b7f11882dc35d0",
+      "check_id": "ec2_securitygroup_allow_ingress_from_internet_to_any_port",
+      "status": "pass",
+      "severity": "high",
+      "resource_uid": "arn:aws:ec2:us-east-1:123456789001:security-group/sg-053b7f11882dc35d0",
+      "resource_name": "sg-053b7f11882dc35d0",
+      "region": "us-east-1",
+      "status_detail": "Security group lab-sg-ssh-open (sg-053b7f11882dc35d0) has at least one port open to the Internet but it is not attached to any network interface.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-ec2_securitygroup_allow_ingress_from_internet_to_high_risk_tcp_ports-123456789001-us-east-1-sg-053b7f11882dc35d0",
+      "check_id": "ec2_securitygroup_allow_ingress_from_internet_to_high_risk_tcp_ports",
+      "status": "pass",
+      "severity": "high",
+      "resource_uid": "arn:aws:ec2:us-east-1:123456789001:security-group/sg-053b7f11882dc35d0",
+      "resource_name": "sg-053b7f11882dc35d0",
+      "region": "us-east-1",
+      "status_detail": "Security group lab-sg-ssh-open (sg-053b7f11882dc35d0) does not have any high-risk port open to the Internet.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_3389-123456789001-us-east-1-sg-053b7f11882dc35d0",
+      "check_id": "ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_3389",
+      "status": "pass",
+      "severity": "high",
+      "resource_uid": "arn:aws:ec2:us-east-1:123456789001:security-group/sg-053b7f11882dc35d0",
+      "resource_name": "sg-053b7f11882dc35d0",
+      "region": "us-east-1",
+      "status_detail": "Security group lab-sg-ssh-open (sg-053b7f11882dc35d0) does not have Microsoft RDP port 3389 open to the Internet.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_cassandra_7199_9160_8888-123456789001-us-east-1-sg-053b7f11882dc35d0",
+      "check_id": "ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_cassandra_7199_9160_8888",
+      "status": "pass",
+      "severity": "high",
+      "resource_uid": "arn:aws:ec2:us-east-1:123456789001:security-group/sg-053b7f11882dc35d0",
+      "resource_name": "sg-053b7f11882dc35d0",
+      "region": "us-east-1",
+      "status_detail": "Security group lab-sg-ssh-open (sg-053b7f11882dc35d0) does not have Casandra ports 7199, 8888 and 9160 open to the Internet.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_elasticsearch_kibana_9200_9300_5601-123456789001-us-east-1-sg-053b7f11882dc35d0",
+      "check_id": "ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_elasticsearch_kibana_9200_9300_5601",
+      "status": "pass",
+      "severity": "high",
+      "resource_uid": "arn:aws:ec2:us-east-1:123456789001:security-group/sg-053b7f11882dc35d0",
+      "resource_name": "sg-053b7f11882dc35d0",
+      "region": "us-east-1",
+      "status_detail": "Security group lab-sg-ssh-open (sg-053b7f11882dc35d0) does not have Elasticsearch/Kibana ports 9200, 9300 and 5601 open to the Internet.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_ftp_20_21-123456789001-us-east-1-sg-053b7f11882dc35d0",
+      "check_id": "ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_ftp_20_21",
+      "status": "pass",
+      "severity": "high",
+      "resource_uid": "arn:aws:ec2:us-east-1:123456789001:security-group/sg-053b7f11882dc35d0",
+      "resource_name": "sg-053b7f11882dc35d0",
+      "region": "us-east-1",
+      "status_detail": "Security group lab-sg-ssh-open (sg-053b7f11882dc35d0) does not have FTP ports 20 and 21 open to the Internet.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_kafka_9092-123456789001-us-east-1-sg-053b7f11882dc35d0",
+      "check_id": "ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_kafka_9092",
+      "status": "pass",
+      "severity": "high",
+      "resource_uid": "arn:aws:ec2:us-east-1:123456789001:security-group/sg-053b7f11882dc35d0",
+      "resource_name": "sg-053b7f11882dc35d0",
+      "region": "us-east-1",
+      "status_detail": "Security group lab-sg-ssh-open (sg-053b7f11882dc35d0) does not have Kafka port 9092 open to the Internet.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_memcached_11211-123456789001-us-east-1-sg-053b7f11882dc35d0",
+      "check_id": "ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_memcached_11211",
+      "status": "pass",
+      "severity": "high",
+      "resource_uid": "arn:aws:ec2:us-east-1:123456789001:security-group/sg-053b7f11882dc35d0",
+      "resource_name": "sg-053b7f11882dc35d0",
+      "region": "us-east-1",
+      "status_detail": "Security group lab-sg-ssh-open (sg-053b7f11882dc35d0) does not have Memcached port 11211 open to the Internet.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_mongodb_27017_27018-123456789001-us-east-1-sg-053b7f11882dc35d0",
+      "check_id": "ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_mongodb_27017_27018",
+      "status": "pass",
+      "severity": "high",
+      "resource_uid": "arn:aws:ec2:us-east-1:123456789001:security-group/sg-053b7f11882dc35d0",
+      "resource_name": "sg-053b7f11882dc35d0",
+      "region": "us-east-1",
+      "status_detail": "Security group lab-sg-ssh-open (sg-053b7f11882dc35d0) does not have MongoDB ports 27017 and 27018 open to the Internet.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_mysql_3306-123456789001-us-east-1-sg-053b7f11882dc35d0",
+      "check_id": "ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_mysql_3306",
+      "status": "pass",
+      "severity": "high",
+      "resource_uid": "arn:aws:ec2:us-east-1:123456789001:security-group/sg-053b7f11882dc35d0",
+      "resource_name": "sg-053b7f11882dc35d0",
+      "region": "us-east-1",
+      "status_detail": "Security group lab-sg-ssh-open (sg-053b7f11882dc35d0) does not have MySQL port 3306 open to the Internet.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_oracle_1521_2483-123456789001-us-east-1-sg-053b7f11882dc35d0",
+      "check_id": "ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_oracle_1521_2483",
+      "status": "pass",
+      "severity": "high",
+      "resource_uid": "arn:aws:ec2:us-east-1:123456789001:security-group/sg-053b7f11882dc35d0",
+      "resource_name": "sg-053b7f11882dc35d0",
+      "region": "us-east-1",
+      "status_detail": "Security group lab-sg-ssh-open (sg-053b7f11882dc35d0) does not have Oracle ports 1521 and 2483 open to the Internet.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_postgres_5432-123456789001-us-east-1-sg-053b7f11882dc35d0",
+      "check_id": "ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_postgres_5432",
+      "status": "pass",
+      "severity": "high",
+      "resource_uid": "arn:aws:ec2:us-east-1:123456789001:security-group/sg-053b7f11882dc35d0",
+      "resource_name": "sg-053b7f11882dc35d0",
+      "region": "us-east-1",
+      "status_detail": "Security group lab-sg-ssh-open (sg-053b7f11882dc35d0) does not have Postgres port 5432 open to the Internet.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_redis_6379-123456789001-us-east-1-sg-053b7f11882dc35d0",
+      "check_id": "ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_redis_6379",
+      "status": "pass",
+      "severity": "high",
+      "resource_uid": "arn:aws:ec2:us-east-1:123456789001:security-group/sg-053b7f11882dc35d0",
+      "resource_name": "sg-053b7f11882dc35d0",
+      "region": "us-east-1",
+      "status_detail": "Security group lab-sg-ssh-open (sg-053b7f11882dc35d0) does not have Redis port 6379 open to the Internet.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_sql_server_1433_1434-123456789001-us-east-1-sg-053b7f11882dc35d0",
+      "check_id": "ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_sql_server_1433_1434",
+      "status": "pass",
+      "severity": "high",
+      "resource_uid": "arn:aws:ec2:us-east-1:123456789001:security-group/sg-053b7f11882dc35d0",
+      "resource_name": "sg-053b7f11882dc35d0",
+      "region": "us-east-1",
+      "status_detail": "Security group lab-sg-ssh-open (sg-053b7f11882dc35d0) does not have Microsoft SQL Server ports 1433 and 1434 open to the Internet.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_telnet_23-123456789001-us-east-1-sg-053b7f11882dc35d0",
+      "check_id": "ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_telnet_23",
+      "status": "pass",
+      "severity": "high",
+      "resource_uid": "arn:aws:ec2:us-east-1:123456789001:security-group/sg-053b7f11882dc35d0",
+      "resource_name": "sg-053b7f11882dc35d0",
+      "region": "us-east-1",
+      "status_detail": "Security group lab-sg-ssh-open (sg-053b7f11882dc35d0) does not have Telnet port 23 open to the Internet.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-ec2_securitygroup_allow_wide_open_public_ipv4-123456789001-us-east-1-sg-053b7f11882dc35d0",
+      "check_id": "ec2_securitygroup_allow_wide_open_public_ipv4",
+      "status": "pass",
+      "severity": "high",
+      "resource_uid": "arn:aws:ec2:us-east-1:123456789001:security-group/sg-053b7f11882dc35d0",
+      "resource_name": "sg-053b7f11882dc35d0",
+      "region": "us-east-1",
+      "status_detail": "Security group lab-sg-ssh-open (sg-053b7f11882dc35d0) has no potential wide-open non-RFC1918 address.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-ec2_securitygroup_from_launch_wizard-123456789001-us-east-1-sg-053b7f11882dc35d0",
+      "check_id": "ec2_securitygroup_from_launch_wizard",
+      "status": "pass",
+      "severity": "medium",
+      "resource_uid": "arn:aws:ec2:us-east-1:123456789001:security-group/sg-053b7f11882dc35d0",
+      "resource_name": "sg-053b7f11882dc35d0",
+      "region": "us-east-1",
+      "status_detail": "Security group lab-sg-ssh-open (sg-053b7f11882dc35d0) was not created using the EC2 Launch Wizard.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-ec2_securitygroup_with_many_ingress_egress_rules-123456789001-us-east-1-sg-053b7f11882dc35d0",
+      "check_id": "ec2_securitygroup_with_many_ingress_egress_rules",
+      "status": "pass",
+      "severity": "medium",
+      "resource_uid": "arn:aws:ec2:us-east-1:123456789001:security-group/sg-053b7f11882dc35d0",
+      "resource_name": "sg-053b7f11882dc35d0",
+      "region": "us-east-1",
+      "status_detail": "Security group lab-sg-ssh-open (sg-053b7f11882dc35d0) has 1 inbound rules and 1 outbound rules.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    }
+  ]
+}

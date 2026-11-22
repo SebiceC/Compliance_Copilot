@@ -1,0 +1,2542 @@
+[
+  {
+    "finding_uid": "prowler-aws-cloudtrail_bedrock_logging_enabled-123456789001-us-east-1-lab-trail",
+    "check_id": "cloudtrail_bedrock_logging_enabled",
+    "check_title": "CloudTrail logs Amazon Bedrock API calls for security auditing",
+    "status": "pass",
+    "status_detail": "Trail lab-trail from home region us-east-1 has an advanced management event selector to log Amazon Bedrock control-plane API calls.",
+    "severity": "medium",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:cloudtrail:us-east-1:123456789001:trail/lab-trail",
+    "resource_name": "lab-trail",
+    "resource_type": "AwsCloudTrailTrail",
+    "tags": {
+      "data-classification": "restricted",
+      "project": "compliance-copilot"
+    },
+    "categories": [
+      "logging",
+      "forensics-ready",
+      "gen-ai"
+    ],
+    "compliance": {
+      "ISO27001-2022": [
+        "A.8.15"
+      ],
+      "SOC2": [
+        "cc_7_2"
+      ],
+      "NIST-CSF-2.0": [
+        "pt_1",
+        "ae_3",
+        "cm_3"
+      ]
+    },
+    "risk": "Without CloudTrail logging for Bedrock control-plane operations, changes to prompts, guardrails, agents, flows, or knowledge bases can become invisible, weakening forensics and incident response. Management events do not capture `InvokeModel`; pair this control with `bedrock_model_invocation_logging_enabled` or Bedrock data event selectors for invocation visibility.",
+    "remediation": "Enable CloudTrail logging for Amazon Bedrock on **at least one actively logging trail**. At minimum, enable **management events** to capture Bedrock control-plane operations. For invocation-level and other data-plane visibility, add **advanced event selectors** targeting Bedrock resource types or pair this control with `bedrock_model_invocation_logging_enabled`.\n\nFor broader region coverage, pair this control with a separate multi-region CloudTrail check. Centralize logs in an encrypted bucket or CloudWatch Logs to support **defense in depth** and forensic readiness for AI workloads."
+  },
+  {
+    "finding_uid": "prowler-aws-cloudtrail_bucket_requires_mfa_delete-123456789001-us-east-1-lab-trail",
+    "check_id": "cloudtrail_bucket_requires_mfa_delete",
+    "check_title": "CloudTrail trail S3 bucket has MFA delete enabled",
+    "status": "fail",
+    "status_detail": "Trail lab-trail bucket (aws-cloudtrail-logs-123456789001-5f59e248) does not have MFA delete enabled.",
+    "severity": "medium",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:cloudtrail:us-east-1:123456789001:trail/lab-trail",
+    "resource_name": "lab-trail",
+    "resource_type": "AwsCloudTrailTrail",
+    "tags": {
+      "data-classification": "restricted",
+      "project": "compliance-copilot"
+    },
+    "categories": [
+      "identity-access",
+      "forensics-ready"
+    ],
+    "compliance": {
+      "NIST-CSF-2.0": [
+        "ds_3"
+      ]
+    },
+    "risk": "Without **MFA Delete**, stolen or over-privileged credentials can permanently delete log versions or change versioning, compromising log **integrity** and **availability**. This enables attacker cover-ups, hinders **forensics**, and weakens evidence for investigations.",
+    "remediation": "Enable `MFA Delete` on the CloudTrail log bucket with versioning enabled. Enforce **least privilege** so only tightly controlled identities can delete or alter logs, and require MFA for such actions. Apply **defense in depth** using a dedicated logging account and log file integrity validation."
+  },
+  {
+    "finding_uid": "prowler-aws-cloudtrail_cloudwatch_logging_enabled-123456789001-us-east-1-lab-trail",
+    "check_id": "cloudtrail_cloudwatch_logging_enabled",
+    "check_title": "CloudTrail trail has delivered logs to CloudWatch Logs in the last 24 hours",
+    "status": "fail",
+    "status_detail": "Multiregion trail lab-trail has not been logging in the last 24h or is not configured to deliver logs.",
+    "severity": "low",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:cloudtrail:us-east-1:123456789001:trail/lab-trail",
+    "resource_name": "lab-trail",
+    "resource_type": "AwsCloudTrailTrail",
+    "tags": {
+      "data-classification": "restricted",
+      "project": "compliance-copilot"
+    },
+    "categories": [
+      "logging",
+      "forensics-ready"
+    ],
+    "compliance": {
+      "ISO27001-2022": [
+        "A.8.15",
+        "A.8.16"
+      ],
+      "SOC2": [
+        "cc_7_2",
+        "cc_7_3",
+        "cc_a_1_1",
+        "pi_1_3"
+      ],
+      "NIST-CSF-2.0": [
+        "ip_8",
+        "ae_1",
+        "ae_3",
+        "cm_1",
+        "cm_3",
+        "cm_7"
+      ]
+    },
+    "risk": "Missing or stale CloudWatch delivery weakens visibility and delays detection, impacting confidentiality and integrity. Adversaries can:\n- Hide **privilege escalation**\n- Perform unauthorized **resource changes**\n- Exfiltrate data via API misuse",
+    "remediation": "Integrate every trail with **CloudWatch Logs** and maintain continuous, near-real-time delivery. Enforce **least privilege** on the delivery role, prefer **multi-Region** coverage, and implement **metric filters and alerts** for sensitive actions. Centralize retention to support **defense in depth**."
+  },
+  {
+    "finding_uid": "prowler-aws-cloudtrail_insights_exist-123456789001-us-east-1-lab-trail",
+    "check_id": "cloudtrail_insights_exist",
+    "check_title": "CloudTrail trail has Insights enabled",
+    "status": "fail",
+    "status_detail": "Trail lab-trail does not have insight selectors and it is logging.",
+    "severity": "low",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:cloudtrail:us-east-1:123456789001:trail/lab-trail",
+    "resource_name": "lab-trail",
+    "resource_type": "AwsCloudTrailTrail",
+    "tags": {
+      "data-classification": "restricted",
+      "project": "compliance-copilot"
+    },
+    "categories": [
+      "forensics-ready"
+    ],
+    "compliance": {
+      "NIST-CSF-2.0": [
+        "cm_1",
+        "dp_4"
+      ]
+    },
+    "risk": "Without **Insights**, abnormal API call or error rates can go unnoticed, delaying detection of credential abuse, privilege escalation, or runaway automation. Attackers may rapidly alter policies, delete resources, or exfiltrate data before response, impacting confidentiality and availability.",
+    "remediation": "Enable **CloudTrail Insights** on all logging trails (ideally all-Region or organization trails). Activate both `ApiCallRateInsight` and `ApiErrorRateInsight`. Integrate alerts with monitoring and review anomalies regularly. Apply **defense in depth** and least privilege to reduce potential blast radius."
+  },
+  {
+    "finding_uid": "prowler-aws-cloudtrail_kms_encryption_enabled-123456789001-us-east-1-lab-trail",
+    "check_id": "cloudtrail_kms_encryption_enabled",
+    "check_title": "CloudTrail trail logs are encrypted at rest with a KMS key",
+    "status": "fail",
+    "status_detail": "Multiregion trail lab-trail has encryption disabled.",
+    "severity": "medium",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:cloudtrail:us-east-1:123456789001:trail/lab-trail",
+    "resource_name": "lab-trail",
+    "resource_type": "AwsCloudTrailTrail",
+    "tags": {
+      "data-classification": "restricted",
+      "project": "compliance-copilot"
+    },
+    "categories": [
+      "encryption"
+    ],
+    "compliance": {
+      "ISO27001-2022": [
+        "A.8.11",
+        "A.8.15",
+        "A.8.16",
+        "A.8.24"
+      ],
+      "NIST-CSF-2.0": [
+        "ds_1",
+        "ds_5",
+        "pt_1",
+        "pt_4"
+      ]
+    },
+    "risk": "Absent a **customer-managed KMS key**, log protection relies only on storage permissions. Bucket misconfigurations or stolen credentials can expose audit data, aiding evasion and lateral movement. Missing key-level controls, rotation, and usage audit weaken **confidentiality** and **forensic integrity**.",
+    "remediation": "Enable **SSE-KMS** on every trail using a **customer-managed KMS key**. Apply **least privilege** so only authorized roles can `Decrypt`, and enforce **separation of duties** between key admins and log readers. Rotate keys and monitor key usage to provide **defense in depth** for CloudTrail data."
+  },
+  {
+    "finding_uid": "prowler-aws-cloudtrail_log_file_validation_enabled-123456789001-us-east-1-lab-trail",
+    "check_id": "cloudtrail_log_file_validation_enabled",
+    "check_title": "CloudTrail trail has log file validation enabled",
+    "status": "fail",
+    "status_detail": "Multiregion trail lab-trail has log file validation disabled.",
+    "severity": "medium",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:cloudtrail:us-east-1:123456789001:trail/lab-trail",
+    "resource_name": "lab-trail",
+    "resource_type": "AwsCloudTrailTrail",
+    "tags": {
+      "data-classification": "restricted",
+      "project": "compliance-copilot"
+    },
+    "categories": [
+      "logging",
+      "forensics-ready"
+    ],
+    "compliance": {
+      "ISO27001-2022": [
+        "A.8.15",
+        "A.8.16"
+      ],
+      "SOC2": [
+        "cc_7_3",
+        "pi_1_3"
+      ],
+      "NIST-CSF-2.0": [
+        "ds_6",
+        "pt_1"
+      ]
+    },
+    "risk": "Without validation, adversaries can alter, forge, or delete audit entries without detection, compromising log **integrity** and non-repudiation.\n\nThis impairs investigations, enables alert evasion, and obscures unauthorized changes across regions or accounts.",
+    "remediation": "Enable **log file integrity validation** on all trails (`LogFileValidationEnabled=true`).\n\nEnforce **least privilege** on the logs bucket, retain and protect digest files (e.g., S3 Object Lock/MFA Delete), and monitor validation results to support **defense in depth**."
+  },
+  {
+    "finding_uid": "prowler-aws-cloudtrail_logs_s3_bucket_access_logging_enabled-123456789001-us-east-1-lab-trail",
+    "check_id": "cloudtrail_logs_s3_bucket_access_logging_enabled",
+    "check_title": "CloudTrail trail destination S3 bucket has access logging enabled",
+    "status": "fail",
+    "status_detail": "Multiregion Trail lab-trail S3 bucket access logging is not enabled for bucket aws-cloudtrail-logs-123456789001-5f59e248.",
+    "severity": "medium",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:cloudtrail:us-east-1:123456789001:trail/lab-trail",
+    "resource_name": "lab-trail",
+    "resource_type": "AwsCloudTrailTrail",
+    "tags": {
+      "data-classification": "restricted",
+      "project": "compliance-copilot"
+    },
+    "categories": [
+      "logging",
+      "forensics-ready"
+    ],
+    "compliance": {
+      "ISO27001-2022": [
+        "A.8.15",
+        "A.8.16"
+      ],
+      "SOC2": [
+        "cc_a_1_1"
+      ],
+      "NIST-CSF-2.0": [
+        "pt_1"
+      ]
+    },
+    "risk": "Without access logging on the CloudTrail logs bucket, access and changes to log files lack an independent audit trail. Attackers could read, delete, or replace logs without attribution, undermining **log confidentiality** and **integrity**, and slowing **incident response**.",
+    "remediation": "Enable **S3 server access logging** on the CloudTrail logs bucket and write logs to a separate, tightly controlled bucket. Apply **least privilege**, enable **versioning**, and consider **Object Lock** to deter tampering. Centralize monitoring to support defense-in-depth and rapid investigation."
+  },
+  {
+    "finding_uid": "prowler-aws-cloudtrail_logs_s3_bucket_is_not_publicly_accessible-123456789001-us-east-1-lab-trail",
+    "check_id": "cloudtrail_logs_s3_bucket_is_not_publicly_accessible",
+    "check_title": "CloudTrail trail S3 bucket is not publicly accessible",
+    "status": "pass",
+    "status_detail": "S3 Bucket aws-cloudtrail-logs-123456789001-5f59e248 from multiregion trail lab-trail is not publicly accessible.",
+    "severity": "critical",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:cloudtrail:us-east-1:123456789001:trail/lab-trail",
+    "resource_name": "lab-trail",
+    "resource_type": "AwsS3Bucket",
+    "tags": {
+      "data-classification": "restricted",
+      "project": "compliance-copilot"
+    },
+    "categories": [
+      "internet-exposed"
+    ],
+    "compliance": {
+      "ISO27001-2022": [
+        "A.8.1",
+        "A.8.15",
+        "A.8.16"
+      ],
+      "NIST-CSF-2.0": [
+        "ds_5",
+        "pt_1"
+      ]
+    },
+    "risk": "Exposed CloudTrail logs erode **confidentiality** and **integrity**.\n\nAdversaries can harvest API activity to map accounts, roles, and keys, enabling **reconnaissance** and evasion. If write is allowed, logs can be **poisoned** or deleted, thwarting investigations and compromising incident timelines.",
+    "remediation": "Apply **least privilege** to the log bucket:\n- Enable S3 `Block Public Access` (account and bucket)\n- Remove `AllUsers`/`AuthenticatedUsers` ACLs; avoid wildcard principals\n- Permit only CloudTrail and constrain with `aws:SourceArn`\n\nUse a dedicated private bucket and monitor for permission changes."
+  },
+  {
+    "finding_uid": "prowler-aws-cloudtrail_multi_region_enabled-123456789001-us-east-1-lab-trail",
+    "check_id": "cloudtrail_multi_region_enabled",
+    "check_title": "Region has at least one CloudTrail trail logging",
+    "status": "pass",
+    "status_detail": "Trail lab-trail is multiregion and it is logging.",
+    "severity": "high",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:cloudtrail:us-east-1:123456789001:trail/lab-trail",
+    "resource_name": "lab-trail",
+    "resource_type": "AwsCloudTrailTrail",
+    "tags": {
+      "data-classification": "restricted",
+      "project": "compliance-copilot"
+    },
+    "categories": [
+      "logging",
+      "forensics-ready"
+    ],
+    "compliance": {
+      "SOC2": [
+        "cc_2_1",
+        "cc_7_2",
+        "cc_a_1_1",
+        "pi_1_3"
+      ]
+    },
+    "risk": "Missing coverage in any region creates **visibility gaps**.\n\nAttackers can use lesser-monitored regions to run API actions, hide **unauthorized changes**, and exfiltrate data without audit trails, weakening **detective controls**, hindering **forensics**, and delaying response (confidentiality and integrity).",
+    "remediation": "Use a **multi-region CloudTrail trail** or per-region trails so `logging` is active in every region, including unused ones.\n\nCentralize logs, enforce **least privilege** to log stores, and add **defense-in-depth** with encryption, integrity validation, and retention. Continuously monitor trail health to catch gaps."
+  },
+  {
+    "finding_uid": "prowler-aws-cloudtrail_multi_region_enabled_logging_management_events-123456789001-us-east-1-lab-trail",
+    "check_id": "cloudtrail_multi_region_enabled_logging_management_events",
+    "check_title": "CloudTrail trail logs management events for read and write operations",
+    "status": "pass",
+    "status_detail": "Trail lab-trail from home region us-east-1 is multi-region, is logging and have management events enabled.",
+    "severity": "low",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:cloudtrail:us-east-1:123456789001:trail/lab-trail",
+    "resource_name": "lab-trail",
+    "resource_type": "AwsCloudTrailTrail",
+    "tags": {
+      "data-classification": "restricted",
+      "project": "compliance-copilot"
+    },
+    "categories": [
+      "logging",
+      "forensics-ready"
+    ],
+    "compliance": {
+      "ISO27001-2022": [
+        "A.8.15",
+        "A.8.16"
+      ],
+      "NIST-CSF-2.0": [
+        "po_4",
+        "ov_3",
+        "pt_1",
+        "ae_1",
+        "ae_3",
+        "cm_1",
+        "cm_3",
+        "dp_4"
+      ]
+    },
+    "risk": "Without region-wide management event logging, changes to identities, networking, and audit settings can go untracked.\n\nAdversaries can operate in overlooked regions to create resources, modify permissions, or disable logging, undermining **integrity**, **confidentiality**, and incident response.",
+    "remediation": "Enable a **multi-region CloudTrail** that logs **management events** for `read` and `write` in all regions.\n\nCentralize logs in a separate, locked-down account; apply **least privilege**, encryption, retention, and integrity validation; and protect trails and storage with tamper-evident, deny-delete controls for **defense-in-depth**."
+  },
+  {
+    "finding_uid": "prowler-aws-ec2_securitygroup_allow_ingress_from_internet_to_all_ports-123456789001-us-east-1-sg-053b7f11882dc35d0",
+    "check_id": "ec2_securitygroup_allow_ingress_from_internet_to_all_ports",
+    "check_title": "Security group does not have all ports open to the Internet",
+    "status": "pass",
+    "status_detail": "Security group lab-sg-ssh-open (sg-053b7f11882dc35d0) does not have all ports open to the Internet.",
+    "severity": "high",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:ec2:us-east-1:123456789001:security-group/sg-053b7f11882dc35d0",
+    "resource_name": "sg-053b7f11882dc35d0",
+    "resource_type": "AwsEc2SecurityGroup",
+    "tags": {
+      "project": "compliance-copilot",
+      "data-classification": "public"
+    },
+    "categories": [
+      "internet-exposed"
+    ],
+    "compliance": {
+      "ISO27001-2022": [
+        "A.8.20",
+        "A.8.21",
+        "A.8.22"
+      ],
+      "SOC2": [
+        "cc_6_6"
+      ],
+      "NIST-CSF-2.0": [
+        "ac_3",
+        "ac_5",
+        "ds_5",
+        "ip_1",
+        "pt_4"
+      ]
+    },
+    "risk": "Opening every port to the Internet enables broad scanning and exploit attempts, leading to **unauthorized access**, **remote code execution**, and **data exfiltration**, with easier lateral movement into the VPC. Confidentiality, integrity, and availability are all at risk.",
+    "remediation": "Enforce **least privilege** on ingress: allow only required ports from trusted sources, avoid `0.0.0.0/0` and `::/0`. Prefer private access (VPN, bastion, or Session Manager), use security group references, and layer **defense in depth** with network ACLs. Periodically review and remove unused rules."
+  },
+  {
+    "finding_uid": "prowler-aws-ec2_securitygroup_allow_ingress_from_internet_to_any_port-123456789001-us-east-1-sg-053b7f11882dc35d0",
+    "check_id": "ec2_securitygroup_allow_ingress_from_internet_to_any_port",
+    "check_title": "Security group has no 0.0.0.0/0 or ::/0 ingress to any port, or is attached only to allowed interface types or instance owners",
+    "status": "pass",
+    "status_detail": "Security group lab-sg-ssh-open (sg-053b7f11882dc35d0) has at least one port open to the Internet but it is not attached to any network interface.",
+    "severity": "high",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:ec2:us-east-1:123456789001:security-group/sg-053b7f11882dc35d0",
+    "resource_name": "sg-053b7f11882dc35d0",
+    "resource_type": "AwsEc2SecurityGroup",
+    "tags": {
+      "project": "compliance-copilot",
+      "data-classification": "public"
+    },
+    "categories": [
+      "internet-exposed"
+    ],
+    "compliance": {
+      "ISO27001-2022": [
+        "A.8.20",
+        "A.8.21",
+        "A.8.22"
+      ],
+      "SOC2": [
+        "cc_6_6"
+      ]
+    },
+    "risk": "Open ingress to any port on non-approved interfaces enables external scanning, brute force, and exploitation of unintended services. This threatens **confidentiality** (unauthorized access), **integrity** (tampering), and **availability** (DoS), and facilitates **lateral movement**.",
+    "remediation": "Apply **least privilege**: restrict ingress to required ports and trusted sources; avoid `0.0.0.0/0` and `::/0` except for managed public endpoints. Place workloads behind **load balancers**, **API gateways**, or **WAFs**; use **private networking**. Allow public rules only on approved interface types."
+  },
+  {
+    "finding_uid": "prowler-aws-ec2_securitygroup_allow_ingress_from_internet_to_any_port_from_ip-123456789001-us-east-1-sg-053b7f11882dc35d0",
+    "check_id": "ec2_securitygroup_allow_ingress_from_internet_to_any_port_from_ip",
+    "check_title": "Security group does not have any port open to a specific public IP address",
+    "status": "pass",
+    "status_detail": "Security group lab-sg-ssh-open (sg-053b7f11882dc35d0) does not have any port open to a public IP address.",
+    "severity": "medium",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:ec2:us-east-1:123456789001:security-group/sg-053b7f11882dc35d0",
+    "resource_name": "sg-053b7f11882dc35d0",
+    "resource_type": "AwsEc2SecurityGroup",
+    "tags": {
+      "project": "compliance-copilot",
+      "data-classification": "public"
+    },
+    "categories": [
+      "internet-exposed"
+    ],
+    "compliance": {},
+    "risk": "Ingress rules with specific public IPs can become stale when personnel change or access requirements expire. An attacker with compromised AWS credentials could also add narrow IP rules to gain access on any port, bypassing checks that only look for 0.0.0.0/0 or ::/0.",
+    "remediation": "Review all security group rules with specific public IP sources. Remove stale entries for former employees or expired access. Use VPN, AWS Systems Manager Session Manager, or AWS Client VPN instead of direct IP-based access. For third-party integrations, use VPC endpoints or AWS PrivateLink where possible."
+  },
+  {
+    "finding_uid": "prowler-aws-ec2_securitygroup_allow_ingress_from_internet_to_high_risk_tcp_ports-123456789001-us-east-1-sg-053b7f11882dc35d0",
+    "check_id": "ec2_securitygroup_allow_ingress_from_internet_to_high_risk_tcp_ports",
+    "check_title": "Security group does not allow ingress from 0.0.0.0/0 or ::/0 to high-risk TCP ports",
+    "status": "pass",
+    "status_detail": "Security group lab-sg-ssh-open (sg-053b7f11882dc35d0) does not have any high-risk port open to the Internet.",
+    "severity": "high",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:ec2:us-east-1:123456789001:security-group/sg-053b7f11882dc35d0",
+    "resource_name": "sg-053b7f11882dc35d0",
+    "resource_type": "AwsEc2SecurityGroup",
+    "tags": {
+      "project": "compliance-copilot",
+      "data-classification": "public"
+    },
+    "categories": [
+      "internet-exposed"
+    ],
+    "compliance": {
+      "ISO27001-2022": [
+        "A.8.20",
+        "A.8.21",
+        "A.8.22"
+      ],
+      "SOC2": [
+        "cc_6_6"
+      ],
+      "NIST-CSF-2.0": [
+        "ac_5"
+      ]
+    },
+    "risk": "Public exposure of these ports enables:\n- **RCE** via SMB/RPC and weak admin consoles (`445`, `135`, `3000`, `5000`, `8080`)\n- **Credential theft/data leakage** via mail protocols (`25`, `110`, `143`)\n- **Spam relay** on `25`\nImpacts: **confidentiality**, **integrity**, and **availability** through exploitation and mass scanning.",
+    "remediation": "Restrict these ports using **least privilege**:\n- Deny Internet ingress; allow only trusted CIDRs or private connectivity\n- Place services behind **VPN**, **bastion**, or **proxies/WAF**; prefer **private endpoints**\n- Disable unnecessary services; require auth and TLS on exposed apps\nApply **defense in depth** with security groups and network ACLs."
+  },
+  {
+    "finding_uid": "prowler-aws-ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_22-123456789001-us-east-1-sg-053b7f11882dc35d0",
+    "check_id": "ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_22",
+    "check_title": "Security group does not allow ingress from 0.0.0.0/0 or ::/0 to TCP port 22 (SSH)",
+    "status": "fail",
+    "status_detail": "Security group lab-sg-ssh-open (sg-053b7f11882dc35d0) has SSH port 22 open to the Internet.",
+    "severity": "high",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:ec2:us-east-1:123456789001:security-group/sg-053b7f11882dc35d0",
+    "resource_name": "sg-053b7f11882dc35d0",
+    "resource_type": "AwsEc2SecurityGroup",
+    "tags": {
+      "project": "compliance-copilot",
+      "data-classification": "public"
+    },
+    "categories": [
+      "internet-exposed"
+    ],
+    "compliance": {
+      "ISO27001-2022": [
+        "A.8.20",
+        "A.8.21",
+        "A.8.22"
+      ],
+      "SOC2": [
+        "cc_6_6",
+        "cc_7_2"
+      ],
+      "NIST-CSF-2.0": [
+        "ac_3"
+      ]
+    },
+    "risk": "Exposed **SSH** invites Internet-scale **brute force** and **credential stuffing**. A successful login grants **remote shell**, enabling data theft (confidentiality), code or config tampering (integrity), and cryptomining or service disruption (availability), plus **lateral movement** within the environment.",
+    "remediation": "Apply **least privilege** to SSH:\n- Disallow `0.0.0.0/0` and `::/0`; allow only trusted IPs or VPN ranges\n- Prefer **private access** via bastion hosts or AWS Systems Manager Session Manager\n- Enforce **key-based auth**, disable passwords, rotate keys\n- Add **network segmentation** and monitoring for **defense in depth**"
+  },
+  {
+    "finding_uid": "prowler-aws-ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_3389-123456789001-us-east-1-sg-053b7f11882dc35d0",
+    "check_id": "ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_3389",
+    "check_title": "Security group does not allow ingress from the Internet to TCP port 3389 (RDP)",
+    "status": "pass",
+    "status_detail": "Security group lab-sg-ssh-open (sg-053b7f11882dc35d0) does not have Microsoft RDP port 3389 open to the Internet.",
+    "severity": "high",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:ec2:us-east-1:123456789001:security-group/sg-053b7f11882dc35d0",
+    "resource_name": "sg-053b7f11882dc35d0",
+    "resource_type": "AwsEc2SecurityGroup",
+    "tags": {
+      "project": "compliance-copilot",
+      "data-classification": "public"
+    },
+    "categories": [
+      "internet-exposed"
+    ],
+    "compliance": {
+      "ISO27001-2022": [
+        "A.8.20",
+        "A.8.21",
+        "A.8.22"
+      ],
+      "SOC2": [
+        "cc_6_6"
+      ],
+      "NIST-CSF-2.0": [
+        "ac_3",
+        "ac_5"
+      ]
+    },
+    "risk": "**Internet-exposed RDP** enables brute force and credential stuffing and increases the chance of **remote code execution** via RDP flaws.\n\nAdversaries can gain interactive access, exfiltrate data (**confidentiality**), tamper with systems (**integrity**), and trigger ransomware or service disruption (**availability**).",
+    "remediation": "Apply **least privilege**: disallow `0.0.0.0/0` and `::/0` to `3389`; permit only specific IPs or private networks.\n\nPrefer **Session Manager**, VPN, or a hardened bastion with MFA and just-in-time access. Use private subnets and add **defense in depth** with network controls and monitoring."
+  },
+  {
+    "finding_uid": "prowler-aws-ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_cassandra_7199_9160_8888-123456789001-us-east-1-sg-053b7f11882dc35d0",
+    "check_id": "ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_cassandra_7199_9160_8888",
+    "check_title": "Security group does not allow ingress from 0.0.0.0/0 or ::/0 to Cassandra TCP ports 7199, 9160, or 8888",
+    "status": "pass",
+    "status_detail": "Security group lab-sg-ssh-open (sg-053b7f11882dc35d0) does not have Casandra ports 7199, 8888 and 9160 open to the Internet.",
+    "severity": "high",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:ec2:us-east-1:123456789001:security-group/sg-053b7f11882dc35d0",
+    "resource_name": "sg-053b7f11882dc35d0",
+    "resource_type": "AwsEc2SecurityGroup",
+    "tags": {
+      "project": "compliance-copilot",
+      "data-classification": "public"
+    },
+    "categories": [
+      "internet-exposed"
+    ],
+    "compliance": {
+      "ISO27001-2022": [
+        "A.8.20",
+        "A.8.21",
+        "A.8.22"
+      ],
+      "SOC2": [
+        "cc_6_6"
+      ]
+    },
+    "risk": "Exposed **Cassandra interfaces** (`7199` JMX, `9160` Thrift, `8888` tools) enable:\n- Unauthorized reads of data/metrics (confidentiality)\n- Schema and cluster changes (integrity)\n- Remote operations causing outages (availability)\n\nPublic reachability also increases brute-force and exploit attempts.",
+    "remediation": "Restrict **ingress** on `7199`, `9160`, `8888` to trusted sources:\n- Enforce **least privilege** allow-lists; avoid `0.0.0.0/0` and `::/0`\n- Place nodes in private subnets; use VPN or a bastion for admin\n- Prefer strong auth and *mTLS*; bind management to internal interfaces\n- Apply **defense in depth** with segmentation (north-south and east-west)"
+  },
+  {
+    "finding_uid": "prowler-aws-ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_elasticsearch_kibana_9200_9300_5601-123456789001-us-east-1-sg-053b7f11882dc35d0",
+    "check_id": "ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_elasticsearch_kibana_9200_9300_5601",
+    "check_title": "Security group does not allow ingress from 0.0.0.0/0 or ::/0 to Elasticsearch/Kibana TCP ports 9200, 9300, and 5601",
+    "status": "pass",
+    "status_detail": "Security group lab-sg-ssh-open (sg-053b7f11882dc35d0) does not have Elasticsearch/Kibana ports 9200, 9300 and 5601 open to the Internet.",
+    "severity": "high",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:ec2:us-east-1:123456789001:security-group/sg-053b7f11882dc35d0",
+    "resource_name": "sg-053b7f11882dc35d0",
+    "resource_type": "AwsEc2SecurityGroup",
+    "tags": {
+      "project": "compliance-copilot",
+      "data-classification": "public"
+    },
+    "categories": [
+      "internet-exposed"
+    ],
+    "compliance": {
+      "ISO27001-2022": [
+        "A.8.20",
+        "A.8.21",
+        "A.8.22"
+      ],
+      "SOC2": [
+        "cc_6_6"
+      ],
+      "NIST-CSF-2.0": [
+        "ac_5"
+      ]
+    },
+    "risk": "Open Elasticsearch/Kibana ports to the Internet erode CIA:\n- Confidentiality: unauthorized queries and data exfiltration\n- Integrity: index tampering/deletion, cluster control via `9300`\n- Availability: API abuse, exploit-based outages, and Kibana `5601` brute-force",
+    "remediation": "Limit ingress to `9200`, `9300`, and `5601` to trusted CIDRs or private connectivity; never allow `0.0.0.0/0` or `::/0`. Prefer **private access** via VPN, bastion, or private endpoints. Apply **least privilege**, network segmentation, and **defense in depth** (NACLs/WAF). Require strong auth and TLS on Elasticsearch/Kibana."
+  },
+  {
+    "finding_uid": "prowler-aws-ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_ftp_20_21-123456789001-us-east-1-sg-053b7f11882dc35d0",
+    "check_id": "ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_ftp_20_21",
+    "check_title": "Security group does not allow ingress from 0.0.0.0/0 or ::/0 to FTP ports 20 or 21",
+    "status": "pass",
+    "status_detail": "Security group lab-sg-ssh-open (sg-053b7f11882dc35d0) does not have FTP ports 20 and 21 open to the Internet.",
+    "severity": "high",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:ec2:us-east-1:123456789001:security-group/sg-053b7f11882dc35d0",
+    "resource_name": "sg-053b7f11882dc35d0",
+    "resource_type": "AwsEc2SecurityGroup",
+    "tags": {
+      "project": "compliance-copilot",
+      "data-classification": "public"
+    },
+    "categories": [
+      "internet-exposed"
+    ],
+    "compliance": {
+      "ISO27001-2022": [
+        "A.8.20",
+        "A.8.21",
+        "A.8.22"
+      ],
+      "SOC2": [
+        "cc_6_6"
+      ]
+    },
+    "risk": "Exposed FTP weakens CIA:\n- Confidentiality: cleartext credentials/files enable interception and brute force.\n- Integrity: unauthorized uploads or tampering enable malware staging.\n- Availability: mass scans and login attempts can exhaust resources and disrupt services.",
+    "remediation": "Apply **least privilege** and **defense in depth**:\n- Remove `0.0.0.0/0` and `::/0` to `20`/`21`; allow only trusted IPs or private access (VPN/peering).\n- Prefer **SFTP/FTPS** or HTTPS; disable anonymous FTP.\n- Segment transfer hosts, monitor access, and enforce rate limits and strong authentication."
+  },
+  {
+    "finding_uid": "prowler-aws-ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_kafka_9092-123456789001-us-east-1-sg-053b7f11882dc35d0",
+    "check_id": "ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_kafka_9092",
+    "check_title": "Security group does not allow ingress from 0.0.0.0/0 or ::/0 to TCP port 9092 (Kafka)",
+    "status": "pass",
+    "status_detail": "Security group lab-sg-ssh-open (sg-053b7f11882dc35d0) does not have Kafka port 9092 open to the Internet.",
+    "severity": "high",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:ec2:us-east-1:123456789001:security-group/sg-053b7f11882dc35d0",
+    "resource_name": "sg-053b7f11882dc35d0",
+    "resource_type": "AwsEc2SecurityGroup",
+    "tags": {
+      "project": "compliance-copilot",
+      "data-classification": "public"
+    },
+    "categories": [
+      "internet-exposed"
+    ],
+    "compliance": {
+      "ISO27001-2022": [
+        "A.8.20",
+        "A.8.21",
+        "A.8.22"
+      ],
+      "SOC2": [
+        "cc_6_6"
+      ]
+    },
+    "risk": "Public Kafka `9092` access allows arbitrary clients to connect, enabling topic enumeration, data exfiltration, and producer/consumer impersonation (**C/I**). Brokers can be flooded or exploited, disrupting clusters (**A**). Exposure gives attackers a foothold for lateral movement inside the VPC.",
+    "remediation": "Apply **least privilege**: restrict `9092` to required subnets or IPs; avoid `0.0.0.0/0` and `::/0`. Place brokers on private networks and use peering or VPN for access. Enforce **mutual TLS/SASL** and topic ACLs, and add **defense in depth** with segmentation and NACLs."
+  },
+  {
+    "finding_uid": "prowler-aws-ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_memcached_11211-123456789001-us-east-1-sg-053b7f11882dc35d0",
+    "check_id": "ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_memcached_11211",
+    "check_title": "Security group does not allow ingress from 0.0.0.0/0 or ::/0 to Memcached TCP port 11211",
+    "status": "pass",
+    "status_detail": "Security group lab-sg-ssh-open (sg-053b7f11882dc35d0) does not have Memcached port 11211 open to the Internet.",
+    "severity": "high",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:ec2:us-east-1:123456789001:security-group/sg-053b7f11882dc35d0",
+    "resource_name": "sg-053b7f11882dc35d0",
+    "resource_type": "AwsEc2SecurityGroup",
+    "tags": {
+      "project": "compliance-copilot",
+      "data-classification": "public"
+    },
+    "categories": [
+      "internet-exposed"
+    ],
+    "compliance": {
+      "ISO27001-2022": [
+        "A.8.20",
+        "A.8.21",
+        "A.8.22"
+      ],
+      "SOC2": [
+        "cc_6_6"
+      ]
+    },
+    "risk": "Exposed **Memcached** enables unauthenticated access, impacting CIA:\n- **Confidentiality**: read cached data (sessions, secrets)\n- **Integrity**: modify or poison entries\n- **Availability**: flush or overload cache, degrading apps\n\nOpen `11211` is widely scanned, enabling unauthorized access and lateral movement.",
+    "remediation": "Apply **least privilege** and **segmentation**:\n- Restrict `TCP 11211` to trusted CIDRs or security groups\n- Keep Memcached on private subnets; avoid public IPs\n- Add **defense in depth** with NACLs/firewalls; disable unused protocols\n- Use private connectivity (VPN/peering) and monitor access"
+  },
+  {
+    "finding_uid": "prowler-aws-ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_mongodb_27017_27018-123456789001-us-east-1-sg-053b7f11882dc35d0",
+    "check_id": "ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_mongodb_27017_27018",
+    "check_title": "Security group does not allow ingress from 0.0.0.0/0 or ::/0 to MongoDB TCP ports 27017 and 27018",
+    "status": "pass",
+    "status_detail": "Security group lab-sg-ssh-open (sg-053b7f11882dc35d0) does not have MongoDB ports 27017 and 27018 open to the Internet.",
+    "severity": "high",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:ec2:us-east-1:123456789001:security-group/sg-053b7f11882dc35d0",
+    "resource_name": "sg-053b7f11882dc35d0",
+    "resource_type": "AwsEc2SecurityGroup",
+    "tags": {
+      "project": "compliance-copilot",
+      "data-classification": "public"
+    },
+    "categories": [
+      "internet-exposed"
+    ],
+    "compliance": {
+      "ISO27001-2022": [
+        "A.8.20",
+        "A.8.21",
+        "A.8.22"
+      ],
+      "SOC2": [
+        "cc_6_6"
+      ],
+      "NIST-CSF-2.0": [
+        "ac_5"
+      ]
+    },
+    "risk": "Public **MongoDB** ports invite unauthenticated probing, brute force, and misuse of weak configs. Attackers can read/alter data, drop collections, or deploy ransomware, compromising **confidentiality** and **integrity**.\n\nExposure also enables enumeration and lateral movement, threatening **availability**.",
+    "remediation": "Apply **least privilege** to MongoDB access:\n- Block `0.0.0.0/0` and `::/0`\n- Allow only trusted IPs or private networks\n- Prefer private connectivity and SG-to-SG references\n- Enforce authentication and TLS\n- Segment east-west traffic and monitor access for **defense in depth**"
+  },
+  {
+    "finding_uid": "prowler-aws-ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_mysql_3306-123456789001-us-east-1-sg-053b7f11882dc35d0",
+    "check_id": "ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_mysql_3306",
+    "check_title": "Security group does not allow ingress from 0.0.0.0/0 or ::/0 to MySQL port 3306",
+    "status": "pass",
+    "status_detail": "Security group lab-sg-ssh-open (sg-053b7f11882dc35d0) does not have MySQL port 3306 open to the Internet.",
+    "severity": "high",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:ec2:us-east-1:123456789001:security-group/sg-053b7f11882dc35d0",
+    "resource_name": "sg-053b7f11882dc35d0",
+    "resource_type": "AwsEc2SecurityGroup",
+    "tags": {
+      "project": "compliance-copilot",
+      "data-classification": "public"
+    },
+    "categories": [
+      "internet-exposed"
+    ],
+    "compliance": {
+      "ISO27001-2022": [
+        "A.8.20",
+        "A.8.21",
+        "A.8.22"
+      ],
+      "SOC2": [
+        "cc_6_6"
+      ]
+    },
+    "risk": "**Public MySQL** access lets anyone reach the service, enabling credential brute force and vulnerability exploitation. This threatens:\n- **Confidentiality**: data exfiltration\n- **Integrity**: unauthorized writes or schema changes\n- **Availability**: DoS from abuse or scans",
+    "remediation": "Apply **least privilege**: restrict `3306` to specific sources or peer security groups only. Keep databases in private subnets and use **VPN**, **bastion**, or application proxies for admin access. Enable **defense in depth** with TLS and strong auth. Never allow `0.0.0.0/0` or `::/0` ingress."
+  },
+  {
+    "finding_uid": "prowler-aws-ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_oracle_1521_2483-123456789001-us-east-1-sg-053b7f11882dc35d0",
+    "check_id": "ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_oracle_1521_2483",
+    "check_title": "Security group does not allow ingress from 0.0.0.0/0 or ::/0 to Oracle TCP ports 1521 or 2483",
+    "status": "pass",
+    "status_detail": "Security group lab-sg-ssh-open (sg-053b7f11882dc35d0) does not have Oracle ports 1521 and 2483 open to the Internet.",
+    "severity": "high",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:ec2:us-east-1:123456789001:security-group/sg-053b7f11882dc35d0",
+    "resource_name": "sg-053b7f11882dc35d0",
+    "resource_type": "AwsEc2SecurityGroup",
+    "tags": {
+      "project": "compliance-copilot",
+      "data-classification": "public"
+    },
+    "categories": [
+      "internet-exposed"
+    ],
+    "compliance": {
+      "ISO27001-2022": [
+        "A.8.20",
+        "A.8.21",
+        "A.8.22"
+      ],
+      "SOC2": [
+        "cc_6_6"
+      ],
+      "NIST-CSF-2.0": [
+        "ac_5"
+      ]
+    },
+    "risk": "Public Oracle listener exposure enables attackers to:\n- **Brute force** credentials and enumerate services\n- Exploit **listener flaws** for remote access\n- Run unauthorized queries causing **data exfiltration**\n- Launch **DoS** on the listener\n\nThis jeopardizes database confidentiality, integrity, and availability.",
+    "remediation": "Apply **least privilege** and **defense in depth**: disallow public ingress to `TCP 1521` and `TCP 2483`.\n\nRestrict access to trusted CIDRs or peer security groups, keep databases on private networks, and require **VPN**, **bastion**, or **proxy** access. Enforce **TLS** and segment east-west and north-south traffic."
+  },
+  {
+    "finding_uid": "prowler-aws-ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_postgres_5432-123456789001-us-east-1-sg-053b7f11882dc35d0",
+    "check_id": "ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_postgres_5432",
+    "check_title": "Security group does not allow ingress from 0.0.0.0/0 or ::/0 to Postgres TCP port 5432",
+    "status": "pass",
+    "status_detail": "Security group lab-sg-ssh-open (sg-053b7f11882dc35d0) does not have Postgres port 5432 open to the Internet.",
+    "severity": "high",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:ec2:us-east-1:123456789001:security-group/sg-053b7f11882dc35d0",
+    "resource_name": "sg-053b7f11882dc35d0",
+    "resource_type": "AwsEc2SecurityGroup",
+    "tags": {
+      "project": "compliance-copilot",
+      "data-classification": "public"
+    },
+    "categories": [
+      "internet-exposed"
+    ],
+    "compliance": {
+      "ISO27001-2022": [
+        "A.8.20",
+        "A.8.21",
+        "A.8.22"
+      ],
+      "SOC2": [
+        "cc_6_6"
+      ],
+      "NIST-CSF-2.0": [
+        "ac_5"
+      ]
+    },
+    "risk": "Exposing `5432` to the Internet enables credential stuffing and Postgres exploits, risking data disclosure (**confidentiality**), unauthorized changes (**integrity**), and service disruption via brute force or DoS (**availability**).",
+    "remediation": "Apply **least privilege** on security groups: remove `0.0.0.0/0` and `::/0` for `5432`, allow only trusted CIDRs or private peers. Prefer **private access** (VPC-only) via VPN, bastion, or proxy. Add **defense in depth** with SG references and network ACLs, and enforce TLS and strong authentication."
+  },
+  {
+    "finding_uid": "prowler-aws-ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_redis_6379-123456789001-us-east-1-sg-053b7f11882dc35d0",
+    "check_id": "ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_redis_6379",
+    "check_title": "Security group does not allow ingress from 0.0.0.0/0 or ::/0 to Redis TCP port 6379",
+    "status": "pass",
+    "status_detail": "Security group lab-sg-ssh-open (sg-053b7f11882dc35d0) does not have Redis port 6379 open to the Internet.",
+    "severity": "high",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:ec2:us-east-1:123456789001:security-group/sg-053b7f11882dc35d0",
+    "resource_name": "sg-053b7f11882dc35d0",
+    "resource_type": "AwsEc2SecurityGroup",
+    "tags": {
+      "project": "compliance-copilot",
+      "data-classification": "public"
+    },
+    "categories": [
+      "internet-exposed"
+    ],
+    "compliance": {
+      "ISO27001-2022": [
+        "A.8.20",
+        "A.8.21",
+        "A.8.22"
+      ],
+      "SOC2": [
+        "cc_6_6"
+      ]
+    },
+    "risk": "Public Redis access undermines **confidentiality, integrity, and availability**:\n- Read keys and secrets\n- Modify or flush data and configs\n- Exhaust memory for DoS\nAttackers can brute-force `AUTH`, exploit replication or modules for code execution, and pivot within the VPC.",
+    "remediation": "Restrict Redis to **private connectivity** and apply **least privilege**:\n- Allow `6379` only from required app hosts, security groups, or CIDRs\n- Prefer VPC/private networks or VPN over public IPs\n- Enforce Redis `AUTH` and TLS, bind to private interfaces\n- Use segmentation and monitoring for **defense in depth**"
+  },
+  {
+    "finding_uid": "prowler-aws-ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_sql_server_1433_1434-123456789001-us-east-1-sg-053b7f11882dc35d0",
+    "check_id": "ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_sql_server_1433_1434",
+    "check_title": "Security group does not allow ingress from 0.0.0.0/0 or ::/0 to Microsoft SQL Server ports 1433 and 1434",
+    "status": "pass",
+    "status_detail": "Security group lab-sg-ssh-open (sg-053b7f11882dc35d0) does not have Microsoft SQL Server ports 1433 and 1434 open to the Internet.",
+    "severity": "high",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:ec2:us-east-1:123456789001:security-group/sg-053b7f11882dc35d0",
+    "resource_name": "sg-053b7f11882dc35d0",
+    "resource_type": "AwsEc2SecurityGroup",
+    "tags": {
+      "project": "compliance-copilot",
+      "data-classification": "public"
+    },
+    "categories": [
+      "internet-exposed"
+    ],
+    "compliance": {
+      "ISO27001-2022": [
+        "A.8.20",
+        "A.8.21",
+        "A.8.22"
+      ],
+      "SOC2": [
+        "cc_6_6"
+      ]
+    },
+    "risk": "**Internet-exposed SQL ports** enable credential brute force, service enumeration, and remote exploitation. Compromise can lead to unauthorized queries, data exfiltration or tampering, and outages via destructive commands, degrading **confidentiality**, **integrity**, and **availability**.",
+    "remediation": "Apply **least privilege** on network access:\n- Restrict SQL ingress to trusted IPs or via VPN/bastion\n- Place databases in private subnets; allow only app-tier sources\n- Avoid `0.0.0.0/0` and `::/0`\n- Use **defense in depth** with network ACLs/firewalls\n- Monitor auth failures and rate-limit repeated attempts"
+  },
+  {
+    "finding_uid": "prowler-aws-ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_telnet_23-123456789001-us-east-1-sg-053b7f11882dc35d0",
+    "check_id": "ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_telnet_23",
+    "check_title": "Security group does not allow ingress from the Internet to TCP port 23 (Telnet)",
+    "status": "pass",
+    "status_detail": "Security group lab-sg-ssh-open (sg-053b7f11882dc35d0) does not have Telnet port 23 open to the Internet.",
+    "severity": "high",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:ec2:us-east-1:123456789001:security-group/sg-053b7f11882dc35d0",
+    "resource_name": "sg-053b7f11882dc35d0",
+    "resource_type": "AwsEc2SecurityGroup",
+    "tags": {
+      "project": "compliance-copilot",
+      "data-classification": "public"
+    },
+    "categories": [
+      "internet-exposed"
+    ],
+    "compliance": {
+      "ISO27001-2022": [
+        "A.8.20",
+        "A.8.21",
+        "A.8.22"
+      ],
+      "SOC2": [
+        "cc_6_6"
+      ]
+    },
+    "risk": "Public **Telnet** exposes cleartext credentials and remote shell access.\n- Brute-force and credential interception enable account takeover\n- Command execution enables data theft and lateral movement\n\nThis threatens confidentiality and integrity and can degrade availability through misuse.",
+    "remediation": "Remove rules permitting Internet access to `TCP 23` from `0.0.0.0/0` or `::/0`. Disable **Telnet** on hosts. Prefer **SSH** or **SSM** and apply **least privilege** network rules. Restrict admin access to trusted IPs, VPN, or private endpoints, and use **defense in depth** with NACLs and logging."
+  },
+  {
+    "finding_uid": "prowler-aws-ec2_securitygroup_allow_wide_open_public_ipv4-123456789001-us-east-1-sg-053b7f11882dc35d0",
+    "check_id": "ec2_securitygroup_allow_wide_open_public_ipv4",
+    "check_title": "Security group has no ingress or egress rules with public IPv4 CIDR ranges from /1 to /23",
+    "status": "pass",
+    "status_detail": "Security group lab-sg-ssh-open (sg-053b7f11882dc35d0) has no potential wide-open non-RFC1918 address.",
+    "severity": "high",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:ec2:us-east-1:123456789001:security-group/sg-053b7f11882dc35d0",
+    "resource_name": "sg-053b7f11882dc35d0",
+    "resource_type": "AwsEc2SecurityGroup",
+    "tags": {
+      "project": "compliance-copilot",
+      "data-classification": "public"
+    },
+    "categories": [
+      "internet-exposed"
+    ],
+    "compliance": {
+      "ISO27001-2022": [
+        "A.8.1",
+        "A.8.20",
+        "A.8.21",
+        "A.8.22"
+      ],
+      "SOC2": [
+        "cc_6_6"
+      ]
+    },
+    "risk": "Over-broad public CIDRs expand exposure and enable:\n- **Confidentiality** loss via unauthorized access and exfiltration\n- **Integrity** compromise by exploiting exposed services\n- **Availability** impact from scanning and abuse\n\nOpen egress further allows **C2** beacons and bulk data exfiltration to untrusted IPs.",
+    "remediation": "Apply **least privilege** on security groups:\n- Allow only known IPs (prefer `/32` or tight CIDRs)\n- Use **private connectivity** (VPN, Direct Connect, private endpoints)\n- Restrict and log **egress**; deny by default\n- Segment with security group references and **network ACLs** for **defense-in-depth**"
+  },
+  {
+    "finding_uid": "prowler-aws-ec2_securitygroup_from_launch_wizard-123456789001-us-east-1-sg-053b7f11882dc35d0",
+    "check_id": "ec2_securitygroup_from_launch_wizard",
+    "check_title": "Security group not created using the EC2 Launch Wizard",
+    "status": "pass",
+    "status_detail": "Security group lab-sg-ssh-open (sg-053b7f11882dc35d0) was not created using the EC2 Launch Wizard.",
+    "severity": "medium",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:ec2:us-east-1:123456789001:security-group/sg-053b7f11882dc35d0",
+    "resource_name": "sg-053b7f11882dc35d0",
+    "resource_type": "AwsEc2SecurityGroup",
+    "tags": {
+      "project": "compliance-copilot",
+      "data-classification": "public"
+    },
+    "categories": [],
+    "compliance": {
+      "ISO27001-2022": [
+        "A.8.20",
+        "A.8.21",
+        "A.8.22"
+      ]
+    },
+    "risk": "Wizard-generated groups often include **overly permissive rules** (e.g., `0.0.0.0/0` to admin ports), expanding exposure. Attackers can run **port scans** and **brute-force** to gain entry, then **lateral movement** and **data exfiltration**, impacting **confidentiality** and **integrity**; broad egress aids command-and-control.",
+    "remediation": "Replace or harden these groups. Apply **least privilege**: restrict inbound to required sources, avoid public admin ports, and minimize egress. Use approved baseline security groups, enforce change control with IaC and guardrails, prefer private administration (bastion or Session Manager), and remove unused rules."
+  },
+  {
+    "finding_uid": "prowler-aws-ec2_securitygroup_not_used-123456789001-us-east-1-sg-053b7f11882dc35d0",
+    "check_id": "ec2_securitygroup_not_used",
+    "check_title": "Non-default EC2 security group is in use",
+    "status": "fail",
+    "status_detail": "Security group lab-sg-ssh-open (sg-053b7f11882dc35d0) it is not being used.",
+    "severity": "low",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:ec2:us-east-1:123456789001:security-group/sg-053b7f11882dc35d0",
+    "resource_name": "sg-053b7f11882dc35d0",
+    "resource_type": "AwsEc2SecurityGroup",
+    "tags": {
+      "project": "compliance-copilot",
+      "data-classification": "public"
+    },
+    "categories": [
+      "trust-boundaries"
+    ],
+    "compliance": {
+      "ISO27001-2022": [
+        "A.8.20",
+        "A.8.21",
+        "A.8.22"
+      ],
+      "NIST-CSF-2.0": [
+        "ac_5",
+        "ip_1"
+      ]
+    },
+    "risk": "Orphaned security groups may later be attached with **overly permissive rules** without review, enabling unintended inbound or lateral access that compromises **confidentiality** and **integrity**. They also create **configuration drift**, increasing the chance of misapplied access controls.",
+    "remediation": "Apply **least privilege** and strong lifecycle management: delete or quarantine **unused security groups**, enforce ownership tags and retention policies, review regularly, and manage changes via IaC with approvals. Restrict who can attach groups and use guardrails to prevent reuse of stale or permissive groups."
+  },
+  {
+    "finding_uid": "prowler-aws-ec2_securitygroup_with_many_ingress_egress_rules-123456789001-us-east-1-sg-053b7f11882dc35d0",
+    "check_id": "ec2_securitygroup_with_many_ingress_egress_rules",
+    "check_title": "Security group has 50 or fewer inbound rules and 50 or fewer outbound rules",
+    "status": "pass",
+    "status_detail": "Security group lab-sg-ssh-open (sg-053b7f11882dc35d0) has 1 inbound rules and 1 outbound rules.",
+    "severity": "medium",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:ec2:us-east-1:123456789001:security-group/sg-053b7f11882dc35d0",
+    "resource_name": "sg-053b7f11882dc35d0",
+    "resource_type": "AwsEc2SecurityGroup",
+    "tags": {
+      "project": "compliance-copilot",
+      "data-classification": "public"
+    },
+    "categories": [
+      "trust-boundaries"
+    ],
+    "compliance": {
+      "ISO27001-2022": [
+        "A.8.20",
+        "A.8.21",
+        "A.8.22"
+      ]
+    },
+    "risk": "**Rule sprawl** weakens **least privilege**: large rule sets can hide overly permissive entries, exposing services to the Internet or unintended peers. This enables unauthorized access, data exfiltration, and lateral movement, impacting **confidentiality** and **integrity**, and can threaten **availability** via abuse of exposed services.",
+    "remediation": "Apply **least privilege** and **segmentation**:\n- Limit rules to required ports, protocols, and sources\n- Split workloads into dedicated security groups per role\n- Prefer SG-to-SG references over broad CIDRs\n- Regularly review, deduplicate, and remove stale rules\n- Layer controls (NACLs, private endpoints) for **defense in depth**"
+  },
+  {
+    "finding_uid": "prowler-aws-iam_policy_attached_only_to_group_or_roles-123456789001-us-east-1-lab-user-nomfa/IAMUserChangePassword",
+    "check_id": "iam_policy_attached_only_to_group_or_roles",
+    "check_title": "IAM user has no inline or attached policies",
+    "status": "fail",
+    "status_detail": "User lab-user-nomfa has the policy IAMUserChangePassword attached.",
+    "severity": "low",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:iam::123456789001:user/lab-user-nomfa",
+    "resource_name": "lab-user-nomfa/IAMUserChangePassword",
+    "resource_type": "AwsIamUser",
+    "tags": {
+      "data-classification": "internal",
+      "project": "compliance-copilot"
+    },
+    "categories": [
+      "identity-access"
+    ],
+    "compliance": {
+      "ISO27001-2022": [
+        "A.5.15"
+      ],
+      "SOC2": [
+        "cc_1_3"
+      ],
+      "NIST-CSF-2.0": [
+        "rr_1",
+        "rr_2",
+        "po_1",
+        "am_6",
+        "ac_1",
+        "ac_4",
+        "ac_6",
+        "ac_7",
+        "ip_1"
+      ]
+    },
+    "risk": "Directly attached user policies hinder centralized control and cause privilege creep. If a user is compromised, excessive rights enable data exposure, resource tampering, and lateral movement, harming **confidentiality** and **integrity**. Revocation is error-prone, weakening **separation of duties** and auditability.",
+    "remediation": "Assign permissions to **groups** (humans) and **roles** (workloads); avoid user-attached policies. Enforce **least privilege**, prefer federation and temporary credentials, and use tags or **permissions boundaries** to constrain scope. Review regularly to remove direct user policies and right-size access."
+  },
+  {
+    "finding_uid": "prowler-aws-iam_rotate_access_key_90_days-123456789001-us-east-1-lab-user-nomfa",
+    "check_id": "iam_rotate_access_key_90_days",
+    "check_title": "IAM user does not have active access keys older than 90 days",
+    "status": "pass",
+    "status_detail": "User lab-user-nomfa does not have access keys.",
+    "severity": "medium",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:iam::123456789001:user/lab-user-nomfa",
+    "resource_name": "lab-user-nomfa",
+    "resource_type": "AwsIamUser",
+    "tags": {
+      "data-classification": "internal",
+      "project": "compliance-copilot"
+    },
+    "categories": [
+      "secrets"
+    ],
+    "compliance": {
+      "ISO27001-2022": [
+        "A.5.15"
+      ],
+      "NIST-CSF-2.0": [
+        "ac_6"
+      ]
+    },
+    "risk": "Long-lived access keys widen the attack window. If a key is leaked in code, logs, or tooling, lack of rotation keeps it valid for abuse, enabling unauthorized API calls, data exfiltration, and tampering. This degrades **confidentiality** and **integrity** and can impact **availability** and cost through destructive or excessive operations.",
+    "remediation": "Apply **least privilege** and limit static credentials:\n- Rotate active access keys at or before `90 days`\n- Prefer **IAM roles** with short-lived tokens\n- Maintain only one active key during rotation; delete the old one\n- Monitor `last_used` and remove dormant keys\n- Automate alerts and periodic reviews of key age"
+  },
+  {
+    "finding_uid": "prowler-aws-iam_user_accesskey_unused-123456789001-us-east-1-lab-user-nomfa",
+    "check_id": "iam_user_accesskey_unused",
+    "check_title": "IAM user does not have unused access keys older than 45 days",
+    "status": "pass",
+    "status_detail": "User lab-user-nomfa does not have access keys.",
+    "severity": "medium",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:iam::123456789001:user/lab-user-nomfa",
+    "resource_name": "lab-user-nomfa",
+    "resource_type": "AwsIamUser",
+    "tags": {
+      "data-classification": "internal",
+      "project": "compliance-copilot"
+    },
+    "categories": [
+      "secrets"
+    ],
+    "compliance": {
+      "ISO27001-2022": [
+        "A.5.15"
+      ],
+      "SOC2": [
+        "cc_1_3"
+      ],
+      "NIST-CSF-2.0": [
+        "ac_1"
+      ]
+    },
+    "risk": "Active yet unused keys expand the attack surface. If leaked, adversaries gain API access for data exfiltration, unauthorized changes, and resource abuse, harming **confidentiality**, **integrity**, and **availability**. Stale credentials also enable persistence and unexpected cost spikes.",
+    "remediation": "Disable or delete **unused access keys** promptly and prefer **IAM roles** with temporary credentials. Enforce **least privilege**, rotation, and time-bounded access. Monitor `last-used` metadata and automate deactivation of idle keys. Use federation/SSO to avoid long-lived user keys."
+  },
+  {
+    "finding_uid": "prowler-aws-iam_user_administrator_access_policy-123456789001-us-east-1-lab-user-nomfa",
+    "check_id": "iam_user_administrator_access_policy",
+    "check_title": "IAM user does not have AdministratorAccess policy attached",
+    "status": "pass",
+    "status_detail": "IAM User lab-user-nomfa does not have AdministratorAccess policy.",
+    "severity": "critical",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:iam::123456789001:user/lab-user-nomfa",
+    "resource_name": "lab-user-nomfa",
+    "resource_type": "AwsIamUser",
+    "tags": {
+      "data-classification": "internal",
+      "project": "compliance-copilot"
+    },
+    "categories": [
+      "identity-access"
+    ],
+    "compliance": {
+      "NIST-CSF-2.0": [
+        "rr_1",
+        "rr_2",
+        "po_1",
+        "am_6",
+        "ac_4"
+      ]
+    },
+    "risk": "Assigning an IAM user full admin rights concentrates power in long-lived credentials. If compromised, attackers gain:\n- **Confidentiality**: read/export all data\n- **Integrity**: change configs, policies, code\n- **Availability**: delete resources, disrupt services\nAlso enables persistence and uncontrolled spend.",
+    "remediation": "Remove direct `AdministratorAccess` from users.\n- Apply **least privilege** with scoped policies\n- Use **federation** and **roles** for temporary admin access\n- Enforce **separation of duties** and approvals\n- Add guardrails (SCPs, permissions boundaries)\n- Require **MFA** and rotate any remaining long-lived credentials"
+  },
+  {
+    "finding_uid": "prowler-aws-iam_user_console_access_unused-123456789001-us-east-1-lab-user-nomfa",
+    "check_id": "iam_user_console_access_unused",
+    "check_title": "IAM user console access is disabled, used within the configured inactivity period, or never used",
+    "status": "pass",
+    "status_detail": "User lab-user-nomfa does not have console access enabled or is unused.",
+    "severity": "medium",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:iam::123456789001:user/lab-user-nomfa",
+    "resource_name": "lab-user-nomfa",
+    "resource_type": "AwsIamUser",
+    "tags": {
+      "data-classification": "internal",
+      "project": "compliance-copilot"
+    },
+    "categories": [
+      "identity-access"
+    ],
+    "compliance": {
+      "ISO27001-2022": [
+        "A.5.15"
+      ],
+      "SOC2": [
+        "cc_1_3"
+      ],
+      "NIST-CSF-2.0": [
+        "ac_1"
+      ]
+    },
+    "risk": "**Dormant console credentials** stay valid and invite **password spraying**, **credential stuffing**, and breach reuse. Compromise yields interactive access for data discovery/exfiltration and unauthorized IAM or resource changes, degrading **confidentiality** and **integrity**, and risking **availability**.",
+    "remediation": "Remove or disable console passwords for users inactive beyond your window (e.g., `45` days). Prefer roles or federation over long-lived IAM users. Enforce **least privilege**, require **MFA** for remaining console users, and run periodic reviews and deprovisioning to prevent unused credentials."
+  },
+  {
+    "finding_uid": "prowler-aws-iam_user_hardware_mfa_enabled-123456789001-us-east-1-lab-user-nomfa",
+    "check_id": "iam_user_hardware_mfa_enabled",
+    "check_title": "IAM user has hardware MFA enabled",
+    "status": "fail",
+    "status_detail": "User lab-user-nomfa does not have any type of MFA enabled.",
+    "severity": "high",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:iam::123456789001:user/lab-user-nomfa",
+    "resource_name": "lab-user-nomfa",
+    "resource_type": "AwsIamUser",
+    "tags": {
+      "data-classification": "internal",
+      "project": "compliance-copilot"
+    },
+    "categories": [
+      "identity-access"
+    ],
+    "compliance": {
+      "ISO27001-2022": [
+        "A.8.5"
+      ]
+    },
+    "risk": "Without **hardware MFA**, authentication is weaker:\n- **SIM-swap** can bypass SMS\n- **Phishing** can steal TOTP from virtual apps\n- No MFA allows password-only takeover\nThis enables unauthorized console/API access, causing data exfiltration (C), privilege abuse (I), and service disruption (A).",
+    "remediation": "Require **hardware-backed MFA** for all IAM users. Prefer **FIDO2 security keys** for phishing resistance over TOTP or SMS. Disallow SMS/virtual MFA for privileged roles. Enforce MFA for all access paths, apply **least privilege**, and provision multiple MFA devices per user for continuity."
+  },
+  {
+    "finding_uid": "prowler-aws-iam_user_mfa_enabled_console_access-123456789001-us-east-1-lab-user-nomfa",
+    "check_id": "iam_user_mfa_enabled_console_access",
+    "check_title": "IAM user has MFA enabled for console access or no console password is set",
+    "status": "fail",
+    "status_detail": "User lab-user-nomfa has Console Password enabled but MFA disabled.",
+    "severity": "high",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:iam::123456789001:user/lab-user-nomfa",
+    "resource_name": "lab-user-nomfa",
+    "resource_type": "AwsIamUser",
+    "tags": {
+      "data-classification": "internal",
+      "project": "compliance-copilot"
+    },
+    "categories": [
+      "identity-access"
+    ],
+    "compliance": {
+      "ISO27001-2022": [
+        "A.5.15",
+        "A.5.17",
+        "A.8.5"
+      ],
+      "NIST-CSF-2.0": [
+        "ac_7"
+      ]
+    },
+    "risk": "Without **MFA**, a stolen or brute-forced password grants full interactive access. Attackers can: - Change policies or keys - Exfiltrate data - Create backdoor users - Disable logging. This enables account takeover, threatens confidentiality and integrity, and can disrupt availability.",
+    "remediation": "Enforce **MFA** for all console-capable IAM users; prefer **phishing-resistant** authenticators (FIDO2/security keys) and register backups. Remove console passwords for users that don't need them and favor **federation/SSO**. Apply least privilege and require MFA for sensitive actions to prevent unauthorized changes."
+  },
+  {
+    "finding_uid": "prowler-aws-iam_user_no_setup_initial_access_key-123456789001-us-east-1-lab-user-nomfa",
+    "check_id": "iam_user_no_setup_initial_access_key",
+    "check_title": "IAM user does not have active access keys that have never been used",
+    "status": "pass",
+    "status_detail": "User lab-user-nomfa does not have access keys or uses the access keys configured.",
+    "severity": "medium",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:iam::123456789001:user/lab-user-nomfa",
+    "resource_name": "lab-user-nomfa",
+    "resource_type": "AwsIamUser",
+    "tags": {
+      "data-classification": "internal",
+      "project": "compliance-copilot"
+    },
+    "categories": [
+      "identity-access",
+      "secrets"
+    ],
+    "compliance": {},
+    "risk": "Active yet unused **access keys** expand the attack surface. If exposed, attackers gain programmatic access for unauthorized API calls, causing data exfiltration (**confidentiality**), unauthorized changes (**integrity**), and service disruption (**availability**). Dormant keys also bloat credential inventory, delaying detection and rotation.",
+    "remediation": "Apply **least privilege** to programmatic access:\n- Do not provision access keys by default for console users\n- Prefer **IAM roles** and temporary credentials\n- Require justification and time-bounded key creation\n- Regularly review usage and disable/delete unused keys\n- Limit to one active key per user and enforce rotation with monitoring"
+  },
+  {
+    "finding_uid": "prowler-aws-iam_user_two_active_access_key-123456789001-us-east-1-lab-user-nomfa",
+    "check_id": "iam_user_two_active_access_key",
+    "check_title": "IAM user has at most one active access key",
+    "status": "pass",
+    "status_detail": "User lab-user-nomfa does not have 2 active access keys.",
+    "severity": "medium",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:iam::123456789001:user/lab-user-nomfa",
+    "resource_name": "lab-user-nomfa",
+    "resource_type": "AwsIamUser",
+    "tags": {
+      "data-classification": "internal",
+      "project": "compliance-copilot"
+    },
+    "categories": [
+      "identity-access",
+      "secrets"
+    ],
+    "compliance": {
+      "NIST-CSF-2.0": [
+        "ac_1",
+        "ac_6"
+      ]
+    },
+    "risk": "**Two active keys per user** widen exposure and weaken credential governance.\n- Any leaked key enables unauthorized API actions, risking data exfiltration and resource changes\n- Rotation and response become error-prone, allowing attacker persistence if one key remains unnoticed",
+    "remediation": "Maintain **one `Active` access key** per IAM user; permit only a brief overlap for rotation, then promptly deactivate and delete the old key. Prefer **temporary credentials** via roles/federation over long-lived keys. Apply **least privilege**, periodic rotation, and monitor for unused or aged keys."
+  },
+  {
+    "finding_uid": "prowler-aws-iam_user_with_temporary_credentials-123456789001-us-east-1-lab-user-nomfa",
+    "check_id": "iam_user_with_temporary_credentials",
+    "check_title": "IAM user does not use long-lived credentials to access services other than IAM or STS",
+    "status": "pass",
+    "status_detail": "User lab-user-nomfa doesn't have long lived credentials with access to other services than IAM or STS.",
+    "severity": "high",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:iam::123456789001:user/lab-user-nomfa",
+    "resource_name": "lab-user-nomfa",
+    "resource_type": "AwsIamUser",
+    "tags": {
+      "data-classification": "internal",
+      "project": "compliance-copilot"
+    },
+    "categories": [
+      "identity-access",
+      "secrets"
+    ],
+    "compliance": {
+      "NIST-CSF-2.0": [
+        "ac_6"
+      ]
+    },
+    "risk": "Persistent access keys enable attacker **persistence** and replay. Stolen keys allow off-network API calls for data exfiltration, privilege changes, and destructive actions, impacting **confidentiality**, **integrity**, and **availability**. Without expiry, the blast radius grows and containment is harder.",
+    "remediation": "Adopt **temporary credentials** via IAM roles and federation for humans and workloads. Remove or restrict long-term keys; *if unavoidable*, apply **least privilege**, require **MFA**, rotate aggressively, and monitor usage. Prefer short session durations and session conditions to limit blast radius."
+  },
+  {
+    "finding_uid": "prowler-aws-s3_bucket_acl_prohibited-123456789001-us-east-1-aws-cloudtrail-logs-123456789001-5f59e248",
+    "check_id": "s3_bucket_acl_prohibited",
+    "check_title": "S3 bucket has bucket ACLs disabled",
+    "status": "pass",
+    "status_detail": "S3 Bucket aws-cloudtrail-logs-123456789001-5f59e248 has bucket ACLs disabled.",
+    "severity": "medium",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:s3:::aws-cloudtrail-logs-123456789001-5f59e248",
+    "resource_name": "aws-cloudtrail-logs-123456789001-5f59e248",
+    "resource_type": "AwsS3Bucket",
+    "tags": {
+      "project": "compliance-copilot",
+      "data-classification": "restricted"
+    },
+    "categories": [
+      "identity-access"
+    ],
+    "compliance": {
+      "NIST-CSF-2.0": [
+        "ds_5"
+      ]
+    },
+    "risk": "With **ACLs enabled**, access can bypass centralized policy controls, impacting confidentiality and integrity.\n- Unintended public or cross-account reads/writes\n- Object-writer ownership blocking bucket-owner governance\n- Per-object grants hinder auditing, enabling data exfiltration or tampering",
+    "remediation": "Disable ACLs by setting **Object Ownership** to `BucketOwnerEnforced` and manage access with **IAM** and **bucket policies** under **least privilege**. Centralize authorization, review policies regularly, and use organizational guardrails to prevent re-enabling ACLs. *Migrate ACL-based grants into policies before the change.*"
+  },
+  {
+    "finding_uid": "prowler-aws-s3_bucket_acl_prohibited-123456789001-us-east-1-cc-lab-data-7asda3",
+    "check_id": "s3_bucket_acl_prohibited",
+    "check_title": "S3 bucket has bucket ACLs disabled",
+    "status": "pass",
+    "status_detail": "S3 Bucket cc-lab-data-7asda3 has bucket ACLs disabled.",
+    "severity": "medium",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:s3:::cc-lab-data-7asda3",
+    "resource_name": "cc-lab-data-7asda3",
+    "resource_type": "AwsS3Bucket",
+    "tags": {
+      "project": "compliance-copilot",
+      "data-classification": "confidential"
+    },
+    "categories": [
+      "identity-access"
+    ],
+    "compliance": {
+      "NIST-CSF-2.0": [
+        "ds_5"
+      ]
+    },
+    "risk": "With **ACLs enabled**, access can bypass centralized policy controls, impacting confidentiality and integrity.\n- Unintended public or cross-account reads/writes\n- Object-writer ownership blocking bucket-owner governance\n- Per-object grants hinder auditing, enabling data exfiltration or tampering",
+    "remediation": "Disable ACLs by setting **Object Ownership** to `BucketOwnerEnforced` and manage access with **IAM** and **bucket policies** under **least privilege**. Centralize authorization, review policies regularly, and use organizational guardrails to prevent re-enabling ACLs. *Migrate ACL-based grants into policies before the change.*"
+  },
+  {
+    "finding_uid": "prowler-aws-s3_bucket_cross_account_access-123456789001-us-east-1-aws-cloudtrail-logs-123456789001-5f59e248",
+    "check_id": "s3_bucket_cross_account_access",
+    "check_title": "S3 bucket policy does not allow cross-account access",
+    "status": "pass",
+    "status_detail": "S3 Bucket aws-cloudtrail-logs-123456789001-5f59e248 has a bucket policy but it does not allow cross account access.",
+    "severity": "high",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:s3:::aws-cloudtrail-logs-123456789001-5f59e248",
+    "resource_name": "aws-cloudtrail-logs-123456789001-5f59e248",
+    "resource_type": "AwsS3Bucket",
+    "tags": {
+      "project": "compliance-copilot",
+      "data-classification": "restricted"
+    },
+    "categories": [
+      "identity-access",
+      "trust-boundaries"
+    ],
+    "compliance": {
+      "NIST-CSF-2.0": [
+        "ra_1",
+        "ds_5",
+        "ip_1"
+      ]
+    },
+    "risk": "Cross-account grants can let external principals read, write, or administer the bucket, impacting:\n- Confidentiality: unauthorized object access/exfiltration\n- Integrity: object tampering, policy or encryption changes\n- Availability: deletions, versioning changes, or lockouts causing data loss and downtime",
+    "remediation": "Enforce **least privilege**: limit bucket policy `Principal` to your account or approved org IDs with fixed values; avoid wildcards.\n\nUse **role-based cross-account access** with scoped permissions when needed. Add **defense-in-depth** conditions (private networks, TLS), and periodically review for unintended external access."
+  },
+  {
+    "finding_uid": "prowler-aws-s3_bucket_cross_account_access-123456789001-us-east-1-cc-lab-data-7asda3",
+    "check_id": "s3_bucket_cross_account_access",
+    "check_title": "S3 bucket policy does not allow cross-account access",
+    "status": "pass",
+    "status_detail": "S3 Bucket cc-lab-data-7asda3 does not have a bucket policy.",
+    "severity": "high",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:s3:::cc-lab-data-7asda3",
+    "resource_name": "cc-lab-data-7asda3",
+    "resource_type": "AwsS3Bucket",
+    "tags": {
+      "project": "compliance-copilot",
+      "data-classification": "confidential"
+    },
+    "categories": [
+      "identity-access",
+      "trust-boundaries"
+    ],
+    "compliance": {
+      "NIST-CSF-2.0": [
+        "ra_1",
+        "ds_5",
+        "ip_1"
+      ]
+    },
+    "risk": "Cross-account grants can let external principals read, write, or administer the bucket, impacting:\n- Confidentiality: unauthorized object access/exfiltration\n- Integrity: object tampering, policy or encryption changes\n- Availability: deletions, versioning changes, or lockouts causing data loss and downtime",
+    "remediation": "Enforce **least privilege**: limit bucket policy `Principal` to your account or approved org IDs with fixed values; avoid wildcards.\n\nUse **role-based cross-account access** with scoped permissions when needed. Add **defense-in-depth** conditions (private networks, TLS), and periodically review for unintended external access."
+  },
+  {
+    "finding_uid": "prowler-aws-s3_bucket_cross_region_replication-123456789001-us-east-1-aws-cloudtrail-logs-123456789001-5f59e248",
+    "check_id": "s3_bucket_cross_region_replication",
+    "check_title": "S3 bucket has cross-region replication configured to a bucket in a different region",
+    "status": "fail",
+    "status_detail": "S3 Bucket aws-cloudtrail-logs-123456789001-5f59e248 does not have correct cross region replication configuration.",
+    "severity": "low",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:s3:::aws-cloudtrail-logs-123456789001-5f59e248",
+    "resource_name": "aws-cloudtrail-logs-123456789001-5f59e248",
+    "resource_type": "AwsS3Bucket",
+    "tags": {
+      "project": "compliance-copilot",
+      "data-classification": "restricted"
+    },
+    "categories": [
+      "resilience"
+    ],
+    "compliance": {
+      "ISO27001-2022": [
+        "A.8.14"
+      ],
+      "NIST-CSF-2.0": [
+        "be_5",
+        "ds_4",
+        "pt_5"
+      ]
+    },
+    "risk": "**Single-Region storage** creates an availability gap: a Regional outage, control-plane isolation, or denial of service can make data **unreachable**.\n\nLack of replication raises RPO/RTO, delaying recovery and disrupting multi-Region workloads. Missing replicas also weaken data **integrity** during restore from corruption or deletion.",
+    "remediation": "Enable **CRR** to a different Region with `versioning` and least-privilege roles.\n\n- Replicate needed prefixes and metadata\n- Consider `S3 Replication Time Control` for tighter RPO\n- Protect deletes via `delete marker` strategy and Object Lock\n- Monitor replication metrics and test DR regularly\n\nAlign with **defense in depth** and availability by design."
+  },
+  {
+    "finding_uid": "prowler-aws-s3_bucket_cross_region_replication-123456789001-us-east-1-cc-lab-data-7asda3",
+    "check_id": "s3_bucket_cross_region_replication",
+    "check_title": "S3 bucket has cross-region replication configured to a bucket in a different region",
+    "status": "fail",
+    "status_detail": "S3 Bucket cc-lab-data-7asda3 does not have correct cross region replication configuration.",
+    "severity": "low",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:s3:::cc-lab-data-7asda3",
+    "resource_name": "cc-lab-data-7asda3",
+    "resource_type": "AwsS3Bucket",
+    "tags": {
+      "project": "compliance-copilot",
+      "data-classification": "confidential"
+    },
+    "categories": [
+      "resilience"
+    ],
+    "compliance": {
+      "ISO27001-2022": [
+        "A.8.14"
+      ],
+      "NIST-CSF-2.0": [
+        "be_5",
+        "ds_4",
+        "pt_5"
+      ]
+    },
+    "risk": "**Single-Region storage** creates an availability gap: a Regional outage, control-plane isolation, or denial of service can make data **unreachable**.\n\nLack of replication raises RPO/RTO, delaying recovery and disrupting multi-Region workloads. Missing replicas also weaken data **integrity** during restore from corruption or deletion.",
+    "remediation": "Enable **CRR** to a different Region with `versioning` and least-privilege roles.\n\n- Replicate needed prefixes and metadata\n- Consider `S3 Replication Time Control` for tighter RPO\n- Protect deletes via `delete marker` strategy and Object Lock\n- Monitor replication metrics and test DR regularly\n\nAlign with **defense in depth** and availability by design."
+  },
+  {
+    "finding_uid": "prowler-aws-s3_bucket_default_encryption-123456789001-us-east-1-aws-cloudtrail-logs-123456789001-5f59e248",
+    "check_id": "s3_bucket_default_encryption",
+    "check_title": "[DEPRECATED] S3 bucket has default server-side encryption (SSE) enabled",
+    "status": "pass",
+    "status_detail": "S3 Bucket aws-cloudtrail-logs-123456789001-5f59e248 has Server Side Encryption with AES256.",
+    "severity": "medium",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:s3:::aws-cloudtrail-logs-123456789001-5f59e248",
+    "resource_name": "aws-cloudtrail-logs-123456789001-5f59e248",
+    "resource_type": "AwsS3Bucket",
+    "tags": {
+      "project": "compliance-copilot",
+      "data-classification": "restricted"
+    },
+    "categories": [
+      "encryption"
+    ],
+    "compliance": {
+      "ISO27001-2022": [
+        "A.8.11",
+        "A.8.24"
+      ],
+      "SOC2": [
+        "pi_1_4"
+      ],
+      "NIST-CSF-2.0": [
+        "ds_1",
+        "ds_3"
+      ]
+    },
+    "risk": "Without default encryption, older objects may remain unencrypted and new uploads won't be forced to use `SSE-KMS`. This reduces confidentiality and governance by limiting key audit logs, rotation, and cross-account controls, and increases exposure if data is copied, replicated, or accessed outside intended paths.",
+    "remediation": "Enable default encryption on all buckets, preferring `SSE-KMS` for sensitive data to retain key control and auditing. Enforce encryption with restrictive bucket policies, apply **least privilege** to KMS keys with rotation, and re-encrypt existing objects. Use **defense in depth** monitoring to detect drift and noncompliant uploads."
+  },
+  {
+    "finding_uid": "prowler-aws-s3_bucket_default_encryption-123456789001-us-east-1-cc-lab-data-7asda3",
+    "check_id": "s3_bucket_default_encryption",
+    "check_title": "[DEPRECATED] S3 bucket has default server-side encryption (SSE) enabled",
+    "status": "pass",
+    "status_detail": "S3 Bucket cc-lab-data-7asda3 has Server Side Encryption with AES256.",
+    "severity": "medium",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:s3:::cc-lab-data-7asda3",
+    "resource_name": "cc-lab-data-7asda3",
+    "resource_type": "AwsS3Bucket",
+    "tags": {
+      "project": "compliance-copilot",
+      "data-classification": "confidential"
+    },
+    "categories": [
+      "encryption"
+    ],
+    "compliance": {
+      "ISO27001-2022": [
+        "A.8.11",
+        "A.8.24"
+      ],
+      "SOC2": [
+        "pi_1_4"
+      ],
+      "NIST-CSF-2.0": [
+        "ds_1",
+        "ds_3"
+      ]
+    },
+    "risk": "Without default encryption, older objects may remain unencrypted and new uploads won't be forced to use `SSE-KMS`. This reduces confidentiality and governance by limiting key audit logs, rotation, and cross-account controls, and increases exposure if data is copied, replicated, or accessed outside intended paths.",
+    "remediation": "Enable default encryption on all buckets, preferring `SSE-KMS` for sensitive data to retain key control and auditing. Enforce encryption with restrictive bucket policies, apply **least privilege** to KMS keys with rotation, and re-encrypt existing objects. Use **defense in depth** monitoring to detect drift and noncompliant uploads."
+  },
+  {
+    "finding_uid": "prowler-aws-s3_bucket_event_notifications_enabled-123456789001-us-east-1-aws-cloudtrail-logs-123456789001-5f59e248",
+    "check_id": "s3_bucket_event_notifications_enabled",
+    "check_title": "S3 bucket has event notifications enabled",
+    "status": "fail",
+    "status_detail": "S3 Bucket aws-cloudtrail-logs-123456789001-5f59e248 does not have event notifications enabled.",
+    "severity": "low",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:s3:::aws-cloudtrail-logs-123456789001-5f59e248",
+    "resource_name": "aws-cloudtrail-logs-123456789001-5f59e248",
+    "resource_type": "AwsS3Bucket",
+    "tags": {
+      "project": "compliance-copilot",
+      "data-classification": "restricted"
+    },
+    "categories": [
+      "logging"
+    ],
+    "compliance": {
+      "NIST-CSF-2.0": [
+        "dp_4"
+      ]
+    },
+    "risk": "Missing notifications leaves object and bucket changes **unseen**, weakening **integrity** and **availability** oversight. Undetected deletions, policy drift, or replication issues can stall data pipelines (S3 to Lambda/SQS), slow incident response, and allow tampering or exfiltration to persist longer.",
+    "remediation": "Enable **S3 event notifications** for relevant events (e.g., `s3:ObjectCreated:*`, `s3:ObjectRemoved:*`) and route to controlled destinations (SNS, SQS, Lambda, EventBridge).\n\nUse prefix/suffix filters, avoid recursive triggers, and enforce **least privilege** on targets. Pair with object-level logging for **defense in depth**."
+  },
+  {
+    "finding_uid": "prowler-aws-s3_bucket_event_notifications_enabled-123456789001-us-east-1-cc-lab-data-7asda3",
+    "check_id": "s3_bucket_event_notifications_enabled",
+    "check_title": "S3 bucket has event notifications enabled",
+    "status": "fail",
+    "status_detail": "S3 Bucket cc-lab-data-7asda3 does not have event notifications enabled.",
+    "severity": "low",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:s3:::cc-lab-data-7asda3",
+    "resource_name": "cc-lab-data-7asda3",
+    "resource_type": "AwsS3Bucket",
+    "tags": {
+      "project": "compliance-copilot",
+      "data-classification": "confidential"
+    },
+    "categories": [
+      "logging"
+    ],
+    "compliance": {
+      "NIST-CSF-2.0": [
+        "dp_4"
+      ]
+    },
+    "risk": "Missing notifications leaves object and bucket changes **unseen**, weakening **integrity** and **availability** oversight. Undetected deletions, policy drift, or replication issues can stall data pipelines (S3 to Lambda/SQS), slow incident response, and allow tampering or exfiltration to persist longer.",
+    "remediation": "Enable **S3 event notifications** for relevant events (e.g., `s3:ObjectCreated:*`, `s3:ObjectRemoved:*`) and route to controlled destinations (SNS, SQS, Lambda, EventBridge).\n\nUse prefix/suffix filters, avoid recursive triggers, and enforce **least privilege** on targets. Pair with object-level logging for **defense in depth**."
+  },
+  {
+    "finding_uid": "prowler-aws-s3_bucket_kms_encryption-123456789001-us-east-1-aws-cloudtrail-logs-123456789001-5f59e248",
+    "check_id": "s3_bucket_kms_encryption",
+    "check_title": "S3 bucket has server-side encryption with AWS KMS",
+    "status": "fail",
+    "status_detail": "Server Side Encryption is not configured with kms for S3 Bucket aws-cloudtrail-logs-123456789001-5f59e248.",
+    "severity": "medium",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:s3:::aws-cloudtrail-logs-123456789001-5f59e248",
+    "resource_name": "aws-cloudtrail-logs-123456789001-5f59e248",
+    "resource_type": "AwsS3Bucket",
+    "tags": {
+      "project": "compliance-copilot",
+      "data-classification": "restricted"
+    },
+    "categories": [
+      "encryption"
+    ],
+    "compliance": {
+      "ISO27001-2022": [
+        "A.8.11",
+        "A.8.24"
+      ],
+      "SOC2": [
+        "pi_1_4"
+      ],
+      "NIST-CSF-2.0": [
+        "ds_1",
+        "ds_3",
+        "ds_5",
+        "pt_4"
+      ]
+    },
+    "risk": "Without **KMS-based encryption**, data relies only on SSE-S3, reducing **confidentiality** controls. Missing key policies and grants weakens **least privilege**, cross-account scoping, and the ability to disable or rotate keys. Lack of **KMS audit trails** obscures key usage, hindering detection of misuse and **defense in depth**.",
+    "remediation": "Enable default **SSE-KMS** (or **DSSE-KMS** for highly sensitive data). Use a customer-managed key, enforce **least privilege** and separation of duties for key usage, and require KMS encryption via bucket policy (specify `aws:kms` and a designated key). Monitor key activity in **CloudTrail** and consider **S3 Bucket Keys** to control cost."
+  },
+  {
+    "finding_uid": "prowler-aws-s3_bucket_kms_encryption-123456789001-us-east-1-cc-lab-data-7asda3",
+    "check_id": "s3_bucket_kms_encryption",
+    "check_title": "S3 bucket has server-side encryption with AWS KMS",
+    "status": "fail",
+    "status_detail": "Server Side Encryption is not configured with kms for S3 Bucket cc-lab-data-7asda3.",
+    "severity": "medium",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:s3:::cc-lab-data-7asda3",
+    "resource_name": "cc-lab-data-7asda3",
+    "resource_type": "AwsS3Bucket",
+    "tags": {
+      "project": "compliance-copilot",
+      "data-classification": "confidential"
+    },
+    "categories": [
+      "encryption"
+    ],
+    "compliance": {
+      "ISO27001-2022": [
+        "A.8.11",
+        "A.8.24"
+      ],
+      "SOC2": [
+        "pi_1_4"
+      ],
+      "NIST-CSF-2.0": [
+        "ds_1",
+        "ds_3",
+        "ds_5",
+        "pt_4"
+      ]
+    },
+    "risk": "Without **KMS-based encryption**, data relies only on SSE-S3, reducing **confidentiality** controls. Missing key policies and grants weakens **least privilege**, cross-account scoping, and the ability to disable or rotate keys. Lack of **KMS audit trails** obscures key usage, hindering detection of misuse and **defense in depth**.",
+    "remediation": "Enable default **SSE-KMS** (or **DSSE-KMS** for highly sensitive data). Use a customer-managed key, enforce **least privilege** and separation of duties for key usage, and require KMS encryption via bucket policy (specify `aws:kms` and a designated key). Monitor key activity in **CloudTrail** and consider **S3 Bucket Keys** to control cost."
+  },
+  {
+    "finding_uid": "prowler-aws-s3_bucket_level_public_access_block-123456789001-us-east-1-aws-cloudtrail-logs-123456789001-5f59e248",
+    "check_id": "s3_bucket_level_public_access_block",
+    "check_title": "S3 bucket has Block Public Access with IgnorePublicAcls and RestrictPublicBuckets enabled at bucket or account level",
+    "status": "pass",
+    "status_detail": "Block Public Access is configured for the S3 Bucket aws-cloudtrail-logs-123456789001-5f59e248.",
+    "severity": "high",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:s3:::aws-cloudtrail-logs-123456789001-5f59e248",
+    "resource_name": "aws-cloudtrail-logs-123456789001-5f59e248",
+    "resource_type": "AwsS3Bucket",
+    "tags": {
+      "project": "compliance-copilot",
+      "data-classification": "restricted"
+    },
+    "categories": [
+      "internet-exposed"
+    ],
+    "compliance": {
+      "NIST-CSF-2.0": [
+        "ac_3"
+      ]
+    },
+    "risk": "Absent **S3 Block Public Access**, public ACLs or broad policies can grant Internet or cross-account access.\n- Data disclosure (confidentiality)\n- Object overwrite or uploads (integrity)\n- Deletion or outages from misuse (availability)",
+    "remediation": "Enable **Block Public Access** at account and bucket levels with `block_public_acls`, `ignore_public_acls`, `block_public_policy`, and `restrict_public_buckets` set to `true`. Apply **least privilege** and **defense in depth**. *If public access is required*, narrowly scope policies to fixed principals and conditions."
+  },
+  {
+    "finding_uid": "prowler-aws-s3_bucket_level_public_access_block-123456789001-us-east-1-cc-lab-data-7asda3",
+    "check_id": "s3_bucket_level_public_access_block",
+    "check_title": "S3 bucket has Block Public Access with IgnorePublicAcls and RestrictPublicBuckets enabled at bucket or account level",
+    "status": "pass",
+    "status_detail": "Block Public Access is configured for the S3 Bucket cc-lab-data-7asda3.",
+    "severity": "high",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:s3:::cc-lab-data-7asda3",
+    "resource_name": "cc-lab-data-7asda3",
+    "resource_type": "AwsS3Bucket",
+    "tags": {
+      "project": "compliance-copilot",
+      "data-classification": "confidential"
+    },
+    "categories": [
+      "internet-exposed"
+    ],
+    "compliance": {
+      "NIST-CSF-2.0": [
+        "ac_3"
+      ]
+    },
+    "risk": "Absent **S3 Block Public Access**, public ACLs or broad policies can grant Internet or cross-account access.\n- Data disclosure (confidentiality)\n- Object overwrite or uploads (integrity)\n- Deletion or outages from misuse (availability)",
+    "remediation": "Enable **Block Public Access** at account and bucket levels with `block_public_acls`, `ignore_public_acls`, `block_public_policy`, and `restrict_public_buckets` set to `true`. Apply **least privilege** and **defense in depth**. *If public access is required*, narrowly scope policies to fixed principals and conditions."
+  },
+  {
+    "finding_uid": "prowler-aws-s3_bucket_lifecycle_enabled-123456789001-us-east-1-aws-cloudtrail-logs-123456789001-5f59e248",
+    "check_id": "s3_bucket_lifecycle_enabled",
+    "check_title": "S3 bucket has a lifecycle configuration enabled",
+    "status": "fail",
+    "status_detail": "S3 Bucket aws-cloudtrail-logs-123456789001-5f59e248 does not have a lifecycle configuration enabled.",
+    "severity": "low",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:s3:::aws-cloudtrail-logs-123456789001-5f59e248",
+    "resource_name": "aws-cloudtrail-logs-123456789001-5f59e248",
+    "resource_type": "AwsS3Bucket",
+    "tags": {
+      "project": "compliance-copilot",
+      "data-classification": "restricted"
+    },
+    "categories": [],
+    "compliance": {
+      "ISO27001-2022": [
+        "A.8.10"
+      ],
+      "NIST-CSF-2.0": [
+        "ds_3",
+        "ds_4"
+      ]
+    },
+    "risk": "Without lifecycle rules, objects persist indefinitely, driving costs and retaining sensitive data beyond policy. Unchecked log/version growth strains operations and recovery. Long-lived data increases exposure if the account is compromised and can break required deletion timelines, affecting confidentiality and availability.",
+    "remediation": "Define **Lifecycle policies** by data classification: set `Expiration` to enforce retention, use `Transitions` to lower-cost classes, and enable `AbortIncompleteMultipartUpload`. For critical logs, keep versioning and, *if required*, **Object Lock**. Limit who can change lifecycle using least privilege and separation of duties."
+  },
+  {
+    "finding_uid": "prowler-aws-s3_bucket_lifecycle_enabled-123456789001-us-east-1-cc-lab-data-7asda3",
+    "check_id": "s3_bucket_lifecycle_enabled",
+    "check_title": "S3 bucket has a lifecycle configuration enabled",
+    "status": "fail",
+    "status_detail": "S3 Bucket cc-lab-data-7asda3 does not have a lifecycle configuration enabled.",
+    "severity": "low",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:s3:::cc-lab-data-7asda3",
+    "resource_name": "cc-lab-data-7asda3",
+    "resource_type": "AwsS3Bucket",
+    "tags": {
+      "project": "compliance-copilot",
+      "data-classification": "confidential"
+    },
+    "categories": [],
+    "compliance": {
+      "ISO27001-2022": [
+        "A.8.10"
+      ],
+      "NIST-CSF-2.0": [
+        "ds_3",
+        "ds_4"
+      ]
+    },
+    "risk": "Without lifecycle rules, objects persist indefinitely, driving costs and retaining sensitive data beyond policy. Unchecked log/version growth strains operations and recovery. Long-lived data increases exposure if the account is compromised and can break required deletion timelines, affecting confidentiality and availability.",
+    "remediation": "Define **Lifecycle policies** by data classification: set `Expiration` to enforce retention, use `Transitions` to lower-cost classes, and enable `AbortIncompleteMultipartUpload`. For critical logs, keep versioning and, *if required*, **Object Lock**. Limit who can change lifecycle using least privilege and separation of duties."
+  },
+  {
+    "finding_uid": "prowler-aws-s3_bucket_no_mfa_delete-123456789001-us-east-1-aws-cloudtrail-logs-123456789001-5f59e248",
+    "check_id": "s3_bucket_no_mfa_delete",
+    "check_title": "S3 bucket has MFA Delete enabled",
+    "status": "fail",
+    "status_detail": "S3 Bucket aws-cloudtrail-logs-123456789001-5f59e248 has MFA Delete disabled.",
+    "severity": "medium",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:s3:::aws-cloudtrail-logs-123456789001-5f59e248",
+    "resource_name": "aws-cloudtrail-logs-123456789001-5f59e248",
+    "resource_type": "AwsS3Bucket",
+    "tags": {
+      "project": "compliance-copilot",
+      "data-classification": "restricted"
+    },
+    "categories": [
+      "identity-access"
+    ],
+    "compliance": {},
+    "risk": "Without **MFA Delete**, a compromised or over-privileged identity can irrevocably purge object history or change versioning.\n\nThis erases recovery points, degrading data **availability**, weakening **integrity**, and increasing the blast radius of account compromise or ransomware.",
+    "remediation": "Enable **MFA Delete** on sensitive, versioned buckets so permanent deletions and `Versioning` changes require a second factor. Apply **least privilege** to restrict version purge actions, enforce **change control**, and combine with **Object Lock** or immutable backups for defense in depth."
+  },
+  {
+    "finding_uid": "prowler-aws-s3_bucket_no_mfa_delete-123456789001-us-east-1-cc-lab-data-7asda3",
+    "check_id": "s3_bucket_no_mfa_delete",
+    "check_title": "S3 bucket has MFA Delete enabled",
+    "status": "fail",
+    "status_detail": "S3 Bucket cc-lab-data-7asda3 has MFA Delete disabled.",
+    "severity": "medium",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:s3:::cc-lab-data-7asda3",
+    "resource_name": "cc-lab-data-7asda3",
+    "resource_type": "AwsS3Bucket",
+    "tags": {
+      "project": "compliance-copilot",
+      "data-classification": "confidential"
+    },
+    "categories": [
+      "identity-access"
+    ],
+    "compliance": {},
+    "risk": "Without **MFA Delete**, a compromised or over-privileged identity can irrevocably purge object history or change versioning.\n\nThis erases recovery points, degrading data **availability**, weakening **integrity**, and increasing the blast radius of account compromise or ransomware.",
+    "remediation": "Enable **MFA Delete** on sensitive, versioned buckets so permanent deletions and `Versioning` changes require a second factor. Apply **least privilege** to restrict version purge actions, enforce **change control**, and combine with **Object Lock** or immutable backups for defense in depth."
+  },
+  {
+    "finding_uid": "prowler-aws-s3_bucket_object_lock-123456789001-us-east-1-aws-cloudtrail-logs-123456789001-5f59e248",
+    "check_id": "s3_bucket_object_lock",
+    "check_title": "S3 bucket has Object Lock enabled",
+    "status": "fail",
+    "status_detail": "S3 Bucket aws-cloudtrail-logs-123456789001-5f59e248 has Object Lock disabled.",
+    "severity": "low",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:s3:::aws-cloudtrail-logs-123456789001-5f59e248",
+    "resource_name": "aws-cloudtrail-logs-123456789001-5f59e248",
+    "resource_type": "AwsS3Bucket",
+    "tags": {
+      "project": "compliance-copilot",
+      "data-classification": "restricted"
+    },
+    "categories": [
+      "resilience"
+    ],
+    "compliance": {
+      "SOC2": [
+        "pi_1_5"
+      ]
+    },
+    "risk": "Without **Object Lock**, object versions can be deleted or overwritten, undermining data **integrity** and **availability**.\n\nThreats include ransomware erasing backups, insider or mistaken deletions, and tampering that defeats recovery. Inability to enforce retention or legal holds increases exposure to data loss and compliance gaps.",
+    "remediation": "Enable **Object Lock** for critical data and set appropriate default retention in `GOVERNANCE` or `COMPLIANCE` mode.\n\nApply **immutability** and **least privilege** by restricting permissions that bypass retention, and use legal holds when you need indefinite protection for investigations or regulatory requirements."
+  },
+  {
+    "finding_uid": "prowler-aws-s3_bucket_object_lock-123456789001-us-east-1-cc-lab-data-7asda3",
+    "check_id": "s3_bucket_object_lock",
+    "check_title": "S3 bucket has Object Lock enabled",
+    "status": "fail",
+    "status_detail": "S3 Bucket cc-lab-data-7asda3 has Object Lock disabled.",
+    "severity": "low",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:s3:::cc-lab-data-7asda3",
+    "resource_name": "cc-lab-data-7asda3",
+    "resource_type": "AwsS3Bucket",
+    "tags": {
+      "project": "compliance-copilot",
+      "data-classification": "confidential"
+    },
+    "categories": [
+      "resilience"
+    ],
+    "compliance": {
+      "SOC2": [
+        "pi_1_5"
+      ]
+    },
+    "risk": "Without **Object Lock**, object versions can be deleted or overwritten, undermining data **integrity** and **availability**.\n\nThreats include ransomware erasing backups, insider or mistaken deletions, and tampering that defeats recovery. Inability to enforce retention or legal holds increases exposure to data loss and compliance gaps.",
+    "remediation": "Enable **Object Lock** for critical data and set appropriate default retention in `GOVERNANCE` or `COMPLIANCE` mode.\n\nApply **immutability** and **least privilege** by restricting permissions that bypass retention, and use legal holds when you need indefinite protection for investigations or regulatory requirements."
+  },
+  {
+    "finding_uid": "prowler-aws-s3_bucket_object_versioning-123456789001-us-east-1-aws-cloudtrail-logs-123456789001-5f59e248",
+    "check_id": "s3_bucket_object_versioning",
+    "check_title": "S3 bucket has object versioning enabled",
+    "status": "fail",
+    "status_detail": "S3 Bucket aws-cloudtrail-logs-123456789001-5f59e248 has versioning disabled.",
+    "severity": "medium",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:s3:::aws-cloudtrail-logs-123456789001-5f59e248",
+    "resource_name": "aws-cloudtrail-logs-123456789001-5f59e248",
+    "resource_type": "AwsS3Bucket",
+    "tags": {
+      "project": "compliance-copilot",
+      "data-classification": "restricted"
+    },
+    "categories": [
+      "resilience"
+    ],
+    "compliance": {
+      "ISO27001-2022": [
+        "A.8.3",
+        "A.8.10"
+      ],
+      "SOC2": [
+        "cc_7_4",
+        "cc_a_1_1",
+        "cc_c_1_2",
+        "pi_1_5"
+      ]
+    },
+    "risk": "Without **versioning**, deletions and overwrites remove the only copy, undermining **availability** and **integrity**.\n- Compromised identities or buggy apps can mass-delete/corrupt data\n- No historical versions means limited rollback and irrecoverable loss",
+    "remediation": "Enable **S3 versioning** for buckets holding important or shared data.\n- Enforce **least privilege** to limit delete/overwrite\n- Use **Object Lock** and/or **MFA Delete** for stronger protection\n- Apply **lifecycle rules** to manage noncurrent versions and costs\n- Layer with backups/replication for **defense in depth**"
+  },
+  {
+    "finding_uid": "prowler-aws-s3_bucket_object_versioning-123456789001-us-east-1-cc-lab-data-7asda3",
+    "check_id": "s3_bucket_object_versioning",
+    "check_title": "S3 bucket has object versioning enabled",
+    "status": "fail",
+    "status_detail": "S3 Bucket cc-lab-data-7asda3 has versioning disabled.",
+    "severity": "medium",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:s3:::cc-lab-data-7asda3",
+    "resource_name": "cc-lab-data-7asda3",
+    "resource_type": "AwsS3Bucket",
+    "tags": {
+      "project": "compliance-copilot",
+      "data-classification": "confidential"
+    },
+    "categories": [
+      "resilience"
+    ],
+    "compliance": {
+      "ISO27001-2022": [
+        "A.8.3",
+        "A.8.10"
+      ],
+      "SOC2": [
+        "cc_7_4",
+        "cc_a_1_1",
+        "cc_c_1_2",
+        "pi_1_5"
+      ]
+    },
+    "risk": "Without **versioning**, deletions and overwrites remove the only copy, undermining **availability** and **integrity**.\n- Compromised identities or buggy apps can mass-delete/corrupt data\n- No historical versions means limited rollback and irrecoverable loss",
+    "remediation": "Enable **S3 versioning** for buckets holding important or shared data.\n- Enforce **least privilege** to limit delete/overwrite\n- Use **Object Lock** and/or **MFA Delete** for stronger protection\n- Apply **lifecycle rules** to manage noncurrent versions and costs\n- Layer with backups/replication for **defense in depth**"
+  },
+  {
+    "finding_uid": "prowler-aws-s3_bucket_policy_public_write_access-123456789001-us-east-1-aws-cloudtrail-logs-123456789001-5f59e248",
+    "check_id": "s3_bucket_policy_public_write_access",
+    "check_title": "S3 bucket policy does not allow public write access",
+    "status": "pass",
+    "status_detail": "S3 public access blocked at bucket level for aws-cloudtrail-logs-123456789001-5f59e248.",
+    "severity": "critical",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:s3:::aws-cloudtrail-logs-123456789001-5f59e248",
+    "resource_name": "aws-cloudtrail-logs-123456789001-5f59e248",
+    "resource_type": "AwsS3Bucket",
+    "tags": {
+      "project": "compliance-copilot",
+      "data-classification": "restricted"
+    },
+    "categories": [
+      "internet-exposed"
+    ],
+    "compliance": {
+      "ISO27001-2022": [
+        "A.8.1"
+      ]
+    },
+    "risk": "Public write access lets anyone upload, overwrite, or delete objects, undermining **integrity** and **availability**. Attackers can plant malware, stage phishing content, poison data, or wipe buckets, causing outages and potential legal and cost impacts from storage abuse and content hosting.",
+    "remediation": "Restrict writes to trusted principals using **least privilege**; avoid `Principal: \"*\"`. Enable **Public Access Block** at account and bucket levels for defense in depth. Prefer IAM roles over broad bucket policies, require private access paths, and enable versioning to recover from unwanted changes."
+  },
+  {
+    "finding_uid": "prowler-aws-s3_bucket_policy_public_write_access-123456789001-us-east-1-cc-lab-data-7asda3",
+    "check_id": "s3_bucket_policy_public_write_access",
+    "check_title": "S3 bucket policy does not allow public write access",
+    "status": "pass",
+    "status_detail": "S3 Bucket cc-lab-data-7asda3 does not have a bucket policy.",
+    "severity": "critical",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:s3:::cc-lab-data-7asda3",
+    "resource_name": "cc-lab-data-7asda3",
+    "resource_type": "AwsS3Bucket",
+    "tags": {
+      "project": "compliance-copilot",
+      "data-classification": "confidential"
+    },
+    "categories": [
+      "internet-exposed"
+    ],
+    "compliance": {
+      "ISO27001-2022": [
+        "A.8.1"
+      ]
+    },
+    "risk": "Public write access lets anyone upload, overwrite, or delete objects, undermining **integrity** and **availability**. Attackers can plant malware, stage phishing content, poison data, or wipe buckets, causing outages and potential legal and cost impacts from storage abuse and content hosting.",
+    "remediation": "Restrict writes to trusted principals using **least privilege**; avoid `Principal: \"*\"`. Enable **Public Access Block** at account and bucket levels for defense in depth. Prefer IAM roles over broad bucket policies, require private access paths, and enable versioning to recover from unwanted changes."
+  },
+  {
+    "finding_uid": "prowler-aws-s3_bucket_public_access-123456789001-us-east-1-aws-cloudtrail-logs-123456789001-5f59e248",
+    "check_id": "s3_bucket_public_access",
+    "check_title": "S3 bucket is not publicly accessible to Everyone or Authenticated Users",
+    "status": "pass",
+    "status_detail": "S3 Bucket aws-cloudtrail-logs-123456789001-5f59e248 is not public.",
+    "severity": "critical",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:s3:::aws-cloudtrail-logs-123456789001-5f59e248",
+    "resource_name": "aws-cloudtrail-logs-123456789001-5f59e248",
+    "resource_type": "AwsS3Bucket",
+    "tags": {
+      "project": "compliance-copilot",
+      "data-classification": "restricted"
+    },
+    "categories": [
+      "internet-exposed"
+    ],
+    "compliance": {
+      "ISO27001-2022": [
+        "A.8.1"
+      ],
+      "SOC2": [
+        "cc_6_1"
+      ],
+      "NIST-CSF-2.0": [
+        "ra_1",
+        "ac_3",
+        "ds_5",
+        "ip_1"
+      ]
+    },
+    "risk": "Publicly accessible buckets jeopardize **confidentiality** through unauthenticated reads, **integrity** through write or ACL changes, and **availability** via object deletion or overwrite. Attackers can mass-exfiltrate data, host malware, or pivot after discovering secrets stored in objects.",
+    "remediation": "Enforce defense in depth: enable **S3 Block Public Access** at org/account and bucket levels (`BlockPublicAcls`, `IgnorePublicAcls`, `BlockPublicPolicy`, `RestrictPublicBuckets`). Apply **least privilege** with explicit principals; avoid ACLs via Object Ownership. Use private access patterns (e.g., CloudFront OAC or presigned URLs) and monitor with analyzers."
+  },
+  {
+    "finding_uid": "prowler-aws-s3_bucket_public_access-123456789001-us-east-1-cc-lab-data-7asda3",
+    "check_id": "s3_bucket_public_access",
+    "check_title": "S3 bucket is not publicly accessible to Everyone or Authenticated Users",
+    "status": "pass",
+    "status_detail": "S3 Bucket cc-lab-data-7asda3 is not public.",
+    "severity": "critical",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:s3:::cc-lab-data-7asda3",
+    "resource_name": "cc-lab-data-7asda3",
+    "resource_type": "AwsS3Bucket",
+    "tags": {
+      "project": "compliance-copilot",
+      "data-classification": "confidential"
+    },
+    "categories": [
+      "internet-exposed"
+    ],
+    "compliance": {
+      "ISO27001-2022": [
+        "A.8.1"
+      ],
+      "SOC2": [
+        "cc_6_1"
+      ],
+      "NIST-CSF-2.0": [
+        "ra_1",
+        "ac_3",
+        "ds_5",
+        "ip_1"
+      ]
+    },
+    "risk": "Publicly accessible buckets jeopardize **confidentiality** through unauthenticated reads, **integrity** through write or ACL changes, and **availability** via object deletion or overwrite. Attackers can mass-exfiltrate data, host malware, or pivot after discovering secrets stored in objects.",
+    "remediation": "Enforce defense in depth: enable **S3 Block Public Access** at org/account and bucket levels (`BlockPublicAcls`, `IgnorePublicAcls`, `BlockPublicPolicy`, `RestrictPublicBuckets`). Apply **least privilege** with explicit principals; avoid ACLs via Object Ownership. Use private access patterns (e.g., CloudFront OAC or presigned URLs) and monitor with analyzers."
+  },
+  {
+    "finding_uid": "prowler-aws-s3_bucket_public_list_acl-123456789001-us-east-1-aws-cloudtrail-logs-123456789001-5f59e248",
+    "check_id": "s3_bucket_public_list_acl",
+    "check_title": "S3 bucket is not publicly listable by Everyone or any authenticated AWS user",
+    "status": "pass",
+    "status_detail": "S3 Bucket aws-cloudtrail-logs-123456789001-5f59e248 is not publicly listable.",
+    "severity": "critical",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:s3:::aws-cloudtrail-logs-123456789001-5f59e248",
+    "resource_name": "aws-cloudtrail-logs-123456789001-5f59e248",
+    "resource_type": "AwsS3Bucket",
+    "tags": {
+      "project": "compliance-copilot",
+      "data-classification": "restricted"
+    },
+    "categories": [
+      "internet-exposed"
+    ],
+    "compliance": {
+      "NIST-CSF-2.0": [
+        "ds_5"
+      ]
+    },
+    "risk": "**Public listability** reveals object names, counts, and structure, enabling reconnaissance and targeted scraping. `READ_ACP` exposes permission details for further abuse. With `FULL_CONTROL`, attackers could alter ACLs and disrupt access, undermining **confidentiality** and risking **integrity** and **availability**.",
+    "remediation": "Enable account-level **S3 Block Public Access** (`BlockPublicAcls`, `IgnorePublicAcls`, `BlockPublicPolicy`, `RestrictPublicBuckets`).\n- Remove ACL grants to `AllUsers`/`AuthenticatedUsers`; apply **least privilege** with IAM/bucket policies.\n- Favor private patterns (VPC endpoints, CloudFront OAC, presigned URLs) and disable ACLs via Object Ownership."
+  },
+  {
+    "finding_uid": "prowler-aws-s3_bucket_public_list_acl-123456789001-us-east-1-cc-lab-data-7asda3",
+    "check_id": "s3_bucket_public_list_acl",
+    "check_title": "S3 bucket is not publicly listable by Everyone or any authenticated AWS user",
+    "status": "pass",
+    "status_detail": "S3 Bucket cc-lab-data-7asda3 is not publicly listable.",
+    "severity": "critical",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:s3:::cc-lab-data-7asda3",
+    "resource_name": "cc-lab-data-7asda3",
+    "resource_type": "AwsS3Bucket",
+    "tags": {
+      "project": "compliance-copilot",
+      "data-classification": "confidential"
+    },
+    "categories": [
+      "internet-exposed"
+    ],
+    "compliance": {
+      "NIST-CSF-2.0": [
+        "ds_5"
+      ]
+    },
+    "risk": "**Public listability** reveals object names, counts, and structure, enabling reconnaissance and targeted scraping. `READ_ACP` exposes permission details for further abuse. With `FULL_CONTROL`, attackers could alter ACLs and disrupt access, undermining **confidentiality** and risking **integrity** and **availability**.",
+    "remediation": "Enable account-level **S3 Block Public Access** (`BlockPublicAcls`, `IgnorePublicAcls`, `BlockPublicPolicy`, `RestrictPublicBuckets`).\n- Remove ACL grants to `AllUsers`/`AuthenticatedUsers`; apply **least privilege** with IAM/bucket policies.\n- Favor private patterns (VPC endpoints, CloudFront OAC, presigned URLs) and disable ACLs via Object Ownership."
+  },
+  {
+    "finding_uid": "prowler-aws-s3_bucket_public_write_acl-123456789001-us-east-1-aws-cloudtrail-logs-123456789001-5f59e248",
+    "check_id": "s3_bucket_public_write_acl",
+    "check_title": "S3 bucket ACL does not grant write access to Everyone or any AWS customer",
+    "status": "pass",
+    "status_detail": "S3 Bucket aws-cloudtrail-logs-123456789001-5f59e248 is not publicly writable.",
+    "severity": "critical",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:s3:::aws-cloudtrail-logs-123456789001-5f59e248",
+    "resource_name": "aws-cloudtrail-logs-123456789001-5f59e248",
+    "resource_type": "AwsS3Bucket",
+    "tags": {
+      "project": "compliance-copilot",
+      "data-classification": "restricted"
+    },
+    "categories": [
+      "internet-exposed"
+    ],
+    "compliance": {
+      "NIST-CSF-2.0": [
+        "ra_1",
+        "ds_5"
+      ]
+    },
+    "risk": "Public or cross-account writes enable object tampering, **log poisoning**, and ACL changes via `WRITE_ACP`, undermining **integrity** and causing covert **data exposure**. Attackers can plant malware, deface content, and inflate **costs**, impacting **availability** through overwrites or prefix flooding.",
+    "remediation": "Apply **least privilege** to S3 writes. Enable account-level **Block Public Access** and use **Object Ownership** to disable ACLs. Grant write only to fixed principals via bucket policies with tight conditions (e.g., org IDs, VPC endpoints). Add **versioning** and monitoring for defense-in-depth."
+  },
+  {
+    "finding_uid": "prowler-aws-s3_bucket_public_write_acl-123456789001-us-east-1-cc-lab-data-7asda3",
+    "check_id": "s3_bucket_public_write_acl",
+    "check_title": "S3 bucket ACL does not grant write access to Everyone or any AWS customer",
+    "status": "pass",
+    "status_detail": "S3 Bucket cc-lab-data-7asda3 is not publicly writable.",
+    "severity": "critical",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:s3:::cc-lab-data-7asda3",
+    "resource_name": "cc-lab-data-7asda3",
+    "resource_type": "AwsS3Bucket",
+    "tags": {
+      "project": "compliance-copilot",
+      "data-classification": "confidential"
+    },
+    "categories": [
+      "internet-exposed"
+    ],
+    "compliance": {
+      "NIST-CSF-2.0": [
+        "ra_1",
+        "ds_5"
+      ]
+    },
+    "risk": "Public or cross-account writes enable object tampering, **log poisoning**, and ACL changes via `WRITE_ACP`, undermining **integrity** and causing covert **data exposure**. Attackers can plant malware, deface content, and inflate **costs**, impacting **availability** through overwrites or prefix flooding.",
+    "remediation": "Apply **least privilege** to S3 writes. Enable account-level **Block Public Access** and use **Object Ownership** to disable ACLs. Grant write only to fixed principals via bucket policies with tight conditions (e.g., org IDs, VPC endpoints). Add **versioning** and monitoring for defense-in-depth."
+  },
+  {
+    "finding_uid": "prowler-aws-s3_bucket_secure_transport_policy-123456789001-us-east-1-aws-cloudtrail-logs-123456789001-5f59e248",
+    "check_id": "s3_bucket_secure_transport_policy",
+    "check_title": "S3 bucket policy denies requests over insecure transport",
+    "status": "fail",
+    "status_detail": "S3 Bucket aws-cloudtrail-logs-123456789001-5f59e248 allows requests over insecure transport in the bucket policy.",
+    "severity": "medium",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:s3:::aws-cloudtrail-logs-123456789001-5f59e248",
+    "resource_name": "aws-cloudtrail-logs-123456789001-5f59e248",
+    "resource_type": "AwsS3Bucket",
+    "tags": {
+      "project": "compliance-copilot",
+      "data-classification": "restricted"
+    },
+    "categories": [
+      "encryption"
+    ],
+    "compliance": {
+      "NIST-CSF-2.0": [
+        "ds_2",
+        "pt_4"
+      ]
+    },
+    "risk": "HTTP access exposes object data and auth details to **eavesdropping** and **man-in-the-middle** attacks. Captured **pre-signed URLs** can be replayed to exfiltrate data. Traffic can be intercepted or altered, undermining **confidentiality** and **integrity** of S3 content.",
+    "remediation": "Enforce **HTTPS-only** access with a bucket policy that denies requests when `aws:SecureTransport=false`.\n\nPrefer **private access** (VPC endpoints or CloudFront with TLS), avoid S3 website endpoints, apply **least privilege**, use short-lived HTTPS **pre-signed URLs**, and monitor logs for insecure access attempts."
+  },
+  {
+    "finding_uid": "prowler-aws-s3_bucket_secure_transport_policy-123456789001-us-east-1-cc-lab-data-7asda3",
+    "check_id": "s3_bucket_secure_transport_policy",
+    "check_title": "S3 bucket policy denies requests over insecure transport",
+    "status": "fail",
+    "status_detail": "S3 Bucket cc-lab-data-7asda3 does not have a bucket policy, thus it allows HTTP requests.",
+    "severity": "medium",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:s3:::cc-lab-data-7asda3",
+    "resource_name": "cc-lab-data-7asda3",
+    "resource_type": "AwsS3Bucket",
+    "tags": {
+      "project": "compliance-copilot",
+      "data-classification": "confidential"
+    },
+    "categories": [
+      "encryption"
+    ],
+    "compliance": {
+      "NIST-CSF-2.0": [
+        "ds_2",
+        "pt_4"
+      ]
+    },
+    "risk": "HTTP access exposes object data and auth details to **eavesdropping** and **man-in-the-middle** attacks. Captured **pre-signed URLs** can be replayed to exfiltrate data. Traffic can be intercepted or altered, undermining **confidentiality** and **integrity** of S3 content.",
+    "remediation": "Enforce **HTTPS-only** access with a bucket policy that denies requests when `aws:SecureTransport=false`.\n\nPrefer **private access** (VPC endpoints or CloudFront with TLS), avoid S3 website endpoints, apply **least privilege**, use short-lived HTTPS **pre-signed URLs**, and monitor logs for insecure access attempts."
+  },
+  {
+    "finding_uid": "prowler-aws-s3_bucket_server_access_logging_enabled-123456789001-us-east-1-aws-cloudtrail-logs-123456789001-5f59e248",
+    "check_id": "s3_bucket_server_access_logging_enabled",
+    "check_title": "S3 bucket has server access logging enabled",
+    "status": "fail",
+    "status_detail": "S3 Bucket aws-cloudtrail-logs-123456789001-5f59e248 has server access logging disabled.",
+    "severity": "medium",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:s3:::aws-cloudtrail-logs-123456789001-5f59e248",
+    "resource_name": "aws-cloudtrail-logs-123456789001-5f59e248",
+    "resource_type": "AwsS3Bucket",
+    "tags": {
+      "project": "compliance-copilot",
+      "data-classification": "restricted"
+    },
+    "categories": [
+      "logging",
+      "forensics-ready"
+    ],
+    "compliance": {
+      "ISO27001-2022": [
+        "A.8.15"
+      ],
+      "SOC2": [
+        "cc_7_2",
+        "cc_7_3",
+        "cc_a_1_1"
+      ]
+    },
+    "risk": "Without access logs, object reads, writes, and deletions may go untracked, hindering detection of unauthorized access and data exfiltration. This degrades forensic visibility, delays incident response, and weakens evidence integrity, impacting confidentiality and integrity.",
+    "remediation": "Enable **server access logging** and send logs to a dedicated log bucket with least privilege, retention, and monitoring. Complement with **CloudTrail data events** for object-level visibility. Apply **defense in depth** by centralizing logs and protecting them from tampering."
+  },
+  {
+    "finding_uid": "prowler-aws-s3_bucket_server_access_logging_enabled-123456789001-us-east-1-cc-lab-data-7asda3",
+    "check_id": "s3_bucket_server_access_logging_enabled",
+    "check_title": "S3 bucket has server access logging enabled",
+    "status": "fail",
+    "status_detail": "S3 Bucket cc-lab-data-7asda3 has server access logging disabled.",
+    "severity": "medium",
+    "observed_at": "2026-11-17T02:56:49Z",
+    "provider": "aws",
+    "account_uid": "123456789001",
+    "region": "us-east-1",
+    "resource_uid": "arn:aws:s3:::cc-lab-data-7asda3",
+    "resource_name": "cc-lab-data-7asda3",
+    "resource_type": "AwsS3Bucket",
+    "tags": {
+      "project": "compliance-copilot",
+      "data-classification": "confidential"
+    },
+    "categories": [
+      "logging",
+      "forensics-ready"
+    ],
+    "compliance": {
+      "ISO27001-2022": [
+        "A.8.15"
+      ],
+      "SOC2": [
+        "cc_7_2",
+        "cc_7_3",
+        "cc_a_1_1"
+      ]
+    },
+    "risk": "Without access logs, object reads, writes, and deletions may go untracked, hindering detection of unauthorized access and data exfiltration. This degrades forensic visibility, delays incident response, and weakens evidence integrity, impacting confidentiality and integrity.",
+    "remediation": "Enable **server access logging** and send logs to a dedicated log bucket with least privilege, retention, and monitoring. Complement with **CloudTrail data events** for object-level visibility. Apply **defense in depth** by centralizing logs and protecting them from tampering."
+  }
+]

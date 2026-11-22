@@ -1,0 +1,35 @@
+{
+  "framework": "ISO27001-2022",
+  "control": "A.8.5",
+  "title": "Autenticación segura",
+  "technical_status": "Con brechas",
+  "counts": {
+    "pass": 0,
+    "fail": 2,
+    "manual": 0
+  },
+  "evidence": [
+    {
+      "finding_uid": "prowler-aws-iam_user_hardware_mfa_enabled-123456789001-us-east-1-lab-user-nomfa",
+      "check_id": "iam_user_hardware_mfa_enabled",
+      "status": "fail",
+      "severity": "high",
+      "resource_uid": "arn:aws:iam::123456789001:user/lab-user-nomfa",
+      "resource_name": "lab-user-nomfa",
+      "region": "us-east-1",
+      "status_detail": "User lab-user-nomfa does not have any type of MFA enabled.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-iam_user_mfa_enabled_console_access-123456789001-us-east-1-lab-user-nomfa",
+      "check_id": "iam_user_mfa_enabled_console_access",
+      "status": "fail",
+      "severity": "high",
+      "resource_uid": "arn:aws:iam::123456789001:user/lab-user-nomfa",
+      "resource_name": "lab-user-nomfa",
+      "region": "us-east-1",
+      "status_detail": "User lab-user-nomfa has Console Password enabled but MFA disabled.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    }
+  ]
+}

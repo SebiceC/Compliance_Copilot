@@ -1,0 +1,79 @@
+{
+  "framework": "ISO27001-2022",
+  "control": "A.8.1",
+  "title": "Dispositivos de usuario final",
+  "technical_status": "Sin brechas detectadas",
+  "counts": {
+    "pass": 6,
+    "fail": 0,
+    "manual": 0
+  },
+  "evidence": [
+    {
+      "finding_uid": "prowler-aws-cloudtrail_logs_s3_bucket_is_not_publicly_accessible-123456789001-us-east-1-lab-trail",
+      "check_id": "cloudtrail_logs_s3_bucket_is_not_publicly_accessible",
+      "status": "pass",
+      "severity": "critical",
+      "resource_uid": "arn:aws:cloudtrail:us-east-1:123456789001:trail/lab-trail",
+      "resource_name": "lab-trail",
+      "region": "us-east-1",
+      "status_detail": "S3 Bucket aws-cloudtrail-logs-123456789001-5f59e248 from multiregion trail lab-trail is not publicly accessible.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-ec2_securitygroup_allow_wide_open_public_ipv4-123456789001-us-east-1-sg-053b7f11882dc35d0",
+      "check_id": "ec2_securitygroup_allow_wide_open_public_ipv4",
+      "status": "pass",
+      "severity": "high",
+      "resource_uid": "arn:aws:ec2:us-east-1:123456789001:security-group/sg-053b7f11882dc35d0",
+      "resource_name": "sg-053b7f11882dc35d0",
+      "region": "us-east-1",
+      "status_detail": "Security group lab-sg-ssh-open (sg-053b7f11882dc35d0) has no potential wide-open non-RFC1918 address.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-s3_bucket_policy_public_write_access-123456789001-us-east-1-aws-cloudtrail-logs-123456789001-5f59e248",
+      "check_id": "s3_bucket_policy_public_write_access",
+      "status": "pass",
+      "severity": "critical",
+      "resource_uid": "arn:aws:s3:::aws-cloudtrail-logs-123456789001-5f59e248",
+      "resource_name": "aws-cloudtrail-logs-123456789001-5f59e248",
+      "region": "us-east-1",
+      "status_detail": "S3 public access blocked at bucket level for aws-cloudtrail-logs-123456789001-5f59e248.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-s3_bucket_policy_public_write_access-123456789001-us-east-1-cc-lab-data-7asda3",
+      "check_id": "s3_bucket_policy_public_write_access",
+      "status": "pass",
+      "severity": "critical",
+      "resource_uid": "arn:aws:s3:::cc-lab-data-7asda3",
+      "resource_name": "cc-lab-data-7asda3",
+      "region": "us-east-1",
+      "status_detail": "S3 Bucket cc-lab-data-7asda3 does not have a bucket policy.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-s3_bucket_public_access-123456789001-us-east-1-aws-cloudtrail-logs-123456789001-5f59e248",
+      "check_id": "s3_bucket_public_access",
+      "status": "pass",
+      "severity": "critical",
+      "resource_uid": "arn:aws:s3:::aws-cloudtrail-logs-123456789001-5f59e248",
+      "resource_name": "aws-cloudtrail-logs-123456789001-5f59e248",
+      "region": "us-east-1",
+      "status_detail": "S3 Bucket aws-cloudtrail-logs-123456789001-5f59e248 is not public.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-s3_bucket_public_access-123456789001-us-east-1-cc-lab-data-7asda3",
+      "check_id": "s3_bucket_public_access",
+      "status": "pass",
+      "severity": "critical",
+      "resource_uid": "arn:aws:s3:::cc-lab-data-7asda3",
+      "resource_name": "cc-lab-data-7asda3",
+      "region": "us-east-1",
+      "status_detail": "S3 Bucket cc-lab-data-7asda3 is not public.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    }
+  ]
+}

@@ -198,14 +198,10 @@ origen.
 
 Los +16 resultados totales (232 → 248) son los checks del bucket, del rol y de su política nueva.
 
-**Pendiente (tratamiento de riesgos):**
-
-- **Brechas del bucket de evidencias.** Decidir cuáles se aceptan por ser un laboratorio (KMS, replicación,
-  notificaciones, logs de acceso) y cuáles se remedian por tratarse de evidencia: versionado y Object Lock la
-  harían inmutable (hoy el rol de CI no puede borrar, pero un administrador sí).
-- **Clasificación.** El bucket de evidencias y el rol no tienen tags, así que el motor los marca para el control
-  A.5.12. Propuesto: `data-classification=restricted` para el bucket (es evidencia de auditoría, como
-  CloudTrail) y `project=compliance-copilot` en ambos.
+**Tratamiento de riesgos:** las 7 brechas del bucket de evidencias tienen decisión documentada en
+[docs/tratamiento-riesgos.md](tratamiento-riesgos.md) (R-01 a R-07: mitigar versionado y Object Lock, aceptar
+las otras cinco). El bucket se etiquetó `data-classification=restricted` y `project=compliance-copilot`; el rol,
+`project=compliance-copilot` (es inventario: un rol no guarda datos y no entra en el control A.5.12).
 
 ## Desmontaje
 
@@ -221,7 +217,8 @@ para que deje de escribir en su bucket.
 Recursos del pipeline de CI (solo si se abandona el escaneo desde GitHub Actions):
 
 6. **Rol:** IAM → Roles → `GitHubActionsProwler` → Delete.
-7. **Bucket de evidencias:** S3 → `compliance-copilot-evidence-<sufijo>` → Empty → Delete.
+7. **Bucket de evidencias:** S3 → `compliance-copilot-evidence-<sufijo>` → Empty → Delete. Con Object Lock, los
+   objetos de menos de 30 días requieren bypass de Governance (ver `docs/tratamiento-riesgos.md`).
 8. **Proveedor OIDC:** IAM → Identity providers → `token.actions.githubusercontent.com` → Delete.
 9. En GitHub: borrar el Environment `aws-lab` (y con él sus secretos).
 

@@ -10,6 +10,7 @@ hallazgos reproducibles. Ningún recurso contiene datos reales.
 | Región | `us-east-1` (todos los recursos del laboratorio) |
 | Perfil para crear el laboratorio | `cc-lab` (permission set `LabAdmin`) |
 | Perfil para escanear | `cc-audit` (permission set `ProwlerAudit`: `SecurityAudit` + `ViewOnlyAccess`) |
+| Escaneo desde CI | Rol IAM `GitHubActionsProwler` (OIDC desde GitHub Actions, mismos permisos de lectura); ver `docs/ci.md` |
 | Windows: rutas largas | `LongPathsEnabled = 1` en el registro; sin esto, la instalación de Prowler falla por las rutas del SDK de Microsoft Graph |
 | Windows: codificación | Variable de entorno de usuario `PYTHONUTF8=1`; sin esto, Prowler falla con `UnicodeEncodeError` (cp1252) al redirigir su salida a un pipe o archivo |
 | Tags comunes | `project=compliance-copilot` en todos los recursos |
@@ -148,6 +149,64 @@ critical; `iam_user_mfa_enabled_console_access`, high; `iam_user_console_access_
 debilidad diseñada: es un riesgo real de la cuenta. **Eliminado el 2026-11-16**; el único usuario IAM que queda
 es `lab-user-nomfa`. El acceso administrativo se hace solo por IAM Identity Center (`LabAdmin`), con MFA.
 
+## Recursos del pipeline de CI (Fase 5)
+
+No son debilidades del laboratorio: son la infraestructura del escaneo desde GitHub Actions
+([ADR 0006](adr/0006-ci-con-oidc-sin-llaves.md)). Creados el 2026-11-21 desde la consola con `LabAdmin`.
+
+| Recurso | Nombre | Para qué | Costo |
+|---|---|---|---|
+| Proveedor de identidad OIDC | `token.actions.githubusercontent.com` | Que AWS confíe en los tokens que firma GitHub | Gratis |
+| Bucket S3 | `compliance-copilot-evidence-<sufijo>` | Paquetes de evidencia de cada escaneo: sin acceso público, SSE-S3, solo TLS, borrado a 30 días | Centavos (pocos MB que expiran) |
+| Rol IAM | `GitHubActionsProwler` | `SecurityAudit` + `ViewOnlyAccess` + `s3:PutObject` en `scans/*`; confía solo en el Environment `aws-lab` | Gratis |
+
+**Lecciones de la configuración:**
+
+- El asistente de *Identidad web* de la consola generó una confianza con comodín
+  (`StringLike` sobre `repo:SebiceC/Compliance_Copilot:*`), más amplia de lo pedido. Se reemplazó por
+  `StringEquals` sobre el Environment. Solo la verificación posterior lo mostró.
+- El primer escaneo desde CI fue rechazado (`Not authorized to perform sts:AssumeRoleWithWebIdentity`).
+  CloudTrail mostró el `sub` real del token: GitHub incluye los IDs inmutables del dueño y del repo
+  (`repo:SebiceC@<id>/Compliance_Copilot@<id>:environment:aws-lab`). Se corrigió la condición del rol.
+- La primera regla de ciclo de vida usaba la acción de versiones *no actuales*; con el versionado deshabilitado
+  no habría borrado nada. Se cambió a vencer las versiones actuales.
+
+## Escaneos desde GitHub Actions (Fase 5)
+
+Dos escaneos con `scan.yml` (Prowler 5.48.0, mismo comando que los locales), aprobados manualmente en el
+Environment `aws-lab`. Unos 5 minutos cada uno, incluida la instalación.
+
+| | Escaneo 3 | Escaneo 4 |
+|---|---|---|
+| Fecha (UTC) | 2026-11-22 02:33 | 2026-11-22 03:13 |
+| Commit de `scan.yml` | `838a837` | `a79fe0b` |
+| Resultados | 248 · **116 FAIL** · 127 PASS · 5 MANUAL | 248 · **115 FAIL** · 128 PASS · 5 MANUAL |
+| Riesgos | 116: 2 crítico, 60 alto, 52 medio, 2 bajo | 115: 2 crítico, 60 alto, 51 medio, 2 bajo |
+| `verify` (integridad) | ✅ | ✅ |
+| Firma del manifest (origen) | ❌ sin firma: `gh attestation verify` responde 404 | ✅ `gh attestation verify` |
+
+El escaneo 3 queda como **prueba negativa**: un manifest íntegro pero sin firma no pasa la verificación de
+origen.
+
+**Diferencias con el segundo escaneo (114 FAIL), todas explicadas:**
+
+| Cambio | Checks | Causa |
+|---|---|---|
+| −1 FAIL cada uno | `iam_user_administrator_access_policy` (critical), `iam_user_mfa_enabled_console_access`, `iam_user_hardware_mfa_enabled`, `iam_user_console_access_unused`, `iam_user_access_not_stale_to_bedrock`, `iam_policy_attached_only_to_group_or_roles` | Usuario administrador previo al proyecto, eliminado el 2026-11-16 |
+| +1 FAIL cada uno | `s3_bucket_object_versioning`, `s3_bucket_object_lock`, `s3_bucket_no_mfa_delete`, `s3_bucket_kms_encryption`, `s3_bucket_server_access_logging_enabled`, `s3_bucket_cross_region_replication`, `s3_bucket_event_notifications_enabled` | Bucket de evidencias nuevo |
+| +1 FAIL solo en el escaneo 3 | `iam_role_access_not_stale_to_bedrock` | Rol `GitHubActionsProwler` recién creado; en el escaneo 4 ya no aparece |
+
+Los +16 resultados totales (232 → 248) son los checks del bucket, del rol y de su política nueva.
+
+**Pendiente (tratamiento de riesgos):**
+
+- **Brechas del bucket de evidencias.** Decidir cuáles se aceptan por ser un laboratorio (KMS, replicación,
+  notificaciones, logs de acceso) y cuáles se remedian por tratarse de evidencia: versionado y Object Lock la
+  harían inmutable (hoy el rol de CI no puede borrar, pero un administrador sí).
+- **Clasificación.** El bucket de evidencias y el rol no tienen tags, así que el motor los marca para el control
+  A.5.12. Propuesto: `data-classification=restricted` para el bucket (es evidencia de auditoría, como
+  CloudTrail) y `project=compliance-copilot` en ambos.
+
 ## Desmontaje
 
 Desde la consola con el rol `LabAdmin`, en `us-east-1`. El orden importa: primero se detiene CloudTrail
@@ -158,6 +217,13 @@ para que deje de escribir en su bucket.
 3. **Bucket de datos:** S3 → `cc-lab-data-7asda3` → Empty (si tiene objetos) → Delete.
 4. **Security group:** EC2 → Security Groups → `lab-sg-ssh-open` → Actions → Delete security groups.
 5. **Usuario IAM:** IAM → Users → `lab-user-nomfa` → Delete.
+
+Recursos del pipeline de CI (solo si se abandona el escaneo desde GitHub Actions):
+
+6. **Rol:** IAM → Roles → `GitHubActionsProwler` → Delete.
+7. **Bucket de evidencias:** S3 → `compliance-copilot-evidence-<sufijo>` → Empty → Delete.
+8. **Proveedor OIDC:** IAM → Identity providers → `token.actions.githubusercontent.com` → Delete.
+9. En GitHub: borrar el Environment `aws-lab` (y con él sus secretos).
 
 Verificación: buscar en Resource Groups & Tag Editor los recursos con `project=compliance-copilot`; no debe
 quedar ninguno.

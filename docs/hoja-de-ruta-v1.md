@@ -45,11 +45,11 @@ propios.
 
 | # | Paso | Quién |
 |---|---|---|
-| 7.1 | Catálogo `soc2-tsc.json` con IDs oficiales (`CC6.1`, `A1.1`, `C1.2`, `PI1.2`…) y títulos propios en español | Yo, tú revisas |
-| 7.2 | Normalización de Prowler: `cc_6_1` → `CC6.1`, `cc_a_1_1` → `A1.1`, `cc_c_1_2` → `C1.2`, `pi_1_2` → `PI1.2` | Yo |
-| 7.3 | Entregable **Matriz de criterios SOC 2** (.md y hoja de Excel): por criterio, hallazgos, estado técnico y columnas para la decisión humana (en alcance, justificación) | Yo |
-| 7.4 | Evidencia por criterio en el paquete (`evidencias/controles/SOC2/`), cubierta por el manifest | Yo |
-| 7.5 | Documentar el límite **Tipo I / Tipo II**: un escaneo es evidencia de un momento (Tipo I); el Tipo II exige evidencia de funcionamiento durante un período, que darían escaneos periódicos (ver Fase 12, escaneo programado) | Yo |
+| 7.1 | ✅ Catálogo `soc2-tsc.json` con IDs oficiales (`CC6.1`, `A1.1`, `C1.2`, `PI1.2`…) y títulos propios en español | Yo, tú revisas |
+| 7.2 | ✅ Normalización de Prowler: `cc_6_1` → `CC6.1`, `cc_a_1_1` → `A1.1`, `cc_c_1_2` → `C1.2`, `pi_1_2` → `PI1.2` | Yo |
+| 7.3 | ✅ Entregable **Matriz de criterios SOC 2** (.md y hoja de Excel): por criterio, hallazgos, estado técnico y columnas para la decisión humana (en alcance, justificación) | Yo |
+| 7.4 | ✅ Evidencia por criterio en el paquete (`evidencias/controles/SOC2/`), cubierta por el manifest | Yo |
+| 7.5 | ✅ Documentar el límite **Tipo I / Tipo II**: un escaneo es evidencia de un momento (Tipo I); el Tipo II exige evidencia de funcionamiento durante un período, que darían escaneos periódicos (ver Fase 12, escaneo programado) | Yo |
 | 7.6 | Escaneo desde CI y revisión de la matriz | Tú |
 
 ## Fase 8. NIST CSF 2.0

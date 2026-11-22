@@ -38,6 +38,16 @@
 | Evidencia manual requerida | 79 |
 
 
+## Criterios SOC 2
+
+| Estado técnico | Criterios |
+|---|---|
+| Con brechas | 10 |
+| Requiere revisión | 0 |
+| Sin brechas detectadas | 2 |
+| Evidencia manual requerida | 49 |
+
+
 ## Clasificación faltante (A.5.12): 0 recursos
 
 

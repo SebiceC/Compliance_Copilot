@@ -4,6 +4,7 @@
   "Matriz de riesgos",
   "Mapa de calor",
   "SoA ISO 27001",
+  "Criterios SOC 2",
   "Plan de remediación",
   "Hallazgos de auditoría"
  ],
@@ -6574,6 +6575,2877 @@
      },
      {
       "v": "Protección de sistemas durante pruebas de auditoría",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ]
+   ]
+  },
+  "Criterios SOC 2": {
+   "freeze_panes": "A2",
+   "auto_filter": "A1:K62",
+   "widths": {
+    "A": 9.0,
+    "B": 15.0,
+    "C": 42.0,
+    "D": 26.0,
+    "E": 7.0,
+    "F": 7.0,
+    "G": 9.0,
+    "H": 13.0,
+    "I": 50.0,
+    "J": 12.0,
+    "K": 50.0
+   },
+   "rows": [
+    [
+     {
+      "v": "Criterio",
+      "fill": "001F3864"
+     },
+     {
+      "v": "Serie",
+      "fill": "001F3864"
+     },
+     {
+      "v": "Título",
+      "fill": "001F3864"
+     },
+     {
+      "v": "Estado técnico",
+      "fill": "001F3864"
+     },
+     {
+      "v": "PASS",
+      "fill": "001F3864"
+     },
+     {
+      "v": "FAIL",
+      "fill": "001F3864"
+     },
+     {
+      "v": "MANUAL",
+      "fill": "001F3864"
+     },
+     {
+      "v": "Riesgo máximo",
+      "fill": "001F3864"
+     },
+     {
+      "v": "Checks",
+      "fill": "001F3864"
+     },
+     {
+      "v": "En alcance",
+      "fill": "001F3864"
+     },
+     {
+      "v": "Justificación",
+      "fill": "001F3864"
+     }
+    ],
+    [
+     {
+      "v": "CC1.1",
+      "fill": null
+     },
+     {
+      "v": "CC1 · Entorno de control",
+      "fill": null
+     },
+     {
+      "v": "Compromiso con la integridad y los valores éticos",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "CC1.2",
+      "fill": null
+     },
+     {
+      "v": "CC1 · Entorno de control",
+      "fill": null
+     },
+     {
+      "v": "Independencia y supervisión del órgano de gobierno",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "CC1.3",
+      "fill": null
+     },
+     {
+      "v": "CC1 · Entorno de control",
+      "fill": null
+     },
+     {
+      "v": "Estructuras, líneas de reporte y autoridades definidas",
+      "fill": null
+     },
+     {
+      "v": "Con brechas",
+      "fill": null
+     },
+     {
+      "v": 2,
+      "fill": null
+     },
+     {
+      "v": 1,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "Bajo",
+      "fill": "00C6EFCE"
+     },
+     {
+      "v": "iam_policy_attached_only_to_group_or_roles, iam_user_accesskey_unused, iam_user_console_access_unused",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "CC1.4",
+      "fill": null
+     },
+     {
+      "v": "CC1 · Entorno de control",
+      "fill": null
+     },
+     {
+      "v": "Compromiso con la competencia del personal",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "CC1.5",
+      "fill": null
+     },
+     {
+      "v": "CC1 · Entorno de control",
+      "fill": null
+     },
+     {
+      "v": "Rendición de cuentas por las responsabilidades de control",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "CC2.1",
+      "fill": null
+     },
+     {
+      "v": "CC2 · Información y comunicación",
+      "fill": null
+     },
+     {
+      "v": "Información relevante y de calidad para el control interno",
+      "fill": null
+     },
+     {
+      "v": "Sin brechas detectadas",
+      "fill": null
+     },
+     {
+      "v": 1,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": "cloudtrail_multi_region_enabled",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "CC2.2",
+      "fill": null
+     },
+     {
+      "v": "CC2 · Información y comunicación",
+      "fill": null
+     },
+     {
+      "v": "Comunicación interna de objetivos y responsabilidades de control",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "CC2.3",
+      "fill": null
+     },
+     {
+      "v": "CC2 · Información y comunicación",
+      "fill": null
+     },
+     {
+      "v": "Comunicación con partes externas",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "CC3.1",
+      "fill": null
+     },
+     {
+      "v": "CC3 · Evaluación de riesgos",
+      "fill": null
+     },
+     {
+      "v": "Objetivos definidos que permiten identificar riesgos",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "CC3.2",
+      "fill": null
+     },
+     {
+      "v": "CC3 · Evaluación de riesgos",
+      "fill": null
+     },
+     {
+      "v": "Identificación y análisis de riesgos",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "CC3.3",
+      "fill": null
+     },
+     {
+      "v": "CC3 · Evaluación de riesgos",
+      "fill": null
+     },
+     {
+      "v": "Consideración del riesgo de fraude",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "CC3.4",
+      "fill": null
+     },
+     {
+      "v": "CC3 · Evaluación de riesgos",
+      "fill": null
+     },
+     {
+      "v": "Identificación de cambios significativos",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "CC4.1",
+      "fill": null
+     },
+     {
+      "v": "CC4 · Actividades de monitoreo",
+      "fill": null
+     },
+     {
+      "v": "Evaluaciones continuas o independientes de los controles",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "CC4.2",
+      "fill": null
+     },
+     {
+      "v": "CC4 · Actividades de monitoreo",
+      "fill": null
+     },
+     {
+      "v": "Comunicación oportuna de deficiencias de control",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "CC5.1",
+      "fill": null
+     },
+     {
+      "v": "CC5 · Actividades de control",
+      "fill": null
+     },
+     {
+      "v": "Selección de actividades de control que mitigan riesgos",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "CC5.2",
+      "fill": null
+     },
+     {
+      "v": "CC5 · Actividades de control",
+      "fill": null
+     },
+     {
+      "v": "Controles generales sobre la tecnología",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "CC5.3",
+      "fill": null
+     },
+     {
+      "v": "CC5 · Actividades de control",
+      "fill": null
+     },
+     {
+      "v": "Despliegue de controles mediante políticas y procedimientos",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "CC6.1",
+      "fill": null
+     },
+     {
+      "v": "CC6 · Acceso lógico y físico",
+      "fill": null
+     },
+     {
+      "v": "Seguridad del acceso lógico a la información y los sistemas",
+      "fill": null
+     },
+     {
+      "v": "Sin brechas detectadas",
+      "fill": null
+     },
+     {
+      "v": 2,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": "s3_bucket_public_access",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "CC6.2",
+      "fill": null
+     },
+     {
+      "v": "CC6 · Acceso lógico y físico",
+      "fill": null
+     },
+     {
+      "v": "Registro y autorización de usuarios antes de dar acceso",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "CC6.3",
+      "fill": null
+     },
+     {
+      "v": "CC6 · Acceso lógico y físico",
+      "fill": null
+     },
+     {
+      "v": "Gestión de accesos por roles y mínimo privilegio",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "CC6.4",
+      "fill": null
+     },
+     {
+      "v": "CC6 · Acceso lógico y físico",
+      "fill": null
+     },
+     {
+      "v": "Restricción del acceso físico a instalaciones y activos",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "CC6.5",
+      "fill": null
+     },
+     {
+      "v": "CC6 · Acceso lógico y físico",
+      "fill": null
+     },
+     {
+      "v": "Baja segura de activos y protección de datos al desecharlos",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "CC6.6",
+      "fill": null
+     },
+     {
+      "v": "CC6 · Acceso lógico y físico",
+      "fill": null
+     },
+     {
+      "v": "Protección contra amenazas externas al perímetro",
+      "fill": null
+     },
+     {
+      "v": "Con brechas",
+      "fill": null
+     },
+     {
+      "v": 17,
+      "fill": null
+     },
+     {
+      "v": 1,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "Medio",
+      "fill": "00FFEB9C"
+     },
+     {
+      "v": "ec2_securitygroup_allow_ingress_from_internet_to_all_ports, ec2_securitygroup_allow_ingress_from_internet_to_any_port, ec2_securitygroup_allow_ingress_from_internet_to_high_risk_tcp_ports, ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_22, ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_3389, ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_cassandra_7199_9160_8888, ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_elasticsearch_kibana_9200_9300_5601, ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_ftp_20_21, ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_kafka_9092, ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_memcached_11211, ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_mongodb_27017_27018, ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_mysql_3306, ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_oracle_1521_2483, ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_postgres_5432, ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_redis_6379, ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_sql_server_1433_1434, ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_telnet_23, ec2_securitygroup_allow_wide_open_public_ipv4",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "CC6.7",
+      "fill": null
+     },
+     {
+      "v": "CC6 · Acceso lógico y físico",
+      "fill": null
+     },
+     {
+      "v": "Protección de la información en transmisión y movimiento",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "CC6.8",
+      "fill": null
+     },
+     {
+      "v": "CC6 · Acceso lógico y físico",
+      "fill": null
+     },
+     {
+      "v": "Prevención y detección de software no autorizado o malicioso",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "CC7.1",
+      "fill": null
+     },
+     {
+      "v": "CC7 · Operaciones del sistema",
+      "fill": null
+     },
+     {
+      "v": "Detección de cambios de configuración y vulnerabilidades",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "CC7.2",
+      "fill": null
+     },
+     {
+      "v": "CC7 · Operaciones del sistema",
+      "fill": null
+     },
+     {
+      "v": "Monitoreo de componentes para detectar anomalías",
+      "fill": null
+     },
+     {
+      "v": "Con brechas",
+      "fill": null
+     },
+     {
+      "v": 2,
+      "fill": null
+     },
+     {
+      "v": 4,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "Alto",
+      "fill": "00F8CBAD"
+     },
+     {
+      "v": "cloudtrail_bedrock_logging_enabled, cloudtrail_cloudwatch_logging_enabled, cloudtrail_multi_region_enabled, ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_22, s3_bucket_server_access_logging_enabled",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "CC7.3",
+      "fill": null
+     },
+     {
+      "v": "CC7 · Operaciones del sistema",
+      "fill": null
+     },
+     {
+      "v": "Evaluación de eventos de seguridad para identificar incidentes",
+      "fill": null
+     },
+     {
+      "v": "Con brechas",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 4,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "Alto",
+      "fill": "00F8CBAD"
+     },
+     {
+      "v": "cloudtrail_cloudwatch_logging_enabled, cloudtrail_log_file_validation_enabled, s3_bucket_server_access_logging_enabled",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "CC7.4",
+      "fill": null
+     },
+     {
+      "v": "CC7 · Operaciones del sistema",
+      "fill": null
+     },
+     {
+      "v": "Respuesta a incidentes de seguridad",
+      "fill": null
+     },
+     {
+      "v": "Con brechas",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 2,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "Alto",
+      "fill": "00F8CBAD"
+     },
+     {
+      "v": "s3_bucket_object_versioning",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "CC7.5",
+      "fill": null
+     },
+     {
+      "v": "CC7 · Operaciones del sistema",
+      "fill": null
+     },
+     {
+      "v": "Recuperación tras incidentes de seguridad",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "CC8.1",
+      "fill": null
+     },
+     {
+      "v": "CC8 · Gestión de cambios",
+      "fill": null
+     },
+     {
+      "v": "Autorización, prueba y aprobación de cambios",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "CC9.1",
+      "fill": null
+     },
+     {
+      "v": "CC9 · Mitigación de riesgos",
+      "fill": null
+     },
+     {
+      "v": "Mitigación de riesgos de interrupción del negocio",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "CC9.2",
+      "fill": null
+     },
+     {
+      "v": "CC9 · Mitigación de riesgos",
+      "fill": null
+     },
+     {
+      "v": "Gestión de riesgos de proveedores y socios",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "A1.1",
+      "fill": null
+     },
+     {
+      "v": "A · Disponibilidad",
+      "fill": null
+     },
+     {
+      "v": "Gestión de la capacidad",
+      "fill": null
+     },
+     {
+      "v": "Con brechas",
+      "fill": null
+     },
+     {
+      "v": 1,
+      "fill": null
+     },
+     {
+      "v": 6,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "Alto",
+      "fill": "00F8CBAD"
+     },
+     {
+      "v": "cloudtrail_cloudwatch_logging_enabled, cloudtrail_logs_s3_bucket_access_logging_enabled, cloudtrail_multi_region_enabled, s3_bucket_object_versioning, s3_bucket_server_access_logging_enabled",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "A1.2",
+      "fill": null
+     },
+     {
+      "v": "A · Disponibilidad",
+      "fill": null
+     },
+     {
+      "v": "Protección ambiental, respaldo e infraestructura de recuperación",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "A1.3",
+      "fill": null
+     },
+     {
+      "v": "A · Disponibilidad",
+      "fill": null
+     },
+     {
+      "v": "Pruebas de los planes de recuperación",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "C1.1",
+      "fill": null
+     },
+     {
+      "v": "C · Confidencialidad",
+      "fill": null
+     },
+     {
+      "v": "Identificación y protección de la información confidencial",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "C1.2",
+      "fill": null
+     },
+     {
+      "v": "C · Confidencialidad",
+      "fill": null
+     },
+     {
+      "v": "Eliminación de la información confidencial",
+      "fill": null
+     },
+     {
+      "v": "Con brechas",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 2,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "Alto",
+      "fill": "00F8CBAD"
+     },
+     {
+      "v": "s3_bucket_object_versioning",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "PI1.1",
+      "fill": null
+     },
+     {
+      "v": "PI · Integridad del procesamiento",
+      "fill": null
+     },
+     {
+      "v": "Especificaciones del procesamiento y de los datos",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "PI1.2",
+      "fill": null
+     },
+     {
+      "v": "PI · Integridad del procesamiento",
+      "fill": null
+     },
+     {
+      "v": "Controles sobre las entradas del sistema",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "PI1.3",
+      "fill": null
+     },
+     {
+      "v": "PI · Integridad del procesamiento",
+      "fill": null
+     },
+     {
+      "v": "Controles sobre el procesamiento",
+      "fill": null
+     },
+     {
+      "v": "Con brechas",
+      "fill": null
+     },
+     {
+      "v": 1,
+      "fill": null
+     },
+     {
+      "v": 2,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "Alto",
+      "fill": "00F8CBAD"
+     },
+     {
+      "v": "cloudtrail_cloudwatch_logging_enabled, cloudtrail_log_file_validation_enabled, cloudtrail_multi_region_enabled",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "PI1.4",
+      "fill": null
+     },
+     {
+      "v": "PI · Integridad del procesamiento",
+      "fill": null
+     },
+     {
+      "v": "Controles sobre las salidas del sistema",
+      "fill": null
+     },
+     {
+      "v": "Con brechas",
+      "fill": null
+     },
+     {
+      "v": 2,
+      "fill": null
+     },
+     {
+      "v": 2,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "Alto",
+      "fill": "00F8CBAD"
+     },
+     {
+      "v": "s3_bucket_default_encryption, s3_bucket_kms_encryption",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "PI1.5",
+      "fill": null
+     },
+     {
+      "v": "PI · Integridad del procesamiento",
+      "fill": null
+     },
+     {
+      "v": "Almacenamiento íntegro de entradas y salidas",
+      "fill": null
+     },
+     {
+      "v": "Con brechas",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 4,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "Alto",
+      "fill": "00F8CBAD"
+     },
+     {
+      "v": "s3_bucket_object_lock, s3_bucket_object_versioning",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "P1.1",
+      "fill": null
+     },
+     {
+      "v": "P · Privacidad",
+      "fill": null
+     },
+     {
+      "v": "Aviso de privacidad a los titulares",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "P2.1",
+      "fill": null
+     },
+     {
+      "v": "P · Privacidad",
+      "fill": null
+     },
+     {
+      "v": "Opciones y consentimiento de los titulares",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "P3.1",
+      "fill": null
+     },
+     {
+      "v": "P · Privacidad",
+      "fill": null
+     },
+     {
+      "v": "Recolección limitada a los objetivos de privacidad",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "P3.2",
+      "fill": null
+     },
+     {
+      "v": "P · Privacidad",
+      "fill": null
+     },
+     {
+      "v": "Consentimiento explícito para los datos que lo requieren",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "P4.1",
+      "fill": null
+     },
+     {
+      "v": "P · Privacidad",
+      "fill": null
+     },
+     {
+      "v": "Uso limitado a los fines informados",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "P4.2",
+      "fill": null
+     },
+     {
+      "v": "P · Privacidad",
+      "fill": null
+     },
+     {
+      "v": "Conservación de los datos personales",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "P4.3",
+      "fill": null
+     },
+     {
+      "v": "P · Privacidad",
+      "fill": null
+     },
+     {
+      "v": "Eliminación de los datos personales",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "P5.1",
+      "fill": null
+     },
+     {
+      "v": "P · Privacidad",
+      "fill": null
+     },
+     {
+      "v": "Acceso de los titulares a sus datos",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "P5.2",
+      "fill": null
+     },
+     {
+      "v": "P · Privacidad",
+      "fill": null
+     },
+     {
+      "v": "Corrección de los datos personales",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "P6.1",
+      "fill": null
+     },
+     {
+      "v": "P · Privacidad",
+      "fill": null
+     },
+     {
+      "v": "Divulgación a terceros con consentimiento",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "P6.2",
+      "fill": null
+     },
+     {
+      "v": "P · Privacidad",
+      "fill": null
+     },
+     {
+      "v": "Registro de las divulgaciones autorizadas",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "P6.3",
+      "fill": null
+     },
+     {
+      "v": "P · Privacidad",
+      "fill": null
+     },
+     {
+      "v": "Registro de las divulgaciones no autorizadas",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "P6.4",
+      "fill": null
+     },
+     {
+      "v": "P · Privacidad",
+      "fill": null
+     },
+     {
+      "v": "Compromisos de privacidad de los terceros",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "P6.5",
+      "fill": null
+     },
+     {
+      "v": "P · Privacidad",
+      "fill": null
+     },
+     {
+      "v": "Notificación de incidentes por parte de los terceros",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "P6.6",
+      "fill": null
+     },
+     {
+      "v": "P · Privacidad",
+      "fill": null
+     },
+     {
+      "v": "Notificación de incidentes a los titulares afectados",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "P6.7",
+      "fill": null
+     },
+     {
+      "v": "P · Privacidad",
+      "fill": null
+     },
+     {
+      "v": "Información a los titulares sobre las divulgaciones",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "P7.1",
+      "fill": null
+     },
+     {
+      "v": "P · Privacidad",
+      "fill": null
+     },
+     {
+      "v": "Calidad y exactitud de los datos personales",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "P8.1",
+      "fill": null
+     },
+     {
+      "v": "P · Privacidad",
+      "fill": null
+     },
+     {
+      "v": "Atención de consultas, quejas y disputas",
       "fill": null
      },
      {

@@ -1,0 +1,381 @@
+{
+  "framework": "SOC2",
+  "name": "AICPA Trust Services Criteria (2017, puntos de enfoque revisados en 2022)",
+  "source": "Identificadores y estructura de los Trust Services Criteria de AICPA. Los títulos son redacción propia de Compliance Copilot y no reproducen el texto de los criterios.",
+  "id_pattern": "(CC[1-9]|A1|C1|PI1|P[1-8])\\.\\d{1,2}",
+  "normalization": "prowler_soc2",
+  "groups": [
+    {
+      "id": "cc1",
+      "label": "CC1 · Entorno de control"
+    },
+    {
+      "id": "cc2",
+      "label": "CC2 · Información y comunicación"
+    },
+    {
+      "id": "cc3",
+      "label": "CC3 · Evaluación de riesgos"
+    },
+    {
+      "id": "cc4",
+      "label": "CC4 · Actividades de monitoreo"
+    },
+    {
+      "id": "cc5",
+      "label": "CC5 · Actividades de control"
+    },
+    {
+      "id": "cc6",
+      "label": "CC6 · Acceso lógico y físico"
+    },
+    {
+      "id": "cc7",
+      "label": "CC7 · Operaciones del sistema"
+    },
+    {
+      "id": "cc8",
+      "label": "CC8 · Gestión de cambios"
+    },
+    {
+      "id": "cc9",
+      "label": "CC9 · Mitigación de riesgos"
+    },
+    {
+      "id": "a",
+      "label": "A · Disponibilidad"
+    },
+    {
+      "id": "c",
+      "label": "C · Confidencialidad"
+    },
+    {
+      "id": "pi",
+      "label": "PI · Integridad del procesamiento"
+    },
+    {
+      "id": "p",
+      "label": "P · Privacidad"
+    }
+  ],
+  "statement": {
+    "title": "Matriz de criterios SOC 2 (Trust Services Criteria)",
+    "summary_title": "Criterios SOC 2",
+    "file": "matriz-soc2.md",
+    "sheet": "Criterios SOC 2",
+    "id_label": "Criterio",
+    "group_label": "Serie",
+    "intro": "Borrador generado a partir del escaneo. Los criterios comunes (CC) siempre están en el alcance de un informe SOC 2; Disponibilidad, Confidencialidad, Integridad del procesamiento y Privacidad solo si la organización las incluye. **En alcance** y **Justificación** los decide la organización. Un escaneo es evidencia de un momento (sirve para un informe Tipo I); un Tipo II exige evidencia de que los controles funcionaron durante un período. \"Sin brechas detectadas\" no equivale a cumplimiento: solo indica que los checks automáticos no encontraron fallos.",
+    "human_columns": [
+      "En alcance",
+      "Justificación"
+    ]
+  },
+  "requirements": [
+    {
+      "id": "CC1.1",
+      "group": "cc1",
+      "title": "Compromiso con la integridad y los valores éticos"
+    },
+    {
+      "id": "CC1.2",
+      "group": "cc1",
+      "title": "Independencia y supervisión del órgano de gobierno"
+    },
+    {
+      "id": "CC1.3",
+      "group": "cc1",
+      "title": "Estructuras, líneas de reporte y autoridades definidas"
+    },
+    {
+      "id": "CC1.4",
+      "group": "cc1",
+      "title": "Compromiso con la competencia del personal"
+    },
+    {
+      "id": "CC1.5",
+      "group": "cc1",
+      "title": "Rendición de cuentas por las responsabilidades de control"
+    },
+    {
+      "id": "CC2.1",
+      "group": "cc2",
+      "title": "Información relevante y de calidad para el control interno"
+    },
+    {
+      "id": "CC2.2",
+      "group": "cc2",
+      "title": "Comunicación interna de objetivos y responsabilidades de control"
+    },
+    {
+      "id": "CC2.3",
+      "group": "cc2",
+      "title": "Comunicación con partes externas"
+    },
+    {
+      "id": "CC3.1",
+      "group": "cc3",
+      "title": "Objetivos definidos que permiten identificar riesgos"
+    },
+    {
+      "id": "CC3.2",
+      "group": "cc3",
+      "title": "Identificación y análisis de riesgos"
+    },
+    {
+      "id": "CC3.3",
+      "group": "cc3",
+      "title": "Consideración del riesgo de fraude"
+    },
+    {
+      "id": "CC3.4",
+      "group": "cc3",
+      "title": "Identificación de cambios significativos"
+    },
+    {
+      "id": "CC4.1",
+      "group": "cc4",
+      "title": "Evaluaciones continuas o independientes de los controles"
+    },
+    {
+      "id": "CC4.2",
+      "group": "cc4",
+      "title": "Comunicación oportuna de deficiencias de control"
+    },
+    {
+      "id": "CC5.1",
+      "group": "cc5",
+      "title": "Selección de actividades de control que mitigan riesgos"
+    },
+    {
+      "id": "CC5.2",
+      "group": "cc5",
+      "title": "Controles generales sobre la tecnología"
+    },
+    {
+      "id": "CC5.3",
+      "group": "cc5",
+      "title": "Despliegue de controles mediante políticas y procedimientos"
+    },
+    {
+      "id": "CC6.1",
+      "group": "cc6",
+      "title": "Seguridad del acceso lógico a la información y los sistemas"
+    },
+    {
+      "id": "CC6.2",
+      "group": "cc6",
+      "title": "Registro y autorización de usuarios antes de dar acceso"
+    },
+    {
+      "id": "CC6.3",
+      "group": "cc6",
+      "title": "Gestión de accesos por roles y mínimo privilegio"
+    },
+    {
+      "id": "CC6.4",
+      "group": "cc6",
+      "title": "Restricción del acceso físico a instalaciones y activos"
+    },
+    {
+      "id": "CC6.5",
+      "group": "cc6",
+      "title": "Baja segura de activos y protección de datos al desecharlos"
+    },
+    {
+      "id": "CC6.6",
+      "group": "cc6",
+      "title": "Protección contra amenazas externas al perímetro"
+    },
+    {
+      "id": "CC6.7",
+      "group": "cc6",
+      "title": "Protección de la información en transmisión y movimiento"
+    },
+    {
+      "id": "CC6.8",
+      "group": "cc6",
+      "title": "Prevención y detección de software no autorizado o malicioso"
+    },
+    {
+      "id": "CC7.1",
+      "group": "cc7",
+      "title": "Detección de cambios de configuración y vulnerabilidades"
+    },
+    {
+      "id": "CC7.2",
+      "group": "cc7",
+      "title": "Monitoreo de componentes para detectar anomalías"
+    },
+    {
+      "id": "CC7.3",
+      "group": "cc7",
+      "title": "Evaluación de eventos de seguridad para identificar incidentes"
+    },
+    {
+      "id": "CC7.4",
+      "group": "cc7",
+      "title": "Respuesta a incidentes de seguridad"
+    },
+    {
+      "id": "CC7.5",
+      "group": "cc7",
+      "title": "Recuperación tras incidentes de seguridad"
+    },
+    {
+      "id": "CC8.1",
+      "group": "cc8",
+      "title": "Autorización, prueba y aprobación de cambios"
+    },
+    {
+      "id": "CC9.1",
+      "group": "cc9",
+      "title": "Mitigación de riesgos de interrupción del negocio"
+    },
+    {
+      "id": "CC9.2",
+      "group": "cc9",
+      "title": "Gestión de riesgos de proveedores y socios"
+    },
+    {
+      "id": "A1.1",
+      "group": "a",
+      "title": "Gestión de la capacidad"
+    },
+    {
+      "id": "A1.2",
+      "group": "a",
+      "title": "Protección ambiental, respaldo e infraestructura de recuperación"
+    },
+    {
+      "id": "A1.3",
+      "group": "a",
+      "title": "Pruebas de los planes de recuperación"
+    },
+    {
+      "id": "C1.1",
+      "group": "c",
+      "title": "Identificación y protección de la información confidencial"
+    },
+    {
+      "id": "C1.2",
+      "group": "c",
+      "title": "Eliminación de la información confidencial"
+    },
+    {
+      "id": "PI1.1",
+      "group": "pi",
+      "title": "Especificaciones del procesamiento y de los datos"
+    },
+    {
+      "id": "PI1.2",
+      "group": "pi",
+      "title": "Controles sobre las entradas del sistema"
+    },
+    {
+      "id": "PI1.3",
+      "group": "pi",
+      "title": "Controles sobre el procesamiento"
+    },
+    {
+      "id": "PI1.4",
+      "group": "pi",
+      "title": "Controles sobre las salidas del sistema"
+    },
+    {
+      "id": "PI1.5",
+      "group": "pi",
+      "title": "Almacenamiento íntegro de entradas y salidas"
+    },
+    {
+      "id": "P1.1",
+      "group": "p",
+      "title": "Aviso de privacidad a los titulares"
+    },
+    {
+      "id": "P2.1",
+      "group": "p",
+      "title": "Opciones y consentimiento de los titulares"
+    },
+    {
+      "id": "P3.1",
+      "group": "p",
+      "title": "Recolección limitada a los objetivos de privacidad"
+    },
+    {
+      "id": "P3.2",
+      "group": "p",
+      "title": "Consentimiento explícito para los datos que lo requieren"
+    },
+    {
+      "id": "P4.1",
+      "group": "p",
+      "title": "Uso limitado a los fines informados"
+    },
+    {
+      "id": "P4.2",
+      "group": "p",
+      "title": "Conservación de los datos personales"
+    },
+    {
+      "id": "P4.3",
+      "group": "p",
+      "title": "Eliminación de los datos personales"
+    },
+    {
+      "id": "P5.1",
+      "group": "p",
+      "title": "Acceso de los titulares a sus datos"
+    },
+    {
+      "id": "P5.2",
+      "group": "p",
+      "title": "Corrección de los datos personales"
+    },
+    {
+      "id": "P6.1",
+      "group": "p",
+      "title": "Divulgación a terceros con consentimiento"
+    },
+    {
+      "id": "P6.2",
+      "group": "p",
+      "title": "Registro de las divulgaciones autorizadas"
+    },
+    {
+      "id": "P6.3",
+      "group": "p",
+      "title": "Registro de las divulgaciones no autorizadas"
+    },
+    {
+      "id": "P6.4",
+      "group": "p",
+      "title": "Compromisos de privacidad de los terceros"
+    },
+    {
+      "id": "P6.5",
+      "group": "p",
+      "title": "Notificación de incidentes por parte de los terceros"
+    },
+    {
+      "id": "P6.6",
+      "group": "p",
+      "title": "Notificación de incidentes a los titulares afectados"
+    },
+    {
+      "id": "P6.7",
+      "group": "p",
+      "title": "Información a los titulares sobre las divulgaciones"
+    },
+    {
+      "id": "P7.1",
+      "group": "p",
+      "title": "Calidad y exactitud de los datos personales"
+    },
+    {
+      "id": "P8.1",
+      "group": "p",
+      "title": "Atención de consultas, quejas y disputas"
+    }
+  ]
+}

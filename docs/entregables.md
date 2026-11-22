@@ -14,6 +14,7 @@ entregables reales contienen datos de la cuenta.
 | `resumen.md` | Totales, riesgos por nivel, mapa de calor, estado de cada declaración, recursos sin clasificar, hallazgos no leídos |
 | `matriz-riesgos.md` | Un riesgo por hallazgo FAIL, de mayor a menor, con su justificación |
 | `soa-iso27001.md` | Los 93 controles del Anexo A con su estado técnico (la declaración de ISO 27001; ver abajo) |
+| `matriz-soc2.md` | Los 61 Trust Services Criteria de SOC 2 con su estado técnico |
 | `plan-remediacion.md` | Una acción por check, ordenada por riesgo |
 | `compliance-copilot.xlsx` | Lo mismo en un libro de Excel (una hoja por entregable, más el mapa de calor) |
 | `evidencias/` | Hallazgos normalizados y una evidencia por control |
@@ -41,7 +42,7 @@ definen en el catálogo del marco (`src/compliance_copilot/catalogs/`):
 | Marco | Entregable | Columnas que decide una persona | Estado |
 |---|---|---|---|
 | ISO 27001:2022 | SoA (`soa-iso27001.md`) | Aplicable, Justificación | listo |
-| SOC 2 | Matriz de criterios | En alcance, Justificación | Fase 7 |
+| SOC 2 | Matriz de criterios (`matriz-soc2.md`) | En alcance, Justificación | listo |
 | NIST CSF 2.0 | Perfil actual | Perfil objetivo, Prioridad | Fase 8 |
 | Ley 1581 de 2012 | Matriz técnica | Aplica, Evidencia manual | Fase 9 |
 
@@ -69,6 +70,23 @@ control con 40 PASS y 1 FAIL bajo no se ve igual que uno con fallos críticos.
 
 **Columnas que decide la organización** (vacías a propósito, resaltadas en azul en el Excel): *Aplicable* y
 *Justificación*. Ni la herramienta ni la IA deciden la aplicabilidad de un control.
+
+## Matriz de criterios SOC 2
+
+Los **61 Trust Services Criteria** de AICPA (`catalogs/soc2-tsc.json`), agrupados por serie: los criterios comunes
+CC1 a CC9 y las categorías Disponibilidad (A), Confidencialidad (C), Integridad del procesamiento (PI) y
+Privacidad (P). Identificadores oficiales con títulos propios (el texto de los criterios tiene derechos de AICPA).
+
+- **En alcance** en vez de *Aplicable*: los criterios comunes siempre están en un informe SOC 2; las otras
+  categorías solo si la organización las incluye.
+- **Tipo I y Tipo II:** un escaneo es evidencia de un momento, útil para un informe Tipo I (diseño de los
+  controles en una fecha). Un Tipo II exige evidencia de que funcionaron durante un período (de 3 a 12 meses):
+  la darían escaneos periódicos (hoja de ruta, Fase 12).
+- **IDs de Prowler:** se traducen a su formato oficial (`cc_6_1` → `CC6.1`, `cc_a_1_1` → `A1.1`). En el escaneo 5,
+  los 23 IDs tuvieron correspondencia.
+- **El mapeo de Prowler es insumo, no verdad.** Prowler asigna checks técnicos a criterios organizacionales (por
+  ejemplo, checks de IAM a CC1.3, *estructuras y autoridades*, o a CC3.x, *evaluación de riesgos*). Un hallazgo
+  así es evidencia parcial: el criterio exige además evidencia de gobierno que ningún escáner ve.
 
 ## Plan de remediación
 
@@ -104,4 +122,4 @@ referencia en `tests/golden/`. Un cambio en cualquier entregable aparece en el d
 
 ## Pendiente
 
-- Declaraciones de SOC 2, NIST CSF 2.0 y Ley 1581 (Fases 7 a 9 de `docs/hoja-de-ruta-v1.md`).
+- Declaraciones de NIST CSF 2.0 y Ley 1581 (Fases 8 y 9 de `docs/hoja-de-ruta-v1.md`).

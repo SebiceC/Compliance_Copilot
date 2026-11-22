@@ -57,10 +57,27 @@ class Statement(BaseModel):
     human_columns: tuple[str, ...] = Field(min_length=1)
 
 
+_PROWLER_SOC2 = re.compile(r"(?:cc_(?=(?:a|c|pi|p)_))?(cc|a|c|pi|p)_(\d+)_(\d+)")
+
+
+def _prowler_soc2(raw: str) -> str:
+    """``cc_6_1`` -> ``CC6.1``; ``cc_a_1_1`` -> ``A1.1``; ``cc_c_1_2`` -> ``C1.2``; ``pi_1_2`` -> ``PI1.2``.
+
+    Prowler antepone ``cc_`` a algunos criterios que no son comunes (Disponibilidad, Confidencialidad): se quita.
+    Un formato que no reconoce se devuelve tal cual y queda como "sin correspondencia".
+    """
+    match = _PROWLER_SOC2.fullmatch(raw.strip().lower())
+    if not match:
+        return raw
+    prefix, series, number = match.groups()
+    return f"{prefix.upper()}{series}.{number}"
+
+
 # Traducciones de los IDs de Prowler al formato oficial. Cada catálogo elige la suya en ``normalization``; los
 # casos que no siguen una regla se listan en ``aliases`` (una tabla de correspondencia).
 NORMALIZERS: dict[str, Callable[[str], str]] = {
     "identity": lambda raw: raw,
+    "prowler_soc2": _prowler_soc2,
 }
 
 
@@ -110,7 +127,7 @@ class Catalog(BaseModel):
         return candidate if self.get(candidate) else None
 
 
-CATALOG_FILES = {"ISO27001-2022": "iso27001-2022.json"}
+CATALOG_FILES = {"ISO27001-2022": "iso27001-2022.json", "SOC2": "soc2-tsc.json"}
 # Orden de las declaraciones en los entregables.
 FRAMEWORKS: tuple[str, ...] = tuple(CATALOG_FILES)
 

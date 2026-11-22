@@ -145,3 +145,61 @@ def test_unknown_framework_fails() -> None:
 
 def test_load_catalogs_follows_framework_order() -> None:
     assert tuple(c.framework for c in load_catalogs()) == FRAMEWORKS
+
+
+# --- Catálogo de SOC 2 (Fase 7) ------------------------------------------------------------------------------
+
+
+@pytest.fixture(scope="module")
+def soc2() -> Catalog:
+    return load_catalog("SOC2")
+
+
+def test_soc2_has_61_criteria(soc2: Catalog) -> None:
+    """33 comunes, 3 de Disponibilidad, 2 de Confidencialidad, 5 de Integridad y 18 de Privacidad."""
+    assert len(soc2.requirements) == 61
+    assert Counter(r.group for r in soc2.requirements) == {
+        "cc1": 5, "cc2": 3, "cc3": 4, "cc4": 2, "cc5": 3, "cc6": 8, "cc7": 5, "cc8": 1, "cc9": 2,
+        "a": 3, "c": 2, "pi": 5, "p": 18,
+    }
+
+
+def test_soc2_numbering_is_continuous(soc2: Catalog) -> None:
+    by_series: dict[str, list[int]] = {}
+    for requirement in soc2.requirements:
+        series, number = requirement.id.split(".")
+        by_series.setdefault(series, []).append(int(number))
+    for series, numbers in by_series.items():
+        assert numbers == list(range(1, len(numbers) + 1)), series
+
+
+def test_soc2_statement_uses_scope_not_applicability(soc2: Catalog) -> None:
+    """En SOC 2 la organización decide el alcance, no la aplicabilidad (ADR 0007, D2)."""
+    assert soc2.statement.human_columns == ("En alcance", "Justificación")
+    assert soc2.statement.file == "matriz-soc2.md"
+    assert "Tipo I" in soc2.statement.intro and "Tipo II" in soc2.statement.intro
+
+
+@pytest.mark.parametrize(
+    ("raw", "expected"),
+    [
+        ("cc_6_1", "CC6.1"),
+        ("cc_1_3", "CC1.3"),
+        ("cc_a_1_1", "A1.1"),  # Prowler antepone cc_ a Disponibilidad y Confidencialidad
+        ("cc_c_1_2", "C1.2"),
+        ("pi_1_2", "PI1.2"),
+        ("p_6_7", "P6.7"),
+        ("CC_6_1", "CC6.1"),
+        ("cc_10_1", None),  # no existe la serie CC10
+        ("cc_6_9", None),  # no existe CC6.9
+        ("formato-raro", None),
+    ],
+)
+def test_soc2_normalizes_prowler_ids(soc2: Catalog, raw: str, expected: str | None) -> None:
+    assert soc2.normalize(raw) == expected
+
+
+def test_every_prowler_soc2_id_in_the_sample_has_correspondence(soc2: Catalog, lab_sample_path: Path) -> None:
+    raw = {c for f in parse_ocsf_file(lab_sample_path).findings for c in f.compliance.get("SOC2", [])}
+    assert raw
+    assert all(soc2.normalize(c) for c in raw), [c for c in raw if not soc2.normalize(c)]

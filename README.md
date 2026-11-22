@@ -21,7 +21,7 @@ como insumo.** Lo que agrega es lo que Prowler no hace:
 | Capacidad | Estado |
 |---|---|
 | Ingesta de la salida de Prowler (JSON OCSF) con anonimización | listo para AWS (Azure pendiente) |
-| Agrupación por control: ISO 27001:2022, SOC 2, NIST CSF 2.0 y Ley 1581 de 2012 (Colombia) | ISO 27001:2022 listo; SOC 2, NIST CSF 2.0 y Ley 1581 pendientes |
+| Agrupación por control: ISO 27001:2022, SOC 2, NIST CSF 2.0 y Ley 1581 de 2012 (Colombia) | ISO 27001:2022 y SOC 2 listos; NIST CSF 2.0 y Ley 1581 pendientes |
 | Evaluación de riesgo (probabilidad × impacto, matriz 5×5) con [metodología documentada](docs/metodologia-riesgo.md) | listo (metodología v0.2) |
 | Entregables: matriz de riesgos y SoA (.xlsx / .md), paquete de evidencias, plan de remediación ([detalle](docs/entregables.md)) | listo (SoA de ISO 27001:2022) |
 | Redacción de hallazgos en formato de auditoría con Claude, **solo publicados tras aprobación humana** ([detalle](docs/redaccion-ia.md)) | listo |

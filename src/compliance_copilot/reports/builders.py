@@ -209,19 +209,20 @@ def build_report(parsed: ParseResult, catalogs: tuple[Catalog, ...] | None = Non
 def build_statement(findings: tuple[Finding, ...], risks: tuple[RiskRow, ...], catalog: Catalog) -> Statement:
     """Una fila por cada requisito del catálogo, tenga o no hallazgos.
 
-    Los IDs de Prowler se traducen al formato del catálogo (``catalog.normalize``). Los que no tienen
-    correspondencia no se pierden: quedan en ``unmapped`` con sus hallazgos (ADR 0007, D3; el mismo principio del
+    Los IDs de Prowler se traducen al formato del catálogo (``catalog.resolve``; un ID puede ir a varios
+    requisitos). Los que no tienen correspondencia no se pierden: quedan en ``unmapped`` con sus hallazgos (ADR 0007, D3; el mismo principio del
     ADR 0003 para los hallazgos que no se pueden leer).
     """
     by_requirement: dict[str, list[Finding]] = defaultdict(list)
     unmapped: dict[str, list[Finding]] = defaultdict(list)
     for finding in findings:
         for raw_id in finding.compliance.get(catalog.framework, []):
-            requirement_id = catalog.normalize(raw_id)
-            if requirement_id is None:
+            targets = catalog.resolve(raw_id)
+            if not targets:
                 unmapped[raw_id].append(finding)
-            elif finding not in by_requirement[requirement_id]:  # dos IDs de Prowler pueden ir al mismo requisito
-                by_requirement[requirement_id].append(finding)
+            for requirement_id in targets:
+                if finding not in by_requirement[requirement_id]:  # varios IDs de Prowler pueden ir al mismo requisito
+                    by_requirement[requirement_id].append(finding)
 
     score_of = {r.finding.finding_uid: r.assessment for r in risks}
     empty_decisions = ("",) * len(catalog.statement.human_columns)

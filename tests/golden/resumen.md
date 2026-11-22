@@ -48,6 +48,16 @@
 | Evidencia manual requerida | 49 |
 
 
+## Perfil NIST CSF 2.0
+
+| Estado técnico | Subcategorías |
+|---|---|
+| Con brechas | 29 |
+| Requiere revisión | 0 |
+| Sin brechas detectadas | 3 |
+| Evidencia manual requerida | 74 |
+
+
 ## Clasificación faltante (A.5.12): 0 recursos
 
 

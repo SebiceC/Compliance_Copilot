@@ -1,0 +1,145 @@
+{
+  "framework": "NIST-CSF-2.0",
+  "control": "PR.AA-05",
+  "title": "Permisos con mínimo privilegio y separación de funciones",
+  "technical_status": "Con brechas",
+  "counts": {
+    "pass": 10,
+    "fail": 2,
+    "manual": 0
+  },
+  "evidence": [
+    {
+      "finding_uid": "prowler-aws-ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_22-123456789001-us-east-1-sg-053b7f11882dc35d0",
+      "check_id": "ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_22",
+      "status": "fail",
+      "severity": "high",
+      "resource_uid": "arn:aws:ec2:us-east-1:123456789001:security-group/sg-053b7f11882dc35d0",
+      "resource_name": "sg-053b7f11882dc35d0",
+      "region": "us-east-1",
+      "status_detail": "Security group lab-sg-ssh-open (sg-053b7f11882dc35d0) has SSH port 22 open to the Internet.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-iam_policy_attached_only_to_group_or_roles-123456789001-us-east-1-lab-user-nomfa/IAMUserChangePassword",
+      "check_id": "iam_policy_attached_only_to_group_or_roles",
+      "status": "fail",
+      "severity": "low",
+      "resource_uid": "arn:aws:iam::123456789001:user/lab-user-nomfa",
+      "resource_name": "lab-user-nomfa/IAMUserChangePassword",
+      "region": "us-east-1",
+      "status_detail": "User lab-user-nomfa has the policy IAMUserChangePassword attached.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-ec2_securitygroup_allow_ingress_from_internet_to_all_ports-123456789001-us-east-1-sg-053b7f11882dc35d0",
+      "check_id": "ec2_securitygroup_allow_ingress_from_internet_to_all_ports",
+      "status": "pass",
+      "severity": "high",
+      "resource_uid": "arn:aws:ec2:us-east-1:123456789001:security-group/sg-053b7f11882dc35d0",
+      "resource_name": "sg-053b7f11882dc35d0",
+      "region": "us-east-1",
+      "status_detail": "Security group lab-sg-ssh-open (sg-053b7f11882dc35d0) does not have all ports open to the Internet.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_3389-123456789001-us-east-1-sg-053b7f11882dc35d0",
+      "check_id": "ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_3389",
+      "status": "pass",
+      "severity": "high",
+      "resource_uid": "arn:aws:ec2:us-east-1:123456789001:security-group/sg-053b7f11882dc35d0",
+      "resource_name": "sg-053b7f11882dc35d0",
+      "region": "us-east-1",
+      "status_detail": "Security group lab-sg-ssh-open (sg-053b7f11882dc35d0) does not have Microsoft RDP port 3389 open to the Internet.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-iam_user_accesskey_unused-123456789001-us-east-1-lab-user-nomfa",
+      "check_id": "iam_user_accesskey_unused",
+      "status": "pass",
+      "severity": "medium",
+      "resource_uid": "arn:aws:iam::123456789001:user/lab-user-nomfa",
+      "resource_name": "lab-user-nomfa",
+      "region": "us-east-1",
+      "status_detail": "User lab-user-nomfa does not have access keys.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-iam_user_administrator_access_policy-123456789001-us-east-1-lab-user-nomfa",
+      "check_id": "iam_user_administrator_access_policy",
+      "status": "pass",
+      "severity": "critical",
+      "resource_uid": "arn:aws:iam::123456789001:user/lab-user-nomfa",
+      "resource_name": "lab-user-nomfa",
+      "region": "us-east-1",
+      "status_detail": "IAM User lab-user-nomfa does not have AdministratorAccess policy.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-iam_user_console_access_unused-123456789001-us-east-1-lab-user-nomfa",
+      "check_id": "iam_user_console_access_unused",
+      "status": "pass",
+      "severity": "medium",
+      "resource_uid": "arn:aws:iam::123456789001:user/lab-user-nomfa",
+      "resource_name": "lab-user-nomfa",
+      "region": "us-east-1",
+      "status_detail": "User lab-user-nomfa does not have console access enabled or is unused.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-iam_user_two_active_access_key-123456789001-us-east-1-lab-user-nomfa",
+      "check_id": "iam_user_two_active_access_key",
+      "status": "pass",
+      "severity": "medium",
+      "resource_uid": "arn:aws:iam::123456789001:user/lab-user-nomfa",
+      "resource_name": "lab-user-nomfa",
+      "region": "us-east-1",
+      "status_detail": "User lab-user-nomfa does not have 2 active access keys.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-s3_bucket_level_public_access_block-123456789001-us-east-1-aws-cloudtrail-logs-123456789001-5f59e248",
+      "check_id": "s3_bucket_level_public_access_block",
+      "status": "pass",
+      "severity": "high",
+      "resource_uid": "arn:aws:s3:::aws-cloudtrail-logs-123456789001-5f59e248",
+      "resource_name": "aws-cloudtrail-logs-123456789001-5f59e248",
+      "region": "us-east-1",
+      "status_detail": "Block Public Access is configured for the S3 Bucket aws-cloudtrail-logs-123456789001-5f59e248.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-s3_bucket_level_public_access_block-123456789001-us-east-1-cc-lab-data-7asda3",
+      "check_id": "s3_bucket_level_public_access_block",
+      "status": "pass",
+      "severity": "high",
+      "resource_uid": "arn:aws:s3:::cc-lab-data-7asda3",
+      "resource_name": "cc-lab-data-7asda3",
+      "region": "us-east-1",
+      "status_detail": "Block Public Access is configured for the S3 Bucket cc-lab-data-7asda3.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-s3_bucket_public_access-123456789001-us-east-1-aws-cloudtrail-logs-123456789001-5f59e248",
+      "check_id": "s3_bucket_public_access",
+      "status": "pass",
+      "severity": "critical",
+      "resource_uid": "arn:aws:s3:::aws-cloudtrail-logs-123456789001-5f59e248",
+      "resource_name": "aws-cloudtrail-logs-123456789001-5f59e248",
+      "region": "us-east-1",
+      "status_detail": "S3 Bucket aws-cloudtrail-logs-123456789001-5f59e248 is not public.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-s3_bucket_public_access-123456789001-us-east-1-cc-lab-data-7asda3",
+      "check_id": "s3_bucket_public_access",
+      "status": "pass",
+      "severity": "critical",
+      "resource_uid": "arn:aws:s3:::cc-lab-data-7asda3",
+      "resource_name": "cc-lab-data-7asda3",
+      "region": "us-east-1",
+      "status_detail": "S3 Bucket cc-lab-data-7asda3 is not public.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    }
+  ]
+}

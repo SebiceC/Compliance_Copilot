@@ -1,0 +1,35 @@
+{
+  "framework": "NIST-CSF-2.0",
+  "control": "DE.CM-09",
+  "title": "Hardware, software, entornos de ejecución y datos monitoreados",
+  "technical_status": "Con brechas",
+  "counts": {
+    "pass": 0,
+    "fail": 2,
+    "manual": 0
+  },
+  "evidence": [
+    {
+      "finding_uid": "prowler-aws-cloudtrail_cloudwatch_logging_enabled-123456789001-us-east-1-lab-trail",
+      "check_id": "cloudtrail_cloudwatch_logging_enabled",
+      "status": "fail",
+      "severity": "low",
+      "resource_uid": "arn:aws:cloudtrail:us-east-1:123456789001:trail/lab-trail",
+      "resource_name": "lab-trail",
+      "region": "us-east-1",
+      "status_detail": "Multiregion trail lab-trail has not been logging in the last 24h or is not configured to deliver logs.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-cloudtrail_log_file_validation_enabled-123456789001-us-east-1-lab-trail",
+      "check_id": "cloudtrail_log_file_validation_enabled",
+      "status": "fail",
+      "severity": "medium",
+      "resource_uid": "arn:aws:cloudtrail:us-east-1:123456789001:trail/lab-trail",
+      "resource_name": "lab-trail",
+      "region": "us-east-1",
+      "status_detail": "Multiregion trail lab-trail has log file validation disabled.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    }
+  ]
+}

@@ -50,7 +50,7 @@ propios.
 | 7.3 | ✅ Entregable **Matriz de criterios SOC 2** (.md y hoja de Excel): por criterio, hallazgos, estado técnico y columnas para la decisión humana (en alcance, justificación) | Yo |
 | 7.4 | ✅ Evidencia por criterio en el paquete (`evidencias/controles/SOC2/`), cubierta por el manifest | Yo |
 | 7.5 | ✅ Documentar el límite **Tipo I / Tipo II**: un escaneo es evidencia de un momento (Tipo I); el Tipo II exige evidencia de funcionamiento durante un período, que darían escaneos periódicos (ver Fase 12, escaneo programado) | Yo |
-| 7.6 | Escaneo desde CI y revisión de la matriz | Tú |
+| 7.6 | ✅ Escaneo desde CI y revisión de la matriz | Tú |
 
 ## Fase 8. NIST CSF 2.0
 
@@ -61,10 +61,10 @@ subcategorías inexistentes.
 
 | # | Paso | Quién |
 |---|---|---|
-| 8.1 | Catálogo `nist-csf-2.0.json`: 6 funciones, 22 categorías y 106 subcategorías (`GV.OC-01`…). El CSF es de NIST (gobierno de EE. UU.): se pueden usar sus títulos; verificar si existe traducción oficial al español, y si no, títulos propios | Yo |
-| 8.2 | **Tabla de correspondencia** de los IDs de Prowler a subcategorías 2.0, basada en la correspondencia oficial 1.1 → 2.0 publicada por NIST. Cada ID de 1.1 se traduce o queda "sin correspondencia" (reportado, no descartado) | Yo, tú revisas |
-| 8.3 | Entregable **Perfil actual NIST CSF 2.0**: por subcategoría, estado técnico; columnas para el perfil objetivo y la prioridad (decisión humana) | Yo |
-| 8.4 | Evidencia por subcategoría en el paquete | Yo |
+| 8.1 | ✅ Catálogo `nist-csf-2.0.json`: 6 funciones, 22 categorías y 106 subcategorías (`GV.OC-01`…). El CSF es de NIST (gobierno de EE. UU.): se pueden usar sus títulos; verificar si existe traducción oficial al español, y si no, títulos propios | Yo |
+| 8.2 | ✅ **Tabla de correspondencia** de los IDs de Prowler a subcategorías 2.0, basada en la correspondencia oficial 1.1 → 2.0 publicada por NIST. Cada ID de 1.1 se traduce o queda "sin correspondencia" (reportado, no descartado) | Yo, tú revisas |
+| 8.3 | ✅ Entregable **Perfil actual NIST CSF 2.0**: por subcategoría, estado técnico; columnas para el perfil objetivo y la prioridad (decisión humana) | Yo |
+| 8.4 | ✅ Evidencia por subcategoría en el paquete | Yo |
 | 8.5 | Documentar la discrepancia de Prowler en el ADR 0007 y evaluar reportarla al proyecto Prowler (issue público) | Tú decides |
 | 8.6 | Escaneo desde CI y revisión del perfil | Tú |
 

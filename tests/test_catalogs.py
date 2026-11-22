@@ -203,3 +203,62 @@ def test_every_prowler_soc2_id_in_the_sample_has_correspondence(soc2: Catalog, l
     raw = {c for f in parse_ocsf_file(lab_sample_path).findings for c in f.compliance.get("SOC2", [])}
     assert raw
     assert all(soc2.normalize(c) for c in raw), [c for c in raw if not soc2.normalize(c)]
+
+
+# --- Catálogo de NIST CSF 2.0 (Fase 8) -----------------------------------------------------------------------
+
+
+@pytest.fixture(scope="module")
+def nist() -> Catalog:
+    return load_catalog("NIST-CSF-2.0")
+
+
+def test_nist_has_106_subcategories_in_22_categories(nist: Catalog) -> None:
+    """Según el Apéndice A de NIST CSWP 29."""
+    assert len(nist.requirements) == 106
+    assert len(nist.groups) == 22
+    by_function = Counter(r.id.split(".")[0] for r in nist.requirements)
+    assert by_function == {"GV": 31, "ID": 21, "PR": 22, "DE": 11, "RS": 13, "RC": 8}
+
+
+def test_nist_group_is_the_category(nist: Catalog) -> None:
+    assert all(r.group == r.id.split("-")[0] for r in nist.requirements)
+    assert nist.group_label("PR.DS") == "PR.DS · Seguridad de los datos"
+
+
+def test_nist_statement_is_a_profile(nist: Catalog) -> None:
+    """NIST no se "cumple": perfil actual frente a perfil objetivo (ADR 0007, D2)."""
+    assert nist.statement.human_columns == ("Perfil objetivo", "Prioridad")
+
+
+@pytest.mark.parametrize(
+    ("raw", "expected"),
+    [
+        ("ac_1", ("PR.AA-01", "PR.AA-05")),  # PR.AC-01 retirado, incorporado en dos subcategorías
+        ("ds_1", ("PR.DS-01",)),  # conservado en la 2.0
+        ("ds_4", ("PR.IR-04",)),  # PR.DS-04 se movió a PR.IR-04
+        ("po_3", ("GV.OC-03",)),  # rotulado GV.PO, pero su texto es el de ID.GV-03
+        ("PR.DS-01", ("PR.DS-01",)),  # un ID oficial de la 2.0 pasa tal cual
+        ("co_1", ()),  # ambiguo (RS.CO o RC.CO) y no está en la tabla: sin correspondencia
+        ("ds_9", ()),
+    ],
+)
+def test_nist_resolves_prowler_ids(nist: Catalog, raw: str, expected: tuple[str, ...]) -> None:
+    assert nist.resolve(raw) == expected
+
+
+def test_every_prowler_nist_id_in_the_sample_has_correspondence(nist: Catalog, lab_sample_path: Path) -> None:
+    raw = {c for f in parse_ocsf_file(lab_sample_path).findings for c in f.compliance.get("NIST-CSF-2.0", [])}
+    assert raw
+    assert all(nist.resolve(c) for c in raw), [c for c in raw if not nist.resolve(c)]
+
+
+def test_crosswalk_document_matches_the_catalog(nist: Catalog) -> None:
+    """La tabla legible (docs/correspondencia-nist-csf.md) y la que usa el código no pueden divergir."""
+    doc = (Path(__file__).resolve().parent.parent / "docs" / "correspondencia-nist-csf.md").read_text(encoding="utf-8")
+    rows = {}
+    for line in doc.splitlines():
+        cells = [c.strip() for c in line.strip().strip("|").split("|")]
+        if len(cells) == 5 and cells[0].startswith("`"):
+            rows[cells[0].strip("`")] = tuple(t.strip() for t in cells[2].split(","))
+    assert rows == dict(nist.aliases)

@@ -1,0 +1,35 @@
+{
+  "framework": "NIST-CSF-2.0",
+  "control": "GV.OC-02",
+  "title": "Se entienden las expectativas de las partes interesadas",
+  "technical_status": "Con brechas",
+  "counts": {
+    "pass": 1,
+    "fail": 1,
+    "manual": 0
+  },
+  "evidence": [
+    {
+      "finding_uid": "prowler-aws-iam_policy_attached_only_to_group_or_roles-123456789001-us-east-1-lab-user-nomfa/IAMUserChangePassword",
+      "check_id": "iam_policy_attached_only_to_group_or_roles",
+      "status": "fail",
+      "severity": "low",
+      "resource_uid": "arn:aws:iam::123456789001:user/lab-user-nomfa",
+      "resource_name": "lab-user-nomfa/IAMUserChangePassword",
+      "region": "us-east-1",
+      "status_detail": "User lab-user-nomfa has the policy IAMUserChangePassword attached.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-iam_user_administrator_access_policy-123456789001-us-east-1-lab-user-nomfa",
+      "check_id": "iam_user_administrator_access_policy",
+      "status": "pass",
+      "severity": "critical",
+      "resource_uid": "arn:aws:iam::123456789001:user/lab-user-nomfa",
+      "resource_name": "lab-user-nomfa",
+      "region": "us-east-1",
+      "status_detail": "IAM User lab-user-nomfa does not have AdministratorAccess policy.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    }
+  ]
+}

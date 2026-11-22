@@ -1,0 +1,90 @@
+{
+  "framework": "NIST-CSF-2.0",
+  "control": "PR.PS-01",
+  "title": "Prácticas de gestión de la configuración aplicadas",
+  "technical_status": "Con brechas",
+  "counts": {
+    "pass": 5,
+    "fail": 2,
+    "manual": 0
+  },
+  "evidence": [
+    {
+      "finding_uid": "prowler-aws-ec2_securitygroup_not_used-123456789001-us-east-1-sg-053b7f11882dc35d0",
+      "check_id": "ec2_securitygroup_not_used",
+      "status": "fail",
+      "severity": "low",
+      "resource_uid": "arn:aws:ec2:us-east-1:123456789001:security-group/sg-053b7f11882dc35d0",
+      "resource_name": "sg-053b7f11882dc35d0",
+      "region": "us-east-1",
+      "status_detail": "Security group lab-sg-ssh-open (sg-053b7f11882dc35d0) it is not being used.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-iam_policy_attached_only_to_group_or_roles-123456789001-us-east-1-lab-user-nomfa/IAMUserChangePassword",
+      "check_id": "iam_policy_attached_only_to_group_or_roles",
+      "status": "fail",
+      "severity": "low",
+      "resource_uid": "arn:aws:iam::123456789001:user/lab-user-nomfa",
+      "resource_name": "lab-user-nomfa/IAMUserChangePassword",
+      "region": "us-east-1",
+      "status_detail": "User lab-user-nomfa has the policy IAMUserChangePassword attached.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-ec2_securitygroup_allow_ingress_from_internet_to_all_ports-123456789001-us-east-1-sg-053b7f11882dc35d0",
+      "check_id": "ec2_securitygroup_allow_ingress_from_internet_to_all_ports",
+      "status": "pass",
+      "severity": "high",
+      "resource_uid": "arn:aws:ec2:us-east-1:123456789001:security-group/sg-053b7f11882dc35d0",
+      "resource_name": "sg-053b7f11882dc35d0",
+      "region": "us-east-1",
+      "status_detail": "Security group lab-sg-ssh-open (sg-053b7f11882dc35d0) does not have all ports open to the Internet.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-s3_bucket_cross_account_access-123456789001-us-east-1-aws-cloudtrail-logs-123456789001-5f59e248",
+      "check_id": "s3_bucket_cross_account_access",
+      "status": "pass",
+      "severity": "high",
+      "resource_uid": "arn:aws:s3:::aws-cloudtrail-logs-123456789001-5f59e248",
+      "resource_name": "aws-cloudtrail-logs-123456789001-5f59e248",
+      "region": "us-east-1",
+      "status_detail": "S3 Bucket aws-cloudtrail-logs-123456789001-5f59e248 has a bucket policy but it does not allow cross account access.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-s3_bucket_cross_account_access-123456789001-us-east-1-cc-lab-data-7asda3",
+      "check_id": "s3_bucket_cross_account_access",
+      "status": "pass",
+      "severity": "high",
+      "resource_uid": "arn:aws:s3:::cc-lab-data-7asda3",
+      "resource_name": "cc-lab-data-7asda3",
+      "region": "us-east-1",
+      "status_detail": "S3 Bucket cc-lab-data-7asda3 does not have a bucket policy.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-s3_bucket_public_access-123456789001-us-east-1-aws-cloudtrail-logs-123456789001-5f59e248",
+      "check_id": "s3_bucket_public_access",
+      "status": "pass",
+      "severity": "critical",
+      "resource_uid": "arn:aws:s3:::aws-cloudtrail-logs-123456789001-5f59e248",
+      "resource_name": "aws-cloudtrail-logs-123456789001-5f59e248",
+      "region": "us-east-1",
+      "status_detail": "S3 Bucket aws-cloudtrail-logs-123456789001-5f59e248 is not public.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-s3_bucket_public_access-123456789001-us-east-1-cc-lab-data-7asda3",
+      "check_id": "s3_bucket_public_access",
+      "status": "pass",
+      "severity": "critical",
+      "resource_uid": "arn:aws:s3:::cc-lab-data-7asda3",
+      "resource_name": "cc-lab-data-7asda3",
+      "region": "us-east-1",
+      "status_detail": "S3 Bucket cc-lab-data-7asda3 is not public.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    }
+  ]
+}

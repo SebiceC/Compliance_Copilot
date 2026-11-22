@@ -12,7 +12,7 @@ Dos workflows en `.github/workflows/`, con niveles de riesgo distintos. Las deci
 
 ```
 GitHub Actions (job en el Environment aws-lab, aprobado por una persona)
-   │  1. pide un token OIDC firmado por GitHub ("repo:SebiceC/Compliance_Copilot:environment:aws-lab")
+   │  1. pide un token OIDC firmado por GitHub ("repo:SebiceC@111653598/Compliance_Copilot@1450598856:environment:aws-lab")
    ▼
 AWS STS
    │  2. verifica la firma con el proveedor OIDC de la cuenta
@@ -28,6 +28,10 @@ Bucket de evidencias (privado, cifrado, solo TLS, borrado a 30 días)
 No hay ninguna llave de AWS guardada en GitHub. Los secretos del Environment (`AWS_ROLE_ARN`,
 `EVIDENCE_BUCKET`) no son credenciales: son el nombre del rol y del bucket, guardados como secretos para que
 GitHub los enmascare en los logs.
+
+Si el rol rechaza el token (`Not authorized to perform sts:AssumeRoleWithWebIdentity`), el valor exacto que
+envió GitHub está en CloudTrail: evento `AssumeRoleWithWebIdentity`, campo `userIdentity.userName`. Se compara
+con la condición `sub` del rol.
 
 ## Logs públicos
 

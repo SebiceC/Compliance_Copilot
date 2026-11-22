@@ -25,7 +25,7 @@ OIDC, con estas restricciones:
 
 | Control | Implementación |
 |---|---|
-| Quién puede asumir el rol | Política de confianza con `StringEquals` sobre `sub = repo:SebiceC/Compliance_Copilot:environment:aws-lab` (sin comodines) |
+| Quién puede asumir el rol | Política de confianza con `StringEquals` sobre `sub = repo:SebiceC@111653598/Compliance_Copilot@1450598856:environment:aws-lab` (sin comodines; incluye los IDs inmutables del dueño y del repo) |
 | Aprobación humana | Environment `aws-lab` con revisor obligatorio y solo la rama `main` |
 | Qué puede hacer el rol | `SecurityAudit` + `ViewOnlyAccess` (igual que el escaneo local) y `s3:PutObject` solo en `scans/*` del bucket de evidencias |
 | Duración | Sesión de 1 hora; nombre de sesión `gha-scan-<run_id>` (trazable en CloudTrail) |
@@ -36,6 +36,11 @@ OIDC, con estas restricciones:
 El rol **escribe**, pero solo en su propio bucket de evidencias, nunca en los recursos que mide; y solo puede
 crear objetos, no leerlos, listarlos ni borrarlos. El principio "la herramienta que mide no puede modificar lo
 que mide" se mantiene.
+
+**Formato del `sub`.** GitHub incluye en el token los IDs numéricos inmutables del dueño y del repo
+(`repo:<dueño>@<id>/<repo>@<id>:...`). Si el repo se borra o cambia de nombre y alguien crea otro con el mismo
+nombre, tendrá otro ID y no podrá asumir el rol. El valor exacto se obtuvo del evento de CloudTrail del primer
+intento rechazado (`userName` de `AssumeRoleWithWebIdentity`).
 
 ## Consecuencias
 

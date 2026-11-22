@@ -11,9 +11,9 @@ entregables reales contienen datos de la cuenta.
 
 | Archivo | Contenido |
 |---|---|
-| `resumen.md` | Totales, riesgos por nivel, mapa de calor, estado de la SoA, recursos sin clasificar, hallazgos no leídos |
+| `resumen.md` | Totales, riesgos por nivel, mapa de calor, estado de cada declaración, recursos sin clasificar, hallazgos no leídos |
 | `matriz-riesgos.md` | Un riesgo por hallazgo FAIL, de mayor a menor, con su justificación |
-| `soa-iso27001.md` | Los 93 controles del Anexo A con su estado técnico |
+| `soa-iso27001.md` | Los 93 controles del Anexo A con su estado técnico (la declaración de ISO 27001; ver abajo) |
 | `plan-remediacion.md` | Una acción por check, ordenada por riesgo |
 | `compliance-copilot.xlsx` | Lo mismo en un libro de Excel (una hoja por entregable, más el mapa de calor) |
 | `evidencias/` | Hallazgos normalizados y una evidencia por control |
@@ -31,6 +31,24 @@ Los entregables se generan **sin IA**: todo número y estado sale de reglas docu
 Una fila por hallazgo FAIL, evaluada con `docs/metodologia-riesgo.md`. Columnas: nivel, riesgo, probabilidad,
 impacto, hallazgo, recurso, clasificación, controles ISO 27001, tratamiento sugerido y **justificación** (el
 texto que permite recalcular el riesgo a mano). El tratamiento es una sugerencia: lo decide una persona.
+
+## Declaraciones por marco
+
+Cada marco tiene su declaración, con el vocabulario que espera su auditor (ADR 0007). La lógica del estado
+técnico es la misma para todos; cambian el nombre del entregable y las columnas que decide una persona, que se
+definen en el catálogo del marco (`src/compliance_copilot/catalogs/`):
+
+| Marco | Entregable | Columnas que decide una persona | Estado |
+|---|---|---|---|
+| ISO 27001:2022 | SoA (`soa-iso27001.md`) | Aplicable, Justificación | listo |
+| SOC 2 | Matriz de criterios | En alcance, Justificación | Fase 7 |
+| NIST CSF 2.0 | Perfil actual | Perfil objetivo, Prioridad | Fase 8 |
+| Ley 1581 de 2012 | Matriz técnica | Aplica, Evidencia manual | Fase 9 |
+
+**IDs sin correspondencia.** Los IDs que Prowler asigna a un marco se traducen al formato oficial del catálogo.
+Los que no tienen correspondencia no se descartan: aparecen en el resumen, en una sección de la declaración, en
+la hoja *Sin correspondencia* del Excel y en `evidencias/controles/<marco>/_sin-correspondencia.json`. Una persona
+decide si falta el requisito en el catálogo o si el mapeo de Prowler está mal.
 
 ## SoA ISO/IEC 27001:2022
 
@@ -63,7 +81,7 @@ compromiso* las asigna la organización.
 
 - `evidencias/hallazgos.json`: todos los hallazgos normalizados (PASS, FAIL y MANUAL). Los PASS son evidencia de
   que un control funciona.
-- `evidencias/controles/ISO27001-2022/<control>.json`: para cada control con hallazgos, qué checks lo
+- `evidencias/controles/<marco>/<requisito>.json`: para cada requisito con hallazgos, qué checks lo
   sustentan, sobre qué recurso, con qué resultado y **cuándo** se observaron (UTC).
 - `manifest.json`: versión de la herramienta y de la metodología, datos del escaneo (escáner, versión,
   `scan_id`, cuentas, fechas), **SHA-256 del archivo de origen** y de **cada archivo generado**, y los hallazgos
@@ -78,11 +96,12 @@ python -m compliance_copilot verify reports/<carpeta>/manifest.json --source out
 Si un entregable o una evidencia cambió, o si el archivo de origen no es el que se usó, la verificación falla
 (código de salida `4`) y dice qué archivo no coincide.
 
-**Límite:** el hash prueba que nada cambió *después* de generar el paquete, no quién lo generó. Para eso haría
-falta firmar el manifest (pendiente para la fase de CI).
+**Límite:** el hash prueba que nada cambió *después* de generar el paquete, no quién lo generó. Los escaneos
+desde CI firman el manifest para probar su origen (ver `docs/ci.md`).
+
+**Regresión:** `tests/test_golden.py` compara la salida completa sobre la muestra del laboratorio con una
+referencia en `tests/golden/`. Un cambio en cualquier entregable aparece en el diff del PR.
 
 ## Pendiente
 
-- SoA y cobertura para SOC 2 y NIST CSF 2.0 (los hallazgos ya traen el mapeo).
-- Ley 1581 de 2012: requiere un mapeo propio; Prowler no la cubre.
-- Redacción de hallazgos en formato de auditoría con IA, con aprobación humana.
+- Declaraciones de SOC 2, NIST CSF 2.0 y Ley 1581 (Fases 7 a 9 de `docs/hoja-de-ruta-v1.md`).

@@ -2,470 +2,503 @@
   "framework": "ISO27001-2022",
   "name": "ISO/IEC 27001:2022, Anexo A",
   "source": "Identificadores y estructura de temas del Anexo A. Los títulos son redacción propia de Compliance Copilot y no reproducen el texto de la norma.",
-  "controls": [
+  "id_pattern": "A\\.[5-8]\\.\\d{1,2}",
+  "normalization": "identity",
+  "groups": [
+    {
+      "id": "organizational",
+      "label": "Organizacional"
+    },
+    {
+      "id": "people",
+      "label": "Personas"
+    },
+    {
+      "id": "physical",
+      "label": "Físico"
+    },
+    {
+      "id": "technological",
+      "label": "Tecnológico"
+    }
+  ],
+  "statement": {
+    "title": "Declaración de Aplicabilidad (SoA): ISO/IEC 27001:2022",
+    "summary_title": "SoA ISO 27001:2022",
+    "file": "soa-iso27001.md",
+    "sheet": "SoA ISO 27001",
+    "id_label": "Control",
+    "group_label": "Tema",
+    "intro": "Borrador generado a partir del escaneo. **Aplicable** y **Justificación** los decide la organización (cláusula 6.1.3 d). \"Sin brechas detectadas\" no equivale a cumplimiento: solo indica que los checks automáticos no encontraron fallos.",
+    "human_columns": [
+      "Aplicable",
+      "Justificación"
+    ]
+  },
+  "requirements": [
     {
       "id": "A.5.1",
-      "theme": "organizational",
+      "group": "organizational",
       "title": "Políticas de seguridad de la información"
     },
     {
       "id": "A.5.2",
-      "theme": "organizational",
+      "group": "organizational",
       "title": "Roles y responsabilidades de seguridad"
     },
     {
       "id": "A.5.3",
-      "theme": "organizational",
+      "group": "organizational",
       "title": "Segregación de funciones"
     },
     {
       "id": "A.5.4",
-      "theme": "organizational",
+      "group": "organizational",
       "title": "Responsabilidades de la dirección"
     },
     {
       "id": "A.5.5",
-      "theme": "organizational",
+      "group": "organizational",
       "title": "Contacto con autoridades"
     },
     {
       "id": "A.5.6",
-      "theme": "organizational",
+      "group": "organizational",
       "title": "Contacto con grupos de interés especializados"
     },
     {
       "id": "A.5.7",
-      "theme": "organizational",
+      "group": "organizational",
       "title": "Inteligencia de amenazas"
     },
     {
       "id": "A.5.8",
-      "theme": "organizational",
+      "group": "organizational",
       "title": "Seguridad en la gestión de proyectos"
     },
     {
       "id": "A.5.9",
-      "theme": "organizational",
+      "group": "organizational",
       "title": "Inventario de información y activos asociados"
     },
     {
       "id": "A.5.10",
-      "theme": "organizational",
+      "group": "organizational",
       "title": "Uso aceptable de la información y los activos"
     },
     {
       "id": "A.5.11",
-      "theme": "organizational",
+      "group": "organizational",
       "title": "Devolución de activos"
     },
     {
       "id": "A.5.12",
-      "theme": "organizational",
+      "group": "organizational",
       "title": "Clasificación de la información"
     },
     {
       "id": "A.5.13",
-      "theme": "organizational",
+      "group": "organizational",
       "title": "Etiquetado de la información"
     },
     {
       "id": "A.5.14",
-      "theme": "organizational",
+      "group": "organizational",
       "title": "Transferencia de información"
     },
     {
       "id": "A.5.15",
-      "theme": "organizational",
+      "group": "organizational",
       "title": "Control de acceso"
     },
     {
       "id": "A.5.16",
-      "theme": "organizational",
+      "group": "organizational",
       "title": "Gestión de identidades"
     },
     {
       "id": "A.5.17",
-      "theme": "organizational",
+      "group": "organizational",
       "title": "Información de autenticación"
     },
     {
       "id": "A.5.18",
-      "theme": "organizational",
+      "group": "organizational",
       "title": "Derechos de acceso"
     },
     {
       "id": "A.5.19",
-      "theme": "organizational",
+      "group": "organizational",
       "title": "Seguridad en las relaciones con proveedores"
     },
     {
       "id": "A.5.20",
-      "theme": "organizational",
+      "group": "organizational",
       "title": "Seguridad en los acuerdos con proveedores"
     },
     {
       "id": "A.5.21",
-      "theme": "organizational",
+      "group": "organizational",
       "title": "Seguridad en la cadena de suministro TIC"
     },
     {
       "id": "A.5.22",
-      "theme": "organizational",
+      "group": "organizational",
       "title": "Seguimiento y cambios en los servicios de proveedores"
     },
     {
       "id": "A.5.23",
-      "theme": "organizational",
+      "group": "organizational",
       "title": "Seguridad en el uso de servicios en la nube"
     },
     {
       "id": "A.5.24",
-      "theme": "organizational",
+      "group": "organizational",
       "title": "Planificación y preparación para la gestión de incidentes"
     },
     {
       "id": "A.5.25",
-      "theme": "organizational",
+      "group": "organizational",
       "title": "Evaluación y decisión sobre eventos de seguridad"
     },
     {
       "id": "A.5.26",
-      "theme": "organizational",
+      "group": "organizational",
       "title": "Respuesta a incidentes de seguridad"
     },
     {
       "id": "A.5.27",
-      "theme": "organizational",
+      "group": "organizational",
       "title": "Aprendizaje a partir de incidentes"
     },
     {
       "id": "A.5.28",
-      "theme": "organizational",
+      "group": "organizational",
       "title": "Recolección de evidencias"
     },
     {
       "id": "A.5.29",
-      "theme": "organizational",
+      "group": "organizational",
       "title": "Seguridad durante una disrupción"
     },
     {
       "id": "A.5.30",
-      "theme": "organizational",
+      "group": "organizational",
       "title": "Preparación de las TIC para la continuidad del negocio"
     },
     {
       "id": "A.5.31",
-      "theme": "organizational",
+      "group": "organizational",
       "title": "Requisitos legales, regulatorios y contractuales"
     },
     {
       "id": "A.5.32",
-      "theme": "organizational",
+      "group": "organizational",
       "title": "Derechos de propiedad intelectual"
     },
     {
       "id": "A.5.33",
-      "theme": "organizational",
+      "group": "organizational",
       "title": "Protección de registros"
     },
     {
       "id": "A.5.34",
-      "theme": "organizational",
+      "group": "organizational",
       "title": "Privacidad y protección de datos personales"
     },
     {
       "id": "A.5.35",
-      "theme": "organizational",
+      "group": "organizational",
       "title": "Revisión independiente de la seguridad"
     },
     {
       "id": "A.5.36",
-      "theme": "organizational",
+      "group": "organizational",
       "title": "Cumplimiento de políticas y normas de seguridad"
     },
     {
       "id": "A.5.37",
-      "theme": "organizational",
+      "group": "organizational",
       "title": "Procedimientos operativos documentados"
     },
     {
       "id": "A.6.1",
-      "theme": "people",
+      "group": "people",
       "title": "Verificación de antecedentes"
     },
     {
       "id": "A.6.2",
-      "theme": "people",
+      "group": "people",
       "title": "Condiciones de contratación"
     },
     {
       "id": "A.6.3",
-      "theme": "people",
+      "group": "people",
       "title": "Concienciación, educación y formación en seguridad"
     },
     {
       "id": "A.6.4",
-      "theme": "people",
+      "group": "people",
       "title": "Proceso disciplinario"
     },
     {
       "id": "A.6.5",
-      "theme": "people",
+      "group": "people",
       "title": "Responsabilidades tras la terminación o cambio de empleo"
     },
     {
       "id": "A.6.6",
-      "theme": "people",
+      "group": "people",
       "title": "Acuerdos de confidencialidad"
     },
     {
       "id": "A.6.7",
-      "theme": "people",
+      "group": "people",
       "title": "Trabajo remoto"
     },
     {
       "id": "A.6.8",
-      "theme": "people",
+      "group": "people",
       "title": "Reporte de eventos de seguridad"
     },
     {
       "id": "A.7.1",
-      "theme": "physical",
+      "group": "physical",
       "title": "Perímetros de seguridad física"
     },
     {
       "id": "A.7.2",
-      "theme": "physical",
+      "group": "physical",
       "title": "Controles de entrada física"
     },
     {
       "id": "A.7.3",
-      "theme": "physical",
+      "group": "physical",
       "title": "Seguridad de oficinas, salas e instalaciones"
     },
     {
       "id": "A.7.4",
-      "theme": "physical",
+      "group": "physical",
       "title": "Monitoreo de la seguridad física"
     },
     {
       "id": "A.7.5",
-      "theme": "physical",
+      "group": "physical",
       "title": "Protección frente a amenazas físicas y ambientales"
     },
     {
       "id": "A.7.6",
-      "theme": "physical",
+      "group": "physical",
       "title": "Trabajo en áreas seguras"
     },
     {
       "id": "A.7.7",
-      "theme": "physical",
+      "group": "physical",
       "title": "Escritorio y pantalla limpios"
     },
     {
       "id": "A.7.8",
-      "theme": "physical",
+      "group": "physical",
       "title": "Ubicación y protección de equipos"
     },
     {
       "id": "A.7.9",
-      "theme": "physical",
+      "group": "physical",
       "title": "Seguridad de activos fuera de las instalaciones"
     },
     {
       "id": "A.7.10",
-      "theme": "physical",
+      "group": "physical",
       "title": "Medios de almacenamiento"
     },
     {
       "id": "A.7.11",
-      "theme": "physical",
+      "group": "physical",
       "title": "Servicios de suministro"
     },
     {
       "id": "A.7.12",
-      "theme": "physical",
+      "group": "physical",
       "title": "Seguridad del cableado"
     },
     {
       "id": "A.7.13",
-      "theme": "physical",
+      "group": "physical",
       "title": "Mantenimiento de equipos"
     },
     {
       "id": "A.7.14",
-      "theme": "physical",
+      "group": "physical",
       "title": "Eliminación o reutilización segura de equipos"
     },
     {
       "id": "A.8.1",
-      "theme": "technological",
+      "group": "technological",
       "title": "Dispositivos de usuario final"
     },
     {
       "id": "A.8.2",
-      "theme": "technological",
+      "group": "technological",
       "title": "Derechos de acceso privilegiado"
     },
     {
       "id": "A.8.3",
-      "theme": "technological",
+      "group": "technological",
       "title": "Restricción de acceso a la información"
     },
     {
       "id": "A.8.4",
-      "theme": "technological",
+      "group": "technological",
       "title": "Acceso al código fuente"
     },
     {
       "id": "A.8.5",
-      "theme": "technological",
+      "group": "technological",
       "title": "Autenticación segura"
     },
     {
       "id": "A.8.6",
-      "theme": "technological",
+      "group": "technological",
       "title": "Gestión de la capacidad"
     },
     {
       "id": "A.8.7",
-      "theme": "technological",
+      "group": "technological",
       "title": "Protección contra malware"
     },
     {
       "id": "A.8.8",
-      "theme": "technological",
+      "group": "technological",
       "title": "Gestión de vulnerabilidades técnicas"
     },
     {
       "id": "A.8.9",
-      "theme": "technological",
+      "group": "technological",
       "title": "Gestión de la configuración"
     },
     {
       "id": "A.8.10",
-      "theme": "technological",
+      "group": "technological",
       "title": "Eliminación de información"
     },
     {
       "id": "A.8.11",
-      "theme": "technological",
+      "group": "technological",
       "title": "Enmascaramiento de datos"
     },
     {
       "id": "A.8.12",
-      "theme": "technological",
+      "group": "technological",
       "title": "Prevención de fuga de datos"
     },
     {
       "id": "A.8.13",
-      "theme": "technological",
+      "group": "technological",
       "title": "Copias de respaldo"
     },
     {
       "id": "A.8.14",
-      "theme": "technological",
+      "group": "technological",
       "title": "Redundancia de las instalaciones de procesamiento"
     },
     {
       "id": "A.8.15",
-      "theme": "technological",
+      "group": "technological",
       "title": "Registro de eventos"
     },
     {
       "id": "A.8.16",
-      "theme": "technological",
+      "group": "technological",
       "title": "Actividades de monitoreo"
     },
     {
       "id": "A.8.17",
-      "theme": "technological",
+      "group": "technological",
       "title": "Sincronización de relojes"
     },
     {
       "id": "A.8.18",
-      "theme": "technological",
+      "group": "technological",
       "title": "Uso de programas utilitarios privilegiados"
     },
     {
       "id": "A.8.19",
-      "theme": "technological",
+      "group": "technological",
       "title": "Instalación de software en sistemas en operación"
     },
     {
       "id": "A.8.20",
-      "theme": "technological",
+      "group": "technological",
       "title": "Seguridad de redes"
     },
     {
       "id": "A.8.21",
-      "theme": "technological",
+      "group": "technological",
       "title": "Seguridad de los servicios de red"
     },
     {
       "id": "A.8.22",
-      "theme": "technological",
+      "group": "technological",
       "title": "Segmentación de redes"
     },
     {
       "id": "A.8.23",
-      "theme": "technological",
+      "group": "technological",
       "title": "Filtrado web"
     },
     {
       "id": "A.8.24",
-      "theme": "technological",
+      "group": "technological",
       "title": "Uso de criptografía"
     },
     {
       "id": "A.8.25",
-      "theme": "technological",
+      "group": "technological",
       "title": "Ciclo de vida de desarrollo seguro"
     },
     {
       "id": "A.8.26",
-      "theme": "technological",
+      "group": "technological",
       "title": "Requisitos de seguridad de aplicaciones"
     },
     {
       "id": "A.8.27",
-      "theme": "technological",
+      "group": "technological",
       "title": "Arquitectura y principios de ingeniería segura"
     },
     {
       "id": "A.8.28",
-      "theme": "technological",
+      "group": "technological",
       "title": "Codificación segura"
     },
     {
       "id": "A.8.29",
-      "theme": "technological",
+      "group": "technological",
       "title": "Pruebas de seguridad en desarrollo y aceptación"
     },
     {
       "id": "A.8.30",
-      "theme": "technological",
+      "group": "technological",
       "title": "Desarrollo externalizado"
     },
     {
       "id": "A.8.31",
-      "theme": "technological",
+      "group": "technological",
       "title": "Separación de entornos de desarrollo, prueba y producción"
     },
     {
       "id": "A.8.32",
-      "theme": "technological",
+      "group": "technological",
       "title": "Gestión de cambios"
     },
     {
       "id": "A.8.33",
-      "theme": "technological",
+      "group": "technological",
       "title": "Información de pruebas"
     },
     {
       "id": "A.8.34",
-      "theme": "technological",
+      "group": "technological",
       "title": "Protección de sistemas durante pruebas de auditoría"
     }
   ]

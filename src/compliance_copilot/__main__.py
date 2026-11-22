@@ -23,7 +23,7 @@ from compliance_copilot.drafting.review import review_pending
 from compliance_copilot.drafting.runner import audit_entries, report_payloads, run_drafting
 from compliance_copilot.drafting.schema import DraftStore
 from compliance_copilot.parsers.prowler_ocsf import parse_ocsf_file
-from compliance_copilot.reports.builders import LEVEL_LABEL, SOA_FRAMEWORK, Report, build_report
+from compliance_copilot.reports.builders import LEVEL_LABEL, PRIMARY_FRAMEWORK, Report, build_report
 from compliance_copilot.reports.evidence import MANIFEST, verify_manifest, write_evidence
 from compliance_copilot.reports.excel import write_excel
 from compliance_copilot.reports.markdown import write_markdown
@@ -100,7 +100,7 @@ def _report(scan: Path, output: Path | None, drafts_path: Path | None) -> int:
     drafts = None
     if drafts_path is not None:
         drafts = DraftStore.load(drafts_path)
-        report = dataclasses.replace(report, audit=audit_entries(report, drafts, load_catalog(SOA_FRAMEWORK)))
+        report = dataclasses.replace(report, audit=audit_entries(report, drafts, load_catalog(PRIMARY_FRAMEWORK)))
 
     deliverables = [*write_markdown(report, output), write_excel(report, output)]
     manifest = write_evidence(report, output, deliverables, drafts)
@@ -128,7 +128,7 @@ def _draft(args: argparse.Namespace, drafter_factory: Callable[..., Drafter]) ->
         return EXIT_ERROR
 
     report = build_report(parse_ocsf_file(args.scan))
-    catalog = load_catalog(SOA_FRAMEWORK)
+    catalog = load_catalog(PRIMARY_FRAMEWORK)
     path = args.drafts or _drafts_path(report, args.model)
     store = DraftStore.load(path)
 
@@ -164,7 +164,7 @@ def _review(args: argparse.Namespace) -> int:
         print(f"no existe {path}: genera los borradores con 'draft'", file=sys.stderr)
         return EXIT_ERROR
     store = DraftStore.load(path)
-    summary = review_pending(store, report_payloads(report, load_catalog(SOA_FRAMEWORK)), args.reviewer,
+    summary = review_pending(store, report_payloads(report, load_catalog(PRIMARY_FRAMEWORK)), args.reviewer,
                              on_change=lambda: store.save(path),
                              aliases=aliases_for(report.findings))
     store.save(path)

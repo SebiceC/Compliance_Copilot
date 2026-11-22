@@ -1,0 +1,35 @@
+{
+  "framework": "ISO27001-2022",
+  "control": "A.8.3",
+  "title": "Restricción de acceso a la información",
+  "technical_status": "Con brechas",
+  "counts": {
+    "pass": 0,
+    "fail": 2,
+    "manual": 0
+  },
+  "evidence": [
+    {
+      "finding_uid": "prowler-aws-s3_bucket_object_versioning-123456789001-us-east-1-aws-cloudtrail-logs-123456789001-5f59e248",
+      "check_id": "s3_bucket_object_versioning",
+      "status": "fail",
+      "severity": "medium",
+      "resource_uid": "arn:aws:s3:::aws-cloudtrail-logs-123456789001-5f59e248",
+      "resource_name": "aws-cloudtrail-logs-123456789001-5f59e248",
+      "region": "us-east-1",
+      "status_detail": "S3 Bucket aws-cloudtrail-logs-123456789001-5f59e248 has versioning disabled.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-s3_bucket_object_versioning-123456789001-us-east-1-cc-lab-data-7asda3",
+      "check_id": "s3_bucket_object_versioning",
+      "status": "fail",
+      "severity": "medium",
+      "resource_uid": "arn:aws:s3:::cc-lab-data-7asda3",
+      "resource_name": "cc-lab-data-7asda3",
+      "region": "us-east-1",
+      "status_detail": "S3 Bucket cc-lab-data-7asda3 has versioning disabled.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    }
+  ]
+}

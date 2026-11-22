@@ -200,12 +200,26 @@ Los +16 resultados totales (232 → 248) son los checks del bucket, del rol y de
 
 **Pendiente (tratamiento de riesgos):**
 
+<<<<<<< Updated upstream
 - **Brechas del bucket de evidencias.** Decidir cuáles se aceptan por ser un laboratorio (KMS, replicación,
   notificaciones, logs de acceso) y cuáles se remedian por tratarse de evidencia: versionado y Object Lock la
   harían inmutable (hoy el rol de CI no puede borrar, pero un administrador sí).
 - **Clasificación.** El bucket de evidencias y el rol no tienen tags, así que el motor los marca para el control
   A.5.12. Propuesto: `data-classification=restricted` para el bucket (es evidencia de auditoría, como
   CloudTrail) y `project=compliance-copilot` en ambos.
+=======
+**Tag Policy (2026-11-22).** Política `etiquetas-compliance-copilot` en AWS Organizations: la clave
+`data-classification` solo admite `public`, `internal`, `confidential` y `restricted` (en minúscula), y `project`
+solo `compliance-copilot`. En los buckets de S3 se **aplica** (rechaza el etiquetado incorrecto); en el resto se
+reporta. Probada con la prueba negativa: etiquetar un bucket con `Confidential` fue rechazado. No obliga a poner
+el tag: un recurso sin clasificar lo sigue detectando el motor de riesgo (A.5.12). Control preventivo más
+control detectivo.
+
+**Tratamiento de riesgos:** las 7 brechas del bucket de evidencias tienen decisión documentada en
+[docs/tratamiento-riesgos.md](tratamiento-riesgos.md) (R-01 a R-07: mitigar versionado y Object Lock, aceptar
+las otras cinco). El bucket se etiquetó `data-classification=restricted` y `project=compliance-copilot`; el rol,
+`project=compliance-copilot` (es inventario: un rol no guarda datos y no entra en el control A.5.12).
+>>>>>>> Stashed changes
 
 ## Desmontaje
 

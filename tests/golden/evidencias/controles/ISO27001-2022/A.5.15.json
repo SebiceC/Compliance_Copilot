@@ -1,0 +1,68 @@
+{
+  "framework": "ISO27001-2022",
+  "control": "A.5.15",
+  "title": "Control de acceso",
+  "technical_status": "Con brechas",
+  "counts": {
+    "pass": 3,
+    "fail": 2,
+    "manual": 0
+  },
+  "evidence": [
+    {
+      "finding_uid": "prowler-aws-iam_policy_attached_only_to_group_or_roles-123456789001-us-east-1-lab-user-nomfa/IAMUserChangePassword",
+      "check_id": "iam_policy_attached_only_to_group_or_roles",
+      "status": "fail",
+      "severity": "low",
+      "resource_uid": "arn:aws:iam::123456789001:user/lab-user-nomfa",
+      "resource_name": "lab-user-nomfa/IAMUserChangePassword",
+      "region": "us-east-1",
+      "status_detail": "User lab-user-nomfa has the policy IAMUserChangePassword attached.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-iam_user_mfa_enabled_console_access-123456789001-us-east-1-lab-user-nomfa",
+      "check_id": "iam_user_mfa_enabled_console_access",
+      "status": "fail",
+      "severity": "high",
+      "resource_uid": "arn:aws:iam::123456789001:user/lab-user-nomfa",
+      "resource_name": "lab-user-nomfa",
+      "region": "us-east-1",
+      "status_detail": "User lab-user-nomfa has Console Password enabled but MFA disabled.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-iam_rotate_access_key_90_days-123456789001-us-east-1-lab-user-nomfa",
+      "check_id": "iam_rotate_access_key_90_days",
+      "status": "pass",
+      "severity": "medium",
+      "resource_uid": "arn:aws:iam::123456789001:user/lab-user-nomfa",
+      "resource_name": "lab-user-nomfa",
+      "region": "us-east-1",
+      "status_detail": "User lab-user-nomfa does not have access keys.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-iam_user_accesskey_unused-123456789001-us-east-1-lab-user-nomfa",
+      "check_id": "iam_user_accesskey_unused",
+      "status": "pass",
+      "severity": "medium",
+      "resource_uid": "arn:aws:iam::123456789001:user/lab-user-nomfa",
+      "resource_name": "lab-user-nomfa",
+      "region": "us-east-1",
+      "status_detail": "User lab-user-nomfa does not have access keys.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-iam_user_console_access_unused-123456789001-us-east-1-lab-user-nomfa",
+      "check_id": "iam_user_console_access_unused",
+      "status": "pass",
+      "severity": "medium",
+      "resource_uid": "arn:aws:iam::123456789001:user/lab-user-nomfa",
+      "resource_name": "lab-user-nomfa",
+      "region": "us-east-1",
+      "status_detail": "User lab-user-nomfa does not have console access enabled or is unused.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    }
+  ]
+}

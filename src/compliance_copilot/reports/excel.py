@@ -9,11 +9,12 @@ from openpyxl.worksheet.worksheet import Worksheet
 
 from compliance_copilot.reports.builders import (
     LEVEL_LABEL,
+    PRIMARY_FRAMEWORK,
     SEVERITY_LABEL,
-    THEME_LABEL,
     TREATMENT_LABEL,
     AuditEntry,
     Report,
+    Statement,
 )
 from compliance_copilot.risk import METHODOLOGY_VERSION, RiskLevel, level_for
 
@@ -37,9 +38,12 @@ def write_excel(report: Report, out_dir: Path) -> Path:
     _summary(wb.active, report)
     _risks(wb.create_sheet("Matriz de riesgos"), report)
     _heatmap(wb.create_sheet("Mapa de calor"), report)
-    _soa(wb.create_sheet("SoA ISO 27001"), report)
+    for statement in report.statements:
+        _statement(wb.create_sheet(statement.catalog.statement.sheet), statement)
     _remediation(wb.create_sheet("Plan de remediación"), report)
     _audit(wb.create_sheet("Hallazgos de auditoría"), report)
+    if any(s.unmapped for s in report.statements):
+        _unmapped(wb.create_sheet("Sin correspondencia"), report)
     path = out_dir / FILENAME
     wb.save(path)
     return path
@@ -99,7 +103,7 @@ def _summary(ws: Worksheet, report: Report) -> None:
 def _risks(ws: Worksheet, report: Report) -> None:
     rows = [[
         n, LEVEL_LABEL[a.level], a.score, a.probability, a.impact, f.check_id, f.check_title, f.resource_name,
-        f.resource_type, f.region, a.classification or "-", ", ".join(f.compliance.get("ISO27001-2022", [])),
+        f.resource_type, f.region, a.classification or "-", ", ".join(f.compliance.get(PRIMARY_FRAMEWORK, [])),
         TREATMENT_LABEL[a.treatment], a.rationale, f.status_detail,
     ] for n, (f, a) in enumerate(((r.finding, r.assessment) for r in report.risks), start=1)]
     _table(ws, ["#", "Nivel", "Riesgo", "P", "I", "Check", "Hallazgo", "Recurso", "Tipo", "Región",
@@ -124,16 +128,27 @@ def _heatmap(ws: Worksheet, report: Report) -> None:
                                    "El color es el nivel de la celda (P × I).")
 
 
-def _soa(ws: Worksheet, report: Report) -> None:
+def _statement(ws: Worksheet, statement: Statement) -> None:
+    """La declaración de un marco. Las columnas de decisión humana van al final, resaltadas."""
+    catalog, config = statement.catalog, statement.catalog.statement
     rows = [[
-        r.control.id, THEME_LABEL[r.control.theme], r.control.title, r.status.value, r.pass_count, r.fail_count,
-        r.manual_count, LEVEL_LABEL[r.max_level] if r.max_level else "-", ", ".join(r.check_ids),
-        r.applicable, r.justification,
-    ] for r in report.soa]
-    _table(ws, ["Control", "Tema", "Título", "Estado técnico", "PASS", "FAIL", "MANUAL", "Riesgo máximo",
-                "Checks", "Aplicable", "Justificación"],
-           rows, [9, 15, 42, 26, 7, 7, 9, 13, 50, 12, 50], human_columns=(10, 11))
-    _paint_level(ws, 8, [r.max_level for r in report.soa])
+        r.requirement.id, catalog.group_label(r.requirement.group), r.requirement.title, r.status.value,
+        r.pass_count, r.fail_count, r.manual_count, LEVEL_LABEL[r.max_level] if r.max_level else "-",
+        ", ".join(r.check_ids), *r.human,
+    ] for r in statement.rows]
+    fixed = [config.id_label, config.group_label, "Título", "Estado técnico", "PASS", "FAIL", "MANUAL",
+             "Riesgo máximo", "Checks"]
+    human = tuple(range(len(fixed) + 1, len(fixed) + len(config.human_columns) + 1))
+    widths = [9, 15, 42, 26, 7, 7, 9, 13, 50, *[12 if i == 0 else 50 for i in range(len(config.human_columns))]]
+    _table(ws, [*fixed, *config.human_columns], rows, widths, human_columns=human)
+    _paint_level(ws, 8, [r.max_level for r in statement.rows])
+
+
+def _unmapped(ws: Worksheet, report: Report) -> None:
+    """IDs de Prowler sin correspondencia en el catálogo de su marco (ADR 0007): se reportan, no se descartan."""
+    rows = [[s.framework, u.raw_id, u.finding_count, ", ".join(u.check_ids)]
+            for s in report.statements for u in s.unmapped]
+    _table(ws, ["Marco", "ID de Prowler", "Hallazgos", "Checks"], rows, [16, 16, 10, 80])
 
 
 def _remediation(ws: Worksheet, report: Report) -> None:

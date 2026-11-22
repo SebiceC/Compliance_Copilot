@@ -1,0 +1,46 @@
+{
+  "framework": "NIST-CSF-2.0",
+  "control": "DE.CM-01",
+  "title": "Redes y servicios de red monitoreados",
+  "technical_status": "Con brechas",
+  "counts": {
+    "pass": 1,
+    "fail": 2,
+    "manual": 0
+  },
+  "evidence": [
+    {
+      "finding_uid": "prowler-aws-cloudtrail_cloudwatch_logging_enabled-123456789001-us-east-1-lab-trail",
+      "check_id": "cloudtrail_cloudwatch_logging_enabled",
+      "status": "fail",
+      "severity": "low",
+      "resource_uid": "arn:aws:cloudtrail:us-east-1:123456789001:trail/lab-trail",
+      "resource_name": "lab-trail",
+      "region": "us-east-1",
+      "status_detail": "Multiregion trail lab-trail has not been logging in the last 24h or is not configured to deliver logs.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-cloudtrail_insights_exist-123456789001-us-east-1-lab-trail",
+      "check_id": "cloudtrail_insights_exist",
+      "status": "fail",
+      "severity": "low",
+      "resource_uid": "arn:aws:cloudtrail:us-east-1:123456789001:trail/lab-trail",
+      "resource_name": "lab-trail",
+      "region": "us-east-1",
+      "status_detail": "Trail lab-trail does not have insight selectors and it is logging.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-cloudtrail_multi_region_enabled_logging_management_events-123456789001-us-east-1-lab-trail",
+      "check_id": "cloudtrail_multi_region_enabled_logging_management_events",
+      "status": "pass",
+      "severity": "low",
+      "resource_uid": "arn:aws:cloudtrail:us-east-1:123456789001:trail/lab-trail",
+      "resource_name": "lab-trail",
+      "region": "us-east-1",
+      "status_detail": "Trail lab-trail from home region us-east-1 is multi-region, is logging and have management events enabled.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    }
+  ]
+}

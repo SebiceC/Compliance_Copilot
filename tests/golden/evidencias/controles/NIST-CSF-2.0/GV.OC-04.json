@@ -1,0 +1,35 @@
+{
+  "framework": "NIST-CSF-2.0",
+  "control": "GV.OC-04",
+  "title": "Se comunican los servicios críticos de los que dependen terceros",
+  "technical_status": "Con brechas",
+  "counts": {
+    "pass": 0,
+    "fail": 2,
+    "manual": 0
+  },
+  "evidence": [
+    {
+      "finding_uid": "prowler-aws-s3_bucket_cross_region_replication-123456789001-us-east-1-aws-cloudtrail-logs-123456789001-5f59e248",
+      "check_id": "s3_bucket_cross_region_replication",
+      "status": "fail",
+      "severity": "low",
+      "resource_uid": "arn:aws:s3:::aws-cloudtrail-logs-123456789001-5f59e248",
+      "resource_name": "aws-cloudtrail-logs-123456789001-5f59e248",
+      "region": "us-east-1",
+      "status_detail": "S3 Bucket aws-cloudtrail-logs-123456789001-5f59e248 does not have correct cross region replication configuration.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-s3_bucket_cross_region_replication-123456789001-us-east-1-cc-lab-data-7asda3",
+      "check_id": "s3_bucket_cross_region_replication",
+      "status": "fail",
+      "severity": "low",
+      "resource_uid": "arn:aws:s3:::cc-lab-data-7asda3",
+      "resource_name": "cc-lab-data-7asda3",
+      "region": "us-east-1",
+      "status_detail": "S3 Bucket cc-lab-data-7asda3 does not have correct cross region replication configuration.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    }
+  ]
+}

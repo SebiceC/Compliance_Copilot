@@ -5,6 +5,7 @@
   "Mapa de calor",
   "SoA ISO 27001",
   "Criterios SOC 2",
+  "Perfil NIST CSF 2.0",
   "Plan de remediación",
   "Hallazgos de auditoría"
  ],
@@ -9446,6 +9447,4947 @@
      },
      {
       "v": "Atención de consultas, quejas y disputas",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ]
+   ]
+  },
+  "Perfil NIST CSF 2.0": {
+   "freeze_panes": "A2",
+   "auto_filter": "A1:K107",
+   "widths": {
+    "A": 9.0,
+    "B": 15.0,
+    "C": 42.0,
+    "D": 26.0,
+    "E": 7.0,
+    "F": 7.0,
+    "G": 9.0,
+    "H": 13.0,
+    "I": 50.0,
+    "J": 12.0,
+    "K": 50.0
+   },
+   "rows": [
+    [
+     {
+      "v": "Subcategoría",
+      "fill": "001F3864"
+     },
+     {
+      "v": "Categoría",
+      "fill": "001F3864"
+     },
+     {
+      "v": "Título",
+      "fill": "001F3864"
+     },
+     {
+      "v": "Estado técnico",
+      "fill": "001F3864"
+     },
+     {
+      "v": "PASS",
+      "fill": "001F3864"
+     },
+     {
+      "v": "FAIL",
+      "fill": "001F3864"
+     },
+     {
+      "v": "MANUAL",
+      "fill": "001F3864"
+     },
+     {
+      "v": "Riesgo máximo",
+      "fill": "001F3864"
+     },
+     {
+      "v": "Checks",
+      "fill": "001F3864"
+     },
+     {
+      "v": "Perfil objetivo",
+      "fill": "001F3864"
+     },
+     {
+      "v": "Prioridad",
+      "fill": "001F3864"
+     }
+    ],
+    [
+     {
+      "v": "GV.OC-01",
+      "fill": null
+     },
+     {
+      "v": "GV.OC · Contexto organizacional",
+      "fill": null
+     },
+     {
+      "v": "La misión de la organización orienta la gestión del riesgo",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "GV.OC-02",
+      "fill": null
+     },
+     {
+      "v": "GV.OC · Contexto organizacional",
+      "fill": null
+     },
+     {
+      "v": "Se entienden las expectativas de las partes interesadas",
+      "fill": null
+     },
+     {
+      "v": "Con brechas",
+      "fill": null
+     },
+     {
+      "v": 1,
+      "fill": null
+     },
+     {
+      "v": 1,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "Bajo",
+      "fill": "00C6EFCE"
+     },
+     {
+      "v": "iam_policy_attached_only_to_group_or_roles, iam_user_administrator_access_policy",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "GV.OC-03",
+      "fill": null
+     },
+     {
+      "v": "GV.OC · Contexto organizacional",
+      "fill": null
+     },
+     {
+      "v": "Se gestionan los requisitos legales, regulatorios y contractuales",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "GV.OC-04",
+      "fill": null
+     },
+     {
+      "v": "GV.OC · Contexto organizacional",
+      "fill": null
+     },
+     {
+      "v": "Se comunican los servicios críticos de los que dependen terceros",
+      "fill": null
+     },
+     {
+      "v": "Con brechas",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 2,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "Medio",
+      "fill": "00FFEB9C"
+     },
+     {
+      "v": "s3_bucket_cross_region_replication",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "GV.OC-05",
+      "fill": null
+     },
+     {
+      "v": "GV.OC · Contexto organizacional",
+      "fill": null
+     },
+     {
+      "v": "Se comunican los servicios de los que depende la organización",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "GV.RM-01",
+      "fill": null
+     },
+     {
+      "v": "GV.RM · Estrategia de gestión de riesgos",
+      "fill": null
+     },
+     {
+      "v": "Objetivos de gestión de riesgos acordados",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "GV.RM-02",
+      "fill": null
+     },
+     {
+      "v": "GV.RM · Estrategia de gestión de riesgos",
+      "fill": null
+     },
+     {
+      "v": "Apetito y tolerancia al riesgo definidos y comunicados",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "GV.RM-03",
+      "fill": null
+     },
+     {
+      "v": "GV.RM · Estrategia de gestión de riesgos",
+      "fill": null
+     },
+     {
+      "v": "La ciberseguridad se integra en la gestión de riesgos empresariales",
+      "fill": null
+     },
+     {
+      "v": "Sin brechas detectadas",
+      "fill": null
+     },
+     {
+      "v": 1,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": "cloudtrail_multi_region_enabled_logging_management_events",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "GV.RM-04",
+      "fill": null
+     },
+     {
+      "v": "GV.RM · Estrategia de gestión de riesgos",
+      "fill": null
+     },
+     {
+      "v": "Dirección estratégica sobre las opciones de respuesta al riesgo",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "GV.RM-05",
+      "fill": null
+     },
+     {
+      "v": "GV.RM · Estrategia de gestión de riesgos",
+      "fill": null
+     },
+     {
+      "v": "Líneas de comunicación sobre riesgos, incluidos los de proveedores",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "GV.RM-06",
+      "fill": null
+     },
+     {
+      "v": "GV.RM · Estrategia de gestión de riesgos",
+      "fill": null
+     },
+     {
+      "v": "Método estandarizado para calcular y priorizar riesgos",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "GV.RM-07",
+      "fill": null
+     },
+     {
+      "v": "GV.RM · Estrategia de gestión de riesgos",
+      "fill": null
+     },
+     {
+      "v": "Las oportunidades (riesgos positivos) se consideran",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "GV.RR-01",
+      "fill": null
+     },
+     {
+      "v": "GV.RR · Roles, responsabilidades y autoridades",
+      "fill": null
+     },
+     {
+      "v": "La dirección responde por el riesgo y promueve una cultura de riesgo",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "GV.RR-02",
+      "fill": null
+     },
+     {
+      "v": "GV.RR · Roles, responsabilidades y autoridades",
+      "fill": null
+     },
+     {
+      "v": "Roles, responsabilidades y autoridades definidos y aplicados",
+      "fill": null
+     },
+     {
+      "v": "Con brechas",
+      "fill": null
+     },
+     {
+      "v": 1,
+      "fill": null
+     },
+     {
+      "v": 1,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "Bajo",
+      "fill": "00C6EFCE"
+     },
+     {
+      "v": "iam_policy_attached_only_to_group_or_roles, iam_user_administrator_access_policy",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "GV.RR-03",
+      "fill": null
+     },
+     {
+      "v": "GV.RR · Roles, responsabilidades y autoridades",
+      "fill": null
+     },
+     {
+      "v": "Recursos suficientes para la estrategia de riesgo",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "GV.RR-04",
+      "fill": null
+     },
+     {
+      "v": "GV.RR · Roles, responsabilidades y autoridades",
+      "fill": null
+     },
+     {
+      "v": "La ciberseguridad se incluye en las prácticas de recursos humanos",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "GV.PO-01",
+      "fill": null
+     },
+     {
+      "v": "GV.PO · Política",
+      "fill": null
+     },
+     {
+      "v": "Política de gestión de riesgos establecida, comunicada y aplicada",
+      "fill": null
+     },
+     {
+      "v": "Con brechas",
+      "fill": null
+     },
+     {
+      "v": 1,
+      "fill": null
+     },
+     {
+      "v": 1,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "Bajo",
+      "fill": "00C6EFCE"
+     },
+     {
+      "v": "iam_policy_attached_only_to_group_or_roles, iam_user_administrator_access_policy",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "GV.PO-02",
+      "fill": null
+     },
+     {
+      "v": "GV.PO · Política",
+      "fill": null
+     },
+     {
+      "v": "La política se revisa y actualiza ante los cambios",
+      "fill": null
+     },
+     {
+      "v": "Con brechas",
+      "fill": null
+     },
+     {
+      "v": 1,
+      "fill": null
+     },
+     {
+      "v": 1,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "Bajo",
+      "fill": "00C6EFCE"
+     },
+     {
+      "v": "iam_policy_attached_only_to_group_or_roles, iam_user_administrator_access_policy",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "GV.OV-01",
+      "fill": null
+     },
+     {
+      "v": "GV.OV · Supervisión",
+      "fill": null
+     },
+     {
+      "v": "Los resultados de la estrategia de riesgo se revisan para ajustarla",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "GV.OV-02",
+      "fill": null
+     },
+     {
+      "v": "GV.OV · Supervisión",
+      "fill": null
+     },
+     {
+      "v": "La estrategia de riesgo se revisa para cubrir requisitos y riesgos",
+      "fill": null
+     },
+     {
+      "v": "Sin brechas detectadas",
+      "fill": null
+     },
+     {
+      "v": 1,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": "cloudtrail_multi_region_enabled_logging_management_events",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "GV.OV-03",
+      "fill": null
+     },
+     {
+      "v": "GV.OV · Supervisión",
+      "fill": null
+     },
+     {
+      "v": "El desempeño de la gestión de riesgos se evalúa y revisa",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "GV.SC-01",
+      "fill": null
+     },
+     {
+      "v": "GV.SC · Gestión de riesgos de la cadena de suministro",
+      "fill": null
+     },
+     {
+      "v": "Programa de gestión de riesgos de la cadena de suministro",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "GV.SC-02",
+      "fill": null
+     },
+     {
+      "v": "GV.SC · Gestión de riesgos de la cadena de suministro",
+      "fill": null
+     },
+     {
+      "v": "Roles de ciberseguridad de proveedores, clientes y socios definidos",
+      "fill": null
+     },
+     {
+      "v": "Con brechas",
+      "fill": null
+     },
+     {
+      "v": 1,
+      "fill": null
+     },
+     {
+      "v": 1,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "Bajo",
+      "fill": "00C6EFCE"
+     },
+     {
+      "v": "iam_policy_attached_only_to_group_or_roles, iam_user_administrator_access_policy",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "GV.SC-03",
+      "fill": null
+     },
+     {
+      "v": "GV.SC · Gestión de riesgos de la cadena de suministro",
+      "fill": null
+     },
+     {
+      "v": "Riesgos de la cadena de suministro integrados en la gestión de riesgos",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "GV.SC-04",
+      "fill": null
+     },
+     {
+      "v": "GV.SC · Gestión de riesgos de la cadena de suministro",
+      "fill": null
+     },
+     {
+      "v": "Proveedores conocidos y priorizados por criticidad",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "GV.SC-05",
+      "fill": null
+     },
+     {
+      "v": "GV.SC · Gestión de riesgos de la cadena de suministro",
+      "fill": null
+     },
+     {
+      "v": "Requisitos de ciberseguridad en los contratos con proveedores",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "GV.SC-06",
+      "fill": null
+     },
+     {
+      "v": "GV.SC · Gestión de riesgos de la cadena de suministro",
+      "fill": null
+     },
+     {
+      "v": "Debida diligencia antes de contratar a un proveedor",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "GV.SC-07",
+      "fill": null
+     },
+     {
+      "v": "GV.SC · Gestión de riesgos de la cadena de suministro",
+      "fill": null
+     },
+     {
+      "v": "Riesgos de proveedores evaluados y monitoreados durante la relación",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "GV.SC-08",
+      "fill": null
+     },
+     {
+      "v": "GV.SC · Gestión de riesgos de la cadena de suministro",
+      "fill": null
+     },
+     {
+      "v": "Proveedores incluidos en la planificación y respuesta a incidentes",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "GV.SC-09",
+      "fill": null
+     },
+     {
+      "v": "GV.SC · Gestión de riesgos de la cadena de suministro",
+      "fill": null
+     },
+     {
+      "v": "Prácticas de la cadena de suministro integradas en el ciclo de vida",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "GV.SC-10",
+      "fill": null
+     },
+     {
+      "v": "GV.SC · Gestión de riesgos de la cadena de suministro",
+      "fill": null
+     },
+     {
+      "v": "Planes para después de terminar la relación con un proveedor",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "ID.AM-01",
+      "fill": null
+     },
+     {
+      "v": "ID.AM · Gestión de activos",
+      "fill": null
+     },
+     {
+      "v": "Inventario del hardware gestionado",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "ID.AM-02",
+      "fill": null
+     },
+     {
+      "v": "ID.AM · Gestión de activos",
+      "fill": null
+     },
+     {
+      "v": "Inventario de software, servicios y sistemas gestionados",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "ID.AM-03",
+      "fill": null
+     },
+     {
+      "v": "ID.AM · Gestión de activos",
+      "fill": null
+     },
+     {
+      "v": "Representación de las comunicaciones y flujos de datos de red",
+      "fill": null
+     },
+     {
+      "v": "Con brechas",
+      "fill": null
+     },
+     {
+      "v": 1,
+      "fill": null
+     },
+     {
+      "v": 1,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "Alto",
+      "fill": "00F8CBAD"
+     },
+     {
+      "v": "cloudtrail_cloudwatch_logging_enabled, cloudtrail_multi_region_enabled_logging_management_events",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "ID.AM-04",
+      "fill": null
+     },
+     {
+      "v": "ID.AM · Gestión de activos",
+      "fill": null
+     },
+     {
+      "v": "Inventario de los servicios prestados por proveedores",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "ID.AM-05",
+      "fill": null
+     },
+     {
+      "v": "ID.AM · Gestión de activos",
+      "fill": null
+     },
+     {
+      "v": "Activos priorizados por clasificación, criticidad e impacto",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "ID.AM-07",
+      "fill": null
+     },
+     {
+      "v": "ID.AM · Gestión de activos",
+      "fill": null
+     },
+     {
+      "v": "Inventario de datos y sus metadatos para los tipos designados",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "ID.AM-08",
+      "fill": null
+     },
+     {
+      "v": "ID.AM · Gestión de activos",
+      "fill": null
+     },
+     {
+      "v": "Gestión de sistemas, hardware, software y datos en su ciclo de vida",
+      "fill": null
+     },
+     {
+      "v": "Con brechas",
+      "fill": null
+     },
+     {
+      "v": 2,
+      "fill": null
+     },
+     {
+      "v": 5,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "Alto",
+      "fill": "00F8CBAD"
+     },
+     {
+      "v": "cloudtrail_bucket_requires_mfa_delete, s3_bucket_default_encryption, s3_bucket_kms_encryption, s3_bucket_lifecycle_enabled",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "ID.RA-01",
+      "fill": null
+     },
+     {
+      "v": "ID.RA · Evaluación de riesgos",
+      "fill": null
+     },
+     {
+      "v": "Vulnerabilidades de los activos identificadas y registradas",
+      "fill": null
+     },
+     {
+      "v": "Sin brechas detectadas",
+      "fill": null
+     },
+     {
+      "v": 6,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": "s3_bucket_cross_account_access, s3_bucket_public_access, s3_bucket_public_write_acl",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "ID.RA-02",
+      "fill": null
+     },
+     {
+      "v": "ID.RA · Evaluación de riesgos",
+      "fill": null
+     },
+     {
+      "v": "Se recibe inteligencia de amenazas",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "ID.RA-03",
+      "fill": null
+     },
+     {
+      "v": "ID.RA · Evaluación de riesgos",
+      "fill": null
+     },
+     {
+      "v": "Amenazas internas y externas identificadas y registradas",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "ID.RA-04",
+      "fill": null
+     },
+     {
+      "v": "ID.RA · Evaluación de riesgos",
+      "fill": null
+     },
+     {
+      "v": "Impacto y probabilidad de las amenazas identificados",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "ID.RA-05",
+      "fill": null
+     },
+     {
+      "v": "ID.RA · Evaluación de riesgos",
+      "fill": null
+     },
+     {
+      "v": "El riesgo inherente se usa para priorizar la respuesta",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "ID.RA-06",
+      "fill": null
+     },
+     {
+      "v": "ID.RA · Evaluación de riesgos",
+      "fill": null
+     },
+     {
+      "v": "Respuestas al riesgo elegidas, planificadas y seguidas",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "ID.RA-07",
+      "fill": null
+     },
+     {
+      "v": "ID.RA · Evaluación de riesgos",
+      "fill": null
+     },
+     {
+      "v": "Cambios y excepciones gestionados y evaluados por su riesgo",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "ID.RA-08",
+      "fill": null
+     },
+     {
+      "v": "ID.RA · Evaluación de riesgos",
+      "fill": null
+     },
+     {
+      "v": "Procesos para recibir y responder a divulgaciones de vulnerabilidades",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "ID.RA-09",
+      "fill": null
+     },
+     {
+      "v": "ID.RA · Evaluación de riesgos",
+      "fill": null
+     },
+     {
+      "v": "Autenticidad e integridad del hardware y software antes de usarlos",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "ID.RA-10",
+      "fill": null
+     },
+     {
+      "v": "ID.RA · Evaluación de riesgos",
+      "fill": null
+     },
+     {
+      "v": "Proveedores críticos evaluados antes de contratarlos",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "ID.IM-01",
+      "fill": null
+     },
+     {
+      "v": "ID.IM · Mejora",
+      "fill": null
+     },
+     {
+      "v": "Mejoras identificadas a partir de evaluaciones",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "ID.IM-02",
+      "fill": null
+     },
+     {
+      "v": "ID.IM · Mejora",
+      "fill": null
+     },
+     {
+      "v": "Mejoras identificadas a partir de pruebas y ejercicios",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "ID.IM-03",
+      "fill": null
+     },
+     {
+      "v": "ID.IM · Mejora",
+      "fill": null
+     },
+     {
+      "v": "Mejoras identificadas a partir de la operación",
+      "fill": null
+     },
+     {
+      "v": "Con brechas",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 1,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "Alto",
+      "fill": "00F8CBAD"
+     },
+     {
+      "v": "cloudtrail_cloudwatch_logging_enabled",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "ID.IM-04",
+      "fill": null
+     },
+     {
+      "v": "ID.IM · Mejora",
+      "fill": null
+     },
+     {
+      "v": "Planes de respuesta a incidentes establecidos y mejorados",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "PR.AA-01",
+      "fill": null
+     },
+     {
+      "v": "PR.AA · Identidad, autenticación y control de acceso",
+      "fill": null
+     },
+     {
+      "v": "Identidades y credenciales gestionadas por la organización",
+      "fill": null
+     },
+     {
+      "v": "Con brechas",
+      "fill": null
+     },
+     {
+      "v": 3,
+      "fill": null
+     },
+     {
+      "v": 1,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "Bajo",
+      "fill": "00C6EFCE"
+     },
+     {
+      "v": "iam_policy_attached_only_to_group_or_roles, iam_user_accesskey_unused, iam_user_console_access_unused, iam_user_two_active_access_key",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "PR.AA-02",
+      "fill": null
+     },
+     {
+      "v": "PR.AA · Identidad, autenticación y control de acceso",
+      "fill": null
+     },
+     {
+      "v": "Identidades verificadas y vinculadas a sus credenciales",
+      "fill": null
+     },
+     {
+      "v": "Con brechas",
+      "fill": null
+     },
+     {
+      "v": 3,
+      "fill": null
+     },
+     {
+      "v": 1,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "Bajo",
+      "fill": "00C6EFCE"
+     },
+     {
+      "v": "iam_policy_attached_only_to_group_or_roles, iam_rotate_access_key_90_days, iam_user_two_active_access_key, iam_user_with_temporary_credentials",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "PR.AA-03",
+      "fill": null
+     },
+     {
+      "v": "PR.AA · Identidad, autenticación y control de acceso",
+      "fill": null
+     },
+     {
+      "v": "Usuarios, servicios y hardware autenticados",
+      "fill": null
+     },
+     {
+      "v": "Con brechas",
+      "fill": null
+     },
+     {
+      "v": 6,
+      "fill": null
+     },
+     {
+      "v": 3,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "Medio",
+      "fill": "00FFEB9C"
+     },
+     {
+      "v": "ec2_securitygroup_allow_ingress_from_internet_to_all_ports, ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_22, ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_3389, iam_policy_attached_only_to_group_or_roles, iam_user_mfa_enabled_console_access, s3_bucket_level_public_access_block, s3_bucket_public_access",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "PR.AA-04",
+      "fill": null
+     },
+     {
+      "v": "PR.AA · Identidad, autenticación y control de acceso",
+      "fill": null
+     },
+     {
+      "v": "Aserciones de identidad protegidas, transmitidas y verificadas",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "PR.AA-05",
+      "fill": null
+     },
+     {
+      "v": "PR.AA · Identidad, autenticación y control de acceso",
+      "fill": null
+     },
+     {
+      "v": "Permisos con mínimo privilegio y separación de funciones",
+      "fill": null
+     },
+     {
+      "v": "Con brechas",
+      "fill": null
+     },
+     {
+      "v": 10,
+      "fill": null
+     },
+     {
+      "v": 2,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "Medio",
+      "fill": "00FFEB9C"
+     },
+     {
+      "v": "ec2_securitygroup_allow_ingress_from_internet_to_all_ports, ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_22, ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_3389, iam_policy_attached_only_to_group_or_roles, iam_user_accesskey_unused, iam_user_administrator_access_policy, iam_user_console_access_unused, iam_user_two_active_access_key, s3_bucket_level_public_access_block, s3_bucket_public_access",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "PR.AA-06",
+      "fill": null
+     },
+     {
+      "v": "PR.AA · Identidad, autenticación y control de acceso",
+      "fill": null
+     },
+     {
+      "v": "Acceso físico a los activos gestionado y monitoreado",
+      "fill": null
+     },
+     {
+      "v": "Con brechas",
+      "fill": null
+     },
+     {
+      "v": 1,
+      "fill": null
+     },
+     {
+      "v": 5,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "Alto",
+      "fill": "00F8CBAD"
+     },
+     {
+      "v": "cloudtrail_kms_encryption_enabled, ec2_securitygroup_allow_ingress_from_internet_to_all_ports, s3_bucket_kms_encryption, s3_bucket_secure_transport_policy",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "PR.AT-01",
+      "fill": null
+     },
+     {
+      "v": "PR.AT · Concienciación y formación",
+      "fill": null
+     },
+     {
+      "v": "Formación del personal en ciberseguridad general",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "PR.AT-02",
+      "fill": null
+     },
+     {
+      "v": "PR.AT · Concienciación y formación",
+      "fill": null
+     },
+     {
+      "v": "Formación específica para roles especializados",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "PR.DS-01",
+      "fill": null
+     },
+     {
+      "v": "PR.DS · Seguridad de los datos",
+      "fill": null
+     },
+     {
+      "v": "Datos en reposo protegidos",
+      "fill": null
+     },
+     {
+      "v": "Con brechas",
+      "fill": null
+     },
+     {
+      "v": 14,
+      "fill": null
+     },
+     {
+      "v": 4,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "Alto",
+      "fill": "00F8CBAD"
+     },
+     {
+      "v": "cloudtrail_kms_encryption_enabled, cloudtrail_log_file_validation_enabled, cloudtrail_logs_s3_bucket_is_not_publicly_accessible, ec2_securitygroup_allow_ingress_from_internet_to_all_ports, s3_bucket_acl_prohibited, s3_bucket_cross_account_access, s3_bucket_default_encryption, s3_bucket_kms_encryption, s3_bucket_public_access, s3_bucket_public_list_acl, s3_bucket_public_write_acl",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "PR.DS-02",
+      "fill": null
+     },
+     {
+      "v": "PR.DS · Seguridad de los datos",
+      "fill": null
+     },
+     {
+      "v": "Datos en tránsito protegidos",
+      "fill": null
+     },
+     {
+      "v": "Con brechas",
+      "fill": null
+     },
+     {
+      "v": 12,
+      "fill": null
+     },
+     {
+      "v": 5,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "Alto",
+      "fill": "00F8CBAD"
+     },
+     {
+      "v": "cloudtrail_kms_encryption_enabled, cloudtrail_logs_s3_bucket_is_not_publicly_accessible, ec2_securitygroup_allow_ingress_from_internet_to_all_ports, s3_bucket_acl_prohibited, s3_bucket_cross_account_access, s3_bucket_kms_encryption, s3_bucket_public_access, s3_bucket_public_list_acl, s3_bucket_public_write_acl, s3_bucket_secure_transport_policy",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "PR.DS-10",
+      "fill": null
+     },
+     {
+      "v": "PR.DS · Seguridad de los datos",
+      "fill": null
+     },
+     {
+      "v": "Datos en uso protegidos",
+      "fill": null
+     },
+     {
+      "v": "Con brechas",
+      "fill": null
+     },
+     {
+      "v": 12,
+      "fill": null
+     },
+     {
+      "v": 3,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "Alto",
+      "fill": "00F8CBAD"
+     },
+     {
+      "v": "cloudtrail_kms_encryption_enabled, cloudtrail_logs_s3_bucket_is_not_publicly_accessible, ec2_securitygroup_allow_ingress_from_internet_to_all_ports, s3_bucket_acl_prohibited, s3_bucket_cross_account_access, s3_bucket_kms_encryption, s3_bucket_public_access, s3_bucket_public_list_acl, s3_bucket_public_write_acl",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "PR.DS-11",
+      "fill": null
+     },
+     {
+      "v": "PR.DS · Seguridad de los datos",
+      "fill": null
+     },
+     {
+      "v": "Copias de respaldo creadas, protegidas y probadas",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "PR.PS-01",
+      "fill": null
+     },
+     {
+      "v": "PR.PS · Seguridad de la plataforma",
+      "fill": null
+     },
+     {
+      "v": "Prácticas de gestión de la configuración aplicadas",
+      "fill": null
+     },
+     {
+      "v": "Con brechas",
+      "fill": null
+     },
+     {
+      "v": 5,
+      "fill": null
+     },
+     {
+      "v": 2,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "Bajo",
+      "fill": "00C6EFCE"
+     },
+     {
+      "v": "ec2_securitygroup_allow_ingress_from_internet_to_all_ports, ec2_securitygroup_not_used, iam_policy_attached_only_to_group_or_roles, s3_bucket_cross_account_access, s3_bucket_public_access",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "PR.PS-02",
+      "fill": null
+     },
+     {
+      "v": "PR.PS · Seguridad de la plataforma",
+      "fill": null
+     },
+     {
+      "v": "Software mantenido, reemplazado y retirado según el riesgo",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "PR.PS-03",
+      "fill": null
+     },
+     {
+      "v": "PR.PS · Seguridad de la plataforma",
+      "fill": null
+     },
+     {
+      "v": "Hardware mantenido, reemplazado y retirado según el riesgo",
+      "fill": null
+     },
+     {
+      "v": "Con brechas",
+      "fill": null
+     },
+     {
+      "v": 2,
+      "fill": null
+     },
+     {
+      "v": 5,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "Alto",
+      "fill": "00F8CBAD"
+     },
+     {
+      "v": "cloudtrail_bucket_requires_mfa_delete, s3_bucket_default_encryption, s3_bucket_kms_encryption, s3_bucket_lifecycle_enabled",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "PR.PS-04",
+      "fill": null
+     },
+     {
+      "v": "PR.PS · Seguridad de la plataforma",
+      "fill": null
+     },
+     {
+      "v": "Registros generados y disponibles para el monitoreo continuo",
+      "fill": null
+     },
+     {
+      "v": "Con brechas",
+      "fill": null
+     },
+     {
+      "v": 3,
+      "fill": null
+     },
+     {
+      "v": 3,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "Alto",
+      "fill": "00F8CBAD"
+     },
+     {
+      "v": "cloudtrail_bedrock_logging_enabled, cloudtrail_kms_encryption_enabled, cloudtrail_log_file_validation_enabled, cloudtrail_logs_s3_bucket_access_logging_enabled, cloudtrail_logs_s3_bucket_is_not_publicly_accessible, cloudtrail_multi_region_enabled_logging_management_events",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "PR.PS-05",
+      "fill": null
+     },
+     {
+      "v": "PR.PS · Seguridad de la plataforma",
+      "fill": null
+     },
+     {
+      "v": "Se impide instalar y ejecutar software no autorizado",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "PR.PS-06",
+      "fill": null
+     },
+     {
+      "v": "PR.PS · Seguridad de la plataforma",
+      "fill": null
+     },
+     {
+      "v": "Prácticas de desarrollo seguro en el ciclo de vida del software",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "PR.IR-01",
+      "fill": null
+     },
+     {
+      "v": "PR.IR · Resiliencia de la infraestructura tecnológica",
+      "fill": null
+     },
+     {
+      "v": "Redes y entornos protegidos contra acceso lógico no autorizado",
+      "fill": null
+     },
+     {
+      "v": "Con brechas",
+      "fill": null
+     },
+     {
+      "v": 11,
+      "fill": null
+     },
+     {
+      "v": 7,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "Alto",
+      "fill": "00F8CBAD"
+     },
+     {
+      "v": "cloudtrail_kms_encryption_enabled, ec2_securitygroup_allow_ingress_from_internet_to_all_ports, ec2_securitygroup_allow_ingress_from_internet_to_high_risk_tcp_ports, ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_22, ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_3389, ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_elasticsearch_kibana_9200_9300_5601, ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_mongodb_27017_27018, ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_oracle_1521_2483, ec2_securitygroup_allow_ingress_from_internet_to_tcp_port_postgres_5432, ec2_securitygroup_not_used, s3_bucket_kms_encryption, s3_bucket_level_public_access_block, s3_bucket_public_access, s3_bucket_secure_transport_policy",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "PR.IR-02",
+      "fill": null
+     },
+     {
+      "v": "PR.IR · Resiliencia de la infraestructura tecnológica",
+      "fill": null
+     },
+     {
+      "v": "Activos tecnológicos protegidos de amenazas ambientales",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "PR.IR-03",
+      "fill": null
+     },
+     {
+      "v": "PR.IR · Resiliencia de la infraestructura tecnológica",
+      "fill": null
+     },
+     {
+      "v": "Mecanismos de resiliencia en situaciones normales y adversas",
+      "fill": null
+     },
+     {
+      "v": "Con brechas",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 2,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "Medio",
+      "fill": "00FFEB9C"
+     },
+     {
+      "v": "s3_bucket_cross_region_replication",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "PR.IR-04",
+      "fill": null
+     },
+     {
+      "v": "PR.IR · Resiliencia de la infraestructura tecnológica",
+      "fill": null
+     },
+     {
+      "v": "Capacidad suficiente para mantener la disponibilidad",
+      "fill": null
+     },
+     {
+      "v": "Con brechas",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 4,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "Medio",
+      "fill": "00FFEB9C"
+     },
+     {
+      "v": "s3_bucket_cross_region_replication, s3_bucket_lifecycle_enabled",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "DE.CM-01",
+      "fill": null
+     },
+     {
+      "v": "DE.CM · Monitoreo continuo",
+      "fill": null
+     },
+     {
+      "v": "Redes y servicios de red monitoreados",
+      "fill": null
+     },
+     {
+      "v": "Con brechas",
+      "fill": null
+     },
+     {
+      "v": 1,
+      "fill": null
+     },
+     {
+      "v": 2,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "Alto",
+      "fill": "00F8CBAD"
+     },
+     {
+      "v": "cloudtrail_cloudwatch_logging_enabled, cloudtrail_insights_exist, cloudtrail_multi_region_enabled_logging_management_events",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "DE.CM-02",
+      "fill": null
+     },
+     {
+      "v": "DE.CM · Monitoreo continuo",
+      "fill": null
+     },
+     {
+      "v": "Entorno físico monitoreado",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "DE.CM-03",
+      "fill": null
+     },
+     {
+      "v": "DE.CM · Monitoreo continuo",
+      "fill": null
+     },
+     {
+      "v": "Actividad del personal y uso de la tecnología monitoreados",
+      "fill": null
+     },
+     {
+      "v": "Con brechas",
+      "fill": null
+     },
+     {
+      "v": 2,
+      "fill": null
+     },
+     {
+      "v": 1,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "Alto",
+      "fill": "00F8CBAD"
+     },
+     {
+      "v": "cloudtrail_bedrock_logging_enabled, cloudtrail_cloudwatch_logging_enabled, cloudtrail_multi_region_enabled_logging_management_events",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "DE.CM-06",
+      "fill": null
+     },
+     {
+      "v": "DE.CM · Monitoreo continuo",
+      "fill": null
+     },
+     {
+      "v": "Actividades de proveedores de servicios externos monitoreadas",
+      "fill": null
+     },
+     {
+      "v": "Con brechas",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 1,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "Alto",
+      "fill": "00F8CBAD"
+     },
+     {
+      "v": "cloudtrail_cloudwatch_logging_enabled",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "DE.CM-09",
+      "fill": null
+     },
+     {
+      "v": "DE.CM · Monitoreo continuo",
+      "fill": null
+     },
+     {
+      "v": "Hardware, software, entornos de ejecución y datos monitoreados",
+      "fill": null
+     },
+     {
+      "v": "Con brechas",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 2,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "Alto",
+      "fill": "00F8CBAD"
+     },
+     {
+      "v": "cloudtrail_cloudwatch_logging_enabled, cloudtrail_log_file_validation_enabled",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "DE.AE-02",
+      "fill": null
+     },
+     {
+      "v": "DE.AE · Análisis de eventos adversos",
+      "fill": null
+     },
+     {
+      "v": "Eventos adversos analizados para entender la actividad",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "DE.AE-03",
+      "fill": null
+     },
+     {
+      "v": "DE.AE · Análisis de eventos adversos",
+      "fill": null
+     },
+     {
+      "v": "Información correlacionada de múltiples fuentes",
+      "fill": null
+     },
+     {
+      "v": "Con brechas",
+      "fill": null
+     },
+     {
+      "v": 2,
+      "fill": null
+     },
+     {
+      "v": 1,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "Alto",
+      "fill": "00F8CBAD"
+     },
+     {
+      "v": "cloudtrail_bedrock_logging_enabled, cloudtrail_cloudwatch_logging_enabled, cloudtrail_multi_region_enabled_logging_management_events",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "DE.AE-04",
+      "fill": null
+     },
+     {
+      "v": "DE.AE · Análisis de eventos adversos",
+      "fill": null
+     },
+     {
+      "v": "Impacto y alcance de los eventos adversos estimados",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "DE.AE-06",
+      "fill": null
+     },
+     {
+      "v": "DE.AE · Análisis de eventos adversos",
+      "fill": null
+     },
+     {
+      "v": "Información de eventos adversos entregada al personal y herramientas",
+      "fill": null
+     },
+     {
+      "v": "Con brechas",
+      "fill": null
+     },
+     {
+      "v": 1,
+      "fill": null
+     },
+     {
+      "v": 3,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "Alto",
+      "fill": "00F8CBAD"
+     },
+     {
+      "v": "cloudtrail_insights_exist, cloudtrail_multi_region_enabled_logging_management_events, s3_bucket_event_notifications_enabled",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "DE.AE-07",
+      "fill": null
+     },
+     {
+      "v": "DE.AE · Análisis de eventos adversos",
+      "fill": null
+     },
+     {
+      "v": "Inteligencia de amenazas integrada en el análisis",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "DE.AE-08",
+      "fill": null
+     },
+     {
+      "v": "DE.AE · Análisis de eventos adversos",
+      "fill": null
+     },
+     {
+      "v": "Incidentes declarados según criterios definidos",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "RS.MA-01",
+      "fill": null
+     },
+     {
+      "v": "RS.MA · Gestión de incidentes",
+      "fill": null
+     },
+     {
+      "v": "Plan de respuesta ejecutado con terceros al declarar un incidente",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "RS.MA-02",
+      "fill": null
+     },
+     {
+      "v": "RS.MA · Gestión de incidentes",
+      "fill": null
+     },
+     {
+      "v": "Reportes de incidentes clasificados y validados",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "RS.MA-03",
+      "fill": null
+     },
+     {
+      "v": "RS.MA · Gestión de incidentes",
+      "fill": null
+     },
+     {
+      "v": "Incidentes categorizados y priorizados",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "RS.MA-04",
+      "fill": null
+     },
+     {
+      "v": "RS.MA · Gestión de incidentes",
+      "fill": null
+     },
+     {
+      "v": "Incidentes escalados según sea necesario",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "RS.MA-05",
+      "fill": null
+     },
+     {
+      "v": "RS.MA · Gestión de incidentes",
+      "fill": null
+     },
+     {
+      "v": "Criterios para iniciar la recuperación aplicados",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "RS.AN-03",
+      "fill": null
+     },
+     {
+      "v": "RS.AN · Análisis de incidentes",
+      "fill": null
+     },
+     {
+      "v": "Análisis de lo ocurrido y de la causa raíz del incidente",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "RS.AN-06",
+      "fill": null
+     },
+     {
+      "v": "RS.AN · Análisis de incidentes",
+      "fill": null
+     },
+     {
+      "v": "Acciones de la investigación registradas con integridad",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "RS.AN-07",
+      "fill": null
+     },
+     {
+      "v": "RS.AN · Análisis de incidentes",
+      "fill": null
+     },
+     {
+      "v": "Datos del incidente recolectados con integridad y procedencia",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "RS.AN-08",
+      "fill": null
+     },
+     {
+      "v": "RS.AN · Análisis de incidentes",
+      "fill": null
+     },
+     {
+      "v": "Magnitud del incidente estimada y validada",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "RS.CO-02",
+      "fill": null
+     },
+     {
+      "v": "RS.CO · Reporte y comunicación de la respuesta",
+      "fill": null
+     },
+     {
+      "v": "Partes interesadas notificadas de los incidentes",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "RS.CO-03",
+      "fill": null
+     },
+     {
+      "v": "RS.CO · Reporte y comunicación de la respuesta",
+      "fill": null
+     },
+     {
+      "v": "Información compartida con las partes interesadas designadas",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "RS.MI-01",
+      "fill": null
+     },
+     {
+      "v": "RS.MI · Mitigación de incidentes",
+      "fill": null
+     },
+     {
+      "v": "Incidentes contenidos",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "RS.MI-02",
+      "fill": null
+     },
+     {
+      "v": "RS.MI · Mitigación de incidentes",
+      "fill": null
+     },
+     {
+      "v": "Incidentes erradicados",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "RC.RP-01",
+      "fill": null
+     },
+     {
+      "v": "RC.RP · Ejecución del plan de recuperación",
+      "fill": null
+     },
+     {
+      "v": "Se ejecuta la parte de recuperación del plan de respuesta",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "RC.RP-02",
+      "fill": null
+     },
+     {
+      "v": "RC.RP · Ejecución del plan de recuperación",
+      "fill": null
+     },
+     {
+      "v": "Acciones de recuperación seleccionadas, priorizadas y realizadas",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "RC.RP-03",
+      "fill": null
+     },
+     {
+      "v": "RC.RP · Ejecución del plan de recuperación",
+      "fill": null
+     },
+     {
+      "v": "Integridad de los respaldos verificada antes de restaurar",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "RC.RP-04",
+      "fill": null
+     },
+     {
+      "v": "RC.RP · Ejecución del plan de recuperación",
+      "fill": null
+     },
+     {
+      "v": "Normas operativas posteriores al incidente definidas",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "RC.RP-05",
+      "fill": null
+     },
+     {
+      "v": "RC.RP · Ejecución del plan de recuperación",
+      "fill": null
+     },
+     {
+      "v": "Integridad de lo restaurado verificada y operación confirmada",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "RC.RP-06",
+      "fill": null
+     },
+     {
+      "v": "RC.RP · Ejecución del plan de recuperación",
+      "fill": null
+     },
+     {
+      "v": "Fin de la recuperación declarado y documentación completa",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "RC.CO-03",
+      "fill": null
+     },
+     {
+      "v": "RC.CO · Comunicación de la recuperación",
+      "fill": null
+     },
+     {
+      "v": "Avance de la recuperación comunicado a las partes interesadas",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "RC.CO-04",
+      "fill": null
+     },
+     {
+      "v": "RC.CO · Comunicación de la recuperación",
+      "fill": null
+     },
+     {
+      "v": "Actualizaciones públicas sobre la recuperación aprobadas",
       "fill": null
      },
      {

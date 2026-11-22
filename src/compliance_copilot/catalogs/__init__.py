@@ -20,7 +20,7 @@ import re
 from collections.abc import Callable
 from importlib import resources
 
-from pydantic import BaseModel, ConfigDict, Field, model_validator
+from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
 
 class Group(BaseModel):
@@ -89,10 +89,19 @@ class Catalog(BaseModel):
     source: str
     id_pattern: str
     normalization: str = "identity"
-    aliases: dict[str, str] = Field(default_factory=dict)  # ID de Prowler -> ID oficial, cuando no hay regla
+    # ID de Prowler -> uno o varios IDs oficiales, cuando no hay regla. Varios destinos: la correspondencia oficial
+    # reparte un requisito antiguo entre varios nuevos (p. ej. NIST CSF 1.1 -> 2.0); el hallazgo cuenta en todos.
+    aliases: dict[str, tuple[str, ...]] = Field(default_factory=dict)
     groups: tuple[Group, ...] = Field(min_length=1)
     statement: Statement
     requirements: tuple[Requirement, ...] = Field(min_length=1)
+
+    @field_validator("aliases", mode="before")
+    @classmethod
+    def _aliases_as_tuples(cls, value: object) -> object:
+        if isinstance(value, dict):
+            return {k: (v,) if isinstance(v, str) else v for k, v in value.items()}
+        return value
 
     @model_validator(mode="after")
     def _consistent(self) -> "Catalog":
@@ -110,7 +119,10 @@ class Catalog(BaseModel):
             raise ValueError(f"grupos no declarados: {orphans}")
         if self.normalization not in NORMALIZERS:
             raise ValueError(f"normalización desconocida: {self.normalization}; disponibles: {sorted(NORMALIZERS)}")
-        bad_aliases = sorted(v for v in self.aliases.values() if v not in ids)
+        bad_aliases = sorted({t for targets in self.aliases.values() for t in targets} - set(ids))
+        empty = sorted(k for k, targets in self.aliases.items() if not targets)
+        if empty:
+            raise ValueError(f"alias sin destino: {empty}")
         if bad_aliases:
             raise ValueError(f"alias hacia IDs que no están en el catálogo: {bad_aliases}")
         return self
@@ -121,13 +133,24 @@ class Catalog(BaseModel):
     def group_label(self, group_id: str) -> str:
         return next(g.label for g in self.groups if g.id == group_id)
 
+    def resolve(self, raw_id: str) -> tuple[str, ...]:
+        """ID de Prowler -> IDs del catálogo; vacío si no tiene correspondencia (se reporta, no se descarta)."""
+        if raw_id in self.aliases:
+            return self.aliases[raw_id]
+        candidate = NORMALIZERS[self.normalization](raw_id)
+        return (candidate,) if self.get(candidate) else ()
+
     def normalize(self, raw_id: str) -> str | None:
-        """ID de Prowler -> ID del catálogo, o ``None`` si no tiene correspondencia (se reporta, no se descarta)."""
-        candidate = self.aliases.get(raw_id) or NORMALIZERS[self.normalization](raw_id)
-        return candidate if self.get(candidate) else None
+        """Como ``resolve``, para marcos de correspondencia uno a uno: el primer destino o ``None``."""
+        targets = self.resolve(raw_id)
+        return targets[0] if targets else None
 
 
-CATALOG_FILES = {"ISO27001-2022": "iso27001-2022.json", "SOC2": "soc2-tsc.json"}
+CATALOG_FILES = {
+    "ISO27001-2022": "iso27001-2022.json",
+    "SOC2": "soc2-tsc.json",
+    "NIST-CSF-2.0": "nist-csf-2.0.json",
+}
 # Orden de las declaraciones en los entregables.
 FRAMEWORKS: tuple[str, ...] = tuple(CATALOG_FILES)
 

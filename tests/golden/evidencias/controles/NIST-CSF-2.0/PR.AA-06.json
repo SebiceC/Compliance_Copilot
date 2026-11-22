@@ -1,0 +1,79 @@
+{
+  "framework": "NIST-CSF-2.0",
+  "control": "PR.AA-06",
+  "title": "Acceso físico a los activos gestionado y monitoreado",
+  "technical_status": "Con brechas",
+  "counts": {
+    "pass": 1,
+    "fail": 5,
+    "manual": 0
+  },
+  "evidence": [
+    {
+      "finding_uid": "prowler-aws-cloudtrail_kms_encryption_enabled-123456789001-us-east-1-lab-trail",
+      "check_id": "cloudtrail_kms_encryption_enabled",
+      "status": "fail",
+      "severity": "medium",
+      "resource_uid": "arn:aws:cloudtrail:us-east-1:123456789001:trail/lab-trail",
+      "resource_name": "lab-trail",
+      "region": "us-east-1",
+      "status_detail": "Multiregion trail lab-trail has encryption disabled.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-s3_bucket_kms_encryption-123456789001-us-east-1-aws-cloudtrail-logs-123456789001-5f59e248",
+      "check_id": "s3_bucket_kms_encryption",
+      "status": "fail",
+      "severity": "medium",
+      "resource_uid": "arn:aws:s3:::aws-cloudtrail-logs-123456789001-5f59e248",
+      "resource_name": "aws-cloudtrail-logs-123456789001-5f59e248",
+      "region": "us-east-1",
+      "status_detail": "Server Side Encryption is not configured with kms for S3 Bucket aws-cloudtrail-logs-123456789001-5f59e248.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-s3_bucket_kms_encryption-123456789001-us-east-1-cc-lab-data-7asda3",
+      "check_id": "s3_bucket_kms_encryption",
+      "status": "fail",
+      "severity": "medium",
+      "resource_uid": "arn:aws:s3:::cc-lab-data-7asda3",
+      "resource_name": "cc-lab-data-7asda3",
+      "region": "us-east-1",
+      "status_detail": "Server Side Encryption is not configured with kms for S3 Bucket cc-lab-data-7asda3.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-s3_bucket_secure_transport_policy-123456789001-us-east-1-aws-cloudtrail-logs-123456789001-5f59e248",
+      "check_id": "s3_bucket_secure_transport_policy",
+      "status": "fail",
+      "severity": "medium",
+      "resource_uid": "arn:aws:s3:::aws-cloudtrail-logs-123456789001-5f59e248",
+      "resource_name": "aws-cloudtrail-logs-123456789001-5f59e248",
+      "region": "us-east-1",
+      "status_detail": "S3 Bucket aws-cloudtrail-logs-123456789001-5f59e248 allows requests over insecure transport in the bucket policy.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-s3_bucket_secure_transport_policy-123456789001-us-east-1-cc-lab-data-7asda3",
+      "check_id": "s3_bucket_secure_transport_policy",
+      "status": "fail",
+      "severity": "medium",
+      "resource_uid": "arn:aws:s3:::cc-lab-data-7asda3",
+      "resource_name": "cc-lab-data-7asda3",
+      "region": "us-east-1",
+      "status_detail": "S3 Bucket cc-lab-data-7asda3 does not have a bucket policy, thus it allows HTTP requests.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-ec2_securitygroup_allow_ingress_from_internet_to_all_ports-123456789001-us-east-1-sg-053b7f11882dc35d0",
+      "check_id": "ec2_securitygroup_allow_ingress_from_internet_to_all_ports",
+      "status": "pass",
+      "severity": "high",
+      "resource_uid": "arn:aws:ec2:us-east-1:123456789001:security-group/sg-053b7f11882dc35d0",
+      "resource_name": "sg-053b7f11882dc35d0",
+      "region": "us-east-1",
+      "status_detail": "Security group lab-sg-ssh-open (sg-053b7f11882dc35d0) does not have all ports open to the Internet.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    }
+  ]
+}

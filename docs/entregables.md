@@ -15,6 +15,7 @@ entregables reales contienen datos de la cuenta.
 | `matriz-riesgos.md` | Un riesgo por hallazgo FAIL, de mayor a menor, con su justificación |
 | `soa-iso27001.md` | Los 93 controles del Anexo A con su estado técnico (la declaración de ISO 27001; ver abajo) |
 | `matriz-soc2.md` | Los 61 Trust Services Criteria de SOC 2 con su estado técnico |
+| `perfil-nist-csf.md` | Las 106 subcategorías de NIST CSF 2.0 con su estado técnico (perfil actual) |
 | `plan-remediacion.md` | Una acción por check, ordenada por riesgo |
 | `compliance-copilot.xlsx` | Lo mismo en un libro de Excel (una hoja por entregable, más el mapa de calor) |
 | `evidencias/` | Hallazgos normalizados y una evidencia por control |
@@ -43,7 +44,7 @@ definen en el catálogo del marco (`src/compliance_copilot/catalogs/`):
 |---|---|---|---|
 | ISO 27001:2022 | SoA (`soa-iso27001.md`) | Aplicable, Justificación | listo |
 | SOC 2 | Matriz de criterios (`matriz-soc2.md`) | En alcance, Justificación | listo |
-| NIST CSF 2.0 | Perfil actual | Perfil objetivo, Prioridad | Fase 8 |
+| NIST CSF 2.0 | Perfil actual (`perfil-nist-csf.md`) | Perfil objetivo, Prioridad | listo |
 | Ley 1581 de 2012 | Matriz técnica | Aplica, Evidencia manual | Fase 9 |
 
 **IDs sin correspondencia.** Los IDs que Prowler asigna a un marco se traducen al formato oficial del catálogo.
@@ -88,6 +89,18 @@ Privacidad (P). Identificadores oficiales con títulos propios (el texto de los 
   ejemplo, checks de IAM a CC1.3, *estructuras y autoridades*, o a CC3.x, *evaluación de riesgos*). Un hallazgo
   así es evidencia parcial: el criterio exige además evidencia de gobierno que ningún escáner ve.
 
+## Perfil actual NIST CSF 2.0
+
+Las **106 subcategorías** de NIST CSF 2.0 (`catalogs/nist-csf-2.0.json`, según el Apéndice A de NIST CSWP 29),
+agrupadas por sus 22 categorías. El CSF no se "cumple": se compara el perfil actual con un **perfil objetivo** y
+se prioriza la brecha; esas dos columnas las decide la organización.
+
+**El mapeo "NIST CSF 2.0" de Prowler usa IDs de la versión 1.1.** Se traduce a la 2.0 con la tabla de
+[docs/correspondencia-nist-csf.md](correspondencia-nist-csf.md), basada en el documento oficial de NIST de
+elementos retirados. Un ID de la 1.1 puede corresponder a varias subcategorías de la 2.0: el hallazgo cuenta en
+todas, así que la suma de PASS y FAIL del perfil puede superar la cantidad de hallazgos. Ocho filas de la tabla no
+tienen equivalencia oficial y se asignaron por significado: están marcadas para revisión.
+
 ## Plan de remediación
 
 Una acción por check: una misma corrección (por ejemplo, una configuración de S3) arregla todos los recursos
@@ -122,4 +135,4 @@ referencia en `tests/golden/`. Un cambio en cualquier entregable aparece en el d
 
 ## Pendiente
 
-- Declaraciones de NIST CSF 2.0 y Ley 1581 (Fases 8 y 9 de `docs/hoja-de-ruta-v1.md`).
+- Declaración de la Ley 1581 (Fase 9 de `docs/hoja-de-ruta-v1.md`).

@@ -1,0 +1,873 @@
+{
+  "framework": "NIST-CSF-2.0",
+  "name": "NIST Cybersecurity Framework (CSF) 2.0 (NIST CSWP 29, 2024)",
+  "source": "Funciones, categorías y subcategorías del Apéndice A de NIST CSWP 29. Títulos en español resumidos por Compliance Copilot. Correspondencia con los IDs de Prowler: docs/correspondencia-nist-csf.md, basada en el documento de NIST de elementos retirados de la versión 1.1.",
+  "id_pattern": "(GV|ID|PR|DE|RS|RC)\\.[A-Z]{2}-\\d{2}",
+  "normalization": "identity",
+  "aliases": {
+    "ac_1": [
+      "PR.AA-01",
+      "PR.AA-05"
+    ],
+    "ac_3": [
+      "PR.AA-03",
+      "PR.AA-05",
+      "PR.IR-01"
+    ],
+    "ac_4": [
+      "PR.AA-05"
+    ],
+    "ac_5": [
+      "PR.IR-01"
+    ],
+    "ac_6": [
+      "PR.AA-02"
+    ],
+    "ac_7": [
+      "PR.AA-03"
+    ],
+    "ae_1": [
+      "ID.AM-03"
+    ],
+    "ae_2": [
+      "DE.AE-02"
+    ],
+    "ae_3": [
+      "DE.AE-03"
+    ],
+    "ae_4": [
+      "DE.AE-04"
+    ],
+    "ae_5": [
+      "DE.AE-08"
+    ],
+    "am_1": [
+      "ID.AM-01"
+    ],
+    "am_2": [
+      "ID.AM-02"
+    ],
+    "am_3": [
+      "ID.AM-03"
+    ],
+    "am_5": [
+      "ID.AM-05"
+    ],
+    "am_6": [
+      "GV.RR-02",
+      "GV.SC-02"
+    ],
+    "an_2": [
+      "RS.MA-02",
+      "RS.MA-03",
+      "RS.MA-04"
+    ],
+    "be_5": [
+      "GV.OC-04"
+    ],
+    "cm_1": [
+      "DE.CM-01"
+    ],
+    "cm_2": [
+      "DE.CM-02"
+    ],
+    "cm_3": [
+      "DE.CM-03"
+    ],
+    "cm_5": [
+      "DE.CM-01",
+      "DE.CM-09"
+    ],
+    "cm_7": [
+      "DE.CM-01",
+      "DE.CM-03",
+      "DE.CM-06",
+      "DE.CM-09"
+    ],
+    "dp_4": [
+      "DE.AE-06"
+    ],
+    "dp_5": [
+      "ID.IM-03"
+    ],
+    "ds_1": [
+      "PR.DS-01"
+    ],
+    "ds_2": [
+      "PR.DS-02"
+    ],
+    "ds_3": [
+      "ID.AM-08",
+      "PR.PS-03"
+    ],
+    "ds_4": [
+      "PR.IR-04"
+    ],
+    "ds_5": [
+      "PR.DS-01",
+      "PR.DS-02",
+      "PR.DS-10"
+    ],
+    "ds_6": [
+      "PR.DS-01",
+      "DE.CM-09"
+    ],
+    "ds_7": [
+      "PR.IR-01"
+    ],
+    "ds_8": [
+      "ID.RA-09",
+      "DE.CM-09"
+    ],
+    "id_sc_4": [
+      "GV.SC-07",
+      "ID.RA-10"
+    ],
+    "ip_1": [
+      "PR.PS-01"
+    ],
+    "ip_3": [
+      "PR.PS-01",
+      "ID.RA-07"
+    ],
+    "ip_4": [
+      "PR.DS-11"
+    ],
+    "ip_7": [
+      "ID.IM-03"
+    ],
+    "ip_8": [
+      "ID.IM-03"
+    ],
+    "ip_12": [
+      "ID.RA-01",
+      "PR.PS-02"
+    ],
+    "ma_2": [
+      "ID.AM-08",
+      "PR.PS-02"
+    ],
+    "mi_3": [
+      "ID.RA-06"
+    ],
+    "pt_1": [
+      "PR.PS-04"
+    ],
+    "pt_3": [
+      "PR.PS-01"
+    ],
+    "pt_4": [
+      "PR.AA-06",
+      "PR.IR-01"
+    ],
+    "pt_5": [
+      "PR.IR-03"
+    ],
+    "ra_1": [
+      "ID.RA-01"
+    ],
+    "ra_2": [
+      "ID.RA-02"
+    ],
+    "ra_5": [
+      "ID.RA-05"
+    ],
+    "rc_rp_1": [
+      "RC.RP-01"
+    ],
+    "oc_1": [
+      "GV.OC-05"
+    ],
+    "oc_2": [
+      "GV.OC-03"
+    ],
+    "oc_3": [
+      "GV.OC-01"
+    ],
+    "po_1": [
+      "GV.PO-01",
+      "GV.PO-02"
+    ],
+    "po_3": [
+      "GV.OC-03"
+    ],
+    "po_4": [
+      "GV.RM-03"
+    ],
+    "rm_1": [
+      "GV.RM-01",
+      "GV.RM-06",
+      "GV.RR-03"
+    ],
+    "rm_2": [
+      "GV.RM-02",
+      "GV.RM-04"
+    ],
+    "rm_3": [
+      "GV.RM-02"
+    ],
+    "rr_1": [
+      "GV.OC-02",
+      "GV.RR-02"
+    ],
+    "ov_1": [
+      "GV.OV-01"
+    ],
+    "ov_2": [
+      "GV.OV-03"
+    ],
+    "ov_3": [
+      "GV.OV-02"
+    ],
+    "ov_4": [
+      "GV.OV-02"
+    ],
+    "po_2": [
+      "GV.PO-02"
+    ],
+    "rr_2": [
+      "GV.RR-02"
+    ],
+    "rr_3": [
+      "GV.RR-01"
+    ],
+    "sc_4": [
+      "GV.SC-03"
+    ]
+  },
+  "groups": [
+    {
+      "id": "GV.OC",
+      "label": "GV.OC · Contexto organizacional"
+    },
+    {
+      "id": "GV.RM",
+      "label": "GV.RM · Estrategia de gestión de riesgos"
+    },
+    {
+      "id": "GV.RR",
+      "label": "GV.RR · Roles, responsabilidades y autoridades"
+    },
+    {
+      "id": "GV.PO",
+      "label": "GV.PO · Política"
+    },
+    {
+      "id": "GV.OV",
+      "label": "GV.OV · Supervisión"
+    },
+    {
+      "id": "GV.SC",
+      "label": "GV.SC · Gestión de riesgos de la cadena de suministro"
+    },
+    {
+      "id": "ID.AM",
+      "label": "ID.AM · Gestión de activos"
+    },
+    {
+      "id": "ID.RA",
+      "label": "ID.RA · Evaluación de riesgos"
+    },
+    {
+      "id": "ID.IM",
+      "label": "ID.IM · Mejora"
+    },
+    {
+      "id": "PR.AA",
+      "label": "PR.AA · Identidad, autenticación y control de acceso"
+    },
+    {
+      "id": "PR.AT",
+      "label": "PR.AT · Concienciación y formación"
+    },
+    {
+      "id": "PR.DS",
+      "label": "PR.DS · Seguridad de los datos"
+    },
+    {
+      "id": "PR.PS",
+      "label": "PR.PS · Seguridad de la plataforma"
+    },
+    {
+      "id": "PR.IR",
+      "label": "PR.IR · Resiliencia de la infraestructura tecnológica"
+    },
+    {
+      "id": "DE.CM",
+      "label": "DE.CM · Monitoreo continuo"
+    },
+    {
+      "id": "DE.AE",
+      "label": "DE.AE · Análisis de eventos adversos"
+    },
+    {
+      "id": "RS.MA",
+      "label": "RS.MA · Gestión de incidentes"
+    },
+    {
+      "id": "RS.AN",
+      "label": "RS.AN · Análisis de incidentes"
+    },
+    {
+      "id": "RS.CO",
+      "label": "RS.CO · Reporte y comunicación de la respuesta"
+    },
+    {
+      "id": "RS.MI",
+      "label": "RS.MI · Mitigación de incidentes"
+    },
+    {
+      "id": "RC.RP",
+      "label": "RC.RP · Ejecución del plan de recuperación"
+    },
+    {
+      "id": "RC.CO",
+      "label": "RC.CO · Comunicación de la recuperación"
+    }
+  ],
+  "statement": {
+    "title": "Perfil actual NIST CSF 2.0",
+    "summary_title": "Perfil NIST CSF 2.0",
+    "file": "perfil-nist-csf.md",
+    "sheet": "Perfil NIST CSF 2.0",
+    "id_label": "Subcategoría",
+    "group_label": "Categoría",
+    "intro": "Borrador del perfil actual generado a partir del escaneo. El CSF no se \"cumple\": se compara el perfil actual con un perfil objetivo y se prioriza la brecha. **Perfil objetivo** y **Prioridad** los decide la organización. Los IDs de Prowler se traducen a la versión 2.0 con la tabla de docs/correspondencia-nist-csf.md; un hallazgo puede contar en varias subcategorías. \"Sin brechas detectadas\" no equivale a alcanzar el perfil objetivo.",
+    "human_columns": [
+      "Perfil objetivo",
+      "Prioridad"
+    ]
+  },
+  "requirements": [
+    {
+      "id": "GV.OC-01",
+      "group": "GV.OC",
+      "title": "La misión de la organización orienta la gestión del riesgo"
+    },
+    {
+      "id": "GV.OC-02",
+      "group": "GV.OC",
+      "title": "Se entienden las expectativas de las partes interesadas"
+    },
+    {
+      "id": "GV.OC-03",
+      "group": "GV.OC",
+      "title": "Se gestionan los requisitos legales, regulatorios y contractuales"
+    },
+    {
+      "id": "GV.OC-04",
+      "group": "GV.OC",
+      "title": "Se comunican los servicios críticos de los que dependen terceros"
+    },
+    {
+      "id": "GV.OC-05",
+      "group": "GV.OC",
+      "title": "Se comunican los servicios de los que depende la organización"
+    },
+    {
+      "id": "GV.RM-01",
+      "group": "GV.RM",
+      "title": "Objetivos de gestión de riesgos acordados"
+    },
+    {
+      "id": "GV.RM-02",
+      "group": "GV.RM",
+      "title": "Apetito y tolerancia al riesgo definidos y comunicados"
+    },
+    {
+      "id": "GV.RM-03",
+      "group": "GV.RM",
+      "title": "La ciberseguridad se integra en la gestión de riesgos empresariales"
+    },
+    {
+      "id": "GV.RM-04",
+      "group": "GV.RM",
+      "title": "Dirección estratégica sobre las opciones de respuesta al riesgo"
+    },
+    {
+      "id": "GV.RM-05",
+      "group": "GV.RM",
+      "title": "Líneas de comunicación sobre riesgos, incluidos los de proveedores"
+    },
+    {
+      "id": "GV.RM-06",
+      "group": "GV.RM",
+      "title": "Método estandarizado para calcular y priorizar riesgos"
+    },
+    {
+      "id": "GV.RM-07",
+      "group": "GV.RM",
+      "title": "Las oportunidades (riesgos positivos) se consideran"
+    },
+    {
+      "id": "GV.RR-01",
+      "group": "GV.RR",
+      "title": "La dirección responde por el riesgo y promueve una cultura de riesgo"
+    },
+    {
+      "id": "GV.RR-02",
+      "group": "GV.RR",
+      "title": "Roles, responsabilidades y autoridades definidos y aplicados"
+    },
+    {
+      "id": "GV.RR-03",
+      "group": "GV.RR",
+      "title": "Recursos suficientes para la estrategia de riesgo"
+    },
+    {
+      "id": "GV.RR-04",
+      "group": "GV.RR",
+      "title": "La ciberseguridad se incluye en las prácticas de recursos humanos"
+    },
+    {
+      "id": "GV.PO-01",
+      "group": "GV.PO",
+      "title": "Política de gestión de riesgos establecida, comunicada y aplicada"
+    },
+    {
+      "id": "GV.PO-02",
+      "group": "GV.PO",
+      "title": "La política se revisa y actualiza ante los cambios"
+    },
+    {
+      "id": "GV.OV-01",
+      "group": "GV.OV",
+      "title": "Los resultados de la estrategia de riesgo se revisan para ajustarla"
+    },
+    {
+      "id": "GV.OV-02",
+      "group": "GV.OV",
+      "title": "La estrategia de riesgo se revisa para cubrir requisitos y riesgos"
+    },
+    {
+      "id": "GV.OV-03",
+      "group": "GV.OV",
+      "title": "El desempeño de la gestión de riesgos se evalúa y revisa"
+    },
+    {
+      "id": "GV.SC-01",
+      "group": "GV.SC",
+      "title": "Programa de gestión de riesgos de la cadena de suministro"
+    },
+    {
+      "id": "GV.SC-02",
+      "group": "GV.SC",
+      "title": "Roles de ciberseguridad de proveedores, clientes y socios definidos"
+    },
+    {
+      "id": "GV.SC-03",
+      "group": "GV.SC",
+      "title": "Riesgos de la cadena de suministro integrados en la gestión de riesgos"
+    },
+    {
+      "id": "GV.SC-04",
+      "group": "GV.SC",
+      "title": "Proveedores conocidos y priorizados por criticidad"
+    },
+    {
+      "id": "GV.SC-05",
+      "group": "GV.SC",
+      "title": "Requisitos de ciberseguridad en los contratos con proveedores"
+    },
+    {
+      "id": "GV.SC-06",
+      "group": "GV.SC",
+      "title": "Debida diligencia antes de contratar a un proveedor"
+    },
+    {
+      "id": "GV.SC-07",
+      "group": "GV.SC",
+      "title": "Riesgos de proveedores evaluados y monitoreados durante la relación"
+    },
+    {
+      "id": "GV.SC-08",
+      "group": "GV.SC",
+      "title": "Proveedores incluidos en la planificación y respuesta a incidentes"
+    },
+    {
+      "id": "GV.SC-09",
+      "group": "GV.SC",
+      "title": "Prácticas de la cadena de suministro integradas en el ciclo de vida"
+    },
+    {
+      "id": "GV.SC-10",
+      "group": "GV.SC",
+      "title": "Planes para después de terminar la relación con un proveedor"
+    },
+    {
+      "id": "ID.AM-01",
+      "group": "ID.AM",
+      "title": "Inventario del hardware gestionado"
+    },
+    {
+      "id": "ID.AM-02",
+      "group": "ID.AM",
+      "title": "Inventario de software, servicios y sistemas gestionados"
+    },
+    {
+      "id": "ID.AM-03",
+      "group": "ID.AM",
+      "title": "Representación de las comunicaciones y flujos de datos de red"
+    },
+    {
+      "id": "ID.AM-04",
+      "group": "ID.AM",
+      "title": "Inventario de los servicios prestados por proveedores"
+    },
+    {
+      "id": "ID.AM-05",
+      "group": "ID.AM",
+      "title": "Activos priorizados por clasificación, criticidad e impacto"
+    },
+    {
+      "id": "ID.AM-07",
+      "group": "ID.AM",
+      "title": "Inventario de datos y sus metadatos para los tipos designados"
+    },
+    {
+      "id": "ID.AM-08",
+      "group": "ID.AM",
+      "title": "Gestión de sistemas, hardware, software y datos en su ciclo de vida"
+    },
+    {
+      "id": "ID.RA-01",
+      "group": "ID.RA",
+      "title": "Vulnerabilidades de los activos identificadas y registradas"
+    },
+    {
+      "id": "ID.RA-02",
+      "group": "ID.RA",
+      "title": "Se recibe inteligencia de amenazas"
+    },
+    {
+      "id": "ID.RA-03",
+      "group": "ID.RA",
+      "title": "Amenazas internas y externas identificadas y registradas"
+    },
+    {
+      "id": "ID.RA-04",
+      "group": "ID.RA",
+      "title": "Impacto y probabilidad de las amenazas identificados"
+    },
+    {
+      "id": "ID.RA-05",
+      "group": "ID.RA",
+      "title": "El riesgo inherente se usa para priorizar la respuesta"
+    },
+    {
+      "id": "ID.RA-06",
+      "group": "ID.RA",
+      "title": "Respuestas al riesgo elegidas, planificadas y seguidas"
+    },
+    {
+      "id": "ID.RA-07",
+      "group": "ID.RA",
+      "title": "Cambios y excepciones gestionados y evaluados por su riesgo"
+    },
+    {
+      "id": "ID.RA-08",
+      "group": "ID.RA",
+      "title": "Procesos para recibir y responder a divulgaciones de vulnerabilidades"
+    },
+    {
+      "id": "ID.RA-09",
+      "group": "ID.RA",
+      "title": "Autenticidad e integridad del hardware y software antes de usarlos"
+    },
+    {
+      "id": "ID.RA-10",
+      "group": "ID.RA",
+      "title": "Proveedores críticos evaluados antes de contratarlos"
+    },
+    {
+      "id": "ID.IM-01",
+      "group": "ID.IM",
+      "title": "Mejoras identificadas a partir de evaluaciones"
+    },
+    {
+      "id": "ID.IM-02",
+      "group": "ID.IM",
+      "title": "Mejoras identificadas a partir de pruebas y ejercicios"
+    },
+    {
+      "id": "ID.IM-03",
+      "group": "ID.IM",
+      "title": "Mejoras identificadas a partir de la operación"
+    },
+    {
+      "id": "ID.IM-04",
+      "group": "ID.IM",
+      "title": "Planes de respuesta a incidentes establecidos y mejorados"
+    },
+    {
+      "id": "PR.AA-01",
+      "group": "PR.AA",
+      "title": "Identidades y credenciales gestionadas por la organización"
+    },
+    {
+      "id": "PR.AA-02",
+      "group": "PR.AA",
+      "title": "Identidades verificadas y vinculadas a sus credenciales"
+    },
+    {
+      "id": "PR.AA-03",
+      "group": "PR.AA",
+      "title": "Usuarios, servicios y hardware autenticados"
+    },
+    {
+      "id": "PR.AA-04",
+      "group": "PR.AA",
+      "title": "Aserciones de identidad protegidas, transmitidas y verificadas"
+    },
+    {
+      "id": "PR.AA-05",
+      "group": "PR.AA",
+      "title": "Permisos con mínimo privilegio y separación de funciones"
+    },
+    {
+      "id": "PR.AA-06",
+      "group": "PR.AA",
+      "title": "Acceso físico a los activos gestionado y monitoreado"
+    },
+    {
+      "id": "PR.AT-01",
+      "group": "PR.AT",
+      "title": "Formación del personal en ciberseguridad general"
+    },
+    {
+      "id": "PR.AT-02",
+      "group": "PR.AT",
+      "title": "Formación específica para roles especializados"
+    },
+    {
+      "id": "PR.DS-01",
+      "group": "PR.DS",
+      "title": "Datos en reposo protegidos"
+    },
+    {
+      "id": "PR.DS-02",
+      "group": "PR.DS",
+      "title": "Datos en tránsito protegidos"
+    },
+    {
+      "id": "PR.DS-10",
+      "group": "PR.DS",
+      "title": "Datos en uso protegidos"
+    },
+    {
+      "id": "PR.DS-11",
+      "group": "PR.DS",
+      "title": "Copias de respaldo creadas, protegidas y probadas"
+    },
+    {
+      "id": "PR.PS-01",
+      "group": "PR.PS",
+      "title": "Prácticas de gestión de la configuración aplicadas"
+    },
+    {
+      "id": "PR.PS-02",
+      "group": "PR.PS",
+      "title": "Software mantenido, reemplazado y retirado según el riesgo"
+    },
+    {
+      "id": "PR.PS-03",
+      "group": "PR.PS",
+      "title": "Hardware mantenido, reemplazado y retirado según el riesgo"
+    },
+    {
+      "id": "PR.PS-04",
+      "group": "PR.PS",
+      "title": "Registros generados y disponibles para el monitoreo continuo"
+    },
+    {
+      "id": "PR.PS-05",
+      "group": "PR.PS",
+      "title": "Se impide instalar y ejecutar software no autorizado"
+    },
+    {
+      "id": "PR.PS-06",
+      "group": "PR.PS",
+      "title": "Prácticas de desarrollo seguro en el ciclo de vida del software"
+    },
+    {
+      "id": "PR.IR-01",
+      "group": "PR.IR",
+      "title": "Redes y entornos protegidos contra acceso lógico no autorizado"
+    },
+    {
+      "id": "PR.IR-02",
+      "group": "PR.IR",
+      "title": "Activos tecnológicos protegidos de amenazas ambientales"
+    },
+    {
+      "id": "PR.IR-03",
+      "group": "PR.IR",
+      "title": "Mecanismos de resiliencia en situaciones normales y adversas"
+    },
+    {
+      "id": "PR.IR-04",
+      "group": "PR.IR",
+      "title": "Capacidad suficiente para mantener la disponibilidad"
+    },
+    {
+      "id": "DE.CM-01",
+      "group": "DE.CM",
+      "title": "Redes y servicios de red monitoreados"
+    },
+    {
+      "id": "DE.CM-02",
+      "group": "DE.CM",
+      "title": "Entorno físico monitoreado"
+    },
+    {
+      "id": "DE.CM-03",
+      "group": "DE.CM",
+      "title": "Actividad del personal y uso de la tecnología monitoreados"
+    },
+    {
+      "id": "DE.CM-06",
+      "group": "DE.CM",
+      "title": "Actividades de proveedores de servicios externos monitoreadas"
+    },
+    {
+      "id": "DE.CM-09",
+      "group": "DE.CM",
+      "title": "Hardware, software, entornos de ejecución y datos monitoreados"
+    },
+    {
+      "id": "DE.AE-02",
+      "group": "DE.AE",
+      "title": "Eventos adversos analizados para entender la actividad"
+    },
+    {
+      "id": "DE.AE-03",
+      "group": "DE.AE",
+      "title": "Información correlacionada de múltiples fuentes"
+    },
+    {
+      "id": "DE.AE-04",
+      "group": "DE.AE",
+      "title": "Impacto y alcance de los eventos adversos estimados"
+    },
+    {
+      "id": "DE.AE-06",
+      "group": "DE.AE",
+      "title": "Información de eventos adversos entregada al personal y herramientas"
+    },
+    {
+      "id": "DE.AE-07",
+      "group": "DE.AE",
+      "title": "Inteligencia de amenazas integrada en el análisis"
+    },
+    {
+      "id": "DE.AE-08",
+      "group": "DE.AE",
+      "title": "Incidentes declarados según criterios definidos"
+    },
+    {
+      "id": "RS.MA-01",
+      "group": "RS.MA",
+      "title": "Plan de respuesta ejecutado con terceros al declarar un incidente"
+    },
+    {
+      "id": "RS.MA-02",
+      "group": "RS.MA",
+      "title": "Reportes de incidentes clasificados y validados"
+    },
+    {
+      "id": "RS.MA-03",
+      "group": "RS.MA",
+      "title": "Incidentes categorizados y priorizados"
+    },
+    {
+      "id": "RS.MA-04",
+      "group": "RS.MA",
+      "title": "Incidentes escalados según sea necesario"
+    },
+    {
+      "id": "RS.MA-05",
+      "group": "RS.MA",
+      "title": "Criterios para iniciar la recuperación aplicados"
+    },
+    {
+      "id": "RS.AN-03",
+      "group": "RS.AN",
+      "title": "Análisis de lo ocurrido y de la causa raíz del incidente"
+    },
+    {
+      "id": "RS.AN-06",
+      "group": "RS.AN",
+      "title": "Acciones de la investigación registradas con integridad"
+    },
+    {
+      "id": "RS.AN-07",
+      "group": "RS.AN",
+      "title": "Datos del incidente recolectados con integridad y procedencia"
+    },
+    {
+      "id": "RS.AN-08",
+      "group": "RS.AN",
+      "title": "Magnitud del incidente estimada y validada"
+    },
+    {
+      "id": "RS.CO-02",
+      "group": "RS.CO",
+      "title": "Partes interesadas notificadas de los incidentes"
+    },
+    {
+      "id": "RS.CO-03",
+      "group": "RS.CO",
+      "title": "Información compartida con las partes interesadas designadas"
+    },
+    {
+      "id": "RS.MI-01",
+      "group": "RS.MI",
+      "title": "Incidentes contenidos"
+    },
+    {
+      "id": "RS.MI-02",
+      "group": "RS.MI",
+      "title": "Incidentes erradicados"
+    },
+    {
+      "id": "RC.RP-01",
+      "group": "RC.RP",
+      "title": "Se ejecuta la parte de recuperación del plan de respuesta"
+    },
+    {
+      "id": "RC.RP-02",
+      "group": "RC.RP",
+      "title": "Acciones de recuperación seleccionadas, priorizadas y realizadas"
+    },
+    {
+      "id": "RC.RP-03",
+      "group": "RC.RP",
+      "title": "Integridad de los respaldos verificada antes de restaurar"
+    },
+    {
+      "id": "RC.RP-04",
+      "group": "RC.RP",
+      "title": "Normas operativas posteriores al incidente definidas"
+    },
+    {
+      "id": "RC.RP-05",
+      "group": "RC.RP",
+      "title": "Integridad de lo restaurado verificada y operación confirmada"
+    },
+    {
+      "id": "RC.RP-06",
+      "group": "RC.RP",
+      "title": "Fin de la recuperación declarado y documentación completa"
+    },
+    {
+      "id": "RC.CO-03",
+      "group": "RC.CO",
+      "title": "Avance de la recuperación comunicado a las partes interesadas"
+    },
+    {
+      "id": "RC.CO-04",
+      "group": "RC.CO",
+      "title": "Actualizaciones públicas sobre la recuperación aprobadas"
+    }
+  ]
+}

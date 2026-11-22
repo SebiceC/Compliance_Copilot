@@ -1,0 +1,211 @@
+{
+  "framework": "NIST-CSF-2.0",
+  "control": "PR.DS-01",
+  "title": "Datos en reposo protegidos",
+  "technical_status": "Con brechas",
+  "counts": {
+    "pass": 14,
+    "fail": 4,
+    "manual": 0
+  },
+  "evidence": [
+    {
+      "finding_uid": "prowler-aws-cloudtrail_kms_encryption_enabled-123456789001-us-east-1-lab-trail",
+      "check_id": "cloudtrail_kms_encryption_enabled",
+      "status": "fail",
+      "severity": "medium",
+      "resource_uid": "arn:aws:cloudtrail:us-east-1:123456789001:trail/lab-trail",
+      "resource_name": "lab-trail",
+      "region": "us-east-1",
+      "status_detail": "Multiregion trail lab-trail has encryption disabled.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-cloudtrail_log_file_validation_enabled-123456789001-us-east-1-lab-trail",
+      "check_id": "cloudtrail_log_file_validation_enabled",
+      "status": "fail",
+      "severity": "medium",
+      "resource_uid": "arn:aws:cloudtrail:us-east-1:123456789001:trail/lab-trail",
+      "resource_name": "lab-trail",
+      "region": "us-east-1",
+      "status_detail": "Multiregion trail lab-trail has log file validation disabled.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-s3_bucket_kms_encryption-123456789001-us-east-1-aws-cloudtrail-logs-123456789001-5f59e248",
+      "check_id": "s3_bucket_kms_encryption",
+      "status": "fail",
+      "severity": "medium",
+      "resource_uid": "arn:aws:s3:::aws-cloudtrail-logs-123456789001-5f59e248",
+      "resource_name": "aws-cloudtrail-logs-123456789001-5f59e248",
+      "region": "us-east-1",
+      "status_detail": "Server Side Encryption is not configured with kms for S3 Bucket aws-cloudtrail-logs-123456789001-5f59e248.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-s3_bucket_kms_encryption-123456789001-us-east-1-cc-lab-data-7asda3",
+      "check_id": "s3_bucket_kms_encryption",
+      "status": "fail",
+      "severity": "medium",
+      "resource_uid": "arn:aws:s3:::cc-lab-data-7asda3",
+      "resource_name": "cc-lab-data-7asda3",
+      "region": "us-east-1",
+      "status_detail": "Server Side Encryption is not configured with kms for S3 Bucket cc-lab-data-7asda3.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-cloudtrail_logs_s3_bucket_is_not_publicly_accessible-123456789001-us-east-1-lab-trail",
+      "check_id": "cloudtrail_logs_s3_bucket_is_not_publicly_accessible",
+      "status": "pass",
+      "severity": "critical",
+      "resource_uid": "arn:aws:cloudtrail:us-east-1:123456789001:trail/lab-trail",
+      "resource_name": "lab-trail",
+      "region": "us-east-1",
+      "status_detail": "S3 Bucket aws-cloudtrail-logs-123456789001-5f59e248 from multiregion trail lab-trail is not publicly accessible.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-ec2_securitygroup_allow_ingress_from_internet_to_all_ports-123456789001-us-east-1-sg-053b7f11882dc35d0",
+      "check_id": "ec2_securitygroup_allow_ingress_from_internet_to_all_ports",
+      "status": "pass",
+      "severity": "high",
+      "resource_uid": "arn:aws:ec2:us-east-1:123456789001:security-group/sg-053b7f11882dc35d0",
+      "resource_name": "sg-053b7f11882dc35d0",
+      "region": "us-east-1",
+      "status_detail": "Security group lab-sg-ssh-open (sg-053b7f11882dc35d0) does not have all ports open to the Internet.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-s3_bucket_acl_prohibited-123456789001-us-east-1-aws-cloudtrail-logs-123456789001-5f59e248",
+      "check_id": "s3_bucket_acl_prohibited",
+      "status": "pass",
+      "severity": "medium",
+      "resource_uid": "arn:aws:s3:::aws-cloudtrail-logs-123456789001-5f59e248",
+      "resource_name": "aws-cloudtrail-logs-123456789001-5f59e248",
+      "region": "us-east-1",
+      "status_detail": "S3 Bucket aws-cloudtrail-logs-123456789001-5f59e248 has bucket ACLs disabled.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-s3_bucket_acl_prohibited-123456789001-us-east-1-cc-lab-data-7asda3",
+      "check_id": "s3_bucket_acl_prohibited",
+      "status": "pass",
+      "severity": "medium",
+      "resource_uid": "arn:aws:s3:::cc-lab-data-7asda3",
+      "resource_name": "cc-lab-data-7asda3",
+      "region": "us-east-1",
+      "status_detail": "S3 Bucket cc-lab-data-7asda3 has bucket ACLs disabled.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-s3_bucket_cross_account_access-123456789001-us-east-1-aws-cloudtrail-logs-123456789001-5f59e248",
+      "check_id": "s3_bucket_cross_account_access",
+      "status": "pass",
+      "severity": "high",
+      "resource_uid": "arn:aws:s3:::aws-cloudtrail-logs-123456789001-5f59e248",
+      "resource_name": "aws-cloudtrail-logs-123456789001-5f59e248",
+      "region": "us-east-1",
+      "status_detail": "S3 Bucket aws-cloudtrail-logs-123456789001-5f59e248 has a bucket policy but it does not allow cross account access.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-s3_bucket_cross_account_access-123456789001-us-east-1-cc-lab-data-7asda3",
+      "check_id": "s3_bucket_cross_account_access",
+      "status": "pass",
+      "severity": "high",
+      "resource_uid": "arn:aws:s3:::cc-lab-data-7asda3",
+      "resource_name": "cc-lab-data-7asda3",
+      "region": "us-east-1",
+      "status_detail": "S3 Bucket cc-lab-data-7asda3 does not have a bucket policy.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-s3_bucket_default_encryption-123456789001-us-east-1-aws-cloudtrail-logs-123456789001-5f59e248",
+      "check_id": "s3_bucket_default_encryption",
+      "status": "pass",
+      "severity": "medium",
+      "resource_uid": "arn:aws:s3:::aws-cloudtrail-logs-123456789001-5f59e248",
+      "resource_name": "aws-cloudtrail-logs-123456789001-5f59e248",
+      "region": "us-east-1",
+      "status_detail": "S3 Bucket aws-cloudtrail-logs-123456789001-5f59e248 has Server Side Encryption with AES256.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-s3_bucket_default_encryption-123456789001-us-east-1-cc-lab-data-7asda3",
+      "check_id": "s3_bucket_default_encryption",
+      "status": "pass",
+      "severity": "medium",
+      "resource_uid": "arn:aws:s3:::cc-lab-data-7asda3",
+      "resource_name": "cc-lab-data-7asda3",
+      "region": "us-east-1",
+      "status_detail": "S3 Bucket cc-lab-data-7asda3 has Server Side Encryption with AES256.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-s3_bucket_public_access-123456789001-us-east-1-aws-cloudtrail-logs-123456789001-5f59e248",
+      "check_id": "s3_bucket_public_access",
+      "status": "pass",
+      "severity": "critical",
+      "resource_uid": "arn:aws:s3:::aws-cloudtrail-logs-123456789001-5f59e248",
+      "resource_name": "aws-cloudtrail-logs-123456789001-5f59e248",
+      "region": "us-east-1",
+      "status_detail": "S3 Bucket aws-cloudtrail-logs-123456789001-5f59e248 is not public.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-s3_bucket_public_access-123456789001-us-east-1-cc-lab-data-7asda3",
+      "check_id": "s3_bucket_public_access",
+      "status": "pass",
+      "severity": "critical",
+      "resource_uid": "arn:aws:s3:::cc-lab-data-7asda3",
+      "resource_name": "cc-lab-data-7asda3",
+      "region": "us-east-1",
+      "status_detail": "S3 Bucket cc-lab-data-7asda3 is not public.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-s3_bucket_public_list_acl-123456789001-us-east-1-aws-cloudtrail-logs-123456789001-5f59e248",
+      "check_id": "s3_bucket_public_list_acl",
+      "status": "pass",
+      "severity": "critical",
+      "resource_uid": "arn:aws:s3:::aws-cloudtrail-logs-123456789001-5f59e248",
+      "resource_name": "aws-cloudtrail-logs-123456789001-5f59e248",
+      "region": "us-east-1",
+      "status_detail": "S3 Bucket aws-cloudtrail-logs-123456789001-5f59e248 is not publicly listable.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-s3_bucket_public_list_acl-123456789001-us-east-1-cc-lab-data-7asda3",
+      "check_id": "s3_bucket_public_list_acl",
+      "status": "pass",
+      "severity": "critical",
+      "resource_uid": "arn:aws:s3:::cc-lab-data-7asda3",
+      "resource_name": "cc-lab-data-7asda3",
+      "region": "us-east-1",
+      "status_detail": "S3 Bucket cc-lab-data-7asda3 is not publicly listable.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-s3_bucket_public_write_acl-123456789001-us-east-1-aws-cloudtrail-logs-123456789001-5f59e248",
+      "check_id": "s3_bucket_public_write_acl",
+      "status": "pass",
+      "severity": "critical",
+      "resource_uid": "arn:aws:s3:::aws-cloudtrail-logs-123456789001-5f59e248",
+      "resource_name": "aws-cloudtrail-logs-123456789001-5f59e248",
+      "region": "us-east-1",
+      "status_detail": "S3 Bucket aws-cloudtrail-logs-123456789001-5f59e248 is not publicly writable.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    },
+    {
+      "finding_uid": "prowler-aws-s3_bucket_public_write_acl-123456789001-us-east-1-cc-lab-data-7asda3",
+      "check_id": "s3_bucket_public_write_acl",
+      "status": "pass",
+      "severity": "critical",
+      "resource_uid": "arn:aws:s3:::cc-lab-data-7asda3",
+      "resource_name": "cc-lab-data-7asda3",
+      "region": "us-east-1",
+      "status_detail": "S3 Bucket cc-lab-data-7asda3 is not publicly writable.",
+      "observed_at": "2026-11-17T02:56:49+00:00"
+    }
+  ]
+}

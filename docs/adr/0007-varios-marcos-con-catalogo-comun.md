@@ -53,6 +53,13 @@ Formato de un catálogo (extracto de `iso27001-2022.json`):
 - **Nos obliga a futuro:** cada catálogo nuevo trae su `id_pattern`, sus grupos y su tabla de correspondencia, y
   un test que compruebe que los IDs de la muestra del laboratorio se traducen o se reportan.
 
+## Actualización (Fase 8, NIST CSF 2.0)
+
+El mapeo "NIST CSF 2.0" de Prowler resultó ser, en su mayoría, de la versión 1.1. La correspondencia oficial de
+NIST reparte muchos elementos de la 1.1 entre **varias** subcategorías de la 2.0, así que `aliases` admite varios
+destinos (`Catalog.resolve`) y el hallazgo cuenta en todos (decisión N3). La tabla legible está en
+`docs/correspondencia-nist-csf.md`, y un test comprueba que coincide con el catálogo.
+
 ## Revisión
 
 Reevaluar D5 cuando exista el conjunto de evaluación de la redacción con IA, o si un auditor pide el plan de

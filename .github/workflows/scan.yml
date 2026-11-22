@@ -1,0 +1,105 @@
+# Escaneo de AWS desde CI con OIDC (sin llaves de larga duración). Ver docs/ci.md y ADR 0006.
+#
+# El repo es público: los logs de este workflow los puede leer cualquiera. Por eso la salida de Prowler y de
+# `report` (contienen el ID de la cuenta y nombres de recursos) va a archivos que se suben al bucket privado,
+# nunca al log. El log solo muestra conteos.
+name: Scan
+
+on:
+  workflow_dispatch:  # manual; la programación periódica se agrega cuando el manual esté probado
+
+permissions:
+  contents: read
+  id-token: write  # permite pedir el token OIDC que AWS cambia por credenciales temporales
+
+concurrency:
+  group: scan
+  cancel-in-progress: false
+
+env:
+  PROWLER_VERSION: "5.48.0"
+  AWS_REGION: us-east-1
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    # El rol solo confía en tokens de este Environment (aprobación manual + solo la rama main).
+    environment: aws-lab
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0  # v7.1.0
+        with:
+          python-version: "3.13"
+          cache: pip
+          cache-dependency-path: pyproject.toml
+
+      - name: Instalar Compliance Copilot y Prowler
+        run: |
+          pip install -e .
+          # Prowler en su propio entorno (pipx): sus dependencias no se mezclan con las nuestras.
+          pipx install --python "$(command -v python)" "prowler==${PROWLER_VERSION}" > /dev/null
+
+      - name: Credenciales temporales de AWS (OIDC)
+        uses: aws-actions/configure-aws-credentials@e1253824e5c10ff9df46874f81ed3ec929e19cfd  # v6.3.0
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+          role-session-name: gha-scan-${{ github.run_id }}  # aparece en CloudTrail: trazable a esta ejecución
+          role-duration-seconds: 3600
+          mask-aws-account-id: true  # el ID de la cuenta aparece como *** en el log
+
+      - name: Escaneo con Prowler (salida a archivo, no al log)
+        run: |
+          set -o pipefail
+          mkdir -p output logs
+          # --ignore-exit-code-3: Prowler sale con 3 cuando hay hallazgos FAIL, que es lo normal.
+          if ! prowler aws -f "$AWS_REGION" --scan-unused-services -M csv json-ocsf -o output \
+               --ignore-exit-code-3 --no-banner > logs/prowler.log 2>&1; then
+            echo "::error::Prowler falló; el detalle está en logs/prowler.log, en el bucket de evidencias."
+            echo "PROWLER_FAILED=1" >> "$GITHUB_ENV"
+          fi
+
+      - name: Entregables y paquete de evidencias
+        if: env.PROWLER_FAILED != '1'
+        run: |
+          scan_file="$(ls output/*.ocsf.json)"
+          code=0
+          python -m compliance_copilot report "$scan_file" -o reports/ci > logs/report.log 2>&1 || code=$?
+          # 0 = completo; 3 = hallazgos que no se pudieron leer (ADR 0003): hay entregables, con aviso.
+          if [ "$code" -ne 0 ] && [ "$code" -ne 3 ]; then
+            echo "::error::report terminó con código $code; el detalle está en logs/report.log."
+            exit 1
+          fi
+          if [ "$code" -eq 3 ]; then
+            echo "::warning::Algunos hallazgos no se pudieron leer; los entregables lo indican."
+          fi
+          {
+            echo "## Escaneo $(date -u +%Y-%m-%d)"
+            echo
+            echo "Prowler ${PROWLER_VERSION} · ejecución ${GITHUB_RUN_ID} · commit ${GITHUB_SHA::7}"
+            echo
+            # Solo las líneas de conteos (empiezan con dos espacios): sin IDs ni nombres de recursos.
+            grep '^  ' logs/report.log | sed 's/^  /- /' || true
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Subir al bucket de evidencias
+        if: always()  # también si algo falló: los logs del bucket explican qué pasó
+        env:
+          EVIDENCE_BUCKET: ${{ secrets.EVIDENCE_BUCKET }}
+        run: |
+          dest="s3://${EVIDENCE_BUCKET}/scans/$(date -u +%Y%m%d-%H%M%S)-run${GITHUB_RUN_ID}"
+          # --only-show-errors: las rutas incluyen el ID de la cuenta; no van al log.
+          for dir in output reports logs; do
+            if [ -d "$dir" ]; then
+              aws s3 cp "$dir" "$dest/$dir" --recursive --sse AES256 --only-show-errors
+            fi
+          done
+          echo "Paquete subido a la carpeta scans/ del bucket de evidencias (ejecución ${GITHUB_RUN_ID})."
+
+      - name: Marcar la ejecución como fallida si Prowler falló
+        if: env.PROWLER_FAILED == '1'
+        run: exit 1

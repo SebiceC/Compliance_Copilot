@@ -25,7 +25,7 @@ como insumo.** Lo que agrega es lo que Prowler no hace:
 | Evaluación de riesgo (probabilidad × impacto, matriz 5×5) con [metodología documentada](docs/metodologia-riesgo.md) | listo (metodología v0.2) |
 | Entregables: matriz de riesgos y SoA (.xlsx / .md), paquete de evidencias, plan de remediación ([detalle](docs/entregables.md)) | listo (SoA de ISO 27001:2022) |
 | Redacción de hallazgos en formato de auditoría con Claude, **solo publicados tras aprobación humana** ([detalle](docs/redaccion-ia.md)) | listo |
-| Ejecución como compliance-as-code en GitHub Actions con OIDC (sin llaves de larga duración) | pendiente |
+| Ejecución como compliance-as-code en GitHub Actions con OIDC, sin llaves de larga duración ([detalle](docs/ci.md)) | listo (tests y escaneo manual de AWS) |
 
 ## Principios
 

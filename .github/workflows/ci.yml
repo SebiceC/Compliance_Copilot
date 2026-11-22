@@ -1,0 +1,40 @@
+# Tests en cada push y pull request. No usa credenciales: solo la muestra anonimizada de data/samples/.
+# Ver docs/ci.md y ADR 0006.
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+# Mínimo privilegio: el token de GitHub solo puede leer el repo.
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      # Acciones fijadas por hash de commit (cadena de suministro); el comentario dice la versión.
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1  # v7.0.1
+        with:
+          persist-credentials: false  # el token no queda guardado en el disco del runner
+
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0  # v7.1.0
+        with:
+          python-version: "3.13"  # ADR 0002
+          cache: pip
+          cache-dependency-path: pyproject.toml
+
+      - name: Instalar
+        run: |
+          python -m pip install --upgrade pip  # --group (PEP 735) requiere pip >= 25.1
+          pip install -e . --group dev
+
+      - name: Tests
+        run: pytest

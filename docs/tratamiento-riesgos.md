@@ -41,8 +41,23 @@ La configuración se verificó con el perfil de solo lectura (`get-bucket-versio
 la consola guardó primero una *retención por evento* (`DefaultEventHold`) en vez de un período de retención, y
 después `Years: 30` en vez de `Days: 30`, que habría retenido la evidencia 30 años en contra de la minimización.
 
-**Verificación:** el próximo escaneo desde CI debe mostrar R-01 y R-02 en PASS; R-03 a R-07 siguen en FAIL,
-respaldados por este registro.
+**Verificación (escaneo 5 desde CI, 2026-11-22 05:02 UTC):** resultado igual al esperado.
+
+| ID | Check | Antes (escaneo 4) | Después (escaneo 5) |
+|---|---|---|---|
+| R-01 | `s3_bucket_object_versioning` | FAIL | **PASS** |
+| R-02 | `s3_bucket_object_lock` | FAIL | **PASS** |
+| R-03 | `s3_bucket_no_mfa_delete` | FAIL · 9 medio | FAIL · 12 alto (aceptado) |
+| R-04 | `s3_bucket_kms_encryption` | FAIL · 9 medio | FAIL · 12 alto (aceptado) |
+| R-05 | `s3_bucket_server_access_logging_enabled` | FAIL · 9 medio | FAIL · 12 alto (aceptado) |
+| R-06 | `s3_bucket_cross_region_replication` | FAIL · 6 medio | FAIL · 8 medio (aceptado) |
+| R-07 | `s3_bucket_event_notifications_enabled` | FAIL · 6 medio | FAIL · 8 medio (aceptado) |
+
+El riesgo de los aceptados subió porque el bucket ahora está clasificado `restricted` (impacto 4 en vez de 3 por
+clasificación faltante): clasificar un activo no lo hace más seguro, hace visible cuánto vale. La retención la
+aplica el bucket a cada objeto nuevo, sin que el rol de CI la pida; se comprueba con `get-object-retention` sobre
+el `manifest.json` del paquete (`Mode: GOVERNANCE` y `RetainUntilDate` a 30 días). El paquete del escaneo 5 pasó
+`verify` y la verificación de la firma (commit `6581aa3`, `scan.yml` en `main`).
 
 **Efecto sobre el desmontaje:** con Object Lock, vaciar el bucket antes de 30 días requiere el permiso
 `s3:BypassGovernanceRetention` (LabAdmin lo tiene) y una solicitud explícita de bypass; o esperar a que venza la

@@ -198,6 +198,11 @@ origen.
 
 Los +16 resultados totales (232 → 248) son los checks del bucket, del rol y de su política nueva.
 
+**Escaneo 5 (2026-11-22 05:02 UTC), tras el tratamiento de riesgos:** 248 resultados · **113 FAIL** · 130 PASS ·
+5 MANUAL · 113 riesgos (2 crítico, 63 alto, 46 medio, 2 bajo). Versionado y Object Lock del bucket de evidencias
+pasan a PASS (−2 FAIL). Suben 3 riesgos de medio a alto: las brechas aceptadas del bucket, ahora clasificado
+`restricted`. `verify` y la firma del manifest, ✅.
+
 **Tratamiento de riesgos:** las 7 brechas del bucket de evidencias tienen decisión documentada en
 [docs/tratamiento-riesgos.md](tratamiento-riesgos.md) (R-01 a R-07: mitigar versionado y Object Lock, aceptar
 las otras cinco). El bucket se etiquetó `data-classification=restricted` y `project=compliance-copilot`; el rol,

@@ -109,6 +109,10 @@ def render_summary(report: Report) -> str:
         if statement.unmapped:
             parts.append(f"\n**IDs de Prowler sin correspondencia en el catálogo: {len(statement.unmapped)}** "
                          f"(ver `{statement.catalog.statement.file}`).")
+        if statement.catalog.personal_data:
+            parts.append(f"\n**Datos personales fuera del país:** {len(statement.outside)} recursos · **Recursos "
+                         f"de datos sin calificar:** {len(statement.unqualified)} (ver "
+                         f"`{statement.catalog.statement.file}`).")
 
     parts.append(f"\n\n## Clasificación faltante (A.5.12): {len(report.classification_required)} recursos\n")
     if report.classification_required:
@@ -144,6 +148,8 @@ def render_risks(report: Report) -> str:
 
 
 def _plural(label: str) -> str:
+    if label.endswith("ón"):  # Obligación -> Obligaciones (pierde la tilde)
+        return label[:-2] + "ones"
     return label + ("es" if label[-1] in "lnrd" else "s")
 
 
@@ -162,12 +168,48 @@ def render_statement(report: Report, statement: Statement) -> str:
         parts.append(_table(headers, rows))
         parts.append("")
     if statement.unmapped:
-        parts.append(f"## IDs de Prowler sin correspondencia ({len(statement.unmapped)})\n")
-        parts.append("Prowler los asigna a este marco, pero no existen en el catálogo. No se descartan: una persona "
-                     "decide si falta el requisito en el catálogo o si el mapeo de Prowler está mal (ADR 0007).\n")
-        parts.append(_table(["ID de Prowler", "Hallazgos", "Checks"],
+        if catalog.derived_from:
+            parts.append(f"## Controles de {catalog.derived_from} sin correspondencia ({len(statement.unmapped)})\n")
+            parts.append(f"Prowler los mapea en {catalog.derived_from}, pero la tabla de correspondencia no los lleva "
+                         "a este marco ni los excluye. No se descartan: una persona decide a qué obligación "
+                         "corresponden o si se excluyen (ADR 0008).\n")
+            headers = ["Control", "Hallazgos", "Checks"]
+        else:
+            parts.append(f"## IDs de Prowler sin correspondencia ({len(statement.unmapped)})\n")
+            parts.append("Prowler los asigna a este marco, pero no existen en el catálogo. No se descartan: una "
+                         "persona decide si falta el requisito en el catálogo o si el mapeo de Prowler está mal "
+                         "(ADR 0007).\n")
+            headers = ["ID de Prowler", "Hallazgos", "Checks"]
+        parts.append(_table(headers,
                             [[u.raw_id, u.finding_count, ", ".join(u.check_ids)] for u in statement.unmapped]))
         parts.append("")
+    if catalog.personal_data:
+        parts.append(_personal_data_sections(statement))
+    return "\n".join(parts)
+
+
+def _personal_data_sections(statement: Statement) -> str:
+    """Las dos revisiones de la regla de datos personales (ADR 0008). Siempre aparecen, aunque estén vacías."""
+    rule = statement.catalog.personal_data
+    assert rule is not None
+    obligations = ", ".join(f"`{o}`" for o in rule.outside_obligations)
+    parts = [f"## Datos personales fuera del país ({len(statement.outside)})\n"]
+    if statement.outside:
+        parts.append(f"Señalamientos para revisión, no incumplimientos: la herramienta solo ve la región. Ponen las "
+                     f"obligaciones {obligations} en *{TechnicalStatus.REVIEW.value}*.\n")
+        parts += [f"- {note}" for note in statement.outside_notes()]
+    else:
+        parts.append(f"Ningún recurso con `{rule.tag}=yes` fuera de las regiones del país.")
+    parts.append(f"\n## Requiere revisión: recursos de datos sin calificar ({len(statement.unqualified)})\n")
+    if statement.unqualified:
+        parts.append(f"Recursos de datos sin el tag `{rule.tag}` (o con un valor distinto de `yes`/`no`). Sus "
+                     "hallazgos no cuentan en esta matriz hasta que una persona decida si tratan datos "
+                     "personales.\n")
+        parts.append(_table(["Recurso", "Tipo", "Región"],
+                            [[r.name, r.type, r.region] for r in statement.unqualified]))
+    else:
+        parts.append("Todos los recursos de datos están calificados.")
+    parts.append("")
     return "\n".join(parts)
 
 

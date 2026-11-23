@@ -16,6 +16,7 @@ entregables reales contienen datos de la cuenta.
 | `soa-iso27001.md` | Los 93 controles del Anexo A con su estado técnico (la declaración de ISO 27001; ver abajo) |
 | `matriz-soc2.md` | Los 61 Trust Services Criteria de SOC 2 con su estado técnico |
 | `perfil-nist-csf.md` | Las 106 subcategorías de NIST CSF 2.0 con su estado técnico (perfil actual) |
+| `matriz-ley-1581.md` | Las 50 obligaciones de la Ley 1581 con su estado técnico, los datos personales fuera del país y los recursos sin calificar |
 | `plan-remediacion.md` | Una acción por check, ordenada por riesgo |
 | `compliance-copilot.xlsx` | Lo mismo en un libro de Excel (una hoja por entregable, más el mapa de calor) |
 | `evidencias/` | Hallazgos normalizados y una evidencia por control |
@@ -45,7 +46,7 @@ definen en el catálogo del marco (`src/compliance_copilot/catalogs/`):
 | ISO 27001:2022 | SoA (`soa-iso27001.md`) | Aplicable, Justificación | listo |
 | SOC 2 | Matriz de criterios (`matriz-soc2.md`) | En alcance, Justificación | listo |
 | NIST CSF 2.0 | Perfil actual (`perfil-nist-csf.md`) | Perfil objetivo, Prioridad | listo |
-| Ley 1581 de 2012 | Matriz técnica | Aplica, Evidencia manual | Fase 9 |
+| Ley 1581 de 2012 | Matriz técnica (`matriz-ley-1581.md`) | Aplica, Evidencia manual | listo |
 
 **IDs sin correspondencia.** Los IDs que Prowler asigna a un marco se traducen al formato oficial del catálogo.
 Los que no tienen correspondencia no se descartan: aparecen en el resumen, en una sección de la declaración, en
@@ -101,6 +102,23 @@ elementos retirados. Un ID de la 1.1 puede corresponder a varias subcategorías 
 todas, así que la suma de PASS y FAIL del perfil puede superar la cantidad de hallazgos. Once filas de la tabla no
 tienen equivalencia oficial y se asignaron por significado: están marcadas para revisión.
 
+## Matriz técnica de la Ley 1581
+
+Las **50 obligaciones** de la Ley 1581 de 2012, el Decreto 1377 de 2013 y la Circular Externa 005 de 2017
+(`catalogs/ley-1581.json`). Prowler no mapea la ley: la matriz se **deriva** de ISO 27001 (hallazgo → control ISO
+→ obligación) con la tabla revisada de [docs/correspondencia-ley-1581.md](correspondencia-ley-1581.md). Las
+reglas completas están en [docs/metodologia-ley-1581.md](metodologia-ley-1581.md) y el porqué en el ADR 0008.
+
+- **12 obligaciones técnicas** reciben hallazgos; las otras 38 (autorización, política, aviso, RNBD...) salen como
+  *Evidencia manual requerida*.
+- **Solo cuentan los recursos con datos personales** (`personal-data=yes`). Los hallazgos de la cuenta y de
+  infraestructura cuentan si la cuenta tiene datos personales. Un recurso de datos sin el tag aparece en
+  *Requiere revisión: recursos de datos sin calificar*.
+- **Datos personales fuera del país:** cada recurso con `personal-data=yes` fuera de Colombia se señala para
+  verificar el contrato de transmisión o el fundamento de la transferencia. La hoja *Revisión datos personales*
+  tiene la columna **Evidencia manual** para anotar lo revisado.
+- **No es una opinión jurídica.** *Aplica* y *Evidencia manual* los decide el responsable del tratamiento.
+
 ## Plan de remediación
 
 Una acción por check: una misma corrección (por ejemplo, una configuración de S3) arregla todos los recursos
@@ -135,4 +153,4 @@ referencia en `tests/golden/`. Un cambio en cualquier entregable aparece en el d
 
 ## Pendiente
 
-- Declaración de la Ley 1581 (Fase 9 de `docs/hoja-de-ruta-v1.md`).
+- Declaraciones para Azure (Fase 10 de `docs/hoja-de-ruta-v1.md`).

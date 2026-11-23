@@ -106,6 +106,23 @@ def _statement_evidence(statement: Statement, directory: Path) -> list[Path]:
                 for u in statement.unmapped
             ],
         }))
+    rule = statement.catalog.personal_data
+    if rule:
+        written.append(_write_json(directory / "_datos-personales.json", {
+            "framework": statement.framework,
+            "note": "Regla de datos personales (ADR 0008): qué recursos están fuera del país y cuáles sin calificar.",
+            "tag": rule.tag,
+            "local_regions": list(rule.local_regions),
+            "outside": [
+                {"resource_uid": r.uid, "resource_name": r.name, "resource_type": r.type, "region": r.region,
+                 "country": r.country, "obligations": list(rule.outside_obligations), "note": note}
+                for r, note in zip(statement.outside, statement.outside_notes(), strict=True)
+            ],
+            "unqualified": [
+                {"resource_uid": r.uid, "resource_name": r.name, "resource_type": r.type, "region": r.region}
+                for r in statement.unqualified
+            ],
+        }))
     return written
 
 

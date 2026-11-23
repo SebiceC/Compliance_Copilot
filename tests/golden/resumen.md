@@ -58,6 +58,18 @@
 | Evidencia manual requerida | 74 |
 
 
+## Matriz Ley 1581
+
+| Estado técnico | Obligaciones |
+|---|---|
+| Con brechas | 0 |
+| Requiere revisión | 0 |
+| Sin brechas detectadas | 0 |
+| Evidencia manual requerida | 50 |
+
+**Datos personales fuera del país:** 0 recursos · **Recursos de datos sin calificar:** 3 (ver `matriz-ley-1581.md`).
+
+
 ## Clasificación faltante (A.5.12): 0 recursos
 
 

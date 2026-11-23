@@ -6,8 +6,10 @@
   "SoA ISO 27001",
   "Criterios SOC 2",
   "Perfil NIST CSF 2.0",
+  "Matriz Ley 1581",
   "Plan de remediación",
-  "Hallazgos de auditoría"
+  "Hallazgos de auditoría",
+  "Revisión datos personales"
  ],
  "content": {
   "Resumen": {
@@ -14425,6 +14427,2371 @@
     ]
    ]
   },
+  "Matriz Ley 1581": {
+   "freeze_panes": "A2",
+   "auto_filter": "A1:K51",
+   "widths": {
+    "A": 9.0,
+    "B": 15.0,
+    "C": 42.0,
+    "D": 26.0,
+    "E": 7.0,
+    "F": 7.0,
+    "G": 9.0,
+    "H": 13.0,
+    "I": 50.0,
+    "J": 12.0,
+    "K": 50.0
+   },
+   "rows": [
+    [
+     {
+      "v": "Obligación",
+      "fill": "001F3864"
+     },
+     {
+      "v": "Grupo",
+      "fill": "001F3864"
+     },
+     {
+      "v": "Título",
+      "fill": "001F3864"
+     },
+     {
+      "v": "Estado técnico",
+      "fill": "001F3864"
+     },
+     {
+      "v": "PASS",
+      "fill": "001F3864"
+     },
+     {
+      "v": "FAIL",
+      "fill": "001F3864"
+     },
+     {
+      "v": "MANUAL",
+      "fill": "001F3864"
+     },
+     {
+      "v": "Riesgo máximo",
+      "fill": "001F3864"
+     },
+     {
+      "v": "Checks",
+      "fill": "001F3864"
+     },
+     {
+      "v": "Aplica",
+      "fill": "001F3864"
+     },
+     {
+      "v": "Evidencia manual",
+      "fill": "001F3864"
+     }
+    ],
+    [
+     {
+      "v": "L1581-4a",
+      "fill": null
+     },
+     {
+      "v": "Art. 4 · Principios",
+      "fill": null
+     },
+     {
+      "v": "Legalidad: el tratamiento se sujeta a la ley",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "L1581-4b",
+      "fill": null
+     },
+     {
+      "v": "Art. 4 · Principios",
+      "fill": null
+     },
+     {
+      "v": "Finalidad legítima, informada al titular",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "L1581-4c",
+      "fill": null
+     },
+     {
+      "v": "Art. 4 · Principios",
+      "fill": null
+     },
+     {
+      "v": "Libertad: tratamiento con autorización previa, expresa e informada",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "L1581-4d",
+      "fill": null
+     },
+     {
+      "v": "Art. 4 · Principios",
+      "fill": null
+     },
+     {
+      "v": "Veracidad o calidad: información completa, exacta y actualizada",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "L1581-4e",
+      "fill": null
+     },
+     {
+      "v": "Art. 4 · Principios",
+      "fill": null
+     },
+     {
+      "v": "Transparencia: el titular puede conocer sus datos",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "L1581-4f",
+      "fill": null
+     },
+     {
+      "v": "Art. 4 · Principios",
+      "fill": null
+     },
+     {
+      "v": "Acceso y circulación restringida; no expuestos en Internet sin control",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "L1581-4g",
+      "fill": null
+     },
+     {
+      "v": "Art. 4 · Principios",
+      "fill": null
+     },
+     {
+      "v": "Seguridad: medidas técnicas, humanas y administrativas",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "L1581-4h",
+      "fill": null
+     },
+     {
+      "v": "Art. 4 · Principios",
+      "fill": null
+     },
+     {
+      "v": "Confidencialidad de los datos que no son públicos",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "L1581-6",
+      "fill": null
+     },
+     {
+      "v": "Arts. 5 a 7 · Datos sensibles y de menores",
+      "fill": null
+     },
+     {
+      "v": "Tratamiento de datos sensibles solo en los casos permitidos",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "L1581-7",
+      "fill": null
+     },
+     {
+      "v": "Arts. 5 a 7 · Datos sensibles y de menores",
+      "fill": null
+     },
+     {
+      "v": "Datos de niños, niñas y adolescentes: interés superior",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "L1581-8",
+      "fill": null
+     },
+     {
+      "v": "Arts. 8 a 16 · Derechos, autorización y procedimientos",
+      "fill": null
+     },
+     {
+      "v": "Derechos de los titulares: conocer, actualizar, rectificar, revocar",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "L1581-9",
+      "fill": null
+     },
+     {
+      "v": "Arts. 8 a 16 · Derechos, autorización y procedimientos",
+      "fill": null
+     },
+     {
+      "v": "Autorización previa e informada del titular",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "L1581-12",
+      "fill": null
+     },
+     {
+      "v": "Arts. 8 a 16 · Derechos, autorización y procedimientos",
+      "fill": null
+     },
+     {
+      "v": "Deber de informar al titular al pedir la autorización",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "L1581-14",
+      "fill": null
+     },
+     {
+      "v": "Arts. 8 a 16 · Derechos, autorización y procedimientos",
+      "fill": null
+     },
+     {
+      "v": "Atención de consultas en los plazos de ley",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "L1581-15",
+      "fill": null
+     },
+     {
+      "v": "Arts. 8 a 16 · Derechos, autorización y procedimientos",
+      "fill": null
+     },
+     {
+      "v": "Atención de reclamos en los plazos de ley",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "L1581-17a",
+      "fill": null
+     },
+     {
+      "v": "Art. 17 · Deberes del responsable",
+      "fill": null
+     },
+     {
+      "v": "Garantizar el ejercicio pleno del hábeas data",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "L1581-17b",
+      "fill": null
+     },
+     {
+      "v": "Art. 17 · Deberes del responsable",
+      "fill": null
+     },
+     {
+      "v": "Solicitar y conservar copia de la autorización",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "L1581-17c",
+      "fill": null
+     },
+     {
+      "v": "Art. 17 · Deberes del responsable",
+      "fill": null
+     },
+     {
+      "v": "Informar al titular la finalidad y sus derechos",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "L1581-17d",
+      "fill": null
+     },
+     {
+      "v": "Art. 17 · Deberes del responsable",
+      "fill": null
+     },
+     {
+      "v": "Conservar la información en condiciones de seguridad",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "L1581-17e",
+      "fill": null
+     },
+     {
+      "v": "Art. 17 · Deberes del responsable",
+      "fill": null
+     },
+     {
+      "v": "Entregar al encargado información veraz y completa",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "L1581-17f",
+      "fill": null
+     },
+     {
+      "v": "Art. 17 · Deberes del responsable",
+      "fill": null
+     },
+     {
+      "v": "Mantener la información actualizada y comunicarlo al encargado",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "L1581-17g",
+      "fill": null
+     },
+     {
+      "v": "Art. 17 · Deberes del responsable",
+      "fill": null
+     },
+     {
+      "v": "Rectificar la información incorrecta y comunicarlo al encargado",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "L1581-17h",
+      "fill": null
+     },
+     {
+      "v": "Art. 17 · Deberes del responsable",
+      "fill": null
+     },
+     {
+      "v": "Entregar al encargado solo datos con tratamiento autorizado",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "L1581-17i",
+      "fill": null
+     },
+     {
+      "v": "Art. 17 · Deberes del responsable",
+      "fill": null
+     },
+     {
+      "v": "Exigir al encargado condiciones de seguridad y privacidad",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "L1581-17j",
+      "fill": null
+     },
+     {
+      "v": "Art. 17 · Deberes del responsable",
+      "fill": null
+     },
+     {
+      "v": "Tramitar las consultas y los reclamos",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "L1581-17k",
+      "fill": null
+     },
+     {
+      "v": "Art. 17 · Deberes del responsable",
+      "fill": null
+     },
+     {
+      "v": "Adoptar un manual interno de políticas y procedimientos",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "L1581-17l",
+      "fill": null
+     },
+     {
+      "v": "Art. 17 · Deberes del responsable",
+      "fill": null
+     },
+     {
+      "v": "Informar al encargado los datos en discusión por el titular",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "L1581-17m",
+      "fill": null
+     },
+     {
+      "v": "Art. 17 · Deberes del responsable",
+      "fill": null
+     },
+     {
+      "v": "Informar al titular, si lo pide, el uso dado a sus datos",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "L1581-17n",
+      "fill": null
+     },
+     {
+      "v": "Art. 17 · Deberes del responsable",
+      "fill": null
+     },
+     {
+      "v": "Informar a la SIC las violaciones a los códigos de seguridad",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "L1581-17o",
+      "fill": null
+     },
+     {
+      "v": "Art. 17 · Deberes del responsable",
+      "fill": null
+     },
+     {
+      "v": "Cumplir las instrucciones y requerimientos de la SIC",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "L1581-18a",
+      "fill": null
+     },
+     {
+      "v": "Art. 18 · Deberes del encargado",
+      "fill": null
+     },
+     {
+      "v": "Garantizar el ejercicio pleno del hábeas data",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "L1581-18b",
+      "fill": null
+     },
+     {
+      "v": "Art. 18 · Deberes del encargado",
+      "fill": null
+     },
+     {
+      "v": "Conservar la información en condiciones de seguridad",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "L1581-18c",
+      "fill": null
+     },
+     {
+      "v": "Art. 18 · Deberes del encargado",
+      "fill": null
+     },
+     {
+      "v": "Actualizar, rectificar o suprimir los datos oportunamente",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "L1581-18d",
+      "fill": null
+     },
+     {
+      "v": "Art. 18 · Deberes del encargado",
+      "fill": null
+     },
+     {
+      "v": "Actualizar lo reportado por el responsable en cinco días hábiles",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "L1581-18e",
+      "fill": null
+     },
+     {
+      "v": "Art. 18 · Deberes del encargado",
+      "fill": null
+     },
+     {
+      "v": "Tramitar las consultas y los reclamos",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "L1581-18f",
+      "fill": null
+     },
+     {
+      "v": "Art. 18 · Deberes del encargado",
+      "fill": null
+     },
+     {
+      "v": "Adoptar un manual interno de políticas y procedimientos",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "L1581-18g",
+      "fill": null
+     },
+     {
+      "v": "Art. 18 · Deberes del encargado",
+      "fill": null
+     },
+     {
+      "v": "Registrar la leyenda \"reclamo en trámite\"",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "L1581-18h",
+      "fill": null
+     },
+     {
+      "v": "Art. 18 · Deberes del encargado",
+      "fill": null
+     },
+     {
+      "v": "Insertar la leyenda \"información en discusión judicial\"",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "L1581-18i",
+      "fill": null
+     },
+     {
+      "v": "Art. 18 · Deberes del encargado",
+      "fill": null
+     },
+     {
+      "v": "No circular información cuyo bloqueo ordenó la SIC",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "L1581-18j",
+      "fill": null
+     },
+     {
+      "v": "Art. 18 · Deberes del encargado",
+      "fill": null
+     },
+     {
+      "v": "Permitir el acceso solo a las personas autorizadas",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "L1581-18k",
+      "fill": null
+     },
+     {
+      "v": "Art. 18 · Deberes del encargado",
+      "fill": null
+     },
+     {
+      "v": "Informar a la SIC las violaciones a los códigos de seguridad",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "L1581-18l",
+      "fill": null
+     },
+     {
+      "v": "Art. 18 · Deberes del encargado",
+      "fill": null
+     },
+     {
+      "v": "Cumplir las instrucciones y requerimientos de la SIC",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "L1581-25",
+      "fill": null
+     },
+     {
+      "v": "Art. 25 · Registro Nacional de Bases de Datos",
+      "fill": null
+     },
+     {
+      "v": "Inscribir las bases de datos en el RNBD",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "L1581-26",
+      "fill": null
+     },
+     {
+      "v": "Circulación internacional de datos",
+      "fill": null
+     },
+     {
+      "v": "Transferir solo a países con nivel adecuado, salvo excepciones",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "D1377-25",
+      "fill": null
+     },
+     {
+      "v": "Circulación internacional de datos",
+      "fill": null
+     },
+     {
+      "v": "Contrato de transmisión con el encargado fuera del país",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "SIC-C005",
+      "fill": null
+     },
+     {
+      "v": "Circulación internacional de datos",
+      "fill": null
+     },
+     {
+      "v": "Países con nivel adecuado según la Circular Externa 005 de 2017",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "D1377-11",
+      "fill": null
+     },
+     {
+      "v": "Decreto 1377 de 2013 · Reglamentación",
+      "fill": null
+     },
+     {
+      "v": "Conservar los datos solo el tiempo necesario para la finalidad",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "D1377-13",
+      "fill": null
+     },
+     {
+      "v": "Decreto 1377 de 2013 · Reglamentación",
+      "fill": null
+     },
+     {
+      "v": "Política de tratamiento de la información",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "D1377-14",
+      "fill": null
+     },
+     {
+      "v": "Decreto 1377 de 2013 · Reglamentación",
+      "fill": null
+     },
+     {
+      "v": "Aviso de privacidad cuando no se puede entregar la política",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "D1377-26",
+      "fill": null
+     },
+     {
+      "v": "Decreto 1377 de 2013 · Reglamentación",
+      "fill": null
+     },
+     {
+      "v": "Responsabilidad demostrada (Guía de la SIC)",
+      "fill": null
+     },
+     {
+      "v": "Evidencia manual requerida",
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": 0,
+      "fill": null
+     },
+     {
+      "v": "-",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ]
+   ]
+  },
   "Plan de remediación": {
    "freeze_panes": "A2",
    "auto_filter": "A1:L21",
@@ -16731,6 +19098,158 @@
      {
       "v": null,
       "fill": null
+     }
+    ]
+   ]
+  },
+  "Revisión datos personales": {
+   "freeze_panes": "A2",
+   "auto_filter": "A1:H4",
+   "widths": {
+    "A": 12.0,
+    "B": 15.0,
+    "C": 30.0,
+    "D": 20.0,
+    "E": 12.0,
+    "F": 18.0,
+    "G": 80.0,
+    "H": 50.0
+   },
+   "rows": [
+    [
+     {
+      "v": "Marco",
+      "fill": "001F3864"
+     },
+     {
+      "v": "Revisión",
+      "fill": "001F3864"
+     },
+     {
+      "v": "Recurso",
+      "fill": "001F3864"
+     },
+     {
+      "v": "Tipo",
+      "fill": "001F3864"
+     },
+     {
+      "v": "Región",
+      "fill": "001F3864"
+     },
+     {
+      "v": "País",
+      "fill": "001F3864"
+     },
+     {
+      "v": "Qué verificar",
+      "fill": "001F3864"
+     },
+     {
+      "v": "Evidencia manual",
+      "fill": "001F3864"
+     }
+    ],
+    [
+     {
+      "v": "LEY-1581",
+      "fill": null
+     },
+     {
+      "v": "Sin calificar",
+      "fill": null
+     },
+     {
+      "v": "aws-cloudtrail-logs-123456789001-5f59e248",
+      "fill": null
+     },
+     {
+      "v": "AwsS3Bucket",
+      "fill": null
+     },
+     {
+      "v": "us-east-1",
+      "fill": null
+     },
+     {
+      "v": "EE. UU.",
+      "fill": null
+     },
+     {
+      "v": "Decidir si trata datos personales y etiquetarlo (personal-data=yes|no).",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "LEY-1581",
+      "fill": null
+     },
+     {
+      "v": "Sin calificar",
+      "fill": null
+     },
+     {
+      "v": "cc-lab-data-7asda3",
+      "fill": null
+     },
+     {
+      "v": "AwsS3Bucket",
+      "fill": null
+     },
+     {
+      "v": "us-east-1",
+      "fill": null
+     },
+     {
+      "v": "EE. UU.",
+      "fill": null
+     },
+     {
+      "v": "Decidir si trata datos personales y etiquetarlo (personal-data=yes|no).",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
+     }
+    ],
+    [
+     {
+      "v": "LEY-1581",
+      "fill": null
+     },
+     {
+      "v": "Sin calificar",
+      "fill": null
+     },
+     {
+      "v": "lab-trail",
+      "fill": null
+     },
+     {
+      "v": "AwsS3Bucket",
+      "fill": null
+     },
+     {
+      "v": "us-east-1",
+      "fill": null
+     },
+     {
+      "v": "EE. UU.",
+      "fill": null
+     },
+     {
+      "v": "Decidir si trata datos personales y etiquetarlo (personal-data=yes|no).",
+      "fill": null
+     },
+     {
+      "v": null,
+      "fill": "00DDEBF7"
      }
     ]
    ]

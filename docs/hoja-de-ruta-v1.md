@@ -66,7 +66,7 @@ subcategorías inexistentes.
 | 8.3 | ✅ Entregable **Perfil actual NIST CSF 2.0**: por subcategoría, estado técnico; columnas para el perfil objetivo y la prioridad (decisión humana) | Yo |
 | 8.4 | ✅ Evidencia por subcategoría en el paquete | Yo |
 | 8.5 | ✅ Reportada en [prowler-cloud/prowler#13504](https://github.com/prowler-cloud/prowler/issues/13504). Documentar la discrepancia de Prowler en el ADR 0007 y evaluar reportarla al proyecto Prowler (issue público) | Tú decides |
-| 8.6 | Escaneo desde CI y revisión del perfil | Tú |
+| 8.6 | ✅ Escaneo desde CI y revisión del perfil | Tú |
 
 ## Fase 9. Ley 1581 de 2012
 
@@ -76,12 +76,12 @@ con el perfil de privacidad del proyecto.
 
 | # | Paso | Quién |
 |---|---|---|
-| 9.1 | Delimitar el alcance normativo: Ley 1581 de 2012, Decreto 1377 de 2013 (compilado en el Decreto 1074 de 2015) y la Guía de Responsabilidad Demostrada de la SIC. Decidir qué obligaciones entran | **Tú** (criterio jurídico) |
-| 9.2 | Catálogo de **obligaciones evaluables técnicamente**, por ejemplo: principio de seguridad (art. 4 lit. g), confidencialidad (lit. h), acceso y circulación restringida (lit. f), deber de conservar la información en condiciones de seguridad (art. 17 lit. d; art. 18 para el encargado), transferencias internacionales (art. 26) | Tú defines, yo estructuro |
-| 9.3 | **Metodología de mapeo** (`docs/metodologia-ley-1581.md`): hallazgo técnico → control ISO 27001 → obligación de la ley. Prowler trae un mapeo a GDPR (art. 25, 30 y 32) que sirve de referencia, no de fuente | Tú decides, yo redacto |
-| 9.4 | Regla propia de **transferencia internacional**: recursos con `data-classification` confidencial o restringida en regiones fuera de Colombia se señalan para revisión del art. 26 (la nube no tiene región en Colombia: siempre aplica) | Yo |
-| 9.5 | Entregable **Matriz técnica Ley 1581**: por obligación, hallazgos, estado y la evidencia manual requerida (autorización, finalidades, política de tratamiento, registro ante el RNBD, que la herramienta no puede ver) | Yo |
-| 9.6 | **ADR 0008:** por qué un mapeo indirecto vía ISO y no directo, y sus límites | Yo |
+| 9.1 | ✅ Delimitar el alcance normativo: Ley 1581 de 2012, Decreto 1377 de 2013 (compilado en el Decreto 1074 de 2015) y la Guía de Responsabilidad Demostrada de la SIC. Decidir qué obligaciones entran | **Tú** (criterio jurídico) |
+| 9.2 | ✅ Catálogo de **obligaciones evaluables técnicamente**, por ejemplo: principio de seguridad (art. 4 lit. g), confidencialidad (lit. h), acceso y circulación restringida (lit. f), deber de conservar la información en condiciones de seguridad (art. 17 lit. d; art. 18 para el encargado), transferencias internacionales (art. 26) | Tú defines, yo estructuro |
+| 9.3 | ✅ **Metodología de mapeo** (`docs/metodologia-ley-1581.md`): hallazgo técnico → control ISO 27001 → obligación de la ley. Prowler trae un mapeo a GDPR (art. 25, 30 y 32) que sirve de referencia, no de fuente | Tú decides, yo redacto |
+| 9.4 | ✅ Regla propia de **circulación internacional**: recursos con `personal-data=yes` en regiones fuera de Colombia se señalan para revisión, como transmisión por defecto (Decreto 1377, art. 25) y con la transferencia (art. 26) como alternativa. Se usa el tag `personal-data`, no la clasificación: ver ADR 0008 | Yo |
+| 9.5 | ✅ Entregable **Matriz técnica Ley 1581**: por obligación, hallazgos, estado y la evidencia manual requerida (autorización, finalidades, política de tratamiento, registro ante el RNBD, que la herramienta no puede ver) | Yo |
+| 9.6 | ✅ **ADR 0008:** por qué un mapeo indirecto vía ISO y no directo, y sus límites | Yo |
 | 9.7 | Revisión de la matriz como experto en privacidad: ¿un abogado o un auditor de la SIC aceptaría este mapeo? | Tú |
 
 ## Fase 10. Azure

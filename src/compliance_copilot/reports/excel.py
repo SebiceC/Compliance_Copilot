@@ -44,6 +44,8 @@ def write_excel(report: Report, out_dir: Path) -> Path:
     _audit(wb.create_sheet("Hallazgos de auditoría"), report)
     if any(s.unmapped for s in report.statements):
         _unmapped(wb.create_sheet("Sin correspondencia"), report)
+    if any(s.outside or s.unqualified for s in report.statements):
+        _personal_data(wb.create_sheet("Revisión datos personales"), report)
     path = out_dir / FILENAME
     wb.save(path)
     return path
@@ -149,6 +151,19 @@ def _unmapped(ws: Worksheet, report: Report) -> None:
     rows = [[s.framework, u.raw_id, u.finding_count, ", ".join(u.check_ids)]
             for s in report.statements for u in s.unmapped]
     _table(ws, ["Marco", "ID de Prowler", "Hallazgos", "Checks"], rows, [16, 16, 10, 80])
+
+
+def _personal_data(ws: Worksheet, report: Report) -> None:
+    """Las revisiones de la regla de datos personales (ADR 0008). La evidencia la anota una persona."""
+    rows = []
+    for s in report.statements:
+        rows += [[s.framework, "Fuera del país", r.name, r.type, r.region, r.country, note, ""]
+                 for r, note in zip(s.outside, s.outside_notes(), strict=True)]
+        rows += [[s.framework, "Sin calificar", r.name, r.type, r.region, r.country,
+                  f"Decidir si trata datos personales y etiquetarlo ({s.catalog.personal_data.tag}=yes|no).", ""]
+                 for r in s.unqualified if s.catalog.personal_data]
+    _table(ws, ["Marco", "Revisión", "Recurso", "Tipo", "Región", "País", "Qué verificar", "Evidencia manual"],
+           rows, [12, 15, 30, 20, 12, 18, 80, 50], human_columns=(8,))
 
 
 def _remediation(ws: Worksheet, report: Report) -> None:

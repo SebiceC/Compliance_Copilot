@@ -198,16 +198,6 @@ origen.
 
 Los +16 resultados totales (232 → 248) son los checks del bucket, del rol y de su política nueva.
 
-**Pendiente (tratamiento de riesgos):**
-
-<<<<<<< Updated upstream
-- **Brechas del bucket de evidencias.** Decidir cuáles se aceptan por ser un laboratorio (KMS, replicación,
-  notificaciones, logs de acceso) y cuáles se remedian por tratarse de evidencia: versionado y Object Lock la
-  harían inmutable (hoy el rol de CI no puede borrar, pero un administrador sí).
-- **Clasificación.** El bucket de evidencias y el rol no tienen tags, así que el motor los marca para el control
-  A.5.12. Propuesto: `data-classification=restricted` para el bucket (es evidencia de auditoría, como
-  CloudTrail) y `project=compliance-copilot` en ambos.
-=======
 **Tag Policy (2026-11-22).** Política `etiquetas-compliance-copilot` en AWS Organizations: la clave
 `data-classification` solo admite `public`, `internal`, `confidential` y `restricted` (en minúscula), y `project`
 solo `compliance-copilot`. En los buckets de S3 se **aplica** (rechaza el etiquetado incorrecto); en el resto se
@@ -219,7 +209,19 @@ control detectivo.
 [docs/tratamiento-riesgos.md](tratamiento-riesgos.md) (R-01 a R-07: mitigar versionado y Object Lock, aceptar
 las otras cinco). El bucket se etiquetó `data-classification=restricted` y `project=compliance-copilot`; el rol,
 `project=compliance-copilot` (es inventario: un rol no guarda datos y no entra en el control A.5.12).
->>>>>>> Stashed changes
+
+**Datos personales (2026-11-23, Fase 9).** La Tag Policy suma la clave `personal-data`, que solo admite `yes` y
+`no` y se aplica en los buckets de S3. Es independiente de `data-classification`: la clasificación mide el
+impacto de la divulgación; `personal-data` dice si aplica la Ley 1581 (ADR 0008). Calificación de los buckets:
+
+| Bucket | `personal-data` | Por qué |
+|---|---|---|
+| `cc-lab-data-7asda3` | `yes` | El escenario: guardaría una base de clientes |
+| `aws-cloudtrail-logs-<ACCOUNT_ID>-<sufijo>` | `yes` | Los usuarios y las IP de los logs identifican a personas naturales |
+| `compliance-copilot-evidence-<sufijo>` | `yes` | Los escaneos traen nombres de usuarios IAM (por eso se seudonimizan antes de la IA) |
+
+Los tres están en `us-east-1`, así que la matriz de la Ley 1581 los señala como datos personales fuera de
+Colombia.
 
 ## Desmontaje
 

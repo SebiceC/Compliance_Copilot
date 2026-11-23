@@ -131,8 +131,8 @@ def generated(tmp_path_factory: pytest.TempPathFactory) -> Path:
 
 
 def test_all_deliverables_are_generated(generated: Path) -> None:
-    for name in ["resumen.md", "matriz-riesgos.md", "soa-iso27001.md", "matriz-soc2.md", "perfil-nist-csf.md", "plan-remediacion.md",
-                 "hallazgos-auditoria.md",
+    for name in ["resumen.md", "matriz-riesgos.md", "soa-iso27001.md", "matriz-soc2.md", "perfil-nist-csf.md",
+                 "matriz-ley-1581.md", "plan-remediacion.md", "hallazgos-auditoria.md",
                  "compliance-copilot.xlsx", MANIFEST, "evidencias/hallazgos.json"]:
         assert (generated / name).exists(), name
 
@@ -153,10 +153,12 @@ def test_markdown_tables_are_well_formed(generated: Path) -> None:
 def test_excel_has_one_sheet_per_deliverable(generated: Path) -> None:
     wb = load_workbook(generated / "compliance-copilot.xlsx")
     assert wb.sheetnames == ["Resumen", "Matriz de riesgos", "Mapa de calor", "SoA ISO 27001", "Criterios SOC 2",
-                             "Perfil NIST CSF 2.0", "Plan de remediación", "Hallazgos de auditoría"]
+                             "Perfil NIST CSF 2.0", "Matriz Ley 1581", "Plan de remediación",
+                             "Hallazgos de auditoría", "Revisión datos personales"]
     assert wb["SoA ISO 27001"].max_row == 94  # encabezado + 93 controles
     assert wb["Criterios SOC 2"].max_row == 62  # encabezado + 61 criterios
     assert wb["Perfil NIST CSF 2.0"].max_row == 107  # encabezado + 106 subcategorías
+    assert wb["Matriz Ley 1581"].max_row == 51  # encabezado + 50 obligaciones
     assert wb["Matriz de riesgos"].max_row == 30  # encabezado + 29 riesgos
     assert wb["Matriz de riesgos"].auto_filter.ref
 

@@ -13,6 +13,7 @@ from compliance_copilot.catalogs import Catalog, Requirement, load_catalogs
 from compliance_copilot.drafting.schema import FindingDraft
 from compliance_copilot.models import Finding, ScanMetadata, Severity, Status
 from compliance_copilot.parsers.prowler_ocsf import ParseError, ParseResult
+from compliance_copilot.personal_data import ResourceRef, personal_data_scope
 from compliance_copilot.risk import RiskAssessment, RiskLevel, Treatment, assess_all
 
 # Marco de referencia del plan de remediación, la matriz de riesgos y la redacción con IA (ADR 0007, D5).
@@ -87,10 +88,21 @@ class Statement:
     rows: tuple[StatementRow, ...]  # todos los requisitos del catálogo, en orden
     unmapped: tuple[UnmappedId, ...] = ()
     evidence: dict[str, tuple[Finding, ...]] = field(default_factory=dict)  # requisito -> sus hallazgos
+    # Solo en los marcos con regla de datos personales (ADR 0008).
+    unqualified: tuple[ResourceRef, ...] = ()  # recursos de datos sin calificar: requieren revisión
+    outside: tuple[ResourceRef, ...] = ()  # recursos con datos personales fuera del país: se señalan
 
     @property
     def framework(self) -> str:
         return self.catalog.framework
+
+    def outside_notes(self) -> tuple[str, ...]:
+        """El texto del señalamiento por cada recurso fuera del país."""
+        rule = self.catalog.personal_data
+        if not rule:
+            return ()
+        return tuple(rule.outside_note.format(resource=r.name, region=r.region, country=r.country)
+                     for r in self.outside)
 
 
 @dataclass(frozen=True)
@@ -213,12 +225,20 @@ def build_statement(findings: tuple[Finding, ...], risks: tuple[RiskRow, ...], c
     requisitos). Los que no tienen correspondencia no se pierden: quedan en ``unmapped`` con sus hallazgos (ADR 0007, D3; el mismo principio del
     ADR 0003 para los hallazgos que no se pueden leer).
     """
+    scope = None
+    if catalog.personal_data:  # solo cuentan los hallazgos de recursos con datos personales (ADR 0008)
+        rule = catalog.personal_data
+        scope = personal_data_scope(findings, rule.tag, rule.local_regions)
+        findings = scope.counted
+    flagged = set(catalog.personal_data.outside_obligations) if scope and scope.outside else set()
+
     by_requirement: dict[str, list[Finding]] = defaultdict(list)
     unmapped: dict[str, list[Finding]] = defaultdict(list)
     for finding in findings:
-        for raw_id in finding.compliance.get(catalog.framework, []):
+        # Un catálogo derivado lee los IDs del marco de origen (la Ley 1581, los de ISO 27001).
+        for raw_id in finding.compliance.get(catalog.source_framework, []):
             targets = catalog.resolve(raw_id)
-            if not targets:
+            if not targets and raw_id not in catalog.excluded:
                 unmapped[raw_id].append(finding)
             for requirement_id in targets:
                 if finding not in by_requirement[requirement_id]:  # varios IDs de Prowler pueden ir al mismo requisito
@@ -232,9 +252,12 @@ def build_statement(findings: tuple[Finding, ...], risks: tuple[RiskRow, ...], c
         statuses = Counter(f.status for f in mapped)
         fails = [score_of[f.finding_uid] for f in mapped if f.finding_uid in score_of]
         worst = max(fails, key=lambda a: a.score, default=None)
+        status = _technical_status(statuses)
+        if requirement.id in flagged and status is not TechnicalStatus.GAPS:
+            status = TechnicalStatus.REVIEW  # datos personales fuera del país: lo verifica una persona
         rows.append(StatementRow(
             requirement=requirement,
-            status=_technical_status(statuses),
+            status=status,
             pass_count=statuses[Status.PASS],
             fail_count=statuses[Status.FAIL],
             manual_count=statuses[Status.MANUAL],
@@ -251,6 +274,8 @@ def build_statement(findings: tuple[Finding, ...], risks: tuple[RiskRow, ...], c
             for raw_id, found in sorted(unmapped.items())
         ),
         evidence={rid: tuple(found) for rid, found in by_requirement.items()},
+        unqualified=scope.unqualified if scope else (),
+        outside=scope.outside if scope else (),
     )
 
 

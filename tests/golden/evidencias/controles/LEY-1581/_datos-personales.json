@@ -1,0 +1,27 @@
+{
+  "framework": "LEY-1581",
+  "note": "Regla de datos personales (ADR 0008): qué recursos están fuera del país y cuáles sin calificar.",
+  "tag": "personal-data",
+  "local_regions": [],
+  "outside": [],
+  "unqualified": [
+    {
+      "resource_uid": "arn:aws:s3:::aws-cloudtrail-logs-123456789001-5f59e248",
+      "resource_name": "aws-cloudtrail-logs-123456789001-5f59e248",
+      "resource_type": "AwsS3Bucket",
+      "region": "us-east-1"
+    },
+    {
+      "resource_uid": "arn:aws:s3:::cc-lab-data-7asda3",
+      "resource_name": "cc-lab-data-7asda3",
+      "resource_type": "AwsS3Bucket",
+      "region": "us-east-1"
+    },
+    {
+      "resource_uid": "arn:aws:cloudtrail:us-east-1:123456789001:trail/lab-trail",
+      "resource_name": "lab-trail",
+      "resource_type": "AwsS3Bucket",
+      "region": "us-east-1"
+    }
+  ]
+}

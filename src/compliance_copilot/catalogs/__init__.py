@@ -9,7 +9,10 @@ Todo lo propio de un marco vive en su JSON, no en el código:
 - el patrón de sus identificadores (``id_pattern``), que valida el catálogo al cargarlo;
 - sus grupos (temas en ISO 27001, funciones en NIST CSF, categorías en SOC 2) con su etiqueta;
 - cómo se llama su entregable y qué columnas decide una persona (``statement``);
-- cómo se traducen los identificadores de Prowler al formato oficial (``normalization`` y ``aliases``).
+- cómo se traducen los identificadores de Prowler al formato oficial (``normalization`` y ``aliases``);
+- si el marco se deriva de otro (``derived_from``): Prowler no lo mapea y sus requisitos se obtienen de los
+  controles de otro marco (la Ley 1581 desde ISO 27001, ADR 0008);
+- si solo cuentan los recursos con datos personales (``personal_data``).
 
 Los JSON viajan dentro del paquete (``importlib.resources``) para que funcionen igual con ``pip install -e .``,
 con una instalación normal y en CI.
@@ -81,6 +84,18 @@ NORMALIZERS: dict[str, Callable[[str], str]] = {
 }
 
 
+class PersonalDataRule(BaseModel):
+    """Regla de un marco de protección de datos (ADR 0008): qué hallazgos cuentan y qué datos salen del país."""
+
+    model_config = ConfigDict(frozen=True, extra="forbid")
+
+    tag: str = "personal-data"  # yes/no: lo decide una persona, como data-classification
+    # Regiones que están en el país. Un recurso con datos personales fuera de ellas se señala para revisión.
+    local_regions: tuple[str, ...] = ()
+    outside_obligations: tuple[str, ...] = Field(min_length=1)  # obligaciones que recibe el señalamiento
+    outside_note: str = Field(min_length=1)  # texto del señalamiento; admite {resource}, {region} y {country}
+
+
 class Catalog(BaseModel):
     model_config = ConfigDict(frozen=True, extra="forbid")
 
@@ -95,6 +110,11 @@ class Catalog(BaseModel):
     groups: tuple[Group, ...] = Field(min_length=1)
     statement: Statement
     requirements: tuple[Requirement, ...] = Field(min_length=1)
+    # Marco del que se deriva: sus IDs (no los de Prowler) se traducen con ``aliases``. Los IDs de ese marco que
+    # se decidió no llevar a este van en ``excluded``, para no reportarlos como "sin correspondencia".
+    derived_from: str | None = None
+    excluded: tuple[str, ...] = ()
+    personal_data: PersonalDataRule | None = None
 
     @field_validator("aliases", mode="before")
     @classmethod
@@ -125,7 +145,25 @@ class Catalog(BaseModel):
             raise ValueError(f"alias sin destino: {empty}")
         if bad_aliases:
             raise ValueError(f"alias hacia IDs que no están en el catálogo: {bad_aliases}")
+        both = sorted(set(self.excluded) & set(self.aliases))
+        if both:
+            raise ValueError(f"IDs excluidos que también tienen correspondencia: {both}")
+        if self.excluded and not self.derived_from:
+            raise ValueError("excluded solo aplica a un catálogo derivado (derived_from)")
+        if self.personal_data:
+            unknown = sorted(set(self.personal_data.outside_obligations) - set(ids))
+            if unknown:
+                raise ValueError(f"obligaciones del señalamiento que no están en el catálogo: {unknown}")
+            try:
+                self.personal_data.outside_note.format(resource="r", region="r", country="c")
+            except (KeyError, IndexError) as exc:
+                raise ValueError(f"outside_note admite solo {{resource}}, {{region}} y {{country}}: {exc}") from exc
         return self
+
+    @property
+    def source_framework(self) -> str:
+        """La clave de ``Finding.compliance`` de donde salen los IDs: la propia o la del marco de origen."""
+        return self.derived_from or self.framework
 
     def get(self, requirement_id: str) -> Requirement | None:
         return next((r for r in self.requirements if r.id == requirement_id), None)
@@ -150,6 +188,7 @@ CATALOG_FILES = {
     "ISO27001-2022": "iso27001-2022.json",
     "SOC2": "soc2-tsc.json",
     "NIST-CSF-2.0": "nist-csf-2.0.json",
+    "LEY-1581": "ley-1581.json",
 }
 # Orden de las declaraciones en los entregables.
 FRAMEWORKS: tuple[str, ...] = tuple(CATALOG_FILES)
@@ -160,7 +199,19 @@ def load_catalog(framework: str) -> Catalog:
     if framework not in CATALOG_FILES:
         raise KeyError(f"no hay catálogo para {framework}; disponibles: {sorted(CATALOG_FILES)}")
     text = resources.files(__name__).joinpath(CATALOG_FILES[framework]).read_text(encoding="utf-8")
-    return Catalog.model_validate(json.loads(text))
+    catalog = Catalog.model_validate(json.loads(text))
+    if catalog.derived_from:
+        _check_derivation(catalog, load_catalog(catalog.derived_from))
+    return catalog
+
+
+def _check_derivation(catalog: Catalog, source: Catalog) -> None:
+    """Las correspondencias y exclusiones de un catálogo derivado deben ser IDs reales del marco de origen."""
+    if source.derived_from:
+        raise ValueError(f"{catalog.framework}: no se puede derivar de otro catálogo derivado ({source.framework})")
+    unknown = sorted((set(catalog.aliases) | set(catalog.excluded)) - {r.id for r in source.requirements})
+    if unknown:
+        raise ValueError(f"{catalog.framework}: IDs que no existen en {source.framework}: {unknown}")
 
 
 def load_catalogs() -> tuple[Catalog, ...]:

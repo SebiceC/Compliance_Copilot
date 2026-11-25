@@ -22,6 +22,9 @@ Hallazgo de Prowler ─► controles ISO 27001 que Prowler le asigna ─► obli
 4. **Estado técnico:** el mismo de las demás declaraciones (con brechas, requiere revisión, sin brechas
    detectadas, evidencia manual requerida). Una obligación sin controles ISO (las documentales) siempre sale como
    *Evidencia manual requerida*.
+5. **Alcance del estado técnico:** cuando los controles ISO evidencian un paso previo y no la obligación misma,
+   el catálogo lo declara (`technical_scope`) y la matriz lo muestra junto al título. Hoy aplica a `L1581-17n` y
+   `L1581-18k`: el estado mide la capacidad de detectar una violación de seguridad, no su notificación a la SIC.
 
 ## 2. Qué hallazgos cuentan
 
@@ -62,6 +65,10 @@ no tiene región en Colombia):
   fundamento revisado (por ejemplo, *"DPA del proveedor, revisado contra el art. 25"*).
 
 Es un señalamiento, no un incumplimiento. Un recurso se señala una vez, aunque tenga muchos hallazgos.
+
+Al final de la sección, una línea agrupa los recursos por proveedor y región (por ejemplo, *AWS · us-east-1
+(EE. UU.): 4 recursos*): si un mismo contrato los cubre, se revisa una vez y se anota en cada recurso. El
+señalamiento sigue siendo por recurso, para que cada uno tenga su evidencia.
 
 ## 4. Evidencias
 

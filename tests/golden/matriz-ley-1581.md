@@ -52,7 +52,7 @@ Solo cuentan los hallazgos en recursos con datos personales (tag `personal-data=
 | L1581-17k | Adoptar un manual interno de políticas y procedimientos | Evidencia manual requerida | 0 | 0 | 0 | - |  |  |
 | L1581-17l | Informar al encargado los datos en discusión por el titular | Evidencia manual requerida | 0 | 0 | 0 | - |  |  |
 | L1581-17m | Informar al titular, si lo pide, el uso dado a sus datos | Evidencia manual requerida | 0 | 0 | 0 | - |  |  |
-| L1581-17n | Informar a la SIC las violaciones a los códigos de seguridad | Evidencia manual requerida | 0 | 0 | 0 | - |  |  |
+| L1581-17n | Informar a la SIC las violaciones a los códigos de seguridad. Estado técnico: mide la capacidad de detectar la violación, no la notificación a la SIC | Evidencia manual requerida | 0 | 0 | 0 | - |  |  |
 | L1581-17o | Cumplir las instrucciones y requerimientos de la SIC | Evidencia manual requerida | 0 | 0 | 0 | - |  |  |
 
 ## Art. 18 · Deberes del encargado (12)
@@ -69,7 +69,7 @@ Solo cuentan los hallazgos en recursos con datos personales (tag `personal-data=
 | L1581-18h | Insertar la leyenda "información en discusión judicial" | Evidencia manual requerida | 0 | 0 | 0 | - |  |  |
 | L1581-18i | No circular información cuyo bloqueo ordenó la SIC | Evidencia manual requerida | 0 | 0 | 0 | - |  |  |
 | L1581-18j | Permitir el acceso solo a las personas autorizadas | Evidencia manual requerida | 0 | 0 | 0 | - |  |  |
-| L1581-18k | Informar a la SIC las violaciones a los códigos de seguridad | Evidencia manual requerida | 0 | 0 | 0 | - |  |  |
+| L1581-18k | Informar a la SIC las violaciones a los códigos de seguridad. Estado técnico: mide la capacidad de detectar la violación, no la notificación a la SIC | Evidencia manual requerida | 0 | 0 | 0 | - |  |  |
 | L1581-18l | Cumplir las instrucciones y requerimientos de la SIC | Evidencia manual requerida | 0 | 0 | 0 | - |  |  |
 
 ## Art. 25 · Registro Nacional de Bases de Datos (1)

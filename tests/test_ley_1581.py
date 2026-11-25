@@ -104,6 +104,18 @@ def test_document_matches_the_catalog(ley: Catalog) -> None:
     assert excluded == set(ley.excluded)
 
 
+def test_technical_scope_is_in_the_document_and_the_matrix(ley: Catalog) -> None:
+    """17 n y 18 k piden informar a la SIC; sus controles ISO solo evidencian la capacidad de detectar."""
+    scoped = {r.id: r.technical_scope for r in ley.requirements if r.technical_scope}
+    assert set(scoped) == {"L1581-17n", "L1581-18k"}
+    doc = DOC.read_text(encoding="utf-8")
+    assert all(text in doc for text in scoped.values())
+    report = build_report_from([finding("clientes", pd="yes", controls=("A.8.15",))])
+    matrix = render_statement(report, report.statement("LEY-1581"))
+    assert (f"| L1581-17n | Informar a la SIC las violaciones a los códigos de seguridad. Estado técnico: "
+            f"{scoped['L1581-17n']} | Con brechas |") in matrix
+
+
 def test_flag_text_is_in_the_document(ley: Catalog) -> None:
     assert ley.personal_data is not None
     note = ley.personal_data.outside_note.format(resource="<recurso>", region="<región>", country="<país>")
@@ -247,6 +259,17 @@ def test_a_resource_reported_with_two_types_is_flagged_once() -> None:
     findings = [finding("a", pd="yes", rtype="AwsCloudTrailTrail", name="lab-trail", arn=arn),
                 finding("b", pd="yes", rtype="AwsS3Bucket", name="lab-trail", arn=arn)]
     assert [r.uid for r in personal_data_scope(findings, "personal-data").outside] == [arn]
+
+
+def test_flags_are_grouped_by_provider_and_region() -> None:
+    """Un mismo contrato puede cubrir varios recursos: la matriz los agrupa, pero los sigue señalando uno a uno."""
+    findings = [finding("a", pd="yes", name="clientes"), finding("b", pd="yes", name="pedidos"),
+                finding("c", pd="yes", name="copias", region="sa-east-1")]
+    report = build_report_from(findings)
+    matrix = render_statement(report, report.statement("LEY-1581"))
+    assert matrix.count("Recurso con datos personales fuera de Colombia") == 3
+    assert ("**Por proveedor y región:** **AWS · sa-east-1** (Brasil): 1 recurso · **AWS · us-east-1** (EE. UU.): "
+            "2 recursos.") in matrix
 
 
 def test_local_regions_are_not_flagged() -> None:

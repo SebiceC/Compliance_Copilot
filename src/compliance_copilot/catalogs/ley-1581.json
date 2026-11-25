@@ -311,7 +311,8 @@
     {
       "id": "L1581-17n",
       "group": "responsable",
-      "title": "Informar a la SIC las violaciones a los códigos de seguridad"
+      "title": "Informar a la SIC las violaciones a los códigos de seguridad",
+      "technical_scope": "mide la capacidad de detectar la violación, no la notificación a la SIC"
     },
     {
       "id": "L1581-17o",
@@ -371,7 +372,8 @@
     {
       "id": "L1581-18k",
       "group": "encargado",
-      "title": "Informar a la SIC las violaciones a los códigos de seguridad"
+      "title": "Informar a la SIC las violaciones a los códigos de seguridad",
+      "technical_scope": "mide la capacidad de detectar la violación, no la notificación a la SIC"
     },
     {
       "id": "L1581-18l",

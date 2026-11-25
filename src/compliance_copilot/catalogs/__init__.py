@@ -43,6 +43,12 @@ class Requirement(BaseModel):
     id: str = Field(min_length=1)
     group: str
     title: str = Field(min_length=3, max_length=80)  # breve a propósito: un título, no una descripción
+    # Qué mide el estado técnico cuando no es la obligación misma (Ley 1581, 17 n: la detección, no el reporte).
+    technical_scope: str | None = Field(default=None, min_length=3, max_length=120)
+
+    @property
+    def display_title(self) -> str:
+        return f"{self.title}. Estado técnico: {self.technical_scope}" if self.technical_scope else self.title
 
 
 class Statement(BaseModel):

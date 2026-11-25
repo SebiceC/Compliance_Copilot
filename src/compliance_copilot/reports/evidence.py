@@ -13,6 +13,7 @@ from typing import Any
 
 from compliance_copilot.drafting.schema import DraftStore
 from compliance_copilot.models import Finding
+from compliance_copilot.personal_data import group_by_location
 from compliance_copilot.reports.builders import Report, Statement
 from compliance_copilot.risk import METHODOLOGY_VERSION
 
@@ -93,6 +94,7 @@ def _statement_evidence(statement: Statement, directory: Path) -> list[Path]:
             "framework": statement.framework,
             "control": row.requirement.id,
             "title": row.requirement.title,
+            **({"technical_scope": row.requirement.technical_scope} if row.requirement.technical_scope else {}),
             "technical_status": row.status.value,
             "counts": {"pass": row.pass_count, "fail": row.fail_count, "manual": row.manual_count},
             "evidence": sorted((_evidence_entry(f) for f in found), key=lambda e: (e["status"], e["check_id"])),
@@ -117,6 +119,10 @@ def _statement_evidence(statement: Statement, directory: Path) -> list[Path]:
                 {"resource_uid": r.uid, "resource_name": r.name, "resource_type": r.type, "region": r.region,
                  "country": r.country, "obligations": list(rule.outside_obligations), "note": note}
                 for r, note in zip(statement.outside, statement.outside_notes(), strict=True)
+            ],
+            "outside_by_location": [
+                {"provider": g.provider, "region": g.region, "country": g.country, "resources": g.count}
+                for g in group_by_location(statement.outside)
             ],
             "unqualified": [
                 {"resource_uid": r.uid, "resource_name": r.name, "resource_type": r.type, "region": r.region}

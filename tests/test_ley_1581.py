@@ -31,14 +31,14 @@ def ley() -> Catalog:
 
 def finding(uid: str, *, rtype: str = "AwsS3Bucket", pd: str | None = None, status: str = "fail",
             controls: tuple[str, ...] = ("A.8.24",), region: str = "us-east-1", account: str = ACCOUNT,
-            name: str | None = None) -> Finding:
+            name: str | None = None, arn: str | None = None) -> Finding:
     tags = {"data-classification": "confidential"}
     if pd is not None:
         tags["personal-data"] = pd
     return Finding(
         finding_uid=uid, check_id=f"check_{uid}", check_title=uid, status=status, status_detail="",
         severity="high", observed_at=datetime(2026, 11, 17, tzinfo=timezone.utc), provider="aws",
-        account_uid=account, region=region, resource_uid=f"arn:{name or uid}", resource_name=name or uid,
+        account_uid=account, region=region, resource_uid=arn or f"arn:{name or uid}", resource_name=name or uid,
         resource_type=rtype, tags=tags, compliance={"ISO27001-2022": list(controls)},
     )
 
@@ -163,6 +163,36 @@ def test_three_group_rule() -> None:
     scope = personal_data_scope(findings, "personal-data")
     assert [f.finding_uid for f in scope.counted] == ["clientes", "root", "ssh"]
     assert [r.name for r in scope.unqualified] == ["sin-tag"]
+
+
+@pytest.mark.parametrize(
+    ("rtype", "name", "arn"),
+    [  # configuraciones de la cuenta que Prowler 5.48 reporta con un tipo de datos (escaneo en CI, 2026-11-25)
+        ("AwsEc2Volume", ACCOUNT, f"arn:aws:ec2:us-east-1:{ACCOUNT}:volume"),  # ec2_ebs_default_encryption
+        ("AwsEc2Instance", ACCOUNT, f"arn:aws:ec2:us-east-1:{ACCOUNT}:account"),  # ec2_instance_account_imdsv2_enabled
+        ("AwsBackupBackupVault", ACCOUNT, f"arn:aws:backup:us-east-1:{ACCOUNT}:backup-vault"),  # backup_vaults_exist
+        ("AwsKmsKey", "enclave-debug-attestation", f"arn:aws:kms:us-east-1:{ACCOUNT}:enclave-debug-attestation"),
+    ],
+)
+def test_account_settings_with_a_data_type_count_as_account(rtype: str, name: str, arn: str) -> None:
+    findings = [finding("clientes", pd="yes"), finding("ajuste", rtype=rtype, name=name, arn=arn)]
+    scope = personal_data_scope(findings, "personal-data")
+    assert [f.finding_uid for f in scope.counted] == ["clientes", "ajuste"]
+    assert scope.unqualified == ()
+
+
+@pytest.mark.parametrize(
+    ("rtype", "arn"),
+    [  # recursos de datos reales: el ARN tiene ID de recurso, o es de S3 (sin cuenta)
+        ("AwsEc2Volume", f"arn:aws:ec2:us-east-1:{ACCOUNT}:volume/vol-0abc"),
+        ("AwsKmsKey", f"arn:aws:kms:us-east-1:{ACCOUNT}:key/1234abcd"),
+        ("AwsRdsDbInstance", f"arn:aws:rds:us-east-1:{ACCOUNT}:db:clientes"),
+        ("AwsS3Bucket", "arn:aws:s3:::clientes"),
+    ],
+)
+def test_real_data_resources_without_tag_stay_unqualified(rtype: str, arn: str) -> None:
+    scope = personal_data_scope([finding("r", rtype=rtype, name="r", arn=arn)], "personal-data")
+    assert [r.uid for r in scope.unqualified] == [arn]
 
 
 def test_account_findings_do_not_count_without_personal_data() -> None:

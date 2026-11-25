@@ -124,7 +124,7 @@ La fase más grande. Repite para Azure lo que las Fases 0, 1, 2 y 5 hicieron par
 | # | Paso | Quién |
 |---|---|---|
 | 11.1 | Analizar la distribución de riesgos de las dos nubes (hoy 63 de 113 son altos en AWS) | Yo |
-| 11.2 | Proponer ajustes (pesos de severidad, modificadores de impacto, umbrales de niveles) con ejemplos de antes y después | Yo |
+| 11.2 | Proponer ajustes (pesos de severidad, modificadores de impacto, umbrales de niveles) con ejemplos de antes y después. Incluye llevar `risk.finding_group` al motor: las configuraciones de cuenta con tipo de datos pasan al grupo Cuenta (ver la limitación en `docs/metodologia-riesgo.md`) | Yo |
 | 11.3 | Validar el supuesto "el dueño del activo clasifica" y documentar quién asigna `data-classification` | Tú |
 | 11.4 | Aprobar, actualizar `docs/metodologia-riesgo.md` a v0.3 y el test de sincronía documento-código | Tú apruebas, yo actualizo |
 

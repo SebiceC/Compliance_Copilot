@@ -37,6 +37,11 @@ jurídica.
 - **La matriz depende de que el tag esté bien puesto.** Un recurso con `personal-data=no` por error desaparece
   de la matriz. Mitigación: la Tag Policy impide valores inválidos, y el tag lo pone el dueño del activo, como la
   clasificación. Un recurso de datos sin tag no se pierde: queda para revisión.
+- **Configuraciones de cuenta con tipo de datos** (agregado el 2026-11-25, tras el primer escaneo en CI).
+  Prowler reporta algunos ajustes de la cuenta con un tipo de recurso de datos (`AwsEc2Volume`, `AwsKmsKey`…)
+  y sin recurso concreto. La regla los trata como hallazgos de cuenta (`risk.finding_group`); si no, salían
+  como recursos sin calificar y sus FAIL desaparecían de la matriz. El motor de riesgo adopta la misma regla en
+  la v0.3, porque allí cambia la puntuación.
 - **Un solo nivel de derivación.** Un catálogo no puede derivarse de otro derivado (se valida al cargar).
 - **Límites que se declaran en la matriz:** el estado técnico evidencia solo la parte técnica de una obligación;
   *Sin brechas detectadas* no significa cumplimiento; ninguna fila reemplaza el análisis jurídico.

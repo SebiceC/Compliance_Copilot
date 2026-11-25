@@ -18,7 +18,7 @@ from dataclasses import dataclass
 from enum import StrEnum
 
 from compliance_copilot.models import Finding
-from compliance_copilot.risk import ResourceGroup, resource_group
+from compliance_copilot.risk import ResourceGroup, finding_group
 
 YES, NO = "yes", "no"
 
@@ -86,7 +86,7 @@ def personal_data_scope(findings: Iterable[Finding], tag: str, local_regions: It
             counted.append(f)
             if f.region not in local:
                 outside.add(_ref(f))
-        elif resource_group(f.resource_type) is ResourceGroup.DATA:
+        elif finding_group(f) is ResourceGroup.DATA:  # una configuración de cuenta no es un recurso de datos
             if pd is not PersonalData.NO:
                 unqualified.add(_ref(f))
         elif f.account_uid in accounts:

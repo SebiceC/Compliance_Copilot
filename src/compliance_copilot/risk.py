@@ -159,6 +159,8 @@ def assess(finding: Finding, admin_resources: frozenset[str] = frozenset()) -> R
     if finding.status is not Status.FAIL:
         raise ValueError(f"solo se evalúan hallazgos FAIL; {finding.finding_uid} es {finding.status}")
 
+    # La metodología v0.2 agrupa por tipo de recurso. ``finding_group`` (configuraciones de cuenta con tipo de
+    # datos) entra al motor con la v0.3, porque cambia la puntuación: hoja de ruta, paso 11.2.
     group = resource_group(finding.resource_type)
     classification, source = read_classification(finding.tags)
 
@@ -205,6 +207,28 @@ def resource_group(resource_type: str) -> ResourceGroup:
     if resource_type in ACCOUNT_RESOURCE_TYPES:
         return ResourceGroup.ACCOUNT
     return ResourceGroup.INFRASTRUCTURE
+
+
+def is_account_setting(finding: Finding) -> bool:
+    """Una configuración de la cuenta que Prowler reporta con un tipo de recurso de datos.
+
+    Checks como ``ec2_ebs_default_encryption`` o ``backup_vaults_exist`` evalúan la cuenta, no un volumen o un
+    vault: el nombre del recurso es el ID de la cuenta, o el ARN no tiene ID de recurso
+    (``arn:aws:ec2:us-east-1:<cuenta>:volume``). Los ARN reales de los tipos de datos siempre lo tienen
+    (``volume/vol-…``, ``key/…``, ``db:…``), y los de S3 no llevan cuenta.
+    """
+    if finding.resource_name == finding.account_uid:
+        return True
+    parts = finding.resource_uid.split(":", 5)
+    return len(parts) == 6 and parts[0] == "arn" and bool(parts[4]) and not any(c in parts[5] for c in "/:")
+
+
+def finding_group(finding: Finding) -> ResourceGroup:
+    """El grupo de un hallazgo: el de su tipo, salvo las configuraciones de cuenta con tipo de datos."""
+    group = resource_group(finding.resource_type)
+    if group is ResourceGroup.DATA and is_account_setting(finding):
+        return ResourceGroup.ACCOUNT
+    return group
 
 
 def read_classification(tags: dict[str, str]) -> tuple[str | None, ClassificationSource]:

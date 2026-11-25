@@ -40,6 +40,7 @@ herramienta ignora mayúsculas y espacios al leerlo, como con `data-classificati
 | Recurso de datos sin el tag o con otro valor | No cuenta; aparece en *Requiere revisión: recursos de datos sin calificar* |
 | Cuenta sin ningún recurso con `yes` | Ningún hallazgo de cuenta o infraestructura cuenta |
 | Varias cuentas en el escaneo | La regla se aplica por cuenta |
+| Configuración de la cuenta que Prowler reporta con un tipo de datos (`ec2_ebs_default_encryption` como `AwsEc2Volume`, `backup_vaults_exist` como `AwsBackupBackupVault`) | Cuenta como hallazgo de **cuenta**: no hay un recurso que etiquetar. Se reconoce porque el nombre del recurso es el ID de la cuenta o el ARN no tiene ID de recurso (`risk.is_account_setting`) |
 
 ## 3. Circulación internacional
 

@@ -189,6 +189,10 @@ perdería información; incluirlos en la SoA inventaría un control.
   evalúa permission boundaries, SCP de Organizations ni cadenas de roles asumibles.
 - **Listas de tipos de recurso cerradas.** Un tipo nuevo de Prowler cae en el grupo Infraestructura hasta que
   se agregue a la lista correspondiente.
+- **Configuraciones de cuenta con tipo de datos.** Prowler reporta algunos ajustes de la cuenta con un tipo de
+  datos y sin recurso concreto (por ejemplo, `ec2_ebs_default_encryption` como `AwsEc2Volume`). En la v0.2
+  caen en el grupo Datos: sin tag, generan el hallazgo `A.5.12` y no reciben el modificador (a). La matriz de
+  la Ley 1581 ya los trata como hallazgos de cuenta; el motor lo hará en la v0.3 (hoja de ruta, paso 11.2).
 
 ## Historial
 

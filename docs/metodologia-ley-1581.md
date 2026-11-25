@@ -66,6 +66,10 @@ no tiene región en Colombia):
 
 Es un señalamiento, no un incumplimiento. Un recurso se señala una vez, aunque tenga muchos hallazgos.
 
+Al final de la sección, una línea agrupa los recursos por proveedor y región (por ejemplo, *AWS · us-east-1
+(EE. UU.): 4 recursos*): si un mismo contrato los cubre, se revisa una vez y se anota en cada recurso. El
+señalamiento sigue siendo por recurso, para que cada uno tenga su evidencia.
+
 ## 4. Evidencias
 
 - `evidencias/controles/LEY-1581/<obligación>.json`: los hallazgos que sustentan cada obligación técnica.

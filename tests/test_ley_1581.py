@@ -261,6 +261,17 @@ def test_a_resource_reported_with_two_types_is_flagged_once() -> None:
     assert [r.uid for r in personal_data_scope(findings, "personal-data").outside] == [arn]
 
 
+def test_flags_are_grouped_by_provider_and_region() -> None:
+    """Un mismo contrato puede cubrir varios recursos: la matriz los agrupa, pero los sigue señalando uno a uno."""
+    findings = [finding("a", pd="yes", name="clientes"), finding("b", pd="yes", name="pedidos"),
+                finding("c", pd="yes", name="copias", region="sa-east-1")]
+    report = build_report_from(findings)
+    matrix = render_statement(report, report.statement("LEY-1581"))
+    assert matrix.count("Recurso con datos personales fuera de Colombia") == 3
+    assert ("**Por proveedor y región:** **AWS · sa-east-1** (Brasil): 1 recurso · **AWS · us-east-1** (EE. UU.): "
+            "2 recursos.") in matrix
+
+
 def test_local_regions_are_not_flagged() -> None:
     scope = personal_data_scope([finding("a", pd="yes", region="co-bogota-1")], "personal-data", ["co-bogota-1"])
     assert scope.outside == ()

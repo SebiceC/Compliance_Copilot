@@ -3,6 +3,7 @@
 from collections import Counter
 from pathlib import Path
 
+from compliance_copilot.personal_data import group_by_location
 from compliance_copilot.reports.builders import (
     LEVEL_LABEL,
     PRIMARY_FRAMEWORK,
@@ -198,6 +199,12 @@ def _personal_data_sections(statement: Statement) -> str:
         parts.append(f"Señalamientos para revisión, no incumplimientos: la herramienta solo ve la región. Ponen las "
                      f"obligaciones {obligations} en *{TechnicalStatus.REVIEW.value}*.\n")
         parts += [f"- {note}" for note in statement.outside_notes()]
+        groups = group_by_location(statement.outside)
+        summary = " · ".join(f"**{g.provider} · {g.region}** ({g.country}): {g.count} "
+                             f"{'recurso' if g.count == 1 else 'recursos'}" for g in groups)
+        parts.append(f"\n**Por proveedor y región:** {summary}. Si un mismo contrato de transmisión (o el "
+                     "fundamento de la transferencia) cubre al proveedor en esa región, basta revisarlo una vez y "
+                     "anotarlo en la *Evidencia manual* de cada recurso.")
     else:
         parts.append(f"Ningún recurso con `{rule.tag}=yes` fuera de las regiones del país.")
     parts.append(f"\n## Requiere revisión: recursos de datos sin calificar ({len(statement.unqualified)})\n")

@@ -30,6 +30,7 @@ REGION_COUNTRY: dict[str, str] = {
     "eu-central-2": "Suiza", "eu-north-1": "Suecia", "eu-south-1": "Italia", "eu-south-2": "España",
 }
 UNKNOWN_COUNTRY = "país por confirmar"
+PROVIDER_LABEL: dict[str, str] = {"aws": "AWS", "azure": "Azure", "gcp": "Google Cloud"}
 
 
 class PersonalData(StrEnum):
@@ -47,10 +48,33 @@ class ResourceRef:
     uid: str
     type: str
     region: str
+    provider: str = ""
 
     @property
     def country(self) -> str:
         return REGION_COUNTRY.get(self.region, UNKNOWN_COUNTRY)
+
+    @property
+    def provider_label(self) -> str:
+        return PROVIDER_LABEL.get(self.provider, self.provider.upper())
+
+
+@dataclass(frozen=True)
+class LocationGroup:
+    """Los recursos fuera del país de un mismo proveedor y región: un mismo contrato puede cubrirlos."""
+
+    provider: str
+    region: str
+    country: str
+    count: int
+
+
+def group_by_location(resources: Iterable[ResourceRef]) -> tuple[LocationGroup, ...]:
+    counts: dict[tuple[str, str], int] = {}
+    for r in resources:
+        counts[r.provider_label, r.region] = counts.get((r.provider_label, r.region), 0) + 1
+    return tuple(LocationGroup(p, region, REGION_COUNTRY.get(region, UNKNOWN_COUNTRY), n)
+                 for (p, region), n in sorted(counts.items()))
 
 
 @dataclass(frozen=True)
@@ -70,7 +94,7 @@ def read_personal_data(tags: dict[str, str], tag: str) -> PersonalData:
 
 def _ref(finding: Finding) -> ResourceRef:
     return ResourceRef(finding.resource_name or finding.resource_uid, finding.resource_uid, finding.resource_type,
-                       finding.region)
+                       finding.region, finding.provider)
 
 
 def personal_data_scope(findings: Iterable[Finding], tag: str, local_regions: Iterable[str] = ()) -> PersonalDataScope:

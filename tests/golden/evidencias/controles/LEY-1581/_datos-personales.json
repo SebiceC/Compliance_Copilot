@@ -4,6 +4,7 @@
   "tag": "personal-data",
   "local_regions": [],
   "outside": [],
+  "outside_by_location": [],
   "unqualified": [
     {
       "resource_uid": "arn:aws:s3:::aws-cloudtrail-logs-123456789001-5f59e248",

@@ -79,16 +79,19 @@ def personal_data_scope(findings: Iterable[Finding], tag: str, local_regions: It
     value = {f.finding_uid: read_personal_data(f.tags, tag) for f in findings}
     accounts = {f.account_uid for f in findings if value[f.finding_uid] is PersonalData.YES}
 
-    counted, unqualified, outside = [], set(), set()
+    # Por UID: Prowler puede reportar el mismo recurso con dos tipos (lab-trail como trail y como bucket).
+    counted: list[Finding] = []
+    unqualified: dict[str, ResourceRef] = {}
+    outside: dict[str, ResourceRef] = {}
     for f in findings:
         pd = value[f.finding_uid]
         if pd is PersonalData.YES:
             counted.append(f)
             if f.region not in local:
-                outside.add(_ref(f))
+                outside.setdefault(f.resource_uid, _ref(f))
         elif finding_group(f) is ResourceGroup.DATA:  # una configuración de cuenta no es un recurso de datos
             if pd is not PersonalData.NO:
-                unqualified.add(_ref(f))
+                unqualified.setdefault(f.resource_uid, _ref(f))
         elif f.account_uid in accounts:
             counted.append(f)  # cuenta o infraestructura de una cuenta con datos personales
-    return PersonalDataScope(tuple(counted), tuple(sorted(unqualified)), tuple(sorted(outside)))
+    return PersonalDataScope(tuple(counted), tuple(sorted(unqualified.values())), tuple(sorted(outside.values())))

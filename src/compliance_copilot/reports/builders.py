@@ -64,7 +64,8 @@ class StatementRow:
     max_score: int | None
     check_ids: tuple[str, ...]
     # Decisiones humanas, una por cada columna de ``catalog.statement.human_columns``. La herramienta las deja
-    # vacías a propósito (en ISO 27001, cláusula 6.1.3 d): decidirlas es de una persona.
+    # vacías a propósito (en ISO 27001, cláusula 6.1.3 d): decidirlas es de una persona. Un grupo del catálogo
+    # puede traer una sugerencia (Ley 1581, arts. 17 y 18), marcada como tal para que se confirme o corrija.
     human: tuple[str, ...] = ()
 
 
@@ -245,7 +246,8 @@ def build_statement(findings: tuple[Finding, ...], risks: tuple[RiskRow, ...], c
                     by_requirement[requirement_id].append(finding)
 
     score_of = {r.finding.finding_uid: r.assessment for r in risks}
-    empty_decisions = ("",) * len(catalog.statement.human_columns)
+    decisions = {g.id: tuple(g.suggested.get(c, "") for c in catalog.statement.human_columns)
+                 for g in catalog.groups}  # vacías, salvo lo que el catálogo sugiere
     rows = []
     for requirement in catalog.requirements:
         mapped = by_requirement.get(requirement.id, [])
@@ -264,7 +266,7 @@ def build_statement(findings: tuple[Finding, ...], risks: tuple[RiskRow, ...], c
             max_level=worst.level if worst else None,
             max_score=worst.score if worst else None,
             check_ids=tuple(sorted({f.check_id for f in mapped})),
-            human=empty_decisions,
+            human=decisions[requirement.group],
         ))
     return Statement(
         catalog=catalog,

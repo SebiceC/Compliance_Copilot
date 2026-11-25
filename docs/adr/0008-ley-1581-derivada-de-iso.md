@@ -42,6 +42,10 @@ jurídica.
   y sin recurso concreto. La regla los trata como hallazgos de cuenta (`risk.finding_group`); si no, salían
   como recursos sin calificar y sus FAIL desaparecían de la matriz. El motor de riesgo adopta la misma regla en
   la v0.3, porque allí cambia la puntuación.
+- **Aplica sugerida** (agregado el 2026-11-25, en la revisión de la matriz). Un grupo del catálogo puede traer
+  una sugerencia para una columna de decisión humana (`suggested`). La Ley 1581 la usa en *Aplica*: *Sí* en el
+  art. 17 y *Por definir* en el art. 18, con *(sugerido)* en el valor. Ahorra trabajo sin decidir por la persona:
+  la herramienta sigue sin saber si la organización es responsable o encargada.
 - **Un solo nivel de derivación.** Un catálogo no puede derivarse de otro derivado (se valida al cargar).
 - **Límites que se declaran en la matriz:** el estado técnico evidencia solo la parte técnica de una obligación;
   *Sin brechas detectadas* no significa cumplimiento; ninguna fila reemplaza el análisis jurídico.

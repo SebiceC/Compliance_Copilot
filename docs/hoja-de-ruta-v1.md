@@ -82,7 +82,7 @@ con el perfil de privacidad del proyecto.
 | 9.4 | ✅ Regla propia de **circulación internacional**: recursos con `personal-data=yes` en regiones fuera de Colombia se señalan para revisión, como transmisión por defecto (Decreto 1377, art. 25) y con la transferencia (art. 26) como alternativa. Se usa el tag `personal-data`, no la clasificación: ver ADR 0008 | Yo |
 | 9.5 | ✅ Entregable **Matriz técnica Ley 1581**: por obligación, hallazgos, estado y la evidencia manual requerida (autorización, finalidades, política de tratamiento, registro ante el RNBD, que la herramienta no puede ver) | Yo |
 | 9.6 | ✅ **ADR 0008:** por qué un mapeo indirecto vía ISO y no directo, y sus límites | Yo |
-| 9.7 | Revisión de la matriz como experto en privacidad: ¿un abogado o un auditor de la SIC aceptaría este mapeo? | Tú |
+| 9.7 | ✅ Escaneo desde CI y revisión de la matriz como experto en privacidad (2026-11-25). Resultado: configuraciones de cuenta con tipo de datos tratadas como hallazgos de cuenta, un señalamiento por recurso y agrupado por proveedor y región, alcance de detección en 17 n y 18 k, *Aplica* sugerida en los arts. 17 y 18 | Tú |
 
 ## Fase 10. Azure
 

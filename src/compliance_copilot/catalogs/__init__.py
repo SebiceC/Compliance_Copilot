@@ -33,6 +33,9 @@ class Group(BaseModel):
 
     id: str = Field(min_length=1)
     label: str = Field(min_length=1)
+    # Valor sugerido por columna de decisión humana (Ley 1581: "Aplica" en los deberes del responsable y del
+    # encargado). Es un punto de partida que la persona confirma o corrige: lo dice el propio valor.
+    suggested: dict[str, str] = Field(default_factory=dict)
 
 
 class Requirement(BaseModel):
@@ -52,7 +55,7 @@ class Requirement(BaseModel):
 
 
 class Statement(BaseModel):
-    """El entregable del marco y las decisiones que toma una persona (la herramienta las deja vacías)."""
+    """El entregable del marco y las decisiones que toma una persona (vacías, o con la sugerencia de un grupo)."""
 
     model_config = ConfigDict(frozen=True, extra="forbid")
 
@@ -156,6 +159,9 @@ class Catalog(BaseModel):
             raise ValueError(f"IDs excluidos que también tienen correspondencia: {both}")
         if self.excluded and not self.derived_from:
             raise ValueError("excluded solo aplica a un catálogo derivado (derived_from)")
+        unknown_columns = sorted({c for g in self.groups for c in g.suggested} - set(self.statement.human_columns))
+        if unknown_columns:
+            raise ValueError(f"sugerencias para columnas que no son de decisión humana: {unknown_columns}")
         if self.personal_data:
             unknown = sorted(set(self.personal_data.outside_obligations) - set(ids))
             if unknown:

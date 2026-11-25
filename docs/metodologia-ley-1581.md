@@ -26,6 +26,10 @@ Hallazgo de Prowler ─► controles ISO 27001 que Prowler le asigna ─► obli
    el catálogo lo declara (`technical_scope`) y la matriz lo muestra junto al título. Hoy aplica a `L1581-17n` y
    `L1581-18k`: el estado mide la capacidad de detectar una violación de seguridad, no su notificación a la SIC.
 
+**Columna *Aplica*.** En los deberes del responsable (art. 17) viene sugerida como *Sí*, y en los del encargado
+(art. 18) como *Por definir*: la matriz no sabe qué papel tiene la organización. El valor dice *(sugerido)* para
+que se confirme o corrija; en las demás obligaciones queda vacía. *Evidencia manual* nunca se sugiere.
+
 ## 2. Qué hallazgos cuentan
 
 El tag `personal-data=yes|no` lo pone el dueño del activo, y la Tag Policy solo admite esos dos valores. La

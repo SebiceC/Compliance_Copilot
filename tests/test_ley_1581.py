@@ -116,6 +116,21 @@ def test_technical_scope_is_in_the_document_and_the_matrix(ley: Catalog) -> None
             f"{scoped['L1581-17n']} | Con brechas |") in matrix
 
 
+def test_applies_is_suggested_only_for_the_duties_of_responsible_and_processor() -> None:
+    s = statement_for([])
+    assert row(s, "L1581-17d").human[0].startswith("Sí (sugerido)")
+    assert row(s, "L1581-18b").human[0].startswith("Por definir (sugerido)")
+    assert row(s, "L1581-4g").human == ("", "")  # sin sugerencia: lo decide la persona desde cero
+    assert all(r.human[1] == "" for r in s.rows)  # la evidencia manual nunca se sugiere
+
+
+def test_suggestions_only_for_human_columns() -> None:
+    data = catalog_data()
+    data["groups"][0]["suggested"] = {"Estado técnico": "Con brechas"}
+    with pytest.raises(ValidationError, match="decisión humana"):
+        Catalog.model_validate(data)
+
+
 def test_flag_text_is_in_the_document(ley: Catalog) -> None:
     assert ley.personal_data is not None
     note = ley.personal_data.outside_note.format(resource="<recurso>", region="<región>", country="<país>")

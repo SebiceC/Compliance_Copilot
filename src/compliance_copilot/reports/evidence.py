@@ -93,6 +93,7 @@ def _statement_evidence(statement: Statement, directory: Path) -> list[Path]:
             "framework": statement.framework,
             "control": row.requirement.id,
             "title": row.requirement.title,
+            **({"technical_scope": row.requirement.technical_scope} if row.requirement.technical_scope else {}),
             "technical_status": row.status.value,
             "counts": {"pass": row.pass_count, "fail": row.fail_count, "manual": row.manual_count},
             "evidence": sorted((_evidence_entry(f) for f in found), key=lambda e: (e["status"], e["check_id"])),

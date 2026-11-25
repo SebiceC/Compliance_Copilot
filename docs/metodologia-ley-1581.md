@@ -22,6 +22,9 @@ Hallazgo de Prowler ─► controles ISO 27001 que Prowler le asigna ─► obli
 4. **Estado técnico:** el mismo de las demás declaraciones (con brechas, requiere revisión, sin brechas
    detectadas, evidencia manual requerida). Una obligación sin controles ISO (las documentales) siempre sale como
    *Evidencia manual requerida*.
+5. **Alcance del estado técnico:** cuando los controles ISO evidencian un paso previo y no la obligación misma,
+   el catálogo lo declara (`technical_scope`) y la matriz lo muestra junto al título. Hoy aplica a `L1581-17n` y
+   `L1581-18k`: el estado mide la capacidad de detectar una violación de seguridad, no su notificación a la SIC.
 
 ## 2. Qué hallazgos cuentan
 

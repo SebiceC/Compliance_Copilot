@@ -23,6 +23,13 @@ sin estado técnico y con la columna **Evidencia manual** para que el responsabl
 
 Técnicas: **12**. Documentales: **38**.
 
+**Alcance del estado técnico en `L1581-17n` y `L1581-18k`** (decidido el 2026-11-25, en la revisión de la
+matriz con el primer escaneo en CI). Las dos obligaciones piden *informar* a la SIC, y ningún escáner ve si
+alguien lo hizo. Sus controles ISO (gestión de incidentes, registro y monitoreo) evidencian el paso previo: poder
+detectar la violación. La matriz lo dice en la fila:
+*Estado técnico: mide la capacidad de detectar la violación, no la notificación a la SIC*. La notificación misma
+va en **Evidencia manual**.
+
 ### Art. 4 · Principios
 
 | ID | Obligación | Fuente | Tipo |

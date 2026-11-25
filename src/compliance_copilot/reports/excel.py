@@ -134,7 +134,7 @@ def _statement(ws: Worksheet, statement: Statement) -> None:
     """La declaración de un marco. Las columnas de decisión humana van al final, resaltadas."""
     catalog, config = statement.catalog, statement.catalog.statement
     rows = [[
-        r.requirement.id, catalog.group_label(r.requirement.group), r.requirement.title, r.status.value,
+        r.requirement.id, catalog.group_label(r.requirement.group), r.requirement.display_title, r.status.value,
         r.pass_count, r.fail_count, r.manual_count, LEVEL_LABEL[r.max_level] if r.max_level else "-",
         ", ".join(r.check_ids), *r.human,
     ] for r in statement.rows]

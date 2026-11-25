@@ -161,7 +161,7 @@ def render_statement(report: Report, statement: Statement) -> str:
                *config.human_columns]
     for group in catalog.groups:
         rows = [[
-            r.requirement.id, r.requirement.title, r.status.value, r.pass_count, r.fail_count, r.manual_count,
+            r.requirement.id, r.requirement.display_title, r.status.value, r.pass_count, r.fail_count, r.manual_count,
             _level(r.max_level), *r.human,
         ] for r in statement.rows if r.requirement.group == group.id]
         parts.append(f"## {group.label} ({len(rows)})\n")

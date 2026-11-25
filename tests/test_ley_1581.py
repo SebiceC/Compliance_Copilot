@@ -241,6 +241,14 @@ def test_personal_data_outside_the_country_is_flagged(ley: Catalog) -> None:
         assert row(s, obligation).status is TechnicalStatus.REVIEW
 
 
+def test_a_resource_reported_with_two_types_is_flagged_once() -> None:
+    """Prowler 5.48 reporta lab-trail como AwsCloudTrailTrail y, en un check, como AwsS3Bucket (mismo ARN)."""
+    arn = f"arn:aws:cloudtrail:us-east-1:{ACCOUNT}:trail/lab-trail"
+    findings = [finding("a", pd="yes", rtype="AwsCloudTrailTrail", name="lab-trail", arn=arn),
+                finding("b", pd="yes", rtype="AwsS3Bucket", name="lab-trail", arn=arn)]
+    assert [r.uid for r in personal_data_scope(findings, "personal-data").outside] == [arn]
+
+
 def test_local_regions_are_not_flagged() -> None:
     scope = personal_data_scope([finding("a", pd="yes", region="co-bogota-1")], "personal-data", ["co-bogota-1"])
     assert scope.outside == ()

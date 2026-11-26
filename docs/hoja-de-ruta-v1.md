@@ -1,7 +1,7 @@
 # Hoja de ruta a la versión 1.0
 
 La v1.0 cumple el alcance que promete el README: **AWS y Azure**, con entregables para **ISO 27001:2022, SOC 2,
-NIST CSF 2.0 y Ley 1581 de 2012**. Hoy están completos AWS e ISO 27001 (Fases 0 a 5).
+NIST CSF 2.0 y Ley 1581 de 2012**. Hoy está completo AWS con los cuatro marcos (Fases 0 a 9).
 
 Cada fase termina con: código y tests (Claude los genera cuando se le piden), documentación y ADR, verificación
 con un escaneo real y un PR fusionado con el check `tests` en verde. La infraestructura y las conexiones (AWS,
@@ -82,7 +82,7 @@ con el perfil de privacidad del proyecto.
 | 9.4 | ✅ Regla propia de **circulación internacional**: recursos con `personal-data=yes` en regiones fuera de Colombia se señalan para revisión, como transmisión por defecto (Decreto 1377, art. 25) y con la transferencia (art. 26) como alternativa. Se usa el tag `personal-data`, no la clasificación: ver ADR 0008 | Yo |
 | 9.5 | ✅ Entregable **Matriz técnica Ley 1581**: por obligación, hallazgos, estado y la evidencia manual requerida (autorización, finalidades, política de tratamiento, registro ante el RNBD, que la herramienta no puede ver) | Yo |
 | 9.6 | ✅ **ADR 0008:** por qué un mapeo indirecto vía ISO y no directo, y sus límites | Yo |
-| 9.7 | Revisión de la matriz como experto en privacidad: ¿un abogado o un auditor de la SIC aceptaría este mapeo? | Tú |
+| 9.7 | ✅ Escaneo desde CI y revisión de la matriz como experto en privacidad (2026-11-25). Resultado: configuraciones de cuenta con tipo de datos tratadas como hallazgos de cuenta, un señalamiento por recurso y agrupado por proveedor y región, alcance de detección en 17 n y 18 k, *Aplica* sugerida en los arts. 17 y 18 | Tú |
 
 ## Fase 10. Azure
 

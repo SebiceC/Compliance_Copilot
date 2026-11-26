@@ -1,7 +1,7 @@
 # Compliance Copilot
 
-> 🚧 **En construcción.** Este README describe el objetivo del proyecto; las secciones marcadas como
-> *pendiente* todavía no están implementadas.
+> 🚧 **En construcción, camino a la v1.0.** AWS está completo con los cuatro marcos; Azure es la fase en curso.
+> Ver [Estado del proyecto](#estado-del-proyecto).
 
 Pipeline en Python que convierte los hallazgos técnicos de [Prowler](https://github.com/prowler-cloud/prowler)
 (AWS y Azure) en entregables de auditoría: matriz de riesgos, borrador de Declaración de Aplicabilidad (SoA),
@@ -22,10 +22,29 @@ como insumo.** Lo que agrega es lo que Prowler no hace:
 |---|---|
 | Ingesta de la salida de Prowler (JSON OCSF) con anonimización | listo para AWS (Azure pendiente) |
 | Agrupación por control: ISO 27001:2022, SOC 2, NIST CSF 2.0 y Ley 1581 de 2012 (Colombia) | listos los cuatro |
-| Evaluación de riesgo (probabilidad × impacto, matriz 5×5) con [metodología documentada](docs/metodologia-riesgo.md) | listo (metodología v0.2) |
-| Entregables: matriz de riesgos y SoA (.xlsx / .md), paquete de evidencias, plan de remediación ([detalle](docs/entregables.md)) | listo (SoA de ISO 27001:2022) |
+| Corrección del mapeo NIST CSF 2.0 de Prowler, que usa IDs de CSF 1.1 ([tabla](docs/correspondencia-nist-csf.md)) | listo; propuesto también al proyecto Prowler ([issue](https://github.com/prowler-cloud/prowler/issues/13504), [PR](https://github.com/prowler-cloud/prowler/pull/13556)) |
+| Ley 1581: mapeo propio vía ISO 27001, solo recursos con datos personales (tag `personal-data`) y señalamiento de datos fuera de Colombia ([metodología](docs/metodologia-ley-1581.md)) | listo |
+| Evaluación de riesgo (probabilidad × impacto, matriz 5×5) con [metodología documentada](docs/metodologia-riesgo.md) | listo (metodología v0.2; v0.3 en la Fase 11) |
+| Entregables: matriz de riesgos, una declaración por marco (SoA de ISO 27001, matriz de criterios SOC 2, perfil actual NIST CSF 2.0, matriz técnica de la Ley 1581), paquete de evidencias y plan de remediación, en .xlsx y .md ([detalle](docs/entregables.md)) | listo |
 | Redacción de hallazgos en formato de auditoría con Claude, **solo publicados tras aprobación humana** ([detalle](docs/redaccion-ia.md)) | listo |
 | Ejecución como compliance-as-code en GitHub Actions con OIDC, sin llaves de larga duración ([detalle](docs/ci.md)) | listo (tests, escaneo de AWS con aprobación manual y evidencia firmada) |
+| Azure: laboratorio, parser, riesgo y escaneo desde CI con credencial federada | pendiente (Fase 10) |
+
+## Estado del proyecto
+
+Avance por fases según la [hoja de ruta a la v1.0](docs/hoja-de-ruta-v1.md). Las decisiones de diseño están en
+los [ADR](docs/adr/).
+
+| Fase | Qué | Estado |
+|---|---|---|
+| 0 a 5 | Laboratorio de AWS, parser, anonimización, motor de riesgo, SoA de ISO 27001, redacción con IA y CI con OIDC | ✅ |
+| 6 | Base común para varios marcos ([ADR 0007](docs/adr/0007-varios-marcos-con-catalogo-comun.md)) | ✅ |
+| 7 | SOC 2 | ✅ |
+| 8 | NIST CSF 2.0, con la corrección del mapeo de Prowler | ✅ |
+| 9 | Ley 1581 de 2012 ([ADR 0008](docs/adr/0008-ley-1581-derivada-de-iso.md)), verificada con escaneos en CI | ✅ |
+| 10 | Azure | 🔄 en curso |
+| 11 | Calibración de la metodología de riesgo v0.3 | pendiente |
+| 12 | Cierre de la v1.0 | pendiente |
 
 ## Principios
 

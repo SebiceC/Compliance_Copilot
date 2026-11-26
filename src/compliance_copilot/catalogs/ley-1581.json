@@ -135,11 +135,17 @@
     },
     {
       "id": "responsable",
-      "label": "Art. 17 · Deberes del responsable"
+      "label": "Art. 17 · Deberes del responsable",
+      "suggested": {
+        "Aplica": "Sí (sugerido): confirmar si la organización decide sobre el tratamiento"
+      }
     },
     {
       "id": "encargado",
-      "label": "Art. 18 · Deberes del encargado"
+      "label": "Art. 18 · Deberes del encargado",
+      "suggested": {
+        "Aplica": "Por definir (sugerido): solo si la organización trata datos por cuenta de otro"
+      }
     },
     {
       "id": "registro",
@@ -161,7 +167,7 @@
     "sheet": "Matriz Ley 1581",
     "id_label": "Obligación",
     "group_label": "Grupo",
-    "intro": "Solo cuentan los hallazgos en recursos con datos personales (tag `personal-data=yes`). La herramienta evidencia la **parte técnica** de cada obligación, a través de los controles de ISO 27001; las obligaciones documentales (autorización, política, aviso, RNBD) salen sin estado técnico y requieren evidencia manual. **Aplica** y **Evidencia manual** los decide el responsable del tratamiento. Esta matriz no es una opinión jurídica.",
+    "intro": "Solo cuentan los hallazgos en recursos con datos personales (tag `personal-data=yes`). La herramienta evidencia la **parte técnica** de cada obligación, a través de los controles de ISO 27001; las obligaciones documentales (autorización, política, aviso, RNBD) salen sin estado técnico y requieren evidencia manual. **Aplica** y **Evidencia manual** los decide el responsable del tratamiento; en los arts. 17 y 18, *Aplica* trae una sugerencia para confirmar o corregir. Esta matriz no es una opinión jurídica.",
     "human_columns": [
       "Aplica",
       "Evidencia manual"

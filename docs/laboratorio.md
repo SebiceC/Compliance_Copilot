@@ -223,6 +223,42 @@ impacto de la divulgación; `personal-data` dice si aplica la Ley 1581 (ADR 0008
 Los tres están en `us-east-1`, así que la matriz de la Ley 1581 los señala como datos personales fuera de
 Colombia.
 
+## Laboratorio de Azure (Fase 10)
+
+Suscripción `Compliance_Copilot`, con las mismas reglas que AWS: debilidades deliberadas, costo de centavos y
+ningún dato real. Los identificadores se muestran como `<SUBSCRIPTION_ID>`; el sufijo aleatorio de los nombres,
+como `<sufijo>`.
+
+| Requisito | Detalle |
+|---|---|
+| Resource providers | Registrar `Microsoft.Storage`, `Microsoft.Network` y `Microsoft.KeyVault` (`az provider register -n …`) antes de crear recursos. Sin el registro, Azure responde un engañoso `SubscriptionNotFound` |
+| Presupuesto | `presupuesto-cc-lab`: 5 USD al mes, alertas al 50 % y al 100 % real y al 100 % proyectado |
+| Escaneo local | `prowler azure --az-cli-auth --subscription-ids <SUBSCRIPTION_ID> --output-formats json-ocsf csv`, desde la raíz del repo para que la salida quede en `output/` |
+
+| # | Recurso | Nombre | Región | Debilidad | Tags | Check de Prowler |
+|---|---|---|---|---|---|---|
+| A1 | Grupo de recursos | `rg-cc-lab` | `eastus` | — | `project` | — |
+| A2 | Storage account | `cclabdata<sufijo>` | `eastus` | Permite acceso público a blobs (sin contenedores ni datos) | `confidential`, `personal-data=yes` | `storage_blob_public_access_level_is_disabled` (high) |
+| A3 | NSG | `nsg-cc-lab` | `eastus` | Regla `ssh-abierto`: TCP 22 desde `Internet` (sin asociar a ninguna máquina ni subred) | `internal` | `network_ssh_internet_access_restricted` |
+| A4 | Key Vault | `cc-lab-kv-<sufijo>` | `brazilsouth` | Sin protección de purga | `restricted`, `personal-data=yes` | `keyvault_recoverable` (high) |
+
+El Key Vault está en Brasil a propósito: prueba con datos reales el país de una región de Azure y la agrupación
+por proveedor y región de la matriz de la Ley 1581.
+
+**Tags.** Prowler no exporta los tags de Azure (ADR 0009). Se exportan aparte, justo después del escaneo:
+
+```powershell
+az resource list --query "[].{id:id, tags:tags}" -o json | Out-File -Encoding utf8 output\azure-tags-<fecha>.json
+python -m compliance_copilot report output\<escaneo>.ocsf.json --resource-tags output\azure-tags-<fecha>.json
+```
+
+**Primer escaneo (2026-11-25):** 62 hallazgos (50 FAIL, 11 PASS, 1 MANUAL). Los checks de Entra ID salen con tipo
+`NotDefined` y región `global`. La regla del NSG no se había creado en ese escaneo (el provider no estaba
+registrado); se agregó después.
+
+**Desmontaje:** `az group delete -n rg-cc-lab` borra los tres recursos. El Key Vault queda en *soft delete* 90
+días y conserva su nombre reservado; el presupuesto se borra en Cost Management.
+
 ## Desmontaje
 
 Desde la consola con el rol `LabAdmin`, en `us-east-1`. El orden importa: primero se detiene CloudTrail

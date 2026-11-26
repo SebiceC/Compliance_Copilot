@@ -22,7 +22,8 @@ from compliance_copilot.drafting.prompt import aliases_for, user_message
 from compliance_copilot.drafting.review import review_pending
 from compliance_copilot.drafting.runner import audit_entries, report_payloads, run_drafting
 from compliance_copilot.drafting.schema import DraftStore
-from compliance_copilot.parsers.prowler_ocsf import parse_ocsf_file
+from compliance_copilot.parsers.prowler_ocsf import ParseResult, parse_ocsf_file
+from compliance_copilot.parsers.resource_tags import apply_resource_tags, load_resource_tags
 from compliance_copilot.reports.builders import LEVEL_LABEL, PRIMARY_FRAMEWORK, Report, build_report
 from compliance_copilot.reports.evidence import MANIFEST, verify_manifest, write_evidence
 from compliance_copilot.reports.excel import write_excel
@@ -37,6 +38,9 @@ EXIT_VERIFY_FAILED = 4
 LEVEL_NAMES = {level.value: level for level in RiskLevel}
 
 
+TAGS_HELP = "tags exportados aparte (Azure: az resource list); completan los hallazgos sin tags"
+
+
 def main(argv: list[str] | None = None, drafter_factory: Callable[..., Drafter] = ClaudeDrafter) -> int:
     logging.basicConfig(level=logging.WARNING, format="%(levelname)s: %(message)s")
     parser = argparse.ArgumentParser(prog="python -m compliance_copilot")
@@ -46,9 +50,11 @@ def main(argv: list[str] | None = None, drafter_factory: Callable[..., Drafter] 
     report.add_argument("scan", type=Path, help="archivo .ocsf.json de Prowler")
     report.add_argument("-o", "--output", type=Path, help="carpeta de salida (por defecto reports/<fecha>)")
     report.add_argument("--drafts", type=Path, help="borradores revisados: incluye los textos aprobados")
+    report.add_argument("--resource-tags", type=Path, help=TAGS_HELP)
 
     draft = commands.add_parser("draft", help="redacta hallazgos de auditoría con Claude (cuesta dinero)")
     draft.add_argument("scan", type=Path)
+    draft.add_argument("--resource-tags", type=Path, help=TAGS_HELP)
     draft.add_argument("--drafts", type=Path, help="archivo de borradores (por defecto drafts/<fecha>.json)")
     draft.add_argument("--levels", default="critical,high,medium,low",
                        help="niveles de riesgo a redactar, separados por coma (p. ej. critical,high)")
@@ -60,6 +66,7 @@ def main(argv: list[str] | None = None, drafter_factory: Callable[..., Drafter] 
 
     review = commands.add_parser("review", help="revisión humana de los borradores")
     review.add_argument("scan", type=Path)
+    review.add_argument("--resource-tags", type=Path, help=TAGS_HELP)
     review.add_argument("--drafts", type=Path, help="archivo de borradores (por defecto el del modelo de --model)")
     review.add_argument("--model", choices=MODELS, default=DEFAULT_MODEL, help="elige el archivo por defecto")
     review.add_argument("--reviewer", required=True, help="nombre de quien revisa (queda en el registro)")
@@ -81,7 +88,12 @@ def main(argv: list[str] | None = None, drafter_factory: Callable[..., Drafter] 
         return _draft(args, drafter_factory)
     if args.command == "review":
         return _review(args)
-    return _report(args.scan, args.output, args.drafts)
+    return _report(args.scan, args.output, args.drafts, args.resource_tags)
+
+
+def _parse(scan: Path, resource_tags: Path | None) -> ParseResult:
+    parsed = parse_ocsf_file(scan)
+    return apply_resource_tags(parsed, load_resource_tags(resource_tags)) if resource_tags else parsed
 
 
 def _scan_stamp(report: Report) -> str:
@@ -94,8 +106,8 @@ def _drafts_path(report: Report, model: str) -> Path:
     return Path("drafts") / f"{_scan_stamp(report)}-{model}.json"
 
 
-def _report(scan: Path, output: Path | None, drafts_path: Path | None) -> int:
-    report = build_report(parse_ocsf_file(scan))
+def _report(scan: Path, output: Path | None, drafts_path: Path | None, resource_tags: Path | None = None) -> int:
+    report = build_report(_parse(scan, resource_tags))
     output = output or Path("reports") / _scan_stamp(report)
     drafts = None
     if drafts_path is not None:
@@ -110,6 +122,8 @@ def _report(scan: Path, output: Path | None, drafts_path: Path | None) -> int:
     print(f"  {len(report.findings)} hallazgos · {len(report.risks)} riesgos: "
           + ", ".join(f"{levels[lvl]} {LEVEL_LABEL[lvl].lower()}" for lvl in reversed(RiskLevel)))
     print(f"  SoA: {len(report.soa)} controles · plan: {len(report.remediation)} acciones · manifest: {manifest.name}")
+    if report.resource_tags:
+        print(f"  Tags de {report.resource_tags.name}: completaron {report.findings_tagged} hallazgos sin tags")
     if report.audit:
         approved = sum(1 for e in report.audit.values() if e.text is not None)
         print(f"  Hallazgos de auditoría: {approved} de {len(report.remediation)} con redacción aprobada")
@@ -127,7 +141,7 @@ def _draft(args: argparse.Namespace, drafter_factory: Callable[..., Drafter]) ->
         print(f"nivel desconocido: {exc}; usa {', '.join(LEVEL_NAMES)}", file=sys.stderr)
         return EXIT_ERROR
 
-    report = build_report(parse_ocsf_file(args.scan))
+    report = build_report(_parse(args.scan, args.resource_tags))
     catalog = load_catalog(PRIMARY_FRAMEWORK)
     path = args.drafts or _drafts_path(report, args.model)
     store = DraftStore.load(path)
@@ -158,7 +172,7 @@ def _draft(args: argparse.Namespace, drafter_factory: Callable[..., Drafter]) ->
 
 
 def _review(args: argparse.Namespace) -> int:
-    report = build_report(parse_ocsf_file(args.scan))
+    report = build_report(_parse(args.scan, args.resource_tags))
     path = args.drafts or _drafts_path(report, args.model)
     if not path.exists():
         print(f"no existe {path}: genera los borradores con 'draft'", file=sys.stderr)

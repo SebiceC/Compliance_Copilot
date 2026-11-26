@@ -1,7 +1,7 @@
 # Hoja de ruta a la versión 1.0
 
 La v1.0 cumple el alcance que promete el README: **AWS y Azure**, con entregables para **ISO 27001:2022, SOC 2,
-NIST CSF 2.0 y Ley 1581 de 2012**. Hoy están completos AWS e ISO 27001 (Fases 0 a 5).
+NIST CSF 2.0 y Ley 1581 de 2012**. Hoy está completo AWS con los cuatro marcos (Fases 0 a 9).
 
 Cada fase termina con: código y tests (Claude los genera cuando se le piden), documentación y ADR, verificación
 con un escaneo real y un PR fusionado con el check `tests` en verde. La infraestructura y las conexiones (AWS,

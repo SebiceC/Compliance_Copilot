@@ -47,6 +47,9 @@ class ParseResult:
     scan: ScanMetadata
     findings: list[Finding] = field(default_factory=list)
     errors: list[ParseError] = field(default_factory=list)
+    # Archivo de tags que completó los hallazgos sin tags (parsers.resource_tags), y cuántos completó.
+    resource_tags: Path | None = None
+    findings_tagged: int = 0
 
     @property
     def is_complete(self) -> bool:

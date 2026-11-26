@@ -134,7 +134,8 @@ compromiso* las asigna la organización.
   sustentan, sobre qué recurso, con qué resultado y **cuándo** se observaron (UTC).
 - `manifest.json`: versión de la herramienta y de la metodología, datos del escaneo (escáner, versión,
   `scan_id`, cuentas, fechas), **SHA-256 del archivo de origen** y de **cada archivo generado**, y los hallazgos
-  que no se pudieron leer.
+  que no se pudieron leer. Si se usó `--resource-tags` (Azure, ADR 0009), también el archivo de tags: nombre,
+  SHA-256 y cuántos hallazgos completó.
 
 Verificación (por ejemplo, la hace el auditor al recibir el paquete):
 

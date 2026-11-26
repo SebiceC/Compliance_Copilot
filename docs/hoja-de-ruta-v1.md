@@ -92,18 +92,18 @@ La fase más grande. Repite para Azure lo que las Fases 0, 1, 2 y 5 hicieron par
 
 | # | Paso |
 |---|---|
-| 10.1 | Diagnosticar "No subscriptions found": casi siempre es una cuenta sin suscripción activa o una identidad sin rol sobre la suscripción |
+| 10.1 | ✅ (la suscripción estaba bien; faltaba registrar los *resource providers* `Microsoft.Storage`, `Microsoft.Network` y `Microsoft.KeyVault`, que en una suscripción nueva responden `SubscriptionNotFound`) Diagnosticar "No subscriptions found": casi siempre es una cuenta sin suscripción activa o una identidad sin rol sobre la suscripción |
 | 10.2 | Suscripción de laboratorio (gratuita o pago por uso) con **alerta de presupuesto** baja |
 | 10.3 | Identidad de escaneo con mínimo privilegio: rol **Reader** sobre la suscripción y los permisos de Microsoft Graph de solo lectura que pide Prowler (verificar la lista en su documentación) |
-| 10.4 | Recursos con debilidades deliberadas y costo cero o centavos, con tags `data-classification` y `project`; por ejemplo: storage account que permite acceso público a blobs, NSG con SSH abierto a Internet, Key Vault sin protección de purga. Documentar en `docs/laboratorio.md` como se hizo con AWS |
-| 10.5 | Primer escaneo local: `prowler azure --az-cli-auth` con salida `json-ocsf` |
+| 10.4 | ✅ Recursos con debilidades deliberadas y costo cero o centavos, con tags `data-classification` y `project`; por ejemplo: storage account que permite acceso público a blobs, NSG con SSH abierto a Internet, Key Vault sin protección de purga. Documentar en `docs/laboratorio.md` como se hizo con AWS |
+| 10.5 | ✅ Primer escaneo local: `prowler azure --az-cli-auth` con salida `json-ocsf`. Prowler no exporta los tags de Azure: se exportan aparte con `az resource list` (ADR 0009) |
 
 ### 10b. Código (yo)
 
 | # | Paso |
 |---|---|
-| 10.6 | Verificar qué marcos mapea Prowler para Azure (ISO 27001:2022, SOC 2, NIST CSF 2.0) y con qué formato de IDs |
-| 10.7 | Parser multiproveedor: suscripción como cuenta, `location` como región, tipos de recurso de Azure, formato de tags |
+| 10.6 | ✅ (ISO 27001:2022 y SOC 2 sí, con el mismo formato de AWS; **NIST CSF 2.0 no existe para Azure** en Prowler: el perfil debe decirlo) Verificar qué marcos mapea Prowler para Azure (ISO 27001:2022, SOC 2, NIST CSF 2.0) y con qué formato de IDs |
+| 10.7 | Parser multiproveedor: suscripción como cuenta, `location` como región, tipos de recurso de Azure, formato de tags. Hecho: tags desde un archivo aparte (`--resource-tags`, ADR 0009) |
 | 10.8 | Anonimizador para Azure: IDs de suscripción y de tenant (GUID), object IDs, UPN y correos, nombres de recursos |
 | 10.9 | Motor de riesgo: tipos de recurso de datos de Azure (storage, SQL, Cosmos DB, Key Vault), checks de privilegio administrativo de Azure, categoría de exposición a Internet |
 | 10.10 | Muestra anonimizada `data/samples/prowler-azure-lab.ocsf.json` y tests equivalentes a los de AWS |
@@ -117,7 +117,7 @@ La fase más grande. Repite para Azure lo que las Fases 0, 1, 2 y 5 hicieron par
 | 10.13 | Environment `azure-lab` con revisor obligatorio; secretos de cliente, tenant y suscripción (no son credenciales, solo identificadores) |
 | 10.14 | Job de escaneo de Azure en `scan.yml` (`azure/login` fijado por hash), mismas reglas de logs públicos y la misma firma del manifest |
 | 10.15 | Dónde guardar la evidencia de Azure: el mismo bucket de AWS (más simple) o una storage account con inmutabilidad (simétrico). Decisión tuya, en el ADR |
-| 10.16 | **ADR 0009:** federación de identidades en Azure |
+| 10.16 | **ADR 0010:** federación de identidades en Azure |
 
 ## Fase 11. Calibración de la metodología v0.3
 

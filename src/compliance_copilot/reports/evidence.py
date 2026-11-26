@@ -61,6 +61,12 @@ def write_evidence(report: Report, out_dir: Path, deliverables: list[Path], draf
                 for e in report.parse_errors
             ],
         },
+        **({"resource_tags": {
+            "file": report.resource_tags.name,
+            "sha256": sha256(report.resource_tags),
+            "findings_tagged": report.findings_tagged,
+            "note": "Tags del proveedor exportados aparte; completan solo los hallazgos que llegaron sin tags.",
+        }} if report.resource_tags else {}),
         "files": [
             {"path": p.relative_to(out_dir).as_posix(), "sha256": sha256(p), "bytes": p.stat().st_size}
             for p in sorted([*deliverables, *written])

@@ -77,6 +77,8 @@ pytest
 
 # Generar los entregables y el paquete de evidencias (ver docs/entregables.md)
 python -m compliance_copilot report output/<escaneo>.ocsf.json -o reports/<carpeta>
+# Azure: Prowler no exporta los tags; se agregan desde az resource list (ver docs/laboratorio.md, ADR 0009)
+python -m compliance_copilot report output/<escaneo>.ocsf.json --resource-tags output/azure-tags-<fecha>.json
 
 # Redactar hallazgos con Claude y revisarlos (ver docs/redaccion-ia.md); luego: report ... --drafts drafts/<fecha>-sonnet.json
 python -m compliance_copilot draft output/<escaneo>.ocsf.json --levels critical,high --dry-run

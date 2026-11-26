@@ -163,6 +163,8 @@ class Report:
     statements: tuple[Statement, ...]  # una declaración por marco, en el orden de catalogs.FRAMEWORKS
     remediation: tuple[RemediationAction, ...]  # ordenadas por prioridad
     heatmap: dict[tuple[int, int], int] = field(default_factory=dict)  # (probabilidad, impacto) -> cantidad
+    resource_tags: Path | None = None  # archivo de tags aparte (Azure), si se usó
+    findings_tagged: int = 0
     audit: dict[str, AuditEntry] = field(default_factory=dict)  # redacción con IA por check_id (si se pidió)
 
     @property
@@ -216,6 +218,8 @@ def build_report(parsed: ParseResult, catalogs: tuple[Catalog, ...] | None = Non
         statements=tuple(build_statement(findings, risks, catalog) for catalog in catalogs),
         remediation=build_remediation(risks),
         heatmap=dict(Counter((r.assessment.probability, r.assessment.impact) for r in risks)),
+        resource_tags=parsed.resource_tags,
+        findings_tagged=parsed.findings_tagged,
     )
 
 

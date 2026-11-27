@@ -64,6 +64,9 @@ una opinión de cumplimiento.
 
 ## Cómo correrlo
 
+El recorrido completo, del escaneo al paquete revisado y verificado, está en la
+[guía de uso para AWS](docs/guia-de-uso-aws.md).
+
 *En construcción.* Por ahora, con Python 3.13:
 
 ```bash
